@@ -74,19 +74,16 @@
             "background": "#f8f9ff"
           },
           borderRadius: {
-            /* FIX: custom scale — do NOT redefine 'full' (must stay 9999px for pill shapes) */
             "temple-xs": "0.125rem",
             "temple-sm": "0.25rem",
             "temple-md": "0.5rem"
           },
           spacing: {
-            /* FIX: renamed to camelCase-safe keys; use px-gutter, px-margin-sm, px-margin-lg */
             "gutter": "24px",
             "base": "8px",
             "marginSm": "16px",
             "marginLg": "40px"
           },
-          /* FIX: fontFamily uses proper keys (display / body) so font-display / font-body work */
           fontFamily: {
             "display": ['"Source Serif 4"', "Georgia", "serif"],
             "body":    ["Hanken Grotesk", "system-ui", "sans-serif"]
@@ -107,7 +104,6 @@
   </script>
 
   <style>
-    /* Dark mode system-preference fallback */
     @media (prefers-color-scheme: dark) {
       html:not([data-theme="light"]) { --dm: 1; }
     }
@@ -119,7 +115,6 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* Skip link */
     .skip-link {
       position: absolute;
       top: -100%;
@@ -135,7 +130,6 @@
     }
     .skip-link:focus { top: 0; }
 
-    /* Mobile nav drawer */
     #mobile-nav {
       transform: translateX(100%);
       transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -148,8 +142,7 @@
     }
     #nav-overlay.open { opacity: 1; pointer-events: auto; }
 
-    /* Header height CSS variable for spacer sync */
-    :root { --header-h: 5rem; /* 80px = h-20 */ }
+    :root { --header-h: 5rem; }
     #main-header { height: var(--header-h); }
     #header-spacer { height: var(--header-h); }
   </style>
@@ -157,24 +150,20 @@
 
 <body class="bg-background text-on-background antialiased font-body text-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 
-  <!-- Skip to main content (keyboard / screen reader) -->
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
-  <!-- ═══════════════════════════════════════════════
-       HEADER
-  ═══════════════════════════════════════════════ -->
+  <!-- HEADER -->
   <header
     class="fixed top-0 w-full z-50 flex justify-between items-center px-marginLg bg-sacred-white dark:bg-surface-dim border-b border-incense-smoke dark:border-outline-variant shadow-sm dark:shadow-none transition-all duration-300"
     id="main-header"
   >
-    <!-- Logo -->
     <div class="flex items-center gap-3">
-      <!-- FIX: removed redundant wrapper div -->
+      <!-- GoAP Logo wired from images/ folder -->
       <img
-        src="https://picsum.photos/seed/apgov/56/56"
+        src="./images/GoAP-Logo.png"
         alt="Government of Andhra Pradesh Emblem"
         width="56" height="56"
-        class="h-14 w-14 object-cover rounded-full"
+        class="h-14 w-14 object-contain"
         loading="eager" decoding="async"
       >
       <div class="flex flex-col justify-center">
@@ -183,7 +172,6 @@
       </div>
     </div>
 
-    <!-- Desktop Nav -->
     <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="#darshan">Darshan</a>
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="#sevas">Sevas</a>
@@ -193,9 +181,7 @@
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="#visit">Pilgrim Guide</a>
     </nav>
 
-    <!-- Right actions -->
     <div class="flex items-center gap-3">
-      <!-- Dark mode toggle -->
       <button
         id="theme-toggle"
         aria-label="Switch to dark mode"
@@ -204,13 +190,10 @@
         <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
         <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
       </button>
-
       <div class="hidden md:flex items-center gap-3">
         <button class="font-body text-label-md text-primary dark:text-primary-fixed hover:text-primary-container transition-colors">Login</button>
         <button class="font-body text-label-md bg-saffron-deep text-on-primary px-6 py-2.5 rounded-full shadow-sm hover:bg-primary-container transition-all active:opacity-90 duration-150">Register</button>
       </div>
-
-      <!-- Mobile hamburger — FIX: aria-label + aria-expanded + aria-controls -->
       <button
         id="nav-open"
         aria-label="Open navigation menu"
@@ -223,12 +206,9 @@
     </div>
   </header>
 
-  <!-- FIX: spacer synced via CSS variable --header-h -->
   <div id="header-spacer"></div>
 
-  <!-- ═══════════════════════════════════════════════
-       MOBILE NAV DRAWER
-  ═══════════════════════════════════════════════ -->
+  <!-- MOBILE NAV DRAWER -->
   <div id="nav-overlay" class="fixed inset-0 bg-on-background/60 z-40 lg:hidden" aria-hidden="true"></div>
   <nav
     id="mobile-nav"
@@ -259,19 +239,16 @@
     </div>
   </nav>
 
-  <!-- ═══════════════════════════════════════════════
-       MAIN CONTENT
-  ═══════════════════════════════════════════════ -->
+  <!-- MAIN CONTENT -->
   <main id="main-content">
 
-    <!-- Hero Section -->
+    <!-- Hero Section — background: Guruji.png -->
     <section class="relative w-full h-[85vh] min-h-[600px] flex items-center justify-center overflow-hidden">
-      <!-- FIX: role=img + aria-label on background div -->
       <div
         role="img"
-        aria-label="Ethereal painting of Lord Sripada Srivallabha in a serene divine pose with warm golden light and soft temple architecture in the background"
+        aria-label="Lord Sripada Srivallabha in a serene divine pose with warm golden light and soft temple architecture in the background"
         class="absolute inset-0 bg-cover bg-center transform scale-105 transition-transform duration-[20s] ease-out hover:scale-110"
-        style="background-image: url('https://picsum.photos/seed/sripada-hero/1600/900')"
+        style="background-image: url('./images/Guruji.png')"
       ></div>
       <div class="absolute inset-0 bg-gradient-to-t from-on-background/90 via-on-background/40 to-transparent"></div>
       <div class="absolute inset-0 bg-gradient-to-r from-saffron-deep/20 to-transparent"></div>
@@ -294,7 +271,6 @@
     <!-- Alerts / Notices -->
     <section aria-label="Notices and alerts" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg relative z-20 -mt-12">
       <div class="glass-card border border-incense-smoke rounded-xl shadow-md p-6 flex flex-col md:flex-row gap-6 items-stretch">
-        <!-- Notice 1 -->
         <div class="flex-1 flex gap-4 items-start group cursor-pointer p-2 rounded-lg hover:bg-surface-container-low transition-colors">
           <div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center flex-shrink-0 mt-1">
             <span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">nightlight</span>
@@ -306,7 +282,6 @@
         </div>
         <div class="hidden md:block w-px bg-incense-smoke my-2" aria-hidden="true"></div>
         <div class="md:hidden h-px w-full bg-incense-smoke" aria-hidden="true"></div>
-        <!-- Notice 2 -->
         <div class="flex-1 flex gap-4 items-start group cursor-pointer p-2 rounded-lg hover:bg-surface-container-low transition-colors">
           <div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 mt-1">
             <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
@@ -319,18 +294,16 @@
       </div>
     </section>
 
-    <!-- Quick Services (Bento Grid) -->
+    <!-- Quick Services -->
     <section id="sevas" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-20">
       <div class="flex justify-between items-end mb-10">
         <div>
           <span class="font-body text-label-md text-primary tracking-widest uppercase mb-2 block">Quick Access</span>
-          <!-- FIX: downgraded from display-lg (48px) to headline-lg (32px) for interior section -->
           <h2 class="font-display text-headline-lg md:text-display-lg-mobile text-on-background">Essential Services</h2>
         </div>
         <a class="hidden md:flex font-body text-label-md text-primary items-center gap-1 hover:text-saffron-deep transition-colors" href="#">View All Services <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span></a>
       </div>
       <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-        <!-- Card 1 -->
         <a id="donations" class="group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[280px] relative overflow-hidden" href="#">
           <div class="absolute -right-4 -top-4 w-32 h-32 bg-surface-container rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
           <div class="relative z-10">
@@ -344,7 +317,6 @@
             Donate Now <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
           </div>
         </a>
-        <!-- Card 2 -->
         <a class="group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[280px] relative overflow-hidden" href="#">
           <div class="absolute -right-4 -top-4 w-32 h-32 bg-surface-container rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
           <div class="relative z-10">
@@ -358,7 +330,6 @@
             View Seva List <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
           </div>
         </a>
-        <!-- Card 3 -->
         <a id="visit" class="group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[280px] relative overflow-hidden" href="#">
           <div class="absolute -right-4 -top-4 w-32 h-32 bg-surface-container rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
           <div class="relative z-10">
@@ -380,18 +351,17 @@
     <section id="history" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-12 pb-24 border-t border-incense-smoke">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
 
-        <!-- Main Content: Temple History -->
         <article class="lg:col-span-8">
           <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
           <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
           <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
-            <!-- FIX: stable URL + width/height/loading/decoding -->
+            <!-- Temple image wired from images/left-sripada.png -->
             <img
-              src="https://picsum.photos/seed/pithapuram-temple/1280/400"
-              alt="Main gopuram of the Sripada Srivallabha Mahasamsthanam temple against a bright morning sky, with intricate carvings in white and warm terracotta"
+              src="./images/left-sripada.png"
+              alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
               width="1280" height="400"
               loading="lazy" decoding="async"
-              class="w-full h-[400px] object-cover transition-transform duration-700 hover:scale-105"
+              class="w-full h-[400px] object-cover object-top transition-transform duration-700 hover:scale-105"
             >
           </div>
           <div class="prose max-w-none text-on-surface-variant space-y-6">
@@ -401,14 +371,11 @@
             <p class="font-body text-body-md leading-relaxed">
               The Mahasamsthanam stands as a beacon of spiritual solace, drawing devotees from across the globe who seek the divine blessings of the Lord. The temple architecture, though steeped in ancient tradition, has been thoughtfully preserved and modernised to accommodate the growing number of pilgrims while maintaining its inherent sanctity and peaceful atmosphere.
             </p>
-
-            <!-- FIX: removed border-l-4 anti-pattern; using surface elevation + neutral border -->
             <blockquote class="bg-surface-container-low p-6 rounded-xl border border-incense-smoke my-8">
               <p class="font-body text-body-md italic text-on-background m-0">
                 "To visit Pithapuram is to walk on the very ground where the Lord performed his divine leelas. It is a place of profound spiritual awakening and absolute purity."
               </p>
             </blockquote>
-
             <p class="font-body text-body-md leading-relaxed">
               The temple complex houses the Swayambhu Padukas (divine footprints) of Lord Sripada Srivallabha, which are the focal point of daily worship. The administration, under the AP Endowments Department, ensures transparent operations, regular Nithya Annadanam (free feeding), and impeccable maintenance of the sacred premises.
             </p>
@@ -416,9 +383,7 @@
           </div>
         </article>
 
-        <!-- Sidebar -->
         <aside id="darshan" class="lg:col-span-4 space-y-8 mt-12 lg:mt-0">
-          <!-- Daily Schedule Card -->
           <div class="bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm">
             <h3 class="font-display text-headline-lg text-on-background mb-8 flex items-center gap-3">
               <span class="material-symbols-outlined text-saffron-deep text-3xl" aria-hidden="true">schedule</span>
@@ -452,9 +417,7 @@
             </ul>
           </div>
 
-          <!-- Live Darshan Card -->
           <div class="relative rounded-2xl overflow-hidden shadow-md group">
-            <!-- FIX: stable URL + proper img attributes -->
             <img
               src="https://picsum.photos/seed/temple-diyas/600/256"
               alt="Traditional brass oil lamps burning brightly in a darkened temple sanctum, warm golden light creating a deeply spiritual atmosphere"
@@ -483,11 +446,9 @@
       </div>
     </section>
 
-  </main><!-- /main -->
+  </main>
 
-  <!-- ═══════════════════════════════════════════════
-       FOOTER
-  ═══════════════════════════════════════════════ -->
+  <!-- FOOTER -->
   <footer class="w-full py-12 px-marginLg flex flex-col md:flex-row justify-between items-center gap-base bg-on-background dark:bg-surface-container-lowest border-t border-outline">
     <div class="flex flex-col items-center md:items-start gap-2 mb-6 md:mb-0">
       <div class="font-display text-headline-md text-sacred-white flex items-center gap-2">
@@ -504,25 +465,19 @@
       <a class="font-body text-caption text-incense-smoke opacity-70 hover:text-secondary-fixed-dim underline transition-all" href="#">RTI</a>
       <a class="font-body text-caption text-incense-smoke opacity-70 hover:text-secondary-fixed-dim underline transition-all" href="#">Sitemap</a>
     </nav>
-    <!-- FIX: dynamic copyright year -->
     <div class="font-body text-caption text-incense-smoke opacity-70 text-center md:text-right">
       © <span id="footer-year"></span> Endowments Department, Andhra Pradesh. All Rights Reserved.
     </div>
   </footer>
 
-  <!-- ═══════════════════════════════════════════════
-       SCRIPTS
-  ═══════════════════════════════════════════════ -->
+  <!-- SCRIPTS -->
   <script>
-    /* ── Dark mode toggle ─────────────────────────────────────────────────── */
     (function () {
-      const html    = document.documentElement;
-      const btn     = document.getElementById('theme-toggle');
-      const iconSun = document.getElementById('icon-sun');
-      const iconMoon= document.getElementById('icon-moon');
-
+      const html     = document.documentElement;
+      const btn      = document.getElementById('theme-toggle');
+      const iconSun  = document.getElementById('icon-sun');
+      const iconMoon = document.getElementById('icon-moon');
       let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-
       function applyTheme(isDark) {
         dark = isDark;
         html.classList.toggle('dark', isDark);
@@ -533,62 +488,48 @@
           iconMoon.classList.toggle('hidden', !isDark);
         }
       }
-
       applyTheme(dark);
       if (btn) btn.addEventListener('click', () => applyTheme(!dark));
     })();
 
-    /* ── Mobile nav drawer ────────────────────────────────────────────────── */
     (function () {
       const openBtn  = document.getElementById('nav-open');
       const closeBtn = document.getElementById('nav-close');
       const drawer   = document.getElementById('mobile-nav');
       const overlay  = document.getElementById('nav-overlay');
       const navLinks = drawer.querySelectorAll('[data-nav-link]');
-
       function openNav() {
         drawer.classList.add('open');
         overlay.classList.add('open');
         openBtn.setAttribute('aria-expanded', 'true');
         closeBtn.focus();
       }
-
       function closeNav() {
         drawer.classList.remove('open');
         overlay.classList.remove('open');
         openBtn.setAttribute('aria-expanded', 'false');
         openBtn.focus();
       }
-
       openBtn.addEventListener('click', openNav);
       closeBtn.addEventListener('click', closeNav);
       overlay.addEventListener('click', closeNav);
-
-      // Close on nav link click
       navLinks.forEach(link => link.addEventListener('click', closeNav));
-
-      // Close on Escape key
       document.addEventListener('keydown', e => {
         if (e.key === 'Escape' && drawer.classList.contains('open')) closeNav();
       });
     })();
 
-    /* ── Header scroll effect (FIX: synced with CSS variable) ────────────── */
     (function () {
-      const header  = document.getElementById('main-header');
-      const spacer  = document.getElementById('header-spacer');
-
+      const header = document.getElementById('main-header');
+      const spacer = document.getElementById('header-spacer');
       window.addEventListener('scroll', () => {
         const scrolled = window.scrollY > 20;
         header.classList.toggle('shadow-md', scrolled);
         header.classList.toggle('shadow-sm', !scrolled);
-
-        // Sync spacer to actual rendered header height
         spacer.style.height = header.offsetHeight + 'px';
       }, { passive: true });
     })();
 
-    /* ── Dynamic copyright year ───────────────────────────────────────────── */
     document.getElementById('footer-year').textContent = new Date().getFullYear();
   </script>
 
