@@ -161,15 +161,17 @@
       box-shadow: 0 0 0 4px rgba(140, 51, 10, 0.18);
     }
 
+    /* Primary name — Source Serif 4, bold, saffron-deep */
     .brand-name-en {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 1.25rem;
+      font-size: 1.25rem;        /* 20px — clear and authoritative */
       font-weight: 700;
       line-height: 1.2;
       color: #8C330A;
       letter-spacing: -0.01em;
     }
 
+    /* Divider rule between the two lines */
     .brand-divider {
       width: 2.5rem;
       height: 1px;
@@ -177,20 +179,24 @@
       margin: 2px 0;
     }
 
+    /* Telugu subtitle */
     .brand-name-te {
       font-family: 'Noto Sans Telugu', sans-serif;
-      font-size: 0.875rem;
+      font-size: 0.875rem;       /* 14px */
       font-weight: 600;
       line-height: 1.3;
-      color: #57423a;
+      color: #57423a;            /* on-surface-variant */
       letter-spacing: 0.01em;
     }
 
-    html.dark .brand-name-en  { color: #ffb596; }
+    /* Dark-mode overrides */
+    html.dark .brand-name-en  { color: #ffb596; }   /* primary-fixed-dim */
     html.dark .brand-name-te  { color: #d0c8c5; }
     html.dark .brand-divider  { background: linear-gradient(to right, #ffb59655, transparent); }
 
-    .font-telugu { font-family: 'Noto Sans Telugu', sans-serif; }
+    .font-telugu {
+      font-family: 'Noto Sans Telugu', sans-serif;
+    }
 
     /* ── Notice Ticker ── */
     #notice-ticker {
@@ -198,6 +204,7 @@
       height: 48px;
       overflow: hidden;
     }
+
     .notice-slide {
       position: absolute;
       inset: 0;
@@ -207,16 +214,19 @@
       opacity: 0;
       pointer-events: none;
     }
+
     .notice-slide.active {
       opacity: 1;
       pointer-events: auto;
       animation: noticeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
+
     .notice-slide.exit {
       opacity: 0;
       pointer-events: none;
       animation: noticeOut 0.3s cubic-bezier(0.4, 0, 1, 1) both;
     }
+
     @keyframes noticeIn {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -225,6 +235,7 @@
       from { opacity: 1; transform: translateY(0); }
       to   { opacity: 0; transform: translateY(-8px); }
     }
+
     #notice-progress {
       height: 2px;
       background: #8C330A;
@@ -232,6 +243,7 @@
       transition: width linear;
       border-radius: 2px;
     }
+
     .notice-dot {
       width: 6px;
       height: 6px;
@@ -246,114 +258,11 @@
       background: #8C330A;
       transform: scale(1.4);
     }
+
     @media (prefers-reduced-motion: reduce) {
       .notice-slide.active { animation: none; opacity: 1; }
       .notice-slide.exit   { animation: none; opacity: 0; }
       #notice-progress { transition: none; }
-    }
-
-    /* ── History Section ── */
-    .chapter-number {
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 3.5rem;
-      font-weight: 700;
-      line-height: 1;
-      color: rgba(140, 51, 10, 0.10);
-      letter-spacing: -0.03em;
-      user-select: none;
-    }
-
-    /* Ornamental divider between chapters */
-    .chapter-divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 2.5rem 0;
-    }
-    .chapter-divider::before,
-    .chapter-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
-      background: linear-gradient(to right, transparent, #dec0b5, transparent);
-    }
-    .chapter-divider-icon {
-      font-size: 18px;
-      color: #8C330A;
-    }
-
-    /* Sacred verse / pull-quote */
-    .sacred-quote {
-      position: relative;
-      padding: 1.5rem 1.75rem;
-      background: linear-gradient(135deg, #fff8f5, #fffcfa);
-      border-left: 3px solid #8C330A;
-      border-radius: 0 0.75rem 0.75rem 0;
-      margin: 2rem 0;
-    }
-    .sacred-quote::before {
-      content: '\201C';
-      position: absolute;
-      top: -0.5rem;
-      left: 1rem;
-      font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 4rem;
-      line-height: 1;
-      color: rgba(140, 51, 10, 0.18);
-      pointer-events: none;
-    }
-
-    /* Birth narrative highlight box */
-    .birth-box {
-      background: linear-gradient(135deg, #fff8f5 0%, #fffbf7 100%);
-      border: 1px solid #dec0b5;
-      border-radius: 1rem;
-      padding: 2rem;
-      position: relative;
-      overflow: hidden;
-    }
-    .birth-box::before {
-      content: '';
-      position: absolute;
-      top: 0; left: 0;
-      width: 4px; height: 100%;
-      background: linear-gradient(to bottom, #8C330A, #F6AD55);
-      border-radius: 4px 0 0 4px;
-    }
-
-    /* Accordion for expanded content */
-    .history-accordion-content {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.6s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .history-accordion-content.open {
-      max-height: 9999px;
-    }
-    #toggle-history-btn .btn-icon {
-      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    #toggle-history-btn.open .btn-icon {
-      transform: rotate(180deg);
-    }
-
-    /* Fact chips */
-    .fact-chip {
-      display: inline-flex;
-      align-items: center;
-      gap: 6px;
-      background: #EDF2F7;
-      border: 1px solid #dec0b5;
-      border-radius: 9999px;
-      padding: 4px 14px;
-      font-family: 'Hanken Grotesk', system-ui, sans-serif;
-      font-size: 13px;
-      font-weight: 600;
-      color: #57423a;
-    }
-    .fact-chip .material-symbols-outlined {
-      font-size: 15px;
-      color: #8C330A;
     }
   </style>
 </head>
@@ -557,267 +466,99 @@
       <a class="md:hidden mt-6 flex justify-center font-body text-label-md text-primary items-center gap-1 w-full border border-incense-smoke py-3 rounded-lg" href="#">View All Services</a>
     </section>
 
-    <!-- ══════════════════════════════════════
-         TEMPLE HISTORY
-    ══════════════════════════════════════ -->
-    <section id="history" class="bg-sacred-white border-t border-incense-smoke">
-      <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-16 pb-24">
-        <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-
-          <!-- ── Left: History Article ── -->
-          <article class="lg:col-span-8" aria-label="History of Sripada Srivallabha">
-
-            <!-- Section label + heading -->
-            <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-3 block">Divine Origin &amp; Legacy</span>
-            <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-3" style="line-height:1.15;">
-              The Sacred History of<br>Sripada Srivallabha
-            </h2>
-
-            <!-- Key fact chips -->
-            <div class="flex flex-wrap gap-2 mb-8">
-              <span class="fact-chip"><span class="material-symbols-outlined">calendar_month</span> Incarnated 1320 AD</span>
-              <span class="fact-chip"><span class="material-symbols-outlined">location_on</span> Srikshetra Pithapuram</span>
-              <span class="fact-chip"><span class="material-symbols-outlined">auto_awesome</span> First Avatar of Dattatreya</span>
-              <span class="fact-chip"><span class="material-symbols-outlined">water</span> Tapobhoomi: Kuruvapuram</span>
-            </div>
-
-            <!-- Hero temple image -->
-            <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
-              <img
-                src="./images/left-sripada.png"
-                alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
-                width="1280" height="400"
-                loading="lazy" decoding="async"
-                class="w-full h-[320px] md:h-[400px] object-cover object-top transition-transform duration-700 hover:scale-105"
-              >
-              <div class="absolute bottom-0 left-0 right-0 h-24 bg-gradient-to-t from-on-background/40 to-transparent rounded-b-2xl"></div>
-            </div>
-
-            <!-- ── CHAPTER 1: The Incarnation ── -->
-            <div class="relative mb-2">
-              <span class="chapter-number" aria-hidden="true">01</span>
-              <h3 class="font-display text-headline-lg text-on-background -mt-6 mb-4">The Incarnation</h3>
-            </div>
-            <p class="font-body text-body-lg leading-relaxed text-on-background font-medium mb-4">
-              Lord Sripada Srivallabha is the first and foremost Incarnation (Avatar) of Jagatguru Sri Dattatreya. His incarnation took place in <strong>1320 AD</strong> at Srikshetra Pithapuram of Bharata Desa (India).
+    <!-- Temple History + Sidebar -->
+    <section id="history" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-12 pb-24 border-t border-incense-smoke">
+      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
+        <article class="lg:col-span-8">
+          <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
+          <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
+          <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
+            <img
+              src="./images/left-sripada.png"
+              alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
+              width="1280" height="400"
+              loading="lazy" decoding="async"
+              class="w-full h-[400px] object-cover object-top transition-transform duration-700 hover:scale-105"
+            >
+          </div>
+          <div class="prose max-w-none text-on-surface-variant space-y-6">
+            <p class="font-body text-body-lg leading-relaxed text-on-background font-medium">
+              Pithapuram (formerly Pithikapuram) is one of the most sacred pilgrimage centres in Andhra Pradesh, revered as the birthplace of Lord Sripada Srivallabha, the first complete incarnation of Lord Dattatreya in Kaliyuga.
             </p>
-            <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-              Sripada Srivallabha is verily Sri Dattatreya himself. There is no difference or deviation between Sridatta and Sripada. Hence, if worshipped and prayed in the same way as Sridatta, He grants the very same blessings.
+            <p class="font-body text-body-md leading-relaxed">
+              The Mahasamsthanam stands as a beacon of spiritual solace, drawing devotees from across the globe who seek the divine blessings of the Lord. The temple architecture, though steeped in ancient tradition, has been thoughtfully preserved and modernised to accommodate the growing number of pilgrims while maintaining its inherent sanctity and peaceful atmosphere.
             </p>
-
-            <div class="sacred-quote">
-              <p class="font-display text-body-lg italic text-on-background leading-relaxed">
-                "He is the Emperor of the fourteen worlds. He dwells in all countries and at all times. Sripada's descent will always take place in the subtle worlds of higher regions."
+            <blockquote class="bg-surface-container-low p-6 rounded-xl border border-incense-smoke my-8">
+              <p class="font-body text-body-md italic text-on-background m-0">
+                "To visit Pithapuram is to walk on the very ground where the Lord performed his divine leelas. It is a place of profound spiritual awakening and absolute purity."
               </p>
-            </div>
-
-            <div class="chapter-divider" aria-hidden="true">
-              <span class="material-symbols-outlined chapter-divider-icon" style="font-variation-settings:'FILL' 1;">self_improvement</span>
-            </div>
-
-            <!-- ── CHAPTER 2: Karma & Tapobhoomi ── -->
-            <div class="relative mb-2">
-              <span class="chapter-number" aria-hidden="true">02</span>
-              <h3 class="font-display text-headline-lg text-on-background -mt-6 mb-4">Karmabhoomi &amp; Tapobhoomi</h3>
-            </div>
-            <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-              His <strong class="text-on-background">Karmabhoomi</strong> is Pithapuram and his <strong class="text-on-background">Tapobhoomi</strong> is Kuruvapuram — presently known as Kuruvapur or Kurugadda of Raichur District, Karnataka. His incarnation began in Pithapuram and was completed in Kuruvapuram.
+            </blockquote>
+            <p class="font-body text-body-md leading-relaxed">
+              The temple complex houses the Swayambhu Padukas (divine footprints) of Lord Sripada Srivallabha, which are the focal point of daily worship. The administration, under the AP Endowments Department, ensures transparent operations, regular Nithya Annadanam (free feeding), and impeccable maintenance of the sacred premises.
             </p>
-            <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-              Right from childhood at Srikshetra Pithikapuram, Sripada Srivallabha narrated many times that He is Sri Datta himself — a special phenomenon much beyond the Trinity of Brahma, Vishnu and Maheswara. This is understood through His Preachings, Actions, Sportive Plays and Miracles performed during His 30 years at Pithapuram and Kuruvapuram.
-            </p>
+            <button class="mt-8 font-body text-label-md border-b-2 border-primary text-primary pb-1 hover:text-saffron-deep hover:border-saffron-deep transition-colors uppercase tracking-wide">Read Full History</button>
+          </div>
+        </article>
 
-            <!-- Always-visible content ends here. The rest is in the accordion. -->
+        <aside id="darshan" class="lg:col-span-4 space-y-8 mt-12 lg:mt-0">
+          <div class="bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm">
+            <h3 class="font-display text-headline-lg text-on-background mb-8 flex items-center gap-3">
+              <span class="material-symbols-outlined text-saffron-deep text-3xl" aria-hidden="true">schedule</span>
+              Daily Schedule
+            </h3>
+            <ul class="space-y-0" aria-label="Daily darshan schedule">
+              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
+                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Suprabhatam &amp; Darshan</span>
+                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">04:30 AM</span>
+              </li>
+              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
+                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Morning Abhishekam</span>
+                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">06:00 AM</span>
+              </li>
+              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
+                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Maha Naivedyam</span>
+                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">12:00 PM</span>
+              </li>
+              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
+                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Temple Closes</span>
+                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">01:00 PM</span>
+              </li>
+              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
+                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Evening Darshan</span>
+                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">04:00 PM</span>
+              </li>
+              <li class="flex justify-between items-center py-4 group">
+                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Ekantha Seva</span>
+                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">09:00 PM</span>
+              </li>
+            </ul>
+          </div>
 
-            <!-- ── ACCORDION: Full History ── -->
-            <div id="history-accordion" class="history-accordion-content" aria-hidden="true">
-
-              <div class="chapter-divider" aria-hidden="true">
-                <span class="material-symbols-outlined chapter-divider-icon" style="font-variation-settings:'FILL' 1;">flare</span>
+          <div class="relative rounded-2xl overflow-hidden shadow-md group">
+            <img
+              src="https://picsum.photos/seed/temple-diyas/600/256"
+              alt="Traditional brass oil lamps burning brightly in a darkened temple sanctum, warm golden light creating a deeply spiritual atmosphere"
+              width="600" height="256"
+              loading="lazy" decoding="async"
+              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
+            >
+            <div class="absolute inset-0 bg-gradient-to-t from-on-background via-on-background/50 to-transparent flex flex-col justify-end p-8">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="relative flex h-3 w-3" aria-hidden="true">
+                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
+                  <span class="relative inline-flex rounded-full h-3 w-3 bg-error"></span>
+                </span>
+                <span class="font-body text-label-md text-error-container uppercase tracking-wider">Live Now</span>
               </div>
-
-              <!-- Chapter 3 -->
-              <div class="relative mb-2">
-                <span class="chapter-number" aria-hidden="true">03</span>
-                <h3 class="font-display text-headline-lg text-on-background -mt-6 mb-4">The Aim of the Incarnation</h3>
-              </div>
-              <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-                The aim of His Incarnation is to bless Maha Siddhas and Maha Yogis, and to uphold Dharma through them in the universe. To impart knowledge to the ignorant through His actions, sportive plays and miracles is part of His Avataric Programme.
-              </p>
-              <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-                The tenure of Sripada Srivallabha's Incarnation is brief, but its prominence is immense — beyond what even celestials and the Seven Sages can fully describe. He is the support for all visible and invisible forces.
-              </p>
-              <div class="sacred-quote">
-                <p class="font-display text-body-lg italic text-on-background leading-relaxed">
-                  "Sripada Srivallabha is a Comprehensive Yogic Incarnation. His body is an embodiment of Holy Fire and Yoga. Infinite love and mercy flow from His eyes as a great stream."
-                </p>
-              </div>
-
-              <div class="chapter-divider" aria-hidden="true">
-                <span class="material-symbols-outlined chapter-divider-icon" style="font-variation-settings:'FILL' 1;">brightness_high</span>
-              </div>
-
-              <!-- Chapter 4 -->
-              <div class="relative mb-2">
-                <span class="chapter-number" aria-hidden="true">04</span>
-                <h3 class="font-display text-headline-lg text-on-background -mt-6 mb-4">His Divine Nature</h3>
-              </div>
-              <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-                Sripada Srivallabha is an embodiment of all Deities. His nature transcends all forms of deities. He is Superior to the Dwaadasa Aadityas. His Divine gross body is endowed with wonderful divine vibrations.
-              </p>
-              <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-                This incarnation is Formless but appears as a Human Form. It is Attributeless but appears as One with Attributes. It is a comprehensive Form of all Deities yet looks like a single deity. It is a great miracle that the Paratattwa — truly Formless — incarnated in Human Form at Pithikapuram.
-              </p>
-              <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-                Sripada Srivallabha's Incarnation came to dispel the darkness of ignorance. It arrived to remove the limping progress of people in physical and spiritual matters. He looks like a small boy, but He is the great Powerhouse that administers the entire creation.
-              </p>
-
-              <div class="chapter-divider" aria-hidden="true">
-                <span class="material-symbols-outlined chapter-divider-icon" style="font-variation-settings:'FILL' 1;">volunteer_activism</span>
-              </div>
-
-              <!-- Chapter 5 -->
-              <div class="relative mb-2">
-                <span class="chapter-number" aria-hidden="true">05</span>
-                <h3 class="font-display text-headline-lg text-on-background -mt-6 mb-4">His Grace &amp; Compassion</h3>
-              </div>
-              <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-                Sripada is an easily accessible golden treasure to righteous people. The suffering of a devotee moves Sreepada. He rushes to protect with a thousand hands those who call Him in distress.
-              </p>
-              <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-                Sripada is the sole refuge in times of hunger, total exhaustion, troubles from lenders, and critical circumstances. He is very close to the physical, mental and consciousness of the soul of all living beings. He grants comforts of this world and the other world to all His devotees and dependents.
-              </p>
-              <div class="sacred-quote">
-                <p class="font-display text-body-lg italic text-on-background leading-relaxed">
-                  "Sri Sreepada is Consciousness Personified. There is no load which He cannot lift. There is no problem which He cannot solve. There are no boons which He cannot offer."
-                </p>
-              </div>
-
-              <div class="chapter-divider" aria-hidden="true">
-                <span class="material-symbols-outlined chapter-divider-icon" style="font-variation-settings:'FILL' 1;">star</span>
-              </div>
-
-              <!-- Chapter 6: Birth of Sripada Srivallabha — special highlight box -->
-              <div class="relative mb-4">
-                <span class="chapter-number" aria-hidden="true">06</span>
-                <h3 class="font-display text-headline-lg text-on-background -mt-6 mb-4">Birth of Sripada Srivallabha</h3>
-              </div>
-
-              <div class="birth-box mb-6">
-                <div class="flex items-start gap-3 mb-4">
-                  <span class="material-symbols-outlined text-saffron-deep text-2xl mt-0.5 flex-shrink-0" aria-hidden="true" style="font-variation-settings:'FILL' 1;">brightness_5</span>
-                  <div>
-                    <p class="font-body text-body-md font-semibold text-on-background mb-1">Auspicious Birth Details</p>
-                    <p class="font-body text-body-md text-on-surface-variant">Sripada was born in the early hours of <strong class="text-on-background">Ganesh Chaturdhi</strong>, in <strong class="text-on-background">Chitra</strong> star, <strong class="text-on-background">Simha (Leo) Lagna</strong> and <strong class="text-on-background">Tula (Libra) Raasi</strong>.</p>
-                  </div>
-                </div>
-                <p class="font-body text-body-md text-on-surface-variant mb-3">
-                  As His Feet were marked with all auspicious features, He bears the worthy name Sreepada Sreevallabha. When Sreepada Sreevallabha was born, a cobra with <strong class="text-on-background">three hoods</strong> held its hoods as an umbrella wherever He was kept for 18 days.
-                </p>
-                <p class="font-body text-body-md text-on-surface-variant">
-                  Sripada Srivallabha came out of the mother's womb as a dazzling illumination. Auspicious musical notes were heard from the labour room. The Four Vedas and Eighteen Puranas arrived in the shape of brilliant lights. Sacred Vedic Mantras were heard outside the room.
-                </p>
-              </div>
-
-              <p class="font-body text-body-md leading-relaxed text-on-surface-variant mb-4">
-                People from all races and all traditions will come to Pithapuram on any day to have the darshan of Sri Sripada. Great personages, great yogis and people of all countries come to His Darbaar like rows of ants.
-              </p>
-              <div class="sacred-quote">
-                <p class="font-display text-body-lg italic text-on-background leading-relaxed">
-                  "Plenty of virtue is required to step into My birth place and to participate in any event or programme of Mine in the Samsthan. Very much fortune is required to make financial assistance to My Samsthanam."
-                  <span class="block mt-2 font-body text-body-md not-italic text-on-surface-variant">— Sri Sripada Srivallabha</span>
-                </p>
-              </div>
-
-            </div>
-            <!-- /accordion -->
-
-            <!-- Read More / Read Less toggle -->
-            <div class="mt-8 flex items-center gap-4">
-              <button
-                id="toggle-history-btn"
-                aria-expanded="false"
-                aria-controls="history-accordion"
-                class="inline-flex items-center gap-2 font-body text-label-md border-b-2 border-primary text-primary pb-1 hover:text-saffron-deep hover:border-saffron-deep transition-colors uppercase tracking-wide"
-              >
-                <span id="toggle-history-label">Read Full History</span>
-                <span class="material-symbols-outlined btn-icon text-base" aria-hidden="true">expand_more</span>
+              <h3 class="font-display text-headline-lg text-sacred-white mb-4">Virtual Darshan</h3>
+              <p class="font-body text-body-md text-surface-container-highest mb-6 line-clamp-2">Experience the evening Harathi rituals live from the main sanctum.</p>
+              <button class="font-body text-label-md bg-sacred-white/20 backdrop-blur-md text-sacred-white border border-sacred-white/50 px-6 py-3 rounded-full hover:bg-sacred-white hover:text-on-background transition-all duration-300 flex items-center justify-center gap-2 w-full">
+                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">play_circle</span>
+                Join Broadcast
               </button>
             </div>
-
-          </article>
-
-          <!-- ── Right: Daily Schedule + Virtual Darshan ── -->
-          <aside id="darshan" class="lg:col-span-4 space-y-8 mt-4 lg:mt-0">
-            <div class="bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm sticky top-24">
-              <h3 class="font-display text-headline-lg text-on-background mb-8 flex items-center gap-3">
-                <span class="material-symbols-outlined text-saffron-deep text-3xl" aria-hidden="true">schedule</span>
-                Daily Schedule
-              </h3>
-              <ul class="space-y-0" aria-label="Daily darshan schedule">
-                <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                  <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Suprabhatam &amp; Darshan</span>
-                  <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">04:30 AM</span>
-                </li>
-                <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                  <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Morning Abhishekam</span>
-                  <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">06:00 AM</span>
-                </li>
-                <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                  <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Maha Naivedyam</span>
-                  <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">12:00 PM</span>
-                </li>
-                <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                  <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Temple Closes</span>
-                  <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">01:00 PM</span>
-                </li>
-                <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                  <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Evening Darshan</span>
-                  <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">04:00 PM</span>
-                </li>
-                <li class="flex justify-between items-center py-4 group">
-                  <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Ekantha Seva</span>
-                  <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">09:00 PM</span>
-                </li>
-              </ul>
-
-              <!-- Maha Mruthyumjaya Homam callout -->
-              <div class="mt-6 rounded-xl bg-surface-container-low border border-incense-smoke p-4 flex gap-3 items-start">
-                <span class="material-symbols-outlined text-saffron-deep text-xl mt-0.5 flex-shrink-0" aria-hidden="true" style="font-variation-settings:'FILL' 1;">local_fire_department</span>
-                <div>
-                  <p class="font-body text-label-md text-on-background mb-0.5">Maha Mruthyumjaya Homam</p>
-                  <p class="font-body text-caption text-on-surface-variant">Every Amavasya Day — 10:00 AM to 11:30 AM</p>
-                </div>
-              </div>
-            </div>
-
-            <div class="relative rounded-2xl overflow-hidden shadow-md group">
-              <img
-                src="https://picsum.photos/seed/temple-diyas/600/256"
-                alt="Traditional brass oil lamps burning brightly in a darkened temple sanctum"
-                width="600" height="256"
-                loading="lazy" decoding="async"
-                class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
-              >
-              <div class="absolute inset-0 bg-gradient-to-t from-on-background via-on-background/50 to-transparent flex flex-col justify-end p-8">
-                <div class="flex items-center gap-2 mb-3">
-                  <span class="relative flex h-3 w-3" aria-hidden="true">
-                    <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
-                    <span class="relative inline-flex rounded-full h-3 w-3 bg-error"></span>
-                  </span>
-                  <span class="font-body text-label-md text-error-container uppercase tracking-wider">Live Now</span>
-                </div>
-                <h3 class="font-display text-headline-lg text-sacred-white mb-4">Virtual Darshan</h3>
-                <p class="font-body text-body-md text-surface-container-highest mb-6 line-clamp-2">Experience the evening Harathi rituals live from the main sanctum.</p>
-                <button class="font-body text-label-md bg-sacred-white/20 backdrop-blur-md text-sacred-white border border-sacred-white/50 px-6 py-3 rounded-full hover:bg-sacred-white hover:text-on-background transition-all duration-300 flex items-center justify-center gap-2 w-full">
-                  <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">play_circle</span>
-                  Join Broadcast
-                </button>
-              </div>
-            </div>
-          </aside>
-
-        </div>
+          </div>
+        </aside>
       </div>
     </section>
 
@@ -846,7 +587,6 @@
   </footer>
 
   <script>
-    // ── Theme toggle ──
     (function () {
       const html     = document.documentElement;
       const btn      = document.getElementById('theme-toggle');
@@ -867,7 +607,6 @@
       if (btn) btn.addEventListener('click', () => applyTheme(!dark));
     })();
 
-    // ── Mobile nav drawer ──
     (function () {
       const openBtn  = document.getElementById('nav-open');
       const closeBtn = document.getElementById('nav-close');
@@ -895,7 +634,6 @@
       });
     })();
 
-    // ── Scroll-aware header shadow ──
     (function () {
       const header = document.getElementById('main-header');
       const spacer = document.getElementById('header-spacer');
@@ -907,7 +645,6 @@
       }, { passive: true });
     })();
 
-    // ── Notice Ticker ──
     (function () {
       const INTERVAL   = 5000;
       const slides     = Array.from(document.querySelectorAll('.notice-slide'));
@@ -974,28 +711,6 @@
       });
       startProgress();
       scheduleNext();
-    })();
-
-    // ── History Accordion ──
-    (function () {
-      const btn       = document.getElementById('toggle-history-btn');
-      const content   = document.getElementById('history-accordion');
-      const label     = document.getElementById('toggle-history-label');
-      let expanded    = false;
-      btn.addEventListener('click', () => {
-        expanded = !expanded;
-        content.classList.toggle('open', expanded);
-        content.setAttribute('aria-hidden', String(!expanded));
-        btn.setAttribute('aria-expanded', String(expanded));
-        btn.classList.toggle('open', expanded);
-        label.textContent = expanded ? 'Show Less' : 'Read Full History';
-        if (expanded) {
-          // Smooth scroll to keep context
-          setTimeout(() => {
-            content.scrollIntoView({ behavior: 'smooth', block: 'nearest' });
-          }, 100);
-        }
-      });
     })();
 
     document.getElementById('footer-year').textContent = new Date().getFullYear();
