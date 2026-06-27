@@ -145,6 +145,16 @@
     :root { --header-h: 5rem; }
     #main-header { height: var(--header-h); }
     #header-spacer { height: var(--header-h); }
+
+    /* Hero brand: decorative divider between the two name lines */
+    .brand-divider {
+      display: block;
+      width: 2rem;
+      height: 1px;
+      background: currentColor;
+      opacity: 0.3;
+      margin: 2px 0 1px;
+    }
   </style>
 </head>
 
@@ -157,20 +167,20 @@
     class="fixed top-0 w-full z-50 flex justify-between items-center px-marginLg bg-sacred-white dark:bg-surface-dim border-b border-incense-smoke dark:border-outline-variant shadow-sm dark:shadow-none transition-all duration-300"
     id="main-header"
   >
-    <div class="flex items-center gap-3">
-      <!-- GoAP Logo wired from images/ folder -->
-      <img
-        src="./images/GoAP-Logo.png"
-        alt="Government of Andhra Pradesh Emblem"
-        width="56" height="56"
-        class="h-14 w-14 object-contain"
-        loading="eager" decoding="async"
-      >
-      <div class="flex flex-col justify-center">
-        <span class="font-display text-label-md text-saffron-deep dark:text-primary-fixed-dim uppercase tracking-widest leading-tight">Endowments Department</span>
-        <span class="font-body text-caption text-on-surface-variant dark:text-on-surface opacity-80 uppercase tracking-wider">Government of Andhra Pradesh</span>
+    <!-- Brand: Sripada Srivallabha Mahasamsthanam hero -->
+    <a href="#main-content" class="flex items-center gap-3 no-underline group" aria-label="Sripada Srivallabha Mahasamsthanam — home">
+      <!-- Temple icon as brand mark -->
+      <span
+        class="material-symbols-outlined text-saffron-deep dark:text-primary-fixed-dim flex-shrink-0 transition-transform duration-300 group-hover:scale-110"
+        style="font-size: 2.25rem; line-height: 1; font-variation-settings: 'FILL' 1;"
+        aria-hidden="true"
+      >temple_hindu</span>
+      <div class="flex flex-col justify-center leading-none">
+        <span class="font-display text-[1.05rem] font-semibold text-saffron-deep dark:text-primary-fixed-dim leading-tight tracking-tight">Sripada Srivallabha</span>
+        <span class="brand-divider text-saffron-deep dark:text-primary-fixed-dim"></span>
+        <span class="font-body text-[0.7rem] font-semibold text-on-surface-variant dark:text-on-surface uppercase tracking-[0.18em] leading-tight">Mahasamsthanam</span>
       </div>
-    </div>
+    </a>
 
     <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="#darshan">Darshan</a>
@@ -453,9 +463,9 @@
     <div class="flex flex-col items-center md:items-start gap-2 mb-6 md:mb-0">
       <div class="font-display text-headline-md text-sacred-white flex items-center gap-2">
         <span class="material-symbols-outlined text-golden-glow" aria-hidden="true">temple_hindu</span>
-        AP Endowments
+        Sripada Srivallabha Mahasamsthanam
       </div>
-      <div class="font-body text-caption text-incense-smoke opacity-70">Temple Portal Services</div>
+      <div class="font-body text-caption text-incense-smoke opacity-70">Sri Kshetra Pithapuram, Andhra Pradesh</div>
     </div>
     <nav aria-label="Footer navigation" class="flex flex-wrap justify-center gap-6 mb-6 md:mb-0">
       <a class="font-body text-caption text-incense-smoke opacity-70 hover:text-secondary-fixed-dim underline transition-all" href="#">Privacy Policy</a>
@@ -466,7 +476,7 @@
       <a class="font-body text-caption text-incense-smoke opacity-70 hover:text-secondary-fixed-dim underline transition-all" href="#">Sitemap</a>
     </nav>
     <div class="font-body text-caption text-incense-smoke opacity-70 text-center md:text-right">
-      © <span id="footer-year"></span> Endowments Department, Andhra Pradesh. All Rights Reserved.
+      © <span id="footer-year"></span> Sripada Srivallabha Mahasamsthanam, Pithapuram. All Rights Reserved.
     </div>
   </footer>
 
