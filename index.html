@@ -165,30 +165,51 @@
     }
 
     /* ── Notice Ticker ── */
+
+    /*
+      The ticker viewport is position:relative with a fixed height.
+      Each slide is position:absolute so outgoing + incoming never
+      stack in normal flow — they share the same space and one fades
+      over the other with no layout shift or overlap.
+    */
     #notice-ticker {
       position: relative;
+      height: 48px;          /* fixed track height — tall enough for one line of text */
       overflow: hidden;
     }
 
     .notice-slide {
-      display: none;
-      animation: noticeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+      /* hidden by default: out of flow entirely */
+      position: absolute;
+      inset: 0;
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      opacity: 0;
+      pointer-events: none;
     }
+
+    /* Incoming slide */
     .notice-slide.active {
-      display: flex;
+      opacity: 1;
+      pointer-events: auto;
+      animation: noticeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
+
+    /* Outgoing slide (overlaps active briefly — that's fine; they're absolutely positioned) */
     .notice-slide.exit {
-      display: flex;
-      animation: noticeOut 0.35s cubic-bezier(0.4, 0, 1, 1) both;
+      opacity: 0;
+      pointer-events: none;
+      animation: noticeOut 0.3s cubic-bezier(0.4, 0, 1, 1) both;
     }
 
     @keyframes noticeIn {
-      from { opacity: 0; transform: translateY(10px); }
+      from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
     }
     @keyframes noticeOut {
       from { opacity: 1; transform: translateY(0); }
-      to   { opacity: 0; transform: translateY(-10px); }
+      to   { opacity: 0; transform: translateY(-8px); }
     }
 
     /* Progress bar */
@@ -217,7 +238,8 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .notice-slide, .notice-slide.exit { animation: none; }
+      .notice-slide.active { animation: none; opacity: 1; }
+      .notice-slide.exit   { animation: none; opacity: 0; }
       #notice-progress { transition: none; }
     }
   </style>
@@ -331,11 +353,17 @@
           <div id="notice-progress"></div>
         </div>
 
-        <div class="flex items-stretch gap-4 py-0" style="min-height:72px;">
+        <!--
+          Outer row: fixed height so the bar never resizes.
+          The ticker viewport (#notice-ticker) sits between the label and the controls.
+          Slides are absolutely positioned inside it so only one is ever visible
+          in normal document flow — no stacking, no overlap.
+        -->
+        <div class="flex items-center gap-4" style="height:64px;">
 
           <!-- "Notices" label pill -->
-          <div class="hidden sm:flex items-center flex-shrink-0 self-center">
-            <span class="font-body text-label-md text-sacred-white bg-saffron-deep px-3 py-1 rounded-full uppercase tracking-widest whitespace-nowrap" style="font-size:11px;">
+          <div class="hidden sm:flex items-center flex-shrink-0">
+            <span class="font-body text-sacred-white bg-saffron-deep px-3 py-1 rounded-full uppercase tracking-widest whitespace-nowrap" style="font-size:11px; font-weight:600; letter-spacing:0.08em;">
               Notices
             </span>
           </div>
@@ -343,42 +371,42 @@
           <!-- Divider -->
           <div class="hidden sm:block w-px bg-incense-smoke self-stretch my-3" aria-hidden="true"></div>
 
-          <!-- Slides -->
+          <!-- Slides viewport -->
           <div
             id="notice-ticker"
-            class="flex-1 flex items-center py-3"
+            class="flex-1"
             role="region"
             aria-live="polite"
             aria-atomic="true"
             aria-label="Rotating temple notices"
           >
             <!-- Slide 0: Lunar Eclipse -->
-            <div class="notice-slide active w-full gap-3" data-index="0">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-error-container flex items-center justify-center self-start mt-0.5">
-                <span class="material-symbols-outlined text-error text-base" style="font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
+            <div class="notice-slide active" data-index="0">
+              <div class="flex-shrink-0 w-7 h-7 rounded-full bg-error-container flex items-center justify-center">
+                <span class="material-symbols-outlined text-error" style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
               </div>
-              <div class="min-w-0">
-                <span class="font-body font-semibold text-on-background" style="font-size:14px;">Lunar Eclipse Notice</span>
-                <span class="hidden sm:inline font-body text-on-surface-variant mx-1" style="font-size:14px;">—</span>
-                <span class="block sm:inline font-body text-on-surface-variant" style="font-size:14px;">Temple doors will remain closed on Oct 28th due to Chandra Grahanam. Darshan resumes post-Shuddhi at 5:00 AM.</span>
+              <div class="min-w-0 flex items-baseline gap-1 flex-wrap">
+                <span class="font-body font-semibold text-on-background whitespace-nowrap" style="font-size:14px;">Lunar Eclipse Notice</span>
+                <span class="font-body text-on-surface-variant" style="font-size:14px;">—</span>
+                <span class="font-body text-on-surface-variant" style="font-size:14px;">Temple doors will remain closed on Oct 28th due to Chandra Grahanam. Darshan resumes post-Shuddhi at 5:00 AM.</span>
               </div>
             </div>
 
             <!-- Slide 1: Payment Gateway -->
-            <div class="notice-slide w-full gap-3" data-index="1">
-              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center self-start mt-0.5">
-                <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
+            <div class="notice-slide" data-index="1">
+              <div class="flex-shrink-0 w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center">
+                <span class="material-symbols-outlined text-primary" style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
               </div>
-              <div class="min-w-0">
-                <span class="font-body font-semibold text-on-background" style="font-size:14px;">Payment Gateway Update</span>
-                <span class="hidden sm:inline font-body text-on-surface-variant mx-1" style="font-size:14px;">—</span>
-                <span class="block sm:inline font-body text-on-surface-variant" style="font-size:14px;">Intermittent issues reported with UPI payments. Please use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
+              <div class="min-w-0 flex items-baseline gap-1 flex-wrap">
+                <span class="font-body font-semibold text-on-background whitespace-nowrap" style="font-size:14px;">Payment Gateway Update</span>
+                <span class="font-body text-on-surface-variant" style="font-size:14px;">—</span>
+                <span class="font-body text-on-surface-variant" style="font-size:14px;">Intermittent issues reported with UPI payments. Please use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
               </div>
             </div>
           </div>
 
           <!-- Controls: prev / dots / next -->
-          <div class="hidden sm:flex items-center gap-2 flex-shrink-0 self-center pr-1">
+          <div class="hidden sm:flex items-center gap-2 flex-shrink-0">
             <button id="notice-prev" aria-label="Previous notice" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
               <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_left</span>
             </button>
@@ -631,7 +659,7 @@
 
     /* ── Notice Ticker ── */
     (function () {
-      const INTERVAL   = 5000;   // ms between slides
+      const INTERVAL   = 5000;
       const slides     = Array.from(document.querySelectorAll('.notice-slide'));
       const dotsWrap   = document.getElementById('notice-dots');
       const progressEl = document.getElementById('notice-progress');
@@ -641,14 +669,13 @@
 
       let current = 0;
       let timer   = null;
-      let progTimer = null;
 
-      // Build dot indicators
+      /* Build dot indicators */
       slides.forEach((_, i) => {
         const dot = document.createElement('button');
         dot.className = 'notice-dot' + (i === 0 ? ' active' : '');
         dot.setAttribute('role', 'tab');
-        dot.setAttribute('aria-label', `Notice ${i + 1}`);
+        dot.setAttribute('aria-label', 'Notice ' + (i + 1));
         dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
         dot.addEventListener('click', () => goTo(i));
         dotsWrap.appendChild(dot);
@@ -656,28 +683,24 @@
 
       function getDots() { return Array.from(dotsWrap.querySelectorAll('.notice-dot')); }
 
-      function goTo(next, animate = true) {
+      function goTo(next) {
         if (next === current) return;
         clearTimeout(timer);
-        clearTimeout(progTimer);
 
         const prev = current;
-        current = (next + slides.length) % slides.length;
+        current = ((next % slides.length) + slides.length) % slides.length;
 
-        if (animate) {
-          slides[prev].classList.add('exit');
-          slides[prev].addEventListener('animationend', () => {
-            slides[prev].classList.remove('active', 'exit');
-          }, { once: true });
-        } else {
+        /* Exit the outgoing slide */
+        slides[prev].classList.add('exit');
+        slides[prev].addEventListener('animationend', () => {
           slides[prev].classList.remove('active', 'exit');
-        }
+        }, { once: true });
 
+        /* Enter the incoming slide */
         slides[current].classList.add('active');
 
-        // Update dots
-        const dots = getDots();
-        dots.forEach((d, i) => {
+        /* Sync dots */
+        getDots().forEach((d, i) => {
           d.classList.toggle('active', i === current);
           d.setAttribute('aria-selected', i === current ? 'true' : 'false');
         });
@@ -689,27 +712,22 @@
       function startProgress() {
         progressEl.style.transition = 'none';
         progressEl.style.width = '0%';
-        // Force reflow so the transition resets
-        void progressEl.offsetWidth;
-        progressEl.style.transition = `width ${INTERVAL}ms linear`;
+        void progressEl.offsetWidth;  /* force reflow */
+        progressEl.style.transition = 'width ' + INTERVAL + 'ms linear';
         progressEl.style.width = '100%';
       }
 
       function scheduleNext() {
         clearTimeout(timer);
-        timer = setTimeout(() => {
-          goTo(current + 1);
-        }, INTERVAL);
+        timer = setTimeout(() => goTo(current + 1), INTERVAL);
       }
 
-      // Pause on hover / focus
+      /* Pause on hover */
       ticker.addEventListener('mouseenter', () => {
         clearTimeout(timer);
-        progressEl.style.animationPlayState = 'paused';
-        // Freeze progress bar at current width
-        const computed = getComputedStyle(progressEl).width;
+        const w = getComputedStyle(progressEl).width;
         progressEl.style.transition = 'none';
-        progressEl.style.width = computed;
+        progressEl.style.width = w;
       });
       ticker.addEventListener('mouseleave', () => {
         startProgress();
@@ -719,13 +737,11 @@
       prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
       nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
 
-      // Keyboard arrow support inside ticker
       ticker.addEventListener('keydown', e => {
         if (e.key === 'ArrowRight') goTo(current + 1);
         if (e.key === 'ArrowLeft')  goTo(current - 1);
       });
 
-      // Kick off
       startProgress();
       scheduleNext();
     })();
