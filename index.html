@@ -163,6 +163,63 @@
     .font-telugu {
       font-family: 'Noto Sans Telugu', sans-serif;
     }
+
+    /* ── Notice Ticker ── */
+    #notice-ticker {
+      position: relative;
+      overflow: hidden;
+    }
+
+    .notice-slide {
+      display: none;
+      animation: noticeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
+    }
+    .notice-slide.active {
+      display: flex;
+    }
+    .notice-slide.exit {
+      display: flex;
+      animation: noticeOut 0.35s cubic-bezier(0.4, 0, 1, 1) both;
+    }
+
+    @keyframes noticeIn {
+      from { opacity: 0; transform: translateY(10px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    @keyframes noticeOut {
+      from { opacity: 1; transform: translateY(0); }
+      to   { opacity: 0; transform: translateY(-10px); }
+    }
+
+    /* Progress bar */
+    #notice-progress {
+      height: 2px;
+      background: #8C330A;
+      width: 0%;
+      transition: width linear;
+      border-radius: 2px;
+    }
+
+    /* Dot indicators */
+    .notice-dot {
+      width: 6px;
+      height: 6px;
+      border-radius: 50%;
+      background: #dec0b5;
+      transition: background 0.3s, transform 0.3s;
+      cursor: pointer;
+      border: none;
+      padding: 0;
+    }
+    .notice-dot.active {
+      background: #8C330A;
+      transform: scale(1.4);
+    }
+
+    @media (prefers-reduced-motion: reduce) {
+      .notice-slide, .notice-slide.exit { animation: none; }
+      #notice-progress { transition: none; }
+    }
   </style>
 </head>
 
@@ -251,7 +308,7 @@
   <!-- MAIN CONTENT -->
   <main id="main-content">
 
-    <!-- Hero Section — site-hero.png, no text overlay, image fits top without stretching -->
+    <!-- Hero Section -->
     <section
       class="w-full"
       aria-label="Sripada Srivallabha Mahasamsthanam — sacred temple at Pithapuram"
@@ -265,28 +322,72 @@
       >
     </section>
 
-    <!-- Alerts / Notices -->
-    <section aria-label="Notices and alerts" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-8">
-      <div class="glass-card border border-incense-smoke rounded-xl shadow-md p-6 flex flex-col md:flex-row gap-6 items-stretch">
-        <div class="flex-1 flex gap-4 items-start group cursor-pointer p-2 rounded-lg hover:bg-surface-container-low transition-colors">
-          <div class="w-10 h-10 rounded-full bg-error-container flex items-center justify-center flex-shrink-0 mt-1">
-            <span class="material-symbols-outlined text-error" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">nightlight</span>
-          </div>
-          <div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Lunar Eclipse Notice</h2>
-            <p class="font-body text-body-md text-on-surface-variant text-[14px]">Temple doors will remain closed on Oct 28th due to Chandra Grahanam. Darshan resumes post-Shuddhi at 5:00 AM.</p>
-          </div>
+    <!-- ── Notice Ticker ── -->
+    <section aria-label="Temple notices and updates" class="bg-sacred-white border-b border-incense-smoke shadow-sm">
+      <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg">
+
+        <!-- Progress bar -->
+        <div class="w-full bg-incense-smoke" style="height:2px;" aria-hidden="true">
+          <div id="notice-progress"></div>
         </div>
-        <div class="hidden md:block w-px bg-incense-smoke my-2" aria-hidden="true"></div>
-        <div class="md:hidden h-px w-full bg-incense-smoke" aria-hidden="true"></div>
-        <div class="flex-1 flex gap-4 items-start group cursor-pointer p-2 rounded-lg hover:bg-surface-container-low transition-colors">
-          <div class="w-10 h-10 rounded-full bg-surface-container-highest flex items-center justify-center flex-shrink-0 mt-1">
-            <span class="material-symbols-outlined text-primary" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
+
+        <div class="flex items-stretch gap-4 py-0" style="min-height:72px;">
+
+          <!-- "Notices" label pill -->
+          <div class="hidden sm:flex items-center flex-shrink-0 self-center">
+            <span class="font-body text-label-md text-sacred-white bg-saffron-deep px-3 py-1 rounded-full uppercase tracking-widest whitespace-nowrap" style="font-size:11px;">
+              Notices
+            </span>
           </div>
-          <div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Payment Gateway Update</h2>
-            <p class="font-body text-body-md text-on-surface-variant text-[14px]">Intermittent issues reported with UPI payments. Please use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</p>
+
+          <!-- Divider -->
+          <div class="hidden sm:block w-px bg-incense-smoke self-stretch my-3" aria-hidden="true"></div>
+
+          <!-- Slides -->
+          <div
+            id="notice-ticker"
+            class="flex-1 flex items-center py-3"
+            role="region"
+            aria-live="polite"
+            aria-atomic="true"
+            aria-label="Rotating temple notices"
+          >
+            <!-- Slide 0: Lunar Eclipse -->
+            <div class="notice-slide active w-full gap-3" data-index="0">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-error-container flex items-center justify-center self-start mt-0.5">
+                <span class="material-symbols-outlined text-error text-base" style="font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
+              </div>
+              <div class="min-w-0">
+                <span class="font-body font-semibold text-on-background" style="font-size:14px;">Lunar Eclipse Notice</span>
+                <span class="hidden sm:inline font-body text-on-surface-variant mx-1" style="font-size:14px;">—</span>
+                <span class="block sm:inline font-body text-on-surface-variant" style="font-size:14px;">Temple doors will remain closed on Oct 28th due to Chandra Grahanam. Darshan resumes post-Shuddhi at 5:00 AM.</span>
+              </div>
+            </div>
+
+            <!-- Slide 1: Payment Gateway -->
+            <div class="notice-slide w-full gap-3" data-index="1">
+              <div class="flex-shrink-0 w-8 h-8 rounded-full bg-surface-container-highest flex items-center justify-center self-start mt-0.5">
+                <span class="material-symbols-outlined text-primary text-base" style="font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
+              </div>
+              <div class="min-w-0">
+                <span class="font-body font-semibold text-on-background" style="font-size:14px;">Payment Gateway Update</span>
+                <span class="hidden sm:inline font-body text-on-surface-variant mx-1" style="font-size:14px;">—</span>
+                <span class="block sm:inline font-body text-on-surface-variant" style="font-size:14px;">Intermittent issues reported with UPI payments. Please use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
+              </div>
+            </div>
           </div>
+
+          <!-- Controls: prev / dots / next -->
+          <div class="hidden sm:flex items-center gap-2 flex-shrink-0 self-center pr-1">
+            <button id="notice-prev" aria-label="Previous notice" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+              <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_left</span>
+            </button>
+            <div id="notice-dots" class="flex items-center gap-1.5" role="tablist" aria-label="Notice indicators"></div>
+            <button id="notice-next" aria-label="Next notice" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
+              <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_right</span>
+            </button>
+          </div>
+
         </div>
       </div>
     </section>
@@ -467,6 +568,7 @@
   </footer>
 
   <script>
+    /* ── Theme toggle ── */
     (function () {
       const html     = document.documentElement;
       const btn      = document.getElementById('theme-toggle');
@@ -487,6 +589,7 @@
       if (btn) btn.addEventListener('click', () => applyTheme(!dark));
     })();
 
+    /* ── Mobile nav ── */
     (function () {
       const openBtn  = document.getElementById('nav-open');
       const closeBtn = document.getElementById('nav-close');
@@ -514,6 +617,7 @@
       });
     })();
 
+    /* ── Scroll shadow ── */
     (function () {
       const header = document.getElementById('main-header');
       const spacer = document.getElementById('header-spacer');
@@ -523,6 +627,107 @@
         header.classList.toggle('shadow-sm', !scrolled);
         spacer.style.height = header.offsetHeight + 'px';
       }, { passive: true });
+    })();
+
+    /* ── Notice Ticker ── */
+    (function () {
+      const INTERVAL   = 5000;   // ms between slides
+      const slides     = Array.from(document.querySelectorAll('.notice-slide'));
+      const dotsWrap   = document.getElementById('notice-dots');
+      const progressEl = document.getElementById('notice-progress');
+      const prevBtn    = document.getElementById('notice-prev');
+      const nextBtn    = document.getElementById('notice-next');
+      const ticker     = document.getElementById('notice-ticker');
+
+      let current = 0;
+      let timer   = null;
+      let progTimer = null;
+
+      // Build dot indicators
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'notice-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', `Notice ${i + 1}`);
+        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
+      });
+
+      function getDots() { return Array.from(dotsWrap.querySelectorAll('.notice-dot')); }
+
+      function goTo(next, animate = true) {
+        if (next === current) return;
+        clearTimeout(timer);
+        clearTimeout(progTimer);
+
+        const prev = current;
+        current = (next + slides.length) % slides.length;
+
+        if (animate) {
+          slides[prev].classList.add('exit');
+          slides[prev].addEventListener('animationend', () => {
+            slides[prev].classList.remove('active', 'exit');
+          }, { once: true });
+        } else {
+          slides[prev].classList.remove('active', 'exit');
+        }
+
+        slides[current].classList.add('active');
+
+        // Update dots
+        const dots = getDots();
+        dots.forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+          d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+        });
+
+        startProgress();
+        scheduleNext();
+      }
+
+      function startProgress() {
+        progressEl.style.transition = 'none';
+        progressEl.style.width = '0%';
+        // Force reflow so the transition resets
+        void progressEl.offsetWidth;
+        progressEl.style.transition = `width ${INTERVAL}ms linear`;
+        progressEl.style.width = '100%';
+      }
+
+      function scheduleNext() {
+        clearTimeout(timer);
+        timer = setTimeout(() => {
+          goTo(current + 1);
+        }, INTERVAL);
+      }
+
+      // Pause on hover / focus
+      ticker.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        progressEl.style.animationPlayState = 'paused';
+        // Freeze progress bar at current width
+        const computed = getComputedStyle(progressEl).width;
+        progressEl.style.transition = 'none';
+        progressEl.style.width = computed;
+      });
+      ticker.addEventListener('mouseleave', () => {
+        startProgress();
+        scheduleNext();
+      });
+
+      prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
+
+      // Keyboard arrow support inside ticker
+      ticker.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') goTo(current + 1);
+        if (e.key === 'ArrowLeft')  goTo(current - 1);
+      });
+
+      // Kick off
+      startProgress();
+      scheduleNext();
     })();
 
     document.getElementById('footer-year').textContent = new Date().getFullYear();
