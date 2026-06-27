@@ -139,13 +139,14 @@
     }
     #nav-overlay.open { opacity: 1; pointer-events: auto; }
 
-    :root { --header-h: 5rem; }
+    :root { --header-h: 5.5rem; }
     #main-header { height: var(--header-h); }
     #header-spacer { height: var(--header-h); }
 
+    /* ── Brand block ── */
     .brand-logo {
-      width: 48px;
-      height: 48px;
+      width: 52px;
+      height: 52px;
       border-radius: 50%;
       object-fit: cover;
       object-position: top center;
@@ -156,30 +157,55 @@
     }
     .brand-logo:hover,
     .brand-link:hover .brand-logo {
-      transform: scale(1.08);
-      box-shadow: 0 0 0 3px rgba(140, 51, 10, 0.25);
+      transform: scale(1.06);
+      box-shadow: 0 0 0 4px rgba(140, 51, 10, 0.18);
     }
+
+    /* Primary name — Source Serif 4, bold, saffron-deep */
+    .brand-name-en {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.25rem;        /* 20px — clear and authoritative */
+      font-weight: 700;
+      line-height: 1.2;
+      color: #8C330A;
+      letter-spacing: -0.01em;
+    }
+
+    /* Divider rule between the two lines */
+    .brand-divider {
+      width: 2.5rem;
+      height: 1px;
+      background: linear-gradient(to right, #8C330A55, transparent);
+      margin: 2px 0;
+    }
+
+    /* Telugu subtitle */
+    .brand-name-te {
+      font-family: 'Noto Sans Telugu', sans-serif;
+      font-size: 0.875rem;       /* 14px */
+      font-weight: 600;
+      line-height: 1.3;
+      color: #57423a;            /* on-surface-variant */
+      letter-spacing: 0.01em;
+    }
+
+    /* Dark-mode overrides */
+    html.dark .brand-name-en  { color: #ffb596; }   /* primary-fixed-dim */
+    html.dark .brand-name-te  { color: #d0c8c5; }
+    html.dark .brand-divider  { background: linear-gradient(to right, #ffb59655, transparent); }
 
     .font-telugu {
       font-family: 'Noto Sans Telugu', sans-serif;
     }
 
     /* ── Notice Ticker ── */
-
-    /*
-      The ticker viewport is position:relative with a fixed height.
-      Each slide is position:absolute so outgoing + incoming never
-      stack in normal flow — they share the same space and one fades
-      over the other with no layout shift or overlap.
-    */
     #notice-ticker {
       position: relative;
-      height: 48px;          /* fixed track height — tall enough for one line of text */
+      height: 48px;
       overflow: hidden;
     }
 
     .notice-slide {
-      /* hidden by default: out of flow entirely */
       position: absolute;
       inset: 0;
       display: flex;
@@ -189,14 +215,12 @@
       pointer-events: none;
     }
 
-    /* Incoming slide */
     .notice-slide.active {
       opacity: 1;
       pointer-events: auto;
       animation: noticeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
 
-    /* Outgoing slide (overlaps active briefly — that's fine; they're absolutely positioned) */
     .notice-slide.exit {
       opacity: 0;
       pointer-events: none;
@@ -212,7 +236,6 @@
       to   { opacity: 0; transform: translateY(-8px); }
     }
 
-    /* Progress bar */
     #notice-progress {
       height: 2px;
       background: #8C330A;
@@ -221,7 +244,6 @@
       border-radius: 2px;
     }
 
-    /* Dot indicators */
     .notice-dot {
       width: 6px;
       height: 6px;
@@ -258,13 +280,14 @@
       <img
         src="./images/left-sripada.png"
         alt="Lord Sripada Srivallabha"
-        width="48" height="48"
+        width="52" height="52"
         loading="eager" decoding="async"
         class="brand-logo"
       >
-      <div class="flex flex-col justify-center leading-none gap-[3px]">
-        <span class="font-display font-semibold text-saffron-deep dark:text-primary-fixed-dim leading-tight tracking-tight" style="font-size: 1rem;">Sripada Srivallabha Mahasamsthanam</span>
-        <span class="font-telugu font-semibold text-on-surface-variant dark:text-on-surface leading-tight" style="font-size: 0.8rem;">శ్రీపాద శ్రీవల్లభ మహాసంస్థానం</span>
+      <div class="flex flex-col justify-center gap-[2px]">
+        <span class="brand-name-en">Sripada Srivallabha Mahasamsthanam</span>
+        <div class="brand-divider" aria-hidden="true"></div>
+        <span class="brand-name-te">శ్రీపాద శ్రీవల్లభ మహాసంస్థానం</span>
       </div>
     </a>
 
@@ -347,40 +370,15 @@
     <!-- ── Notice Ticker ── -->
     <section aria-label="Temple notices and updates" class="bg-sacred-white border-b border-incense-smoke shadow-sm">
       <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg">
-
-        <!-- Progress bar -->
         <div class="w-full bg-incense-smoke" style="height:2px;" aria-hidden="true">
           <div id="notice-progress"></div>
         </div>
-
-        <!--
-          Outer row: fixed height so the bar never resizes.
-          The ticker viewport (#notice-ticker) sits between the label and the controls.
-          Slides are absolutely positioned inside it so only one is ever visible
-          in normal document flow — no stacking, no overlap.
-        -->
         <div class="flex items-center gap-4" style="height:64px;">
-
-          <!-- "Notices" label pill -->
           <div class="hidden sm:flex items-center flex-shrink-0">
-            <span class="font-body text-sacred-white bg-saffron-deep px-3 py-1 rounded-full uppercase tracking-widest whitespace-nowrap" style="font-size:11px; font-weight:600; letter-spacing:0.08em;">
-              Notices
-            </span>
+            <span class="font-body text-sacred-white bg-saffron-deep px-3 py-1 rounded-full uppercase tracking-widest whitespace-nowrap" style="font-size:11px; font-weight:600; letter-spacing:0.08em;">Notices</span>
           </div>
-
-          <!-- Divider -->
           <div class="hidden sm:block w-px bg-incense-smoke self-stretch my-3" aria-hidden="true"></div>
-
-          <!-- Slides viewport -->
-          <div
-            id="notice-ticker"
-            class="flex-1"
-            role="region"
-            aria-live="polite"
-            aria-atomic="true"
-            aria-label="Rotating temple notices"
-          >
-            <!-- Slide 0: Lunar Eclipse -->
+          <div id="notice-ticker" class="flex-1" role="region" aria-live="polite" aria-atomic="true" aria-label="Rotating temple notices">
             <div class="notice-slide active" data-index="0">
               <div class="flex-shrink-0 w-7 h-7 rounded-full bg-error-container flex items-center justify-center">
                 <span class="material-symbols-outlined text-error" style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
@@ -391,8 +389,6 @@
                 <span class="font-body text-on-surface-variant" style="font-size:14px;">Temple doors will remain closed on Oct 28th due to Chandra Grahanam. Darshan resumes post-Shuddhi at 5:00 AM.</span>
               </div>
             </div>
-
-            <!-- Slide 1: Payment Gateway -->
             <div class="notice-slide" data-index="1">
               <div class="flex-shrink-0 w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center">
                 <span class="material-symbols-outlined text-primary" style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
@@ -404,8 +400,6 @@
               </div>
             </div>
           </div>
-
-          <!-- Controls: prev / dots / next -->
           <div class="hidden sm:flex items-center gap-2 flex-shrink-0">
             <button id="notice-prev" aria-label="Previous notice" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
               <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_left</span>
@@ -415,7 +409,6 @@
               <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_right</span>
             </button>
           </div>
-
         </div>
       </div>
     </section>
@@ -476,7 +469,6 @@
     <!-- Temple History + Sidebar -->
     <section id="history" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-12 pb-24 border-t border-incense-smoke">
       <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-
         <article class="lg:col-span-8">
           <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
           <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
@@ -567,7 +559,6 @@
             </div>
           </div>
         </aside>
-
       </div>
     </section>
 
@@ -596,7 +587,6 @@
   </footer>
 
   <script>
-    /* ── Theme toggle ── */
     (function () {
       const html     = document.documentElement;
       const btn      = document.getElementById('theme-toggle');
@@ -617,7 +607,6 @@
       if (btn) btn.addEventListener('click', () => applyTheme(!dark));
     })();
 
-    /* ── Mobile nav ── */
     (function () {
       const openBtn  = document.getElementById('nav-open');
       const closeBtn = document.getElementById('nav-close');
@@ -645,7 +634,6 @@
       });
     })();
 
-    /* ── Scroll shadow ── */
     (function () {
       const header = document.getElementById('main-header');
       const spacer = document.getElementById('header-spacer');
@@ -657,7 +645,6 @@
       }, { passive: true });
     })();
 
-    /* ── Notice Ticker ── */
     (function () {
       const INTERVAL   = 5000;
       const slides     = Array.from(document.querySelectorAll('.notice-slide'));
@@ -666,11 +653,8 @@
       const prevBtn    = document.getElementById('notice-prev');
       const nextBtn    = document.getElementById('notice-next');
       const ticker     = document.getElementById('notice-ticker');
-
       let current = 0;
       let timer   = null;
-
-      /* Build dot indicators */
       slides.forEach((_, i) => {
         const dot = document.createElement('button');
         dot.className = 'notice-dot' + (i === 0 ? ' active' : '');
@@ -680,49 +664,35 @@
         dot.addEventListener('click', () => goTo(i));
         dotsWrap.appendChild(dot);
       });
-
       function getDots() { return Array.from(dotsWrap.querySelectorAll('.notice-dot')); }
-
       function goTo(next) {
         if (next === current) return;
         clearTimeout(timer);
-
         const prev = current;
         current = ((next % slides.length) + slides.length) % slides.length;
-
-        /* Exit the outgoing slide */
         slides[prev].classList.add('exit');
         slides[prev].addEventListener('animationend', () => {
           slides[prev].classList.remove('active', 'exit');
         }, { once: true });
-
-        /* Enter the incoming slide */
         slides[current].classList.add('active');
-
-        /* Sync dots */
         getDots().forEach((d, i) => {
           d.classList.toggle('active', i === current);
           d.setAttribute('aria-selected', i === current ? 'true' : 'false');
         });
-
         startProgress();
         scheduleNext();
       }
-
       function startProgress() {
         progressEl.style.transition = 'none';
         progressEl.style.width = '0%';
-        void progressEl.offsetWidth;  /* force reflow */
+        void progressEl.offsetWidth;
         progressEl.style.transition = 'width ' + INTERVAL + 'ms linear';
         progressEl.style.width = '100%';
       }
-
       function scheduleNext() {
         clearTimeout(timer);
         timer = setTimeout(() => goTo(current + 1), INTERVAL);
       }
-
-      /* Pause on hover */
       ticker.addEventListener('mouseenter', () => {
         clearTimeout(timer);
         const w = getComputedStyle(progressEl).width;
@@ -733,15 +703,12 @@
         startProgress();
         scheduleNext();
       });
-
       prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
       nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
-
       ticker.addEventListener('keydown', e => {
         if (e.key === 'ArrowRight') goTo(current + 1);
         if (e.key === 'ArrowLeft')  goTo(current - 1);
       });
-
       startProgress();
       scheduleNext();
     })();
