@@ -13,6 +13,23 @@
  */
 
 (function () {
+
+  // ── Inject OM favicon into <head> from every page ──────────────────────
+  (function () {
+    // Remove any existing favicon links first
+    document.querySelectorAll('link[rel~="icon"]').forEach(function (el) {
+      el.parentNode.removeChild(el);
+    });
+    var link = document.createElement('link');
+    link.rel  = 'icon';
+    link.type = 'image/svg+xml';
+    // Resolve the path relative to the current page so subpaths work too
+    var base = window.location.pathname.replace(/\/[^\/]*$/, '/');
+    // Always point to the repo root favicon.svg
+    link.href = './favicon.svg';
+    document.head.appendChild(link);
+  })();
+
   /**
    * Fetches a partial HTML file and injects it into the target element.
    * After injection, runs the optional callback so callers can initialise JS.
