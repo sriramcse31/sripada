@@ -171,6 +171,21 @@
       .notice-slide.exit   { animation: none; opacity: 0; }
       #notice-progress { transition: none; }
     }
+
+    /* Sticky sidebar */
+    .services-sidebar {
+      position: sticky;
+      top: calc(5.5rem + 1.5rem); /* header height + gap */
+      align-self: start;
+    }
+
+    /* Service card hover arrow nudge */
+    .service-card:hover .service-arrow {
+      transform: translateX(4px);
+    }
+    .service-arrow {
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+    }
   </style>
 </head>
 
@@ -239,92 +254,115 @@
       </div>
     </section>
 
-    <!-- Quick Services -->
-    <section id="sevas" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-20">
-      <div class="flex justify-between items-end mb-10">
-        <div>
-          <span class="font-body text-label-md text-primary tracking-widest uppercase mb-2 block">Quick Access</span>
-          <h2 class="font-display text-headline-lg md:text-display-lg-mobile text-on-background">Essential Services</h2>
-        </div>
-        <a class="hidden md:flex font-body text-label-md text-primary items-center gap-1 hover:text-saffron-deep transition-colors" href="#">View All Services <span class="material-symbols-outlined text-sm" aria-hidden="true">arrow_forward</span></a>
-      </div>
-      <div class="grid grid-cols-1 md:grid-cols-3 gap-gutter">
-        <a id="donations" class="group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[280px] relative overflow-hidden" href="#">
-          <div class="absolute -right-4 -top-4 w-32 h-32 bg-surface-container rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-300">
-              <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-secondary-container" aria-hidden="true">volunteer_activism</span>
-            </div>
-            <h3 class="font-display text-headline-lg text-on-background mb-3">E-Hundi Donations</h3>
-            <p class="font-body text-body-md text-on-surface-variant">Contribute securely towards temple development, Nithya Annadanam, and Goshala maintenance.</p>
-          </div>
-          <div class="relative z-10 mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep">
-            Donate Now <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
-          </div>
-        </a>
-        <a class="group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[280px] relative overflow-hidden" href="#">
-          <div class="absolute -right-4 -top-4 w-32 h-32 bg-surface-container rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-300">
-              <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-secondary-container" aria-hidden="true">local_fire_department</span>
-            </div>
-            <h3 class="font-display text-headline-lg text-on-background mb-3">Poojas &amp; Sevas</h3>
-            <p class="font-body text-body-md text-on-surface-variant">Book advance tickets for Abhishekam, Kumkuma Archana, and special festive rituals.</p>
-          </div>
-          <div class="relative z-10 mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep">
-            View Seva List <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
-          </div>
-        </a>
-        <a id="visit" class="group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm hover:shadow-lg hover:-translate-y-1 transition-all duration-300 flex flex-col justify-between min-h-[280px] relative overflow-hidden" href="#">
-          <div class="absolute -right-4 -top-4 w-32 h-32 bg-surface-container rounded-full opacity-50 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-300">
-              <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-secondary-container" aria-hidden="true">map</span>
-            </div>
-            <h3 class="font-display text-headline-lg text-on-background mb-3">Route Map &amp; Stay</h3>
-            <p class="font-body text-body-md text-on-surface-variant">Find directions to Pithapuram, check choultry availability, and plan your pilgrimage journey.</p>
-          </div>
-          <div class="relative z-10 mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep">
-            Plan Your Visit <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
-          </div>
-        </a>
-      </div>
-      <a class="md:hidden mt-6 flex justify-center font-body text-label-md text-primary items-center gap-1 w-full border border-incense-smoke py-3 rounded-lg" href="#">View All Services</a>
-    </section>
+    <!-- Main content + Sidebar layout -->
+    <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-12 pb-24">
+      <div class="flex flex-col lg:flex-row gap-10 xl:gap-14 items-start">
 
-    <!-- Temple History (full-width) -->
-    <section id="history" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-12 pb-24 border-t border-incense-smoke">
-      <article>
-        <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
-        <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
-        <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
-          <img
-            src="./images/left-sripada.png"
-            alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
-            width="1280" height="400"
-            loading="lazy" decoding="async"
-            class="w-full h-[400px] object-cover object-top transition-transform duration-700 hover:scale-105"
-          >
-        </div>
-        <div class="prose max-w-none text-on-surface-variant space-y-6">
-          <p class="font-body text-body-lg leading-relaxed text-on-background font-medium">
-            Pithapuram (formerly Pithikapuram) is one of the most sacred pilgrimage centres in Andhra Pradesh, revered as the birthplace of Lord Sripada Srivallabha, the first complete incarnation of Lord Dattatreya in Kaliyuga.
-          </p>
-          <p class="font-body text-body-md leading-relaxed">
-            The Mahasamsthanam stands as a beacon of spiritual solace, drawing devotees from across the globe who seek the divine blessings of the Lord. The temple architecture, though steeped in ancient tradition, has been thoughtfully preserved and modernised to accommodate the growing number of pilgrims while maintaining its inherent sanctity and peaceful atmosphere.
-          </p>
-          <blockquote class="bg-surface-container-low p-6 rounded-xl border border-incense-smoke my-8">
-            <p class="font-body text-body-md italic text-on-background m-0">
-              "To visit Pithapuram is to walk on the very ground where the Lord performed his divine leelas. It is a place of profound spiritual awakening and absolute purity."
-            </p>
-          </blockquote>
-          <p class="font-body text-body-md leading-relaxed">
-            The temple complex houses the Swayambhu Padukas (divine footprints) of Lord Sripada Srivallabha, which are the focal point of daily worship. The administration, under the AP Endowments Department, ensures transparent operations, regular Nithya Annadanam (free feeding), and impeccable maintenance of the sacred premises.
-          </p>
-          <a href="./history.html" class="inline-block mt-8 font-body text-label-md border-b-2 border-primary text-primary pb-1 hover:text-saffron-deep hover:border-saffron-deep transition-colors uppercase tracking-wide">Read Full History</a>
-        </div>
-      </article>
-    </section>
+        <!-- ── LEFT: Temple History ── -->
+        <section id="history" class="flex-1 min-w-0 border-t border-incense-smoke pt-10">
+          <article>
+            <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
+            <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
+            <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
+              <img
+                src="./images/left-sripada.png"
+                alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
+                width="1280" height="400"
+                loading="lazy" decoding="async"
+                class="w-full h-[400px] object-cover object-top transition-transform duration-700 hover:scale-105"
+              >
+            </div>
+            <div class="prose max-w-none text-on-surface-variant space-y-6">
+              <p class="font-body text-body-lg leading-relaxed text-on-background font-medium">
+                Pithapuram (formerly Pithikapuram) is one of the most sacred pilgrimage centres in Andhra Pradesh, revered as the birthplace of Lord Sripada Srivallabha, the first complete incarnation of Lord Dattatreya in Kaliyuga.
+              </p>
+              <p class="font-body text-body-md leading-relaxed">
+                The Mahasamsthanam stands as a beacon of spiritual solace, drawing devotees from across the globe who seek the divine blessings of the Lord. The temple architecture, though steeped in ancient tradition, has been thoughtfully preserved and modernised to accommodate the growing number of pilgrims while maintaining its inherent sanctity and peaceful atmosphere.
+              </p>
+              <blockquote class="bg-surface-container-low p-6 rounded-xl border border-incense-smoke my-8">
+                <p class="font-body text-body-md italic text-on-background m-0">
+                  &ldquo;To visit Pithapuram is to walk on the very ground where the Lord performed his divine leelas. It is a place of profound spiritual awakening and absolute purity.&rdquo;
+                </p>
+              </blockquote>
+              <p class="font-body text-body-md leading-relaxed">
+                The temple complex houses the Swayambhu Padukas (divine footprints) of Lord Sripada Srivallabha, which are the focal point of daily worship. The administration, under the AP Endowments Department, ensures transparent operations, regular Nithya Annadanam (free feeding), and impeccable maintenance of the sacred premises.
+              </p>
+              <a href="./history.html" class="inline-block mt-8 font-body text-label-md border-b-2 border-primary text-primary pb-1 hover:text-saffron-deep hover:border-saffron-deep transition-colors uppercase tracking-wide">Read Full History</a>
+            </div>
+          </article>
+        </section>
+
+        <!-- ── RIGHT: Essential Services Sidebar ── -->
+        <aside id="sevas" aria-label="Essential Services" class="services-sidebar w-full lg:w-80 xl:w-96 flex-shrink-0">
+          <!-- Header -->
+          <div class="flex items-center justify-between mb-5">
+            <div>
+              <span class="font-body text-label-md text-primary tracking-widest uppercase block mb-0.5">Quick Access</span>
+              <h2 class="font-display text-headline-md text-on-background">Essential Services</h2>
+            </div>
+            <a href="#" class="flex items-center gap-1 font-body text-label-md text-primary hover:text-saffron-deep transition-colors whitespace-nowrap">
+              View All
+              <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">arrow_forward</span>
+            </a>
+          </div>
+
+          <!-- Service cards -->
+          <div class="flex flex-col gap-4">
+
+            <!-- E-Hundi Donations -->
+            <a id="donations" href="#" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+              <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
+              <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
+                <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">volunteer_activism</span>
+              </div>
+              <div class="relative z-10 flex-1 min-w-0">
+                <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">E-Hundi Donations</h3>
+                <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Contribute securely towards temple development, Nithya Annadanam, and Goshala maintenance.</p>
+                <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
+                  Donate Now
+                  <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
+                </span>
+              </div>
+            </a>
+
+            <!-- Poojas & Sevas -->
+            <a href="./sevas.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+              <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
+              <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
+                <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">local_fire_department</span>
+              </div>
+              <div class="relative z-10 flex-1 min-w-0">
+                <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">Poojas &amp; Sevas</h3>
+                <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Book advance tickets for Abhishekam, Kumkuma Archana, and special festive rituals.</p>
+                <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
+                  View Seva List
+                  <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
+                </span>
+              </div>
+            </a>
+
+            <!-- Route Map & Stay -->
+            <a id="visit" href="./HowToReach.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+              <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
+              <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
+                <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">map</span>
+              </div>
+              <div class="relative z-10 flex-1 min-w-0">
+                <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">Route Map &amp; Stay</h3>
+                <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Find directions to Pithapuram, check choultry availability, and plan your pilgrimage journey.</p>
+                <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
+                  Plan Your Visit
+                  <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
+                </span>
+              </div>
+            </a>
+
+          </div>
+        </aside>
+        <!-- end sidebar -->
+
+      </div>
+    </div>
 
   </main>
 
