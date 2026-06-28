@@ -180,7 +180,7 @@
       max-height: 0;
       transition: max-height 0.25s cubic-bezier(0.16,1,0.3,1);
     }
-    .mobile-acc-sub.open { max-height: 28rem; }
+    .mobile-acc-sub.open { max-height: 32rem; }
     .mobile-acc-sub a {
       display: flex;
       align-items: center;
@@ -222,6 +222,9 @@
     }
   </style>
 
+  <!-- ॐ SVG Favicon -->
+  <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='6' fill='%238C330A'/%3E%3Ctext x='50%25' y='54%25' dominant-baseline='middle' text-anchor='middle' font-size='20' font-family='serif' fill='%23F6AD55'%3E%E2%98%89%3C/text%3E%3C/svg%3E">
+
   <audio id="bhajan-audio" src="./files/Shripad Rajam Sharanam Prapadhye.mp3" loop preload="auto"></audio>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -240,6 +243,9 @@
     </a>
 
     <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
+      <!-- Home -->
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html">Home</a>
+
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./sevas.html">Sevas</a>
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./books.html">Books</a>
 
@@ -268,7 +274,7 @@
 
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./history.html">History</a>
 
-      <!-- Pilgrim Guide dropdown -->
+      <!-- Pilgrim Guide dropdown (includes Slokas) -->
       <div class="nav-dropdown" role="navigation" aria-label="Pilgrim Guide navigation">
         <a href="./index.html#visit" class="nav-dropdown-trigger font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" aria-haspopup="true">
           Pilgrim Guide
@@ -284,11 +290,12 @@
           <a href="./gallery.html" role="menuitem">
             <span class="material-symbols-outlined menu-icon" aria-hidden="true">photo_library</span>Gallery
           </a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <a href="./slokas.html" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">menu_book</span>Slokas &amp; Stotram
+          </a>
         </div>
       </div>
-
-      <!-- Slokas (top-level) -->
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./slokas.html">Slokas</a>
     </nav>
 
     <div class="flex items-center gap-3">
@@ -330,6 +337,9 @@
       </button>
     </div>
 
+    <!-- Home -->
+    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html" data-nav-link>Home</a>
+
     <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./sevas.html" data-nav-link>Sevas</a>
     <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./books.html" data-nav-link>Books</a>
 
@@ -354,7 +364,7 @@
 
     <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./history.html" data-nav-link>History</a>
 
-    <!-- Mobile pilgrim guide accordion -->
+    <!-- Mobile pilgrim guide accordion (includes Slokas) -->
     <div>
       <button class="mobile-acc-toggle font-body text-body-lg text-on-surface hover:text-primary border-incense-smoke transition-colors" aria-expanded="false" aria-controls="mob-pilgrim-sub" id="mob-pilgrim-btn">
         <a href="./index.html#visit" class="flex-1 text-left no-underline text-on-surface hover:text-primary" onclick="event.stopPropagation()" data-nav-link>Pilgrim Guide</a>
@@ -370,11 +380,11 @@
         <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./gallery.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">photo_library</span>Gallery
         </a>
+        <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./slokas.html" data-nav-link>
+          <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">menu_book</span>Slokas &amp; Stotram
+        </a>
       </div>
     </div>
-
-    <!-- Slokas (top-level mobile) -->
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./slokas.html" data-nav-link>Slokas</a>
 
   </nav>
 
