@@ -186,6 +186,14 @@
     .service-arrow {
       transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
     }
+
+    /* Guruji photo hover */
+    .guruji-photo {
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .guruji-card:hover .guruji-photo {
+      transform: scale(1.03);
+    }
   </style>
 </head>
 
@@ -292,72 +300,119 @@
           </article>
         </section>
 
-        <!-- ── RIGHT: Essential Services Sidebar ── -->
-        <aside id="sevas" aria-label="Essential Services" class="services-sidebar w-full lg:w-80 xl:w-96 flex-shrink-0">
-          <!-- Header -->
-          <div class="flex items-center justify-between mb-5">
-            <div>
-              <span class="font-body text-label-md text-primary tracking-widest uppercase block mb-0.5">Quick Access</span>
-              <h2 class="font-display text-headline-md text-on-background">Essential Services</h2>
+        <!-- ── RIGHT: Sidebar ── -->
+        <aside aria-label="Peetadhipathi and Essential Services" class="services-sidebar w-full lg:w-80 xl:w-96 flex-shrink-0 flex flex-col gap-6">
+
+          <!-- ── Guruji Card ── -->
+          <div class="guruji-card bg-sacred-white border border-incense-smoke rounded-2xl overflow-hidden shadow-sm">
+            <!-- Photo -->
+            <div class="relative overflow-hidden" style="height: 260px;">
+              <!-- Warm saffron gradient overlay at bottom -->
+              <div class="absolute inset-0 bg-gradient-to-t from-[#3b1005cc] via-transparent to-transparent z-10" aria-hidden="true"></div>
+              <img
+                src="./images/Guruji.png"
+                alt="Peetadhipathi Sadguru Sajjanagada Ramaswamy garu"
+                width="400" height="260"
+                loading="lazy" decoding="async"
+                class="guruji-photo w-full h-full object-cover object-top"
+              >
+              <!-- Name label over photo -->
+              <div class="absolute bottom-0 left-0 right-0 z-20 px-5 pb-4">
+                <p class="font-body text-sacred-white font-semibold leading-snug" style="font-size:13px; letter-spacing:0.01em;">Peetadhipathi</p>
+                <h3 class="font-display text-sacred-white leading-tight mt-0.5" style="font-size:16px; line-height:1.35;">Sadguru Sajjanagada Ramaswamy garu</h3>
+              </div>
             </div>
-            <a href="#" class="flex items-center gap-1 font-body text-label-md text-primary hover:text-saffron-deep transition-colors whitespace-nowrap">
-              View All
-              <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">arrow_forward</span>
-            </a>
+            <!-- Biography link -->
+            <div class="px-5 py-4 border-t border-incense-smoke">
+              <a
+                href="./files/Aavirbhavam English Book edited by raja.pdf"
+                target="_blank"
+                rel="noopener noreferrer"
+                class="group flex items-center justify-between w-full"
+              >
+                <div class="flex items-center gap-3">
+                  <div class="w-9 h-9 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
+                    <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:18px; font-variation-settings:'FILL' 1;" aria-hidden="true">menu_book</span>
+                  </div>
+                  <div>
+                    <p class="font-body font-semibold text-on-background" style="font-size:13px; line-height:1.3;">Aavirbhavam</p>
+                    <p class="font-body text-on-surface-variant" style="font-size:12px; line-height:1.4;">Read Guruji's biography (English)</p>
+                  </div>
+                </div>
+                <span class="material-symbols-outlined text-primary group-hover:text-saffron-deep service-arrow" style="font-size:20px;" aria-hidden="true">arrow_right_alt</span>
+              </a>
+            </div>
           </div>
 
-          <!-- Service cards -->
-          <div class="flex flex-col gap-4">
+          <!-- ── Quick Access / Essential Services ── -->
+          <div id="sevas">
+            <!-- Header -->
+            <div class="flex items-center justify-between mb-5">
+              <div>
+                <span class="font-body text-label-md text-primary tracking-widest uppercase block mb-0.5">Quick Access</span>
+                <h2 class="font-display text-headline-md text-on-background">Essential Services</h2>
+              </div>
+              <a href="#" class="flex items-center gap-1 font-body text-label-md text-primary hover:text-saffron-deep transition-colors whitespace-nowrap">
+                View All
+                <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">arrow_forward</span>
+              </a>
+            </div>
 
-            <!-- E-Hundi Donations -->
-            <a id="donations" href="#" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
-              <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-              <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
-                <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">volunteer_activism</span>
-              </div>
-              <div class="relative z-10 flex-1 min-w-0">
-                <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">E-Hundi Donations</h3>
-                <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Contribute securely towards temple development, Nithya Annadanam, and Goshala maintenance.</p>
-                <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
-                  Donate Now
-                  <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
-                </span>
-              </div>
-            </a>
+            <!-- Service cards -->
+            <div class="flex flex-col gap-4">
 
-            <!-- Poojas & Sevas -->
-            <a href="./sevas.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
-              <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-              <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
-                <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">local_fire_department</span>
-              </div>
-              <div class="relative z-10 flex-1 min-w-0">
-                <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">Poojas &amp; Sevas</h3>
-                <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Book advance tickets for Abhishekam, Kumkuma Archana, and special festive rituals.</p>
-                <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
-                  View Seva List
-                  <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
-                </span>
-              </div>
-            </a>
+              <!-- E-Hundi Donations -->
+              <a id="donations" href="#" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+                <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
+                <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
+                  <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">volunteer_activism</span>
+                </div>
+                <div class="relative z-10 flex-1 min-w-0">
+                  <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">E-Hundi Donations</h3>
+                  <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Contribute securely towards temple development, Nithya Annadanam, and Goshala maintenance.</p>
+                  <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
+                    Donate Now
+                    <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
+                  </span>
+                </div>
+              </a>
 
-            <!-- Route Map & Stay -->
-            <a id="visit" href="./HowToReach.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
-              <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-              <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
-                <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">map</span>
-              </div>
-              <div class="relative z-10 flex-1 min-w-0">
-                <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">Route Map &amp; Stay</h3>
-                <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Find directions to Pithapuram, check choultry availability, and plan your pilgrimage journey.</p>
-                <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
-                  Plan Your Visit
-                  <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
-                </span>
-              </div>
-            </a>
+              <!-- Poojas & Sevas -->
+              <a href="./sevas.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+                <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
+                <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
+                  <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">local_fire_department</span>
+                </div>
+                <div class="relative z-10 flex-1 min-w-0">
+                  <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">Poojas &amp; Sevas</h3>
+                  <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Book advance tickets for Abhishekam, Kumkuma Archana, and special festive rituals.</p>
+                  <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
+                    View Seva List
+                    <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
+                  </span>
+                </div>
+              </a>
 
+              <!-- Route Map & Stay -->
+              <a id="visit" href="./HowToReach.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+                <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
+                <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
+                  <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;" aria-hidden="true">map</span>
+                </div>
+                <div class="relative z-10 flex-1 min-w-0">
+                  <h3 class="font-display text-on-background mb-1" style="font-size:17px; line-height:1.3;">Route Map &amp; Stay</h3>
+                  <p class="font-body text-on-surface-variant mb-3" style="font-size:13px; line-height:1.5;">Find directions to Pithapuram, check choultry availability, and plan your pilgrimage journey.</p>
+                  <span class="flex items-center text-primary font-body font-semibold group-hover:text-saffron-deep" style="font-size:13px;">
+                    Plan Your Visit
+                    <span class="material-symbols-outlined service-arrow ml-1" style="font-size:16px;" aria-hidden="true">arrow_right_alt</span>
+                  </span>
+                </div>
+              </a>
+
+            </div>
           </div>
+          <!-- end quick access -->
+
         </aside>
         <!-- end sidebar -->
 
