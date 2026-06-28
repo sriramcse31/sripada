@@ -73,6 +73,12 @@
     html.dark .brand-name-te  { color: #d0c8c5; }
     html.dark .brand-divider  { background: linear-gradient(to right, #ffb59655, transparent); }
     .font-telugu { font-family: 'Noto Sans Telugu', sans-serif; }
+
+    /* Suppress browser default visited-link grey on all nav links */
+    #main-header nav a:visited,
+    #mobile-nav a:visited {
+      color: inherit;
+    }
   </style>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -97,11 +103,11 @@
     </a>
 
     <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./sevas.html">Sevas</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#accommodation">Accommodation</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#donations">Donations</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./history.html">History</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#visit">Pilgrim Guide</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./sevas.html">Sevas</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html#accommodation">Accommodation</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html#donations">Donations</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./history.html">History</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html#visit">Pilgrim Guide</a>
     </nav>
 
     <div class="flex items-center gap-3">
