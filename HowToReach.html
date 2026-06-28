@@ -1,0 +1,561 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="How to reach Pithapuram by train or bus to visit Sripada Srivallabha Mahasamsthanam. Station details, bus routes, local transport, and embedded map.">
+  <title>How to Reach Pithapuram — Sripada Srivallabha Mahasamsthanam</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-background": "#0d1c2e", "sacred-white": "#FFFCFA",
+            "incense-smoke": "#EDF2F7", "saffron-deep": "#8C330A",
+            "on-surface": "#0d1c2e", "on-surface-variant": "#57423a",
+            "primary": "#9f3e07", "primary-fixed": "#ffdbcd",
+            "on-primary": "#ffffff", "on-primary-fixed-variant": "#7d2d00",
+            "primary-container": "#c05621", "surface-container-low": "#eff4ff",
+            "outline": "#8a7268", "outline-variant": "#dec0b5",
+            "background": "#f8f9ff", "secondary-container": "#feb557",
+            "on-secondary-container": "#734700"
+          },
+          spacing: { "gutter": "24px", "marginSm": "16px", "marginLg": "40px" },
+          fontFamily: {
+            "display": ['"Source Serif 4"', "Georgia", "serif"],
+            "body":    ["Hanken Grotesk", "system-ui", "sans-serif"]
+          },
+          fontSize: {
+            "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+            "display-lg-mobile": ["36px", { lineHeight: "44px", fontWeight: "700" }],
+            "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+            "caption": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "body-lg": ["18px", { lineHeight: "28px" }],
+            "body-md": ["16px", { lineHeight: "24px" }]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    /* ── Transport card tabs ── */
+    .transport-tab {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.75rem 1.5rem;
+      border-radius: 0.5rem 0.5rem 0 0;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-size: 15px;
+      font-weight: 600;
+      cursor: pointer;
+      border: none;
+      transition: background 0.18s, color 0.18s;
+      border-bottom: 2px solid transparent;
+    }
+    .transport-tab.active {
+      background: #FFFCFA;
+      color: #8C330A;
+      border-bottom: 2px solid #8C330A;
+    }
+    .transport-tab:not(.active) {
+      background: #EDF2F7;
+      color: #57423a;
+    }
+    .transport-tab:not(.active):hover {
+      background: #e5eaf0;
+      color: #9f3e07;
+    }
+    .tab-panel { display: none; }
+    .tab-panel.active { display: block; }
+
+    /* ── Info row ── */
+    .info-row {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      padding: 0.875rem 0;
+      border-bottom: 1px solid #EDF2F7;
+    }
+    .info-row:last-child { border-bottom: none; }
+
+    /* ── Map frame ── */
+    .map-container {
+      border-radius: 1rem;
+      overflow: hidden;
+      border: 1px solid #dec0b5;
+      box-shadow: 0 4px 16px rgba(140,51,10,0.08);
+    }
+    .map-container iframe {
+      width: 100%;
+      display: block;
+      border: none;
+    }
+
+    /* ── Train schedule table ── */
+    .train-table th, .train-table td {
+      padding: 12px 16px;
+      text-align: left;
+      border-bottom: 1px solid #EDF2F7;
+      vertical-align: top;
+    }
+    .train-table th {
+      background: #fff8f5;
+      font-family: "Hanken Grotesk", sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: .06em;
+      text-transform: uppercase;
+      color: #8C330A;
+    }
+    .train-table tr:last-child td { border-bottom: none; }
+    .train-table tr:hover td { background: #fffcfa; }
+    .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .table-scroll::-webkit-scrollbar { height: 4px; }
+    .table-scroll::-webkit-scrollbar-track { background: #EDF2F7; }
+    .table-scroll::-webkit-scrollbar-thumb { background: #dec0b5; border-radius: 2px; }
+
+    /* ── Tip callout ── */
+    .tip-callout {
+      display: flex;
+      align-items: flex-start;
+      gap: 0.75rem;
+      background: #fff8f5;
+      border: 1px solid rgba(140,51,10,0.15);
+      border-left: 3px solid #9f3e07;
+      border-radius: 0.5rem;
+      padding: 1rem;
+    }
+
+    @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+  </style>
+</head>
+
+<body class="bg-background text-on-background antialiased font-body text-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+
+  <div id="site-header"></div>
+  <script src="./partials/loader.js"></script>
+
+  <main id="main-content">
+
+    <!-- Hero banner -->
+    <div class="w-full bg-gradient-to-r from-saffron-deep via-primary to-primary-container text-on-primary" style="padding: clamp(2.5rem,6vw,5rem) 1.5rem;">
+      <div class="max-w-[960px] mx-auto">
+        <div class="flex items-start gap-4">
+          <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-1">
+            <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 1" aria-hidden="true">near_me</span>
+          </div>
+          <div>
+            <span class="font-body text-label-md uppercase tracking-widest block mb-2 opacity-80">Pilgrim Guide</span>
+            <h1 class="font-display text-display-lg-mobile md:text-display-lg">How to Reach Pithapuram</h1>
+            <p class="font-body text-body-lg mt-2 opacity-85 max-w-prose">
+              Complete travel guide for pilgrims visiting Sripada Srivallabha Mahasamsthanam — by train, bus, and local transport.
+            </p>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="max-w-[960px] mx-auto px-marginSm md:px-marginLg py-10">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center gap-2 font-body text-label-md text-on-surface-variant flex-wrap">
+          <li><a href="./index.html" class="hover:text-primary transition-colors">Home</a></li>
+          <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:16px">chevron_right</span></li>
+          <li aria-current="page" class="text-primary font-semibold">How to Reach</li>
+        </ol>
+      </nav>
+
+      <!-- Quick facts strip -->
+      <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">
+        <div class="bg-sacred-white rounded-xl p-4 border border-incense-smoke text-center">
+          <span class="material-symbols-outlined text-primary text-2xl block mb-1" style="font-variation-settings:'FILL' 1" aria-hidden="true">train</span>
+          <p class="font-body text-label-md text-on-surface-variant">Nearest Station</p>
+          <p class="font-display font-semibold text-on-background" style="font-size:15px">Pithapuram</p>
+        </div>
+        <div class="bg-sacred-white rounded-xl p-4 border border-incense-smoke text-center">
+          <span class="material-symbols-outlined text-primary text-2xl block mb-1" style="font-variation-settings:'FILL' 1" aria-hidden="true">directions_bus</span>
+          <p class="font-body text-label-md text-on-surface-variant">Bus Hub</p>
+          <p class="font-display font-semibold text-on-background" style="font-size:15px">Kakinada / Rajahmundry</p>
+        </div>
+        <div class="bg-sacred-white rounded-xl p-4 border border-incense-smoke text-center">
+          <span class="material-symbols-outlined text-primary text-2xl block mb-1" style="font-variation-settings:'FILL' 1" aria-hidden="true">flight</span>
+          <p class="font-body text-label-md text-on-surface-variant">Nearest Airport</p>
+          <p class="font-display font-semibold text-on-background" style="font-size:15px">Rajahmundry (~45 km)</p>
+        </div>
+        <div class="bg-sacred-white rounded-xl p-4 border border-incense-smoke text-center">
+          <span class="material-symbols-outlined text-primary text-2xl block mb-1" style="font-variation-settings:'FILL' 1" aria-hidden="true">location_on</span>
+          <p class="font-body text-label-md text-on-surface-variant">District</p>
+          <p class="font-display font-semibold text-on-background" style="font-size:15px">East Godavari, AP</p>
+        </div>
+      </div>
+
+      <!-- Transport tabs -->
+      <section aria-labelledby="transport-heading">
+        <h2 id="transport-heading" class="font-display text-headline-md text-on-background mb-4">Getting Here</h2>
+
+        <!-- Tab buttons -->
+        <div class="flex gap-1" role="tablist" aria-label="Transport modes">
+          <button class="transport-tab active" role="tab" aria-selected="true" aria-controls="panel-train" id="tab-train">
+            <span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">train</span>
+            By Train
+          </button>
+          <button class="transport-tab" role="tab" aria-selected="false" aria-controls="panel-bus" id="tab-bus">
+            <span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">directions_bus</span>
+            By Bus
+          </button>
+        </div>
+
+        <!-- Tab panels wrapper -->
+        <div class="bg-sacred-white border border-incense-smoke rounded-b-2xl rounded-tr-2xl shadow-sm overflow-hidden">
+
+          <!-- ── Train panel ── -->
+          <div id="panel-train" class="tab-panel active" role="tabpanel" aria-labelledby="tab-train">
+            <div class="px-6 md:px-8 py-6">
+
+              <p class="font-body text-body-lg text-on-surface-variant mb-6 max-w-prose">
+                Pithapuram has its own railway station — <strong class="text-on-background">Pithapuram Railway Station (PTM)</strong> — on the Howrah–Chennai main line (East Coast Railway). Trains from Vijayawada, Visakhapatnam, Chennai, and Kolkata all pass through or connect here via Samalkot / Kakinada junction.
+              </p>
+
+              <!-- Key station details -->
+              <div class="mb-6">
+                <h3 class="font-display font-semibold text-on-background mb-3" style="font-size:18px">Station Details</h3>
+                <div class="divide-y divide-incense-smoke">
+                  <div class="info-row">
+                    <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">label</span>
+                    <div>
+                      <p class="font-body font-semibold text-on-background">Station Code</p>
+                      <p class="font-body text-on-surface-variant">PTM</p>
+                    </div>
+                  </div>
+                  <div class="info-row">
+                    <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">map</span>
+                    <div>
+                      <p class="font-body font-semibold text-on-background">Railway Zone</p>
+                      <p class="font-body text-on-surface-variant">East Coast Railway (ECoR) — Waltair Division</p>
+                    </div>
+                  </div>
+                  <div class="info-row">
+                    <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">route</span>
+                    <div>
+                      <p class="font-body font-semibold text-on-background">Main Line</p>
+                      <p class="font-body text-on-surface-variant">Howrah–Chennai Main Line (via Samalkot)</p>
+                    </div>
+                  </div>
+                  <div class="info-row">
+                    <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">near_me</span>
+                    <div>
+                      <p class="font-body font-semibold text-on-background">Distance to Temple</p>
+                      <p class="font-body text-on-surface-variant">~1.5 km from Pithapuram Station — 5 min by auto-rickshaw</p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Major trains -->
+              <h3 class="font-display font-semibold text-on-background mb-3" style="font-size:18px">Major Trains Stopping at Pithapuram</h3>
+              <div class="table-scroll rounded-xl border border-incense-smoke overflow-hidden mb-6">
+                <table class="train-table w-full" aria-label="Trains stopping at Pithapuram">
+                  <thead>
+                    <tr>
+                      <th scope="col">Train Name</th>
+                      <th scope="col">Train No.</th>
+                      <th scope="col">Route</th>
+                      <th scope="col">Frequency</th>
+                    </tr>
+                  </thead>
+                  <tbody class="font-body text-body-md text-on-background">
+                    <tr>
+                      <td class="font-semibold">Godavari SF Express</td>
+                      <td class="text-on-surface-variant">12727 / 12728</td>
+                      <td class="text-on-surface-variant">Hyderabad ↔ Visakhapatnam</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Daily</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Konark Express</td>
+                      <td class="text-on-surface-variant">11020 / 11019</td>
+                      <td class="text-on-surface-variant">Mumbai CST ↔ Bhubaneswar</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Daily</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">East Coast Express</td>
+                      <td class="text-on-surface-variant">18645 / 18646</td>
+                      <td class="text-on-surface-variant">Hyderabad ↔ Howrah</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Daily</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Coromandel Express</td>
+                      <td class="text-on-surface-variant">12841 / 12842</td>
+                      <td class="text-on-surface-variant">Howrah ↔ Chennai Central</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Daily</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Visakha Express</td>
+                      <td class="text-on-surface-variant">17015 / 17016</td>
+                      <td class="text-on-surface-variant">Hyderabad ↔ Visakhapatnam</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Daily</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Ratnachal Express</td>
+                      <td class="text-on-surface-variant">17015 series</td>
+                      <td class="text-on-surface-variant">Tirupati ↔ Visakhapatnam</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Daily</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="tip-callout mb-6">
+                <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">info</span>
+                <p class="font-body text-body-md text-on-primary-fixed-variant m-0">
+                  <strong>Tip:</strong> If your train does not stop at Pithapuram (PTM), alight at <strong>Samalkot Junction (SLO)</strong> (~12 km away) or <strong>Kakinada Town (CCT)</strong> and take a bus or auto-rickshaw to Pithapuram. Check current schedules on <a href="https://www.irctc.co.in" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-saffron-deep">IRCTC</a>.
+                </p>
+              </div>
+
+              <!-- Local transport from station -->
+              <h3 class="font-display font-semibold text-on-background mb-3" style="font-size:18px">From Station to Temple</h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 bg-primary-fixed/40 rounded-xl p-4">
+                  <span class="material-symbols-outlined text-saffron-deep flex-shrink-0" style="font-size:24px;font-variation-settings:'FILL' 1" aria-hidden="true">electric_rickshaw</span>
+                  <div>
+                    <p class="font-body font-semibold text-on-background">Auto-Rickshaw</p>
+                    <p class="font-body text-on-surface-variant" style="font-size:14px">Available outside the station. ~₹30–50, 5 min ride. Ask for <em>"Sripada Srivallabha temple"</em>.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 bg-primary-fixed/40 rounded-xl p-4">
+                  <span class="material-symbols-outlined text-saffron-deep flex-shrink-0" style="font-size:24px;font-variation-settings:'FILL' 1" aria-hidden="true">directions_walk</span>
+                  <div>
+                    <p class="font-body font-semibold text-on-background">On Foot</p>
+                    <p class="font-body text-on-surface-variant" style="font-size:14px">~20 min walk from the station. Signboards mark the route through town.</p>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <!-- ── Bus panel ── -->
+          <div id="panel-bus" class="tab-panel" role="tabpanel" aria-labelledby="tab-bus">
+            <div class="px-6 md:px-8 py-6">
+
+              <p class="font-body text-body-lg text-on-surface-variant mb-6 max-w-prose">
+                Pithapuram is well-served by APSRTC (Andhra Pradesh State Road Transport Corporation) buses from all major cities in Andhra Pradesh and Telangana. The town has its own bus stand located in the heart of Pithapuram.
+              </p>
+
+              <!-- Bus stand info -->
+              <div class="mb-6">
+                <h3 class="font-display font-semibold text-on-background mb-3" style="font-size:18px">Pithapuram Bus Stand</h3>
+                <div class="divide-y divide-incense-smoke">
+                  <div class="info-row">
+                    <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">location_on</span>
+                    <div>
+                      <p class="font-body font-semibold text-on-background">Location</p>
+                      <p class="font-body text-on-surface-variant">Town centre, ~1 km from the temple</p>
+                    </div>
+                  </div>
+                  <div class="info-row">
+                    <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">schedule</span>
+                    <div>
+                      <p class="font-body font-semibold text-on-background">Operating Hours</p>
+                      <p class="font-body text-on-surface-variant">Buses run from early morning (~5 AM) until late night (~10 PM)</p>
+                    </div>
+                  </div>
+                  <div class="info-row">
+                    <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">support_agent</span>
+                    <div>
+                      <p class="font-body font-semibold text-on-background">APSRTC Enquiry</p>
+                      <p class="font-body text-on-surface-variant">Toll-free: <a href="tel:1800425099" class="text-primary hover:text-saffron-deep">1800-425-0099</a></p>
+                    </div>
+                  </div>
+                </div>
+              </div>
+
+              <!-- Bus routes table -->
+              <h3 class="font-display font-semibold text-on-background mb-3" style="font-size:18px">Key Bus Routes to Pithapuram</h3>
+              <div class="table-scroll rounded-xl border border-incense-smoke overflow-hidden mb-6">
+                <table class="train-table w-full" aria-label="Bus routes to Pithapuram">
+                  <thead>
+                    <tr>
+                      <th scope="col">From</th>
+                      <th scope="col">Distance</th>
+                      <th scope="col">Est. Travel Time</th>
+                      <th scope="col">Service</th>
+                    </tr>
+                  </thead>
+                  <tbody class="font-body text-body-md text-on-background">
+                    <tr>
+                      <td class="font-semibold">Kakinada</td>
+                      <td class="text-on-surface-variant">~30 km</td>
+                      <td class="text-on-surface-variant">45 min – 1 hr</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Frequent</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Rajahmundry</td>
+                      <td class="text-on-surface-variant">~55 km</td>
+                      <td class="text-on-surface-variant">1 hr 15 min</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Frequent</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Vijayawada</td>
+                      <td class="text-on-surface-variant">~250 km</td>
+                      <td class="text-on-surface-variant">4 – 5 hrs</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Regular</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Visakhapatnam (Vizag)</td>
+                      <td class="text-on-surface-variant">~180 km</td>
+                      <td class="text-on-surface-variant">3 – 3.5 hrs</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Regular</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Hyderabad</td>
+                      <td class="text-on-surface-variant">~550 km</td>
+                      <td class="text-on-surface-variant">9 – 10 hrs</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Overnight</span></td>
+                    </tr>
+                    <tr>
+                      <td class="font-semibold">Samalkot</td>
+                      <td class="text-on-surface-variant">~12 km</td>
+                      <td class="text-on-surface-variant">20 min</td>
+                      <td><span class="inline-flex items-center bg-surface-container-low px-2 py-0.5 rounded-full text-primary font-semibold" style="font-size:12px">Very Frequent</span></td>
+                    </tr>
+                  </tbody>
+                </table>
+              </div>
+
+              <div class="tip-callout mb-6">
+                <span class="material-symbols-outlined text-primary flex-shrink-0 mt-0.5" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">info</span>
+                <p class="font-body text-body-md text-on-primary-fixed-variant m-0">
+                  <strong>Tip:</strong> From the Pithapuram Bus Stand, the Sripada Srivallabha temple is a short <strong>~1 km walk</strong> or a quick auto-rickshaw ride (~₹20). Book long-distance overnight buses on <a href="https://www.apsrtconline.in" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-saffron-deep">APSRTC Online</a> or <a href="https://www.redbus.in" target="_blank" rel="noopener noreferrer" class="text-primary underline underline-offset-2 hover:text-saffron-deep">RedBus</a>.
+                </p>
+              </div>
+
+              <!-- Local transport from bus stand -->
+              <h3 class="font-display font-semibold text-on-background mb-3" style="font-size:18px">From Bus Stand to Temple</h3>
+              <div class="grid sm:grid-cols-2 gap-4">
+                <div class="flex items-start gap-3 bg-primary-fixed/40 rounded-xl p-4">
+                  <span class="material-symbols-outlined text-saffron-deep flex-shrink-0" style="font-size:24px;font-variation-settings:'FILL' 1" aria-hidden="true">electric_rickshaw</span>
+                  <div>
+                    <p class="font-body font-semibold text-on-background">Auto-Rickshaw</p>
+                    <p class="font-body text-on-surface-variant" style="font-size:14px">~₹20–30, 5 min ride directly to the temple entrance.</p>
+                  </div>
+                </div>
+                <div class="flex items-start gap-3 bg-primary-fixed/40 rounded-xl p-4">
+                  <span class="material-symbols-outlined text-saffron-deep flex-shrink-0" style="font-size:24px;font-variation-settings:'FILL' 1" aria-hidden="true">directions_walk</span>
+                  <div>
+                    <p class="font-body font-semibold text-on-background">On Foot</p>
+                    <p class="font-body text-on-surface-variant" style="font-size:14px">~15 min pleasant walk through Pithapuram's old town lanes.</p>
+                  </div>
+                </div>
+              </div>
+
+            </div>
+          </div>
+
+        </div>
+      </section>
+
+      <!-- ── Google Maps Section ── -->
+      <section class="mt-12" aria-labelledby="map-heading">
+        <div class="flex items-center gap-3 mb-4">
+          <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings:'FILL' 1" aria-hidden="true">map</span>
+          <h2 id="map-heading" class="font-display text-headline-md text-on-background">Location on Map</h2>
+        </div>
+        <p class="font-body text-body-md text-on-surface-variant mb-5">
+          Sripada Srivallabha Mahasamsthanam, Pithapuram, East Godavari District, Andhra Pradesh — 533450.
+        </p>
+        <div class="map-container">
+          <iframe
+            src="https://www.google.com/maps/embed?pb=!1m18!1m12!1m3!1d3812.9046467635674!2d82.25317107503395!3d17.116116983661186!2m3!1f0!2f0!3f0!3m2!1i1024!2i768!4f13.1!3m3!1m2!1s0x3a37a3a0ba4f02a5%3A0x4b5c1f3e16b75b7e!2sSripada%20Srivallabha%20Mahasamsthanam!5e0!3m2!1sen!2sin!4v1719570000000!5m2!1sen!2sin"
+            height="420"
+            style="width:100%; border:0;"
+            allowfullscreen=""
+            loading="lazy"
+            referrerpolicy="no-referrer-when-downgrade"
+            title="Sripada Srivallabha Mahasamsthanam on Google Maps"
+            aria-label="Google Maps showing location of Sripada Srivallabha Mahasamsthanam in Pithapuram"
+          ></iframe>
+        </div>
+        <div class="mt-4 flex flex-wrap gap-3">
+          <a
+            href="https://maps.google.com/?q=Sripada+Srivallabha+Mahasamsthanam+Pithapuram"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 bg-primary text-on-primary font-body font-semibold text-label-md px-5 py-3 rounded-xl hover:bg-saffron-deep transition-colors"
+          >
+            <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1" aria-hidden="true">open_in_new</span>
+            Open in Google Maps
+          </a>
+          <a
+            href="https://maps.google.com/?q=Sripada+Srivallabha+Mahasamsthanam+Pithapuram&dirflg=r"
+            target="_blank"
+            rel="noopener noreferrer"
+            class="inline-flex items-center gap-2 border border-outline-variant text-on-surface-variant font-body font-semibold text-label-md px-5 py-3 rounded-xl hover:border-outline hover:text-primary transition-colors"
+          >
+            <span class="material-symbols-outlined" style="font-size:18px" aria-hidden="true">alt_route</span>
+            Get Directions
+          </a>
+        </div>
+      </section>
+
+      <!-- ── Nearest Airports / extra tip ── -->
+      <section class="mt-12 mb-4" aria-labelledby="airports-heading">
+        <h2 id="airports-heading" class="font-display text-headline-md text-on-background mb-4">Arriving by Air</h2>
+        <div class="grid sm:grid-cols-2 gap-4">
+          <div class="bg-sacred-white border border-incense-smoke rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-primary" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">flight_land</span>
+              <p class="font-body font-semibold text-on-background">Rajahmundry Airport (RJA)</p>
+            </div>
+            <p class="font-body text-on-surface-variant" style="font-size:14px">~45 km, ~1 hr by road. Best option — taxis and buses available to Pithapuram.</p>
+          </div>
+          <div class="bg-sacred-white border border-incense-smoke rounded-xl p-5">
+            <div class="flex items-center gap-2 mb-2">
+              <span class="material-symbols-outlined text-primary" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">flight_land</span>
+              <p class="font-body font-semibold text-on-background">Visakhapatnam Airport (VTZ)</p>
+            </div>
+            <p class="font-body text-on-surface-variant" style="font-size:14px">~180 km, ~3 hrs. More flights available — continue by train or bus from Vizag.</p>
+          </div>
+        </div>
+      </section>
+
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script>
+    if (window.loadPartial) loadPartial('footer', 'site-footer', initFooter);
+  </script>
+
+  <script>
+    // Transport mode tabs
+    (function () {
+      var tabs = document.querySelectorAll('[role="tab"]');
+      var panels = document.querySelectorAll('[role="tabpanel"]');
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          tabs.forEach(function (t) {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          panels.forEach(function (p) { p.classList.remove('active'); });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+          var panelId = tab.getAttribute('aria-controls');
+          var panel = document.getElementById(panelId);
+          if (panel) panel.classList.add('active');
+        });
+      });
+    })();
+  </script>
+</body>
+</html>
