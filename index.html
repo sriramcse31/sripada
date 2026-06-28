@@ -172,11 +172,13 @@
       #notice-progress { transition: none; }
     }
 
-    /* Sticky sidebar */
-    .services-sidebar {
-      position: sticky;
-      top: calc(5.5rem + 1.5rem); /* header height + gap */
-      align-self: start;
+    /* Sticky sidebar — desktop only */
+    @media (min-width: 1024px) {
+      .services-sidebar {
+        position: sticky;
+        top: calc(5.5rem + 1.5rem);
+        align-self: start;
+      }
     }
 
     /* Service card hover arrow nudge */
@@ -193,6 +195,14 @@
     }
     .guruji-card:hover .guruji-photo {
       transform: scale(1.03);
+    }
+
+    /* Mobile: sidebar above history */
+    .content-sidebar  { order: 1; }
+    .content-history  { order: 2; }
+    @media (min-width: 1024px) {
+      .content-history  { order: 1; }
+      .content-sidebar  { order: 2; }
     }
   </style>
 </head>
@@ -222,20 +232,28 @@
         <div class="w-full bg-incense-smoke" style="height:2px;" aria-hidden="true">
           <div id="notice-progress"></div>
         </div>
-        <div class="flex items-center gap-4" style="height:64px;">
-          <div class="hidden sm:flex items-center flex-shrink-0">
-            <span class="font-body text-sacred-white bg-saffron-deep px-3 py-1 rounded-full uppercase tracking-widest whitespace-nowrap" style="font-size:11px; font-weight:600; letter-spacing:0.08em;">Notices</span>
+
+        <!-- FIX 2 & 3: notice label + controls visible on all screen sizes -->
+        <div class="flex items-center gap-3" style="min-height:64px;">
+
+          <!-- Notices badge — always visible, smaller on mobile -->
+          <div class="flex items-center flex-shrink-0">
+            <span class="font-body text-sacred-white bg-saffron-deep px-2.5 py-1 rounded-full uppercase tracking-widest whitespace-nowrap" style="font-size:10px; font-weight:600; letter-spacing:0.08em;">Notices</span>
           </div>
-          <div class="hidden sm:block w-px bg-incense-smoke self-stretch my-3" aria-hidden="true"></div>
+
+          <div class="w-px bg-incense-smoke self-stretch my-3 flex-shrink-0" aria-hidden="true"></div>
+
+          <!-- Ticker -->
           <div id="notice-ticker" class="flex-1" role="region" aria-live="polite" aria-atomic="true" aria-label="Rotating temple notices">
             <div class="notice-slide active" data-index="0">
               <div class="flex-shrink-0 w-7 h-7 rounded-full bg-error-container flex items-center justify-center">
                 <span class="material-symbols-outlined text-error" style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
               </div>
               <div class="min-w-0 flex items-baseline gap-1 flex-wrap">
-                <span class="font-body font-semibold text-on-background whitespace-nowrap" style="font-size:14px;">Lunar Eclipse Notice</span>
-                <span class="font-body text-on-surface-variant" style="font-size:14px;">—</span>
-                <span class="font-body text-on-surface-variant" style="font-size:14px;">Temple doors will remain closed on Oct 28th due to Chandra Grahanam. Darshan resumes post-Shuddhi at 5:00 AM.</span>
+                <span class="font-body font-semibold text-on-background whitespace-nowrap" style="font-size:13px;">Lunar Eclipse Notice</span>
+                <span class="font-body text-on-surface-variant" style="font-size:13px;">—</span>
+                <span class="font-body text-on-surface-variant hidden sm:inline" style="font-size:13px;">Temple doors will remain closed on Oct 28th due to Chandra Grahanam. Darshan resumes post-Shuddhi at 5:00 AM.</span>
+                <span class="font-body text-on-surface-variant sm:hidden" style="font-size:12px;">Closed Oct 28 (Chandra Grahanam). Darshan at 5 AM.</span>
               </div>
             </div>
             <div class="notice-slide" data-index="1">
@@ -243,13 +261,16 @@
                 <span class="material-symbols-outlined text-primary" style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
               </div>
               <div class="min-w-0 flex items-baseline gap-1 flex-wrap">
-                <span class="font-body font-semibold text-on-background whitespace-nowrap" style="font-size:14px;">Payment Gateway Update</span>
-                <span class="font-body text-on-surface-variant" style="font-size:14px;">—</span>
-                <span class="font-body text-on-surface-variant" style="font-size:14px;">Intermittent issues reported with UPI payments. Please use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
+                <span class="font-body font-semibold text-on-background whitespace-nowrap" style="font-size:13px;">Payment Gateway</span>
+                <span class="font-body text-on-surface-variant" style="font-size:13px;">—</span>
+                <span class="font-body text-on-surface-variant hidden sm:inline" style="font-size:13px;">Intermittent issues with UPI payments. Please use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
+                <span class="font-body text-on-surface-variant sm:hidden" style="font-size:12px;">UPI issues — use Net Banking or temple QR.</span>
               </div>
             </div>
           </div>
-          <div class="hidden sm:flex items-center gap-2 flex-shrink-0">
+
+          <!-- Prev / Dots / Next — always visible, compact -->
+          <div class="flex items-center gap-1.5 flex-shrink-0">
             <button id="notice-prev" aria-label="Previous notice" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
               <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_left</span>
             </button>
@@ -258,56 +279,24 @@
               <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_right</span>
             </button>
           </div>
+
         </div>
       </div>
     </section>
 
     <!-- Main content + Sidebar layout -->
-    <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-12 pb-24">
-      <div class="flex flex-col lg:flex-row gap-10 xl:gap-14 items-start">
+    <!-- FIX 5: pt-8 on mobile, pt-12 on md+ for breathing room -->
+    <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg pt-8 md:pt-12 pb-16 md:pb-24">
+      <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-14 items-start">
 
-        <!-- ── LEFT: Temple History ── -->
-        <section id="history" class="flex-1 min-w-0 border-t border-incense-smoke pt-10">
-          <article>
-            <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
-            <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
-            <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
-              <img
-                src="./images/left-sripada.png"
-                alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
-                width="1280" height="400"
-                loading="lazy" decoding="async"
-                class="w-full h-[400px] object-cover object-top transition-transform duration-700 hover:scale-105"
-              >
-            </div>
-            <div class="prose max-w-none text-on-surface-variant space-y-6">
-              <p class="font-body text-body-lg leading-relaxed text-on-background font-medium">
-                Pithapuram (formerly Pithikapuram) is one of the most sacred pilgrimage centres in Andhra Pradesh, revered as the birthplace of Lord Sripada Srivallabha, the first complete incarnation of Lord Dattatreya in Kaliyuga.
-              </p>
-              <p class="font-body text-body-md leading-relaxed">
-                The Mahasamsthanam stands as a beacon of spiritual solace, drawing devotees from across the globe who seek the divine blessings of the Lord. The temple architecture, though steeped in ancient tradition, has been thoughtfully preserved and modernised to accommodate the growing number of pilgrims while maintaining its inherent sanctity and peaceful atmosphere.
-              </p>
-              <blockquote class="bg-surface-container-low p-6 rounded-xl border border-incense-smoke my-8">
-                <p class="font-body text-body-md italic text-on-background m-0">
-                  &ldquo;To visit Pithapuram is to walk on the very ground where the Lord performed his divine leelas. It is a place of profound spiritual awakening and absolute purity.&rdquo;
-                </p>
-              </blockquote>
-              <p class="font-body text-body-md leading-relaxed">
-                The temple complex houses the Swayambhu Padukas (divine footprints) of Lord Sripada Srivallabha, which are the focal point of daily worship. The administration, under the AP Endowments Department, ensures transparent operations, regular Nithya Annadanam (free feeding), and impeccable maintenance of the sacred premises.
-              </p>
-              <a href="./history.html" class="inline-block mt-8 font-body text-label-md border-b-2 border-primary text-primary pb-1 hover:text-saffron-deep hover:border-saffron-deep transition-colors uppercase tracking-wide">Read Full History</a>
-            </div>
-          </article>
-        </section>
-
-        <!-- ── RIGHT: Sidebar ── -->
-        <aside aria-label="Peetadhipathi and Essential Services" class="services-sidebar w-full lg:w-80 xl:w-96 flex-shrink-0 flex flex-col gap-6">
+        <!-- ── RIGHT: Sidebar (order-first on mobile) ── -->
+        <aside aria-label="Peetadhipathi and Essential Services" class="content-sidebar services-sidebar w-full lg:w-80 xl:w-96 flex-shrink-0 flex flex-col gap-6">
 
           <!-- ── Guruji Card ── -->
           <div class="guruji-card bg-sacred-white border border-incense-smoke rounded-2xl overflow-hidden shadow-sm">
-            <!-- Photo -->
-            <div class="relative overflow-hidden" style="height: 260px;">
-              <!-- Warm saffron gradient overlay at bottom -->
+            <!-- FIX 4: cap height on mobile -->
+            <div class="relative overflow-hidden" style="height: 220px;" class="sm:h-[260px]">
+              <div class="absolute inset-0" style="height:220px;"><!-- height set inline for mobile --></div>
               <div class="absolute inset-0 bg-gradient-to-t from-[#3b1005cc] via-transparent to-transparent z-10" aria-hidden="true"></div>
               <img
                 src="./images/Guruji.png"
@@ -315,14 +304,13 @@
                 width="400" height="260"
                 loading="lazy" decoding="async"
                 class="guruji-photo w-full h-full object-cover object-top"
+                style="height:220px;"
               >
-              <!-- Name label over photo -->
               <div class="absolute bottom-0 left-0 right-0 z-20 px-5 pb-4">
                 <p class="font-body text-sacred-white font-semibold leading-snug" style="font-size:13px; letter-spacing:0.01em;">Peetadhipathi</p>
                 <h3 class="font-display text-sacred-white leading-tight mt-0.5" style="font-size:16px; line-height:1.35;">Sadguru Sajjanagada Ramaswamy garu</h3>
               </div>
             </div>
-            <!-- Biography link -->
             <div class="px-5 py-4 border-t border-incense-smoke">
               <a
                 href="./files/Aavirbhavam English Book edited by raja.pdf"
@@ -346,7 +334,6 @@
 
           <!-- ── Quick Access / Essential Services ── -->
           <div id="sevas">
-            <!-- Header -->
             <div class="flex items-center justify-between mb-5">
               <div>
                 <span class="font-body text-label-md text-primary tracking-widest uppercase block mb-0.5">Quick Access</span>
@@ -358,10 +345,9 @@
               </a>
             </div>
 
-            <!-- Service cards -->
-            <div class="flex flex-col gap-4">
+            <!-- Service cards — 1-col on mobile, same on desktop sidebar -->
+            <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
 
-              <!-- E-Hundi Donations — linked to Donations.html -->
               <a id="donations" href="./Donations.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
                 <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
                 <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
@@ -377,7 +363,6 @@
                 </div>
               </a>
 
-              <!-- Poojas & Sevas -->
               <a href="./sevas.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
                 <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
                 <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
@@ -393,7 +378,6 @@
                 </div>
               </a>
 
-              <!-- Route Map & Stay -->
               <a id="visit" href="./HowToReach.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
                 <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
                 <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
@@ -411,10 +395,44 @@
 
             </div>
           </div>
-          <!-- end quick access -->
 
         </aside>
-        <!-- end sidebar -->
+
+        <!-- ── LEFT: Temple History (order-second on mobile) ── -->
+        <section id="history" class="content-history flex-1 min-w-0 border-t border-incense-smoke pt-8 md:pt-10">
+          <article>
+            <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
+            <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
+            <!-- FIX 4: h-[220px] mobile, h-[400px] md+ -->
+            <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
+              <img
+                src="./images/left-sripada.png"
+                alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
+                width="1280" height="400"
+                loading="lazy" decoding="async"
+                class="w-full object-cover object-top transition-transform duration-700 hover:scale-105"
+                style="height: clamp(180px, 40vw, 400px);"
+              >
+            </div>
+            <div class="prose max-w-none text-on-surface-variant space-y-6">
+              <p class="font-body text-body-lg leading-relaxed text-on-background font-medium">
+                Pithapuram (formerly Pithikapuram) is one of the most sacred pilgrimage centres in Andhra Pradesh, revered as the birthplace of Lord Sripada Srivallabha, the first complete incarnation of Lord Dattatreya in Kaliyuga.
+              </p>
+              <p class="font-body text-body-md leading-relaxed">
+                The Mahasamsthanam stands as a beacon of spiritual solace, drawing devotees from across the globe who seek the divine blessings of the Lord. The temple architecture, though steeped in ancient tradition, has been thoughtfully preserved and modernised to accommodate the growing number of pilgrims while maintaining its inherent sanctity and peaceful atmosphere.
+              </p>
+              <blockquote class="bg-surface-container-low p-6 rounded-xl border border-incense-smoke my-8">
+                <p class="font-body text-body-md italic text-on-background m-0">
+                  &ldquo;To visit Pithapuram is to walk on the very ground where the Lord performed his divine leelas. It is a place of profound spiritual awakening and absolute purity.&rdquo;
+                </p>
+              </blockquote>
+              <p class="font-body text-body-md leading-relaxed">
+                The temple complex houses the Swayambhu Padukas (divine footprints) of Lord Sripada Srivallabha, which are the focal point of daily worship. The administration, under the AP Endowments Department, ensures transparent operations, regular Nithya Annadanam (free feeding), and impeccable maintenance of the sacred premises.
+              </p>
+              <a href="./history.html" class="inline-block mt-8 font-body text-label-md border-b-2 border-primary text-primary pb-1 hover:text-saffron-deep hover:border-saffron-deep transition-colors uppercase tracking-wide">Read Full History</a>
+            </div>
+          </article>
+        </section>
 
       </div>
     </div>
