@@ -79,6 +79,146 @@
     #mobile-nav a:visited {
       color: inherit;
     }
+
+    /* ── Donations dropdown ── */
+    .nav-dropdown { position: relative; }
+
+    .nav-dropdown-trigger {
+      display: flex;
+      align-items: center;
+      gap: 0.25rem;
+      cursor: pointer;
+      user-select: none;
+    }
+    .nav-dropdown-trigger .chevron {
+      display: inline-block;
+      transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1);
+      font-size: 18px;
+      line-height: 1;
+    }
+    .nav-dropdown:hover .chevron,
+    .nav-dropdown:focus-within .chevron {
+      transform: rotate(180deg);
+    }
+
+    .nav-dropdown-menu {
+      position: absolute;
+      top: calc(100% + 0.5rem);
+      left: 50%;
+      transform: translateX(-50%) translateY(-6px);
+      min-width: 220px;
+      background: var(--sacred-white, #fffdf8);
+      border: 1px solid rgba(140,51,10,0.12);
+      border-radius: 0.625rem;
+      box-shadow: 0 8px 28px rgba(60,20,0,0.13), 0 2px 6px rgba(60,20,0,0.07);
+      padding: 0.375rem 0;
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.18s cubic-bezier(0.16,1,0.3,1),
+                  transform 0.18s cubic-bezier(0.16,1,0.3,1);
+      z-index: 200;
+    }
+    html.dark .nav-dropdown-menu {
+      background: #2a1f1a;
+      border-color: rgba(255,181,150,0.15);
+      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
+    }
+
+    .nav-dropdown:hover .nav-dropdown-menu,
+    .nav-dropdown:focus-within .nav-dropdown-menu {
+      opacity: 1;
+      pointer-events: auto;
+      transform: translateX(-50%) translateY(0);
+    }
+
+    /* Small bridge so mouse can travel from trigger → menu without gap */
+    .nav-dropdown-menu::before {
+      content: '';
+      position: absolute;
+      top: -0.6rem;
+      left: 0;
+      right: 0;
+      height: 0.6rem;
+    }
+
+    .nav-dropdown-menu a {
+      display: flex;
+      align-items: center;
+      gap: 0.6rem;
+      padding: 0.6rem 1rem;
+      font-size: 0.9rem;
+      font-weight: 500;
+      color: #3d2a1e;
+      text-decoration: none;
+      transition: background 0.15s, color 0.15s;
+      white-space: nowrap;
+    }
+    html.dark .nav-dropdown-menu a { color: #e8d5c8; }
+
+    .nav-dropdown-menu a:hover {
+      background: rgba(140,51,10,0.07);
+      color: #8C330A;
+    }
+    html.dark .nav-dropdown-menu a:hover {
+      background: rgba(255,181,150,0.09);
+      color: #ffb596;
+    }
+
+    .nav-dropdown-menu .menu-icon {
+      font-size: 18px;
+      opacity: 0.75;
+    }
+
+    .dropdown-divider {
+      height: 1px;
+      background: rgba(140,51,10,0.1);
+      margin: 0.25rem 0.75rem;
+    }
+    html.dark .dropdown-divider { background: rgba(255,181,150,0.1); }
+
+    .dropdown-all-link {
+      font-weight: 600 !important;
+      color: #8C330A !important;
+    }
+    html.dark .dropdown-all-link { color: #ffb596 !important; }
+
+    /* ── Mobile donations accordion ── */
+    .mobile-donations-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .mobile-donations-toggle .m-chevron {
+      display: inline-block;
+      font-size: 18px;
+      transition: transform 0.2s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mobile-donations-toggle[aria-expanded="true"] .m-chevron {
+      transform: rotate(180deg);
+    }
+    .mobile-donations-sub {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.25s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mobile-donations-sub.open { max-height: 16rem; }
+    .mobile-donations-sub a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0 0.6rem 1rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid;
+    }
   </style>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -105,7 +245,39 @@
     <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./sevas.html">Sevas</a>
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html#accommodation">Accommodation</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html#donations">Donations</a>
+
+      <!-- Donations with dropdown -->
+      <div class="nav-dropdown" role="navigation" aria-label="Donations navigation">
+        <a
+          href="./Donations.html"
+          class="nav-dropdown-trigger font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md"
+          aria-haspopup="true"
+        >
+          Donations
+          <span class="material-symbols-outlined chevron" aria-hidden="true">expand_more</span>
+        </a>
+
+        <div class="nav-dropdown-menu" role="menu" aria-label="Donation categories">
+          <a href="./Annadanam.html" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">restaurant</span>
+            Annadanam
+          </a>
+          <a href="./GoSeva.html" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">pets</span>
+            Go Seva
+          </a>
+          <a href="./BuildingDevelopment.html" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">domain</span>
+            Building Development
+          </a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <a href="./Donations.html" class="dropdown-all-link" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">volunteer_activism</span>
+            All Donations
+          </a>
+        </div>
+      </div>
+
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./history.html">History</a>
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html#visit">Pilgrim Guide</a>
     </nav>
@@ -152,9 +324,57 @@
         <span class="material-symbols-outlined" aria-hidden="true">close</span>
       </button>
     </div>
+
     <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./sevas.html" data-nav-link>Sevas</a>
     <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#accommodation" data-nav-link>Accommodation</a>
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#donations" data-nav-link>Donations</a>
+
+    <!-- Mobile donations accordion -->
+    <div>
+      <button
+        class="mobile-donations-toggle font-body text-body-lg text-on-surface hover:text-primary border-incense-smoke transition-colors"
+        aria-expanded="false"
+        aria-controls="mobile-donations-sub"
+        id="mobile-donations-btn"
+      >
+        <a href="./Donations.html" class="flex-1 text-left no-underline text-on-surface hover:text-primary" onclick="event.stopPropagation()" data-nav-link>Donations</a>
+        <span class="material-symbols-outlined m-chevron" aria-hidden="true">expand_more</span>
+      </button>
+      <div
+        id="mobile-donations-sub"
+        class="mobile-donations-sub"
+        aria-labelledby="mobile-donations-btn"
+      >
+        <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./Annadanam.html" data-nav-link>
+          <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">restaurant</span>
+          Annadanam
+        </a>
+        <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./GoSeva.html" data-nav-link>
+          <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">pets</span>
+          Go Seva
+        </a>
+        <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./BuildingDevelopment.html" data-nav-link>
+          <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">domain</span>
+          Building Development
+        </a>
+      </div>
+    </div>
+
     <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./history.html" data-nav-link>History</a>
     <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#visit" data-nav-link>Pilgrim Guide</a>
   </nav>
+
+  <script>
+    // Mobile donations accordion
+    (function () {
+      const btn = document.getElementById('mobile-donations-btn');
+      const sub = document.getElementById('mobile-donations-sub');
+      if (!btn || !sub) return;
+      btn.addEventListener('click', function (e) {
+        // Allow the inner <a> click to navigate without toggling
+        if (e.target.closest('a')) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        sub.classList.toggle('open', !expanded);
+      });
+    })();
+  </script>
