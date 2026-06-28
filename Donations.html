@@ -124,14 +124,22 @@
       max-height: 2000px;
     }
 
-    /* ── Donation card hover ── */
+    /* ── Donation card ── */
     .donation-card {
       transition: transform 0.25s cubic-bezier(0.16,1,0.3,1),
                   box-shadow 0.25s cubic-bezier(0.16,1,0.3,1);
     }
     .donation-card:hover {
-      transform: translateY(-4px);
-      box-shadow: 0 16px 40px rgba(140, 51, 10, 0.12);
+      transform: translateY(-5px);
+      box-shadow: 0 20px 48px rgba(140, 51, 10, 0.15);
+    }
+
+    /* ── Card image zoom on hover ── */
+    .donation-card:hover .card-img {
+      transform: scale(1.06);
+    }
+    .card-img {
+      transition: transform 0.5s cubic-bezier(0.16, 1, 0.3, 1);
     }
 
     /* ── Amount input focus glow ── */
@@ -153,8 +161,9 @@
     @media (prefers-reduced-motion: reduce) {
       .category-section { animation: none; }
       .read-more-content { transition: none; }
-      .donation-card { transition: none; }
-      .banner-80g { animation: none; }
+      .donation-card     { transition: none; }
+      .card-img          { transition: none; }
+      .banner-80g        { animation: none; }
     }
 
     /* ── Table styles ── */
@@ -176,7 +185,6 @@
     .scheme-table tr:last-child td { border-bottom: none; }
     .scheme-table tr:hover td { background: #fffcfa; }
 
-    /* Scrollable table on mobile */
     .table-scroll { overflow-x: auto; -webkit-overflow-scrolling: touch; }
     .table-scroll::-webkit-scrollbar { height: 4px; }
     .table-scroll::-webkit-scrollbar-track { background: #EDF2F7; }
@@ -219,75 +227,102 @@
         <!-- Card 1: Annadanam -->
         <button
           onclick="showSection('annadanam')"
-          class="donation-card group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm flex flex-col justify-between min-h-[300px] relative overflow-hidden text-left cursor-pointer w-full"
+          class="donation-card group bg-sacred-white border border-incense-smoke rounded-2xl shadow-sm flex flex-col text-left cursor-pointer w-full overflow-hidden"
           aria-controls="annadanam"
           aria-expanded="false"
           id="btn-annadanam"
         >
-          <div class="absolute -right-6 -top-6 w-36 h-36 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-300">
-              <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-secondary-container" style="font-variation-settings:'FILL' 1;" aria-hidden="true">restaurant</span>
-            </div>
-            <span class="font-body text-caption text-primary uppercase tracking-widest mb-2 block">Nitya Seva</span>
-            <h2 class="font-display text-headline-lg text-on-background mb-3">Annadanam</h2>
-            <p class="font-body text-body-md text-on-surface-variant">
-              Sponsor sacred food for outstation pilgrims and devotees who travel to seek the Lord's blessings. Feed hundreds of souls every day.
-            </p>
+          <!-- Image -->
+          <div class="w-full overflow-hidden" style="height:220px;">
+            <img
+              src="./images/Annadanam.png"
+              alt="Annadanam — sacred food being served to devotees at Sripada Srivallabha Mahasamsthanam"
+              width="600" height="220"
+              loading="lazy" decoding="async"
+              class="card-img w-full h-full object-cover"
+            >
           </div>
-          <div class="relative z-10 mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep transition-colors">
-            View Schemes
-            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
+          <!-- Content -->
+          <div class="flex flex-col justify-between flex-1 p-8">
+            <div>
+              <span class="font-body text-caption text-primary uppercase tracking-widest mb-2 block">Nitya Seva</span>
+              <h2 class="font-display text-headline-lg text-on-background mb-3">Annadanam</h2>
+              <p class="font-body text-body-md text-on-surface-variant">
+                Sponsor sacred food for outstation pilgrims and devotees who travel to seek the Lord's blessings. Feed hundreds of souls every day.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep transition-colors">
+              View Schemes
+              <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
+            </div>
           </div>
         </button>
 
         <!-- Card 2: Goseva -->
         <button
           onclick="showSection('goseva')"
-          class="donation-card group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm flex flex-col justify-between min-h-[300px] relative overflow-hidden text-left cursor-pointer w-full"
+          class="donation-card group bg-sacred-white border border-incense-smoke rounded-2xl shadow-sm flex flex-col text-left cursor-pointer w-full overflow-hidden"
           aria-controls="goseva"
           aria-expanded="false"
           id="btn-goseva"
         >
-          <div class="absolute -right-6 -top-6 w-36 h-36 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-300">
-              <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-secondary-container" style="font-variation-settings:'FILL' 1;" aria-hidden="true">cruelty_free</span>
-            </div>
-            <span class="font-body text-caption text-primary uppercase tracking-widest mb-2 block">Goshala</span>
-            <h2 class="font-display text-headline-lg text-on-background mb-3">Goseva</h2>
-            <p class="font-body text-body-md text-on-surface-variant">
-              Support the care and daily worship of our sacred cows. Cow service is considered among the highest acts of devotion in our tradition.
-            </p>
+          <!-- Image -->
+          <div class="w-full overflow-hidden" style="height:220px;">
+            <img
+              src="./images/goseva.png"
+              alt="Goseva — sacred cows being cared for and worshipped at the temple Goshala"
+              width="600" height="220"
+              loading="lazy" decoding="async"
+              class="card-img w-full h-full object-cover"
+            >
           </div>
-          <div class="relative z-10 mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep transition-colors">
-            View Schemes
-            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
+          <!-- Content -->
+          <div class="flex flex-col justify-between flex-1 p-8">
+            <div>
+              <span class="font-body text-caption text-primary uppercase tracking-widest mb-2 block">Goshala</span>
+              <h2 class="font-display text-headline-lg text-on-background mb-3">Goseva</h2>
+              <p class="font-body text-body-md text-on-surface-variant">
+                Support the care and daily worship of our sacred cows. Cow service is considered among the highest acts of devotion in our tradition.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep transition-colors">
+              View Schemes
+              <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
+            </div>
           </div>
         </button>
 
         <!-- Card 3: Building Development -->
         <button
           onclick="showSection('building')"
-          class="donation-card group bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm flex flex-col justify-between min-h-[300px] relative overflow-hidden text-left cursor-pointer w-full"
+          class="donation-card group bg-sacred-white border border-incense-smoke rounded-2xl shadow-sm flex flex-col text-left cursor-pointer w-full overflow-hidden"
           aria-controls="building"
           aria-expanded="false"
           id="btn-building"
         >
-          <div class="absolute -right-6 -top-6 w-36 h-36 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
-          <div class="relative z-10">
-            <div class="w-14 h-14 rounded-full bg-surface-container-high flex items-center justify-center mb-6 group-hover:bg-secondary-container transition-colors duration-300">
-              <span class="material-symbols-outlined text-primary text-3xl group-hover:text-on-secondary-container" style="font-variation-settings:'FILL' 1;" aria-hidden="true">temple_hindu</span>
-            </div>
-            <span class="font-body text-caption text-primary uppercase tracking-widest mb-2 block">Infrastructure</span>
-            <h2 class="font-display text-headline-lg text-on-background mb-3">Building Development</h2>
-            <p class="font-body text-body-md text-on-surface-variant">
-              Help us build the new "Rama Swamy Sadan" — free accommodation for pilgrims from all walks of life. Every brick is a blessing.
-            </p>
+          <!-- Image -->
+          <div class="w-full overflow-hidden" style="height:220px;">
+            <img
+              src="./images/building.png"
+              alt="Building Development — the Sripada Srivallabha Mahasamsthanam temple complex and new construction"
+              width="600" height="220"
+              loading="lazy" decoding="async"
+              class="card-img w-full h-full object-cover"
+            >
           </div>
-          <div class="relative z-10 mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep transition-colors">
-            Donate
-            <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
+          <!-- Content -->
+          <div class="flex flex-col justify-between flex-1 p-8">
+            <div>
+              <span class="font-body text-caption text-primary uppercase tracking-widest mb-2 block">Infrastructure</span>
+              <h2 class="font-display text-headline-lg text-on-background mb-3">Building Development</h2>
+              <p class="font-body text-body-md text-on-surface-variant">
+                Help us build the new "Rama Swamy Sadan" — free accommodation for pilgrims from all walks of life. Every brick is a blessing.
+              </p>
+            </div>
+            <div class="mt-6 flex items-center text-primary font-body text-label-md group-hover:text-saffron-deep transition-colors">
+              Donate
+              <span class="material-symbols-outlined ml-2 group-hover:translate-x-1 transition-transform" aria-hidden="true">arrow_right_alt</span>
+            </div>
           </div>
         </button>
 
@@ -324,7 +359,6 @@
           Annadanam is the sacred act of offering cooked food to all who arrive at the temple. Daily meals are served free of charge to outstation devotees, pilgrims, and the needy who travel long distances to seek the blessings of Lord Sripada Srivallabha. Your donation ensures that no one who comes in devotion leaves hungry.
         </p>
 
-        <!-- Note banner -->
         <div class="flex items-start gap-3 bg-primary-fixed rounded-xl p-5 mb-10 max-w-3xl">
           <span class="material-symbols-outlined text-saffron-deep mt-0.5 flex-shrink-0" style="font-size:20px; font-variation-settings:'FILL' 1;" aria-hidden="true">info</span>
           <p class="font-body text-body-md text-on-primary-fixed-variant m-0">
@@ -332,7 +366,6 @@
           </p>
         </div>
 
-        <!-- Schemes Table -->
         <div class="bg-sacred-white border border-incense-smoke rounded-2xl shadow-sm overflow-hidden mb-10">
           <div class="px-8 py-6 border-b border-incense-smoke">
             <h3 class="font-display text-headline-md text-on-background">Donation Schemes</h3>
@@ -349,32 +382,32 @@
               <tbody class="font-body text-body-md text-on-background">
                 <tr>
                   <td class="font-semibold">Poshak</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 3,000</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 3,000</span></td>
                   <td class="text-on-surface-variant">Annadanam performed on your requested date, once per year, for 10/15 years</td>
                 </tr>
                 <tr>
                   <td class="font-semibold">Raja Poshak</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 25,000</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 25,000</span></td>
                   <td class="text-on-surface-variant">Annadanam performed on your requested date, once per year, for 10/15 years</td>
                 </tr>
                 <tr>
                   <td class="font-semibold">Maha Raja Poshak</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 50,000</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 50,000</span></td>
                   <td class="text-on-surface-variant">Annadanam performed on your requested date, once per year, for 10/15 years</td>
                 </tr>
                 <tr>
                   <td class="font-semibold">Parayanam Special</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 550</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 550</span></td>
                   <td class="text-on-surface-variant">Feeds 11 members for one full day</td>
                 </tr>
                 <tr>
                   <td class="font-semibold">Custom One-Day</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 50 / person</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 50 / person</span></td>
                   <td class="text-on-surface-variant">Sponsor a custom headcount for one day — <strong>prior notice required</strong> by email or phone</td>
                 </tr>
                 <tr>
                   <td class="font-semibold">Nitya Annadanam</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">Any amount</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">Any amount</span></td>
                   <td class="text-on-surface-variant">General contribution to the daily food fund — no fixed amount, any seva is blessed</td>
                 </tr>
               </tbody>
@@ -383,7 +416,7 @@
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4">
-          <button class="flex items-center justify-center gap-2 bg-primary text-on-primary font-body font-semibold text-label-md px-8 py-4 rounded-xl hover:bg-saffron-deep transition-colors min-h-[52px]" aria-label="Proceed to Annadanam donation payment">
+          <button class="flex items-center justify-center gap-2 bg-primary text-on-primary font-body font-semibold text-label-md px-8 py-4 rounded-xl hover:bg-saffron-deep transition-colors min-h-[52px]">
             <span class="material-symbols-outlined" style="font-size:20px; font-variation-settings:'FILL' 1;" aria-hidden="true">volunteer_activism</span>
             Donate for Annadanam
           </button>
@@ -426,7 +459,6 @@
           The Goshala at the Mahasamsthanam is home to sacred cows cared for with love and reverence. Goseva — the service and worship of cows — is one of the most meritorious acts a devotee can perform in this age. Your contribution directly supports their daily care, nourishment, and ritual worship.
         </p>
 
-        <!-- Read More — spiritual text collapsed -->
         <div class="mb-10 max-w-3xl">
           <div id="goseva-read-more" class="read-more-content">
             <div class="bg-surface-container-low border border-incense-smoke rounded-xl p-6 mb-4">
@@ -453,7 +485,6 @@
           </button>
         </div>
 
-        <!-- Schemes Table -->
         <div class="bg-sacred-white border border-incense-smoke rounded-2xl shadow-sm overflow-hidden mb-10">
           <div class="px-8 py-6 border-b border-incense-smoke">
             <h3 class="font-display text-headline-md text-on-background">Gopooja Schemes</h3>
@@ -470,17 +501,17 @@
               <tbody class="font-body text-body-md text-on-background">
                 <tr>
                   <td class="font-semibold">One-Day Gopooja</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 200</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 200</span></td>
                   <td class="text-on-surface-variant">Full Gopooja performed on one requested date of your choice</td>
                 </tr>
                 <tr>
                   <td class="font-semibold">15-Year Gopooja</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 4,000</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 4,000</span></td>
                   <td class="text-on-surface-variant">Gopooja performed once per year, on your requested date, for 15 years</td>
                 </tr>
                 <tr>
                   <td class="font-semibold">Maharajaposhakulu</td>
-                  <td><span class="inline-flex items-center gap-1 bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 60,000</span></td>
+                  <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px;">₹ 60,000</span></td>
                   <td class="text-on-surface-variant">Gopooja on Krishnashtami + 2 additional days of your choice, every year for 15 years (3 days/year)</td>
                 </tr>
               </tbody>
@@ -489,7 +520,7 @@
         </div>
 
         <div class="flex flex-col sm:flex-row gap-4">
-          <button class="flex items-center justify-center gap-2 bg-primary text-on-primary font-body font-semibold text-label-md px-8 py-4 rounded-xl hover:bg-saffron-deep transition-colors min-h-[52px]" aria-label="Proceed to Goseva donation payment">
+          <button class="flex items-center justify-center gap-2 bg-primary text-on-primary font-body font-semibold text-label-md px-8 py-4 rounded-xl hover:bg-saffron-deep transition-colors min-h-[52px]">
             <span class="material-symbols-outlined" style="font-size:20px; font-variation-settings:'FILL' 1;" aria-hidden="true">volunteer_activism</span>
             Donate for Goseva
           </button>
@@ -532,7 +563,6 @@
           The Mahasamsthanam currently hosts <strong class="text-on-background">47 rooms</strong>, assembly halls accommodating up to <strong class="text-on-background">70 members</strong>, and a dining facility that serves up to <strong class="text-on-background">120 devotees</strong> at once. We are now raising funds for the new <strong class="text-on-background">Rama Swamy Sadan</strong> — a free accommodation building that will ensure every pilgrim has a safe and comfortable place to rest, regardless of their means.
         </p>
 
-        <!-- Current facilities summary -->
         <div class="grid grid-cols-1 sm:grid-cols-3 gap-gutter mb-10">
           <div class="bg-sacred-white border border-incense-smoke rounded-2xl p-6 shadow-sm text-center">
             <span class="material-symbols-outlined text-primary text-4xl mb-3 block" style="font-variation-settings:'FILL' 1;" aria-hidden="true">door_front</span>
@@ -551,7 +581,6 @@
           </div>
         </div>
 
-        <!-- Rama Swamy Sadan highlight -->
         <div class="bg-gradient-to-r from-primary-fixed via-sacred-white to-primary-fixed border border-outline-variant rounded-2xl p-8 mb-10 max-w-3xl">
           <div class="flex items-center gap-3 mb-3">
             <span class="material-symbols-outlined text-saffron-deep text-3xl" style="font-variation-settings:'FILL' 1;" aria-hidden="true">foundation</span>
@@ -562,7 +591,6 @@
           </p>
         </div>
 
-        <!-- Custom donation input -->
         <div class="bg-sacred-white border border-incense-smoke rounded-2xl shadow-sm p-8 max-w-lg mb-10" role="form" aria-label="Building development donation form">
           <h3 class="font-display text-headline-md text-on-background mb-2">Make a Donation</h3>
           <p class="font-body text-body-md text-on-surface-variant mb-6">Enter any amount you wish to contribute to the Rama Swamy Sadan construction fund.</p>
@@ -570,7 +598,7 @@
           <label for="building-amount" class="block font-body text-label-md text-on-background mb-2 uppercase tracking-widest">
             Donation Amount (Rs.)
           </label>
-          <div class="flex items-center border-2 border-incense-smoke rounded-xl overflow-hidden bg-white transition-all duration-200 mb-6">
+          <div class="flex items-center border-2 border-incense-smoke rounded-xl overflow-hidden bg-white mb-6">
             <span class="px-4 py-4 font-display text-headline-md text-primary select-none border-r border-incense-smoke bg-surface-container-low" aria-hidden="true">₹</span>
             <input
               type="number"
@@ -587,7 +615,6 @@
             All donations are eligible for 80G Income Tax Exemption. You will receive an official receipt by email.
           </p>
 
-          <!-- Quick amount chips -->
           <div class="flex flex-wrap gap-2 mb-6" role="group" aria-label="Quick donation amounts">
             <button onclick="setAmount(501)"   class="px-4 py-2 rounded-full border border-incense-smoke font-body text-label-md text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary-fixed transition-all">₹501</button>
             <button onclick="setAmount(1001)"  class="px-4 py-2 rounded-full border border-incense-smoke font-body text-label-md text-on-surface-variant hover:border-primary hover:text-primary hover:bg-primary-fixed transition-all">₹1,001</button>
@@ -598,7 +625,6 @@
           <button
             class="w-full flex items-center justify-center gap-2 bg-primary text-on-primary font-body font-semibold text-label-md px-8 py-4 rounded-xl hover:bg-saffron-deep transition-colors min-h-[52px]"
             onclick="proceedBuildingDonation()"
-            aria-label="Proceed to building development donation payment"
           >
             <span class="material-symbols-outlined" style="font-size:20px; font-variation-settings:'FILL' 1;" aria-hidden="true">volunteer_activism</span>
             Proceed to Donate
@@ -647,7 +673,6 @@
   </script>
 
   <script>
-    /* ── Section navigation ── */
     const SECTIONS = ['annadanam', 'goseva', 'building'];
 
     function showSection(id) {
@@ -657,14 +682,11 @@
         if (el)  el.classList.remove('active');
         if (btn) btn.setAttribute('aria-expanded', 'false');
       });
-
       const target     = document.getElementById(id);
       const triggerBtn = document.getElementById('btn-' + id);
       if (!target) return;
-
       target.classList.add('active');
       if (triggerBtn) triggerBtn.setAttribute('aria-expanded', 'true');
-
       setTimeout(() => {
         target.scrollIntoView({ behavior: 'smooth', block: 'start' });
         target.focus({ preventScroll: true });
@@ -676,19 +698,16 @@
       const btn = document.getElementById('btn-' + id);
       if (el)  el.classList.remove('active');
       if (btn) btn.setAttribute('aria-expanded', 'false');
-
       const cards = document.getElementById('donation-cards');
       if (cards) cards.scrollIntoView({ behavior: 'smooth', block: 'start' });
     }
 
-    /* ── Goseva Read More toggle ── */
     function toggleReadMore() {
       const content  = document.getElementById('goseva-read-more');
       const btn      = document.getElementById('goseva-read-more-btn');
       const icon     = document.getElementById('goseva-read-more-icon');
       const label    = document.getElementById('goseva-read-more-label');
       const expanded = btn.getAttribute('aria-expanded') === 'true';
-
       if (expanded) {
         content.classList.remove('expanded');
         btn.setAttribute('aria-expanded', 'false');
@@ -702,13 +721,11 @@
       }
     }
 
-    /* ── Quick amount chips ── */
     function setAmount(val) {
       const input = document.getElementById('building-amount');
       if (input) { input.value = val; input.focus(); }
     }
 
-    /* ── Building donation proceed ── */
     function proceedBuildingDonation() {
       const input  = document.getElementById('building-amount');
       const amount = parseInt(input ? input.value : 0, 10);
