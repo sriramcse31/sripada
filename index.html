@@ -112,13 +112,12 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* ── Notice Ticker ── */
+    /* Notice Ticker */
     #notice-ticker {
       position: relative;
       height: 48px;
       overflow: hidden;
     }
-
     .notice-slide {
       position: absolute;
       inset: 0;
@@ -128,19 +127,16 @@
       opacity: 0;
       pointer-events: none;
     }
-
     .notice-slide.active {
       opacity: 1;
       pointer-events: auto;
       animation: noticeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
-
     .notice-slide.exit {
       opacity: 0;
       pointer-events: none;
       animation: noticeOut 0.3s cubic-bezier(0.4, 0, 1, 1) both;
     }
-
     @keyframes noticeIn {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -149,7 +145,6 @@
       from { opacity: 1; transform: translateY(0); }
       to   { opacity: 0; transform: translateY(-8px); }
     }
-
     #notice-progress {
       height: 2px;
       background: #8C330A;
@@ -157,7 +152,6 @@
       transition: width linear;
       border-radius: 2px;
     }
-
     .notice-dot {
       width: 6px;
       height: 6px;
@@ -172,7 +166,6 @@
       background: #8C330A;
       transform: scale(1.4);
     }
-
     @media (prefers-reduced-motion: reduce) {
       .notice-slide.active { animation: none; opacity: 1; }
       .notice-slide.exit   { animation: none; opacity: 0; }
@@ -187,14 +180,10 @@
   <div id="site-header"></div>
   <script src="./partials/loader.js"></script>
 
-  <!-- MAIN CONTENT -->
   <main id="main-content">
 
     <!-- Hero Section -->
-    <section
-      class="w-full"
-      aria-label="Sripada Srivallabha Mahasamsthanam — sacred temple at Pithapuram"
-    >
+    <section class="w-full" aria-label="Sripada Srivallabha Mahasamsthanam — sacred temple at Pithapuram">
       <img
         src="./images/site-hero.png"
         alt="Sripada Srivallabha Mahasamsthanam — divine deities at the sacred temple, Pithapuram, Andhra Pradesh"
@@ -204,7 +193,7 @@
       >
     </section>
 
-    <!-- ── Notice Ticker ── -->
+    <!-- Notice Ticker -->
     <section aria-label="Temple notices and updates" class="bg-sacred-white border-b border-incense-smoke shadow-sm">
       <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg">
         <div class="w-full bg-incense-smoke" style="height:2px;" aria-hidden="true">
@@ -303,100 +292,38 @@
       <a class="md:hidden mt-6 flex justify-center font-body text-label-md text-primary items-center gap-1 w-full border border-incense-smoke py-3 rounded-lg" href="#">View All Services</a>
     </section>
 
-    <!-- Temple History + Sidebar -->
+    <!-- Temple History (full-width) -->
     <section id="history" class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-12 pb-24 border-t border-incense-smoke">
-      <div class="grid grid-cols-1 lg:grid-cols-12 gap-12">
-        <article class="lg:col-span-8">
-          <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
-          <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
-          <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
-            <img
-              src="./images/left-sripada.png"
-              alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
-              width="1280" height="400"
-              loading="lazy" decoding="async"
-              class="w-full h-[400px] object-cover object-top transition-transform duration-700 hover:scale-105"
-            >
-          </div>
-          <div class="prose max-w-none text-on-surface-variant space-y-6">
-            <p class="font-body text-body-lg leading-relaxed text-on-background font-medium">
-              Pithapuram (formerly Pithikapuram) is one of the most sacred pilgrimage centres in Andhra Pradesh, revered as the birthplace of Lord Sripada Srivallabha, the first complete incarnation of Lord Dattatreya in Kaliyuga.
+      <article>
+        <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
+        <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
+        <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
+          <img
+            src="./images/left-sripada.png"
+            alt="Lord Sripada Srivallabha — sacred image from the Mahasamsthanam, Pithapuram"
+            width="1280" height="400"
+            loading="lazy" decoding="async"
+            class="w-full h-[400px] object-cover object-top transition-transform duration-700 hover:scale-105"
+          >
+        </div>
+        <div class="prose max-w-none text-on-surface-variant space-y-6">
+          <p class="font-body text-body-lg leading-relaxed text-on-background font-medium">
+            Pithapuram (formerly Pithikapuram) is one of the most sacred pilgrimage centres in Andhra Pradesh, revered as the birthplace of Lord Sripada Srivallabha, the first complete incarnation of Lord Dattatreya in Kaliyuga.
+          </p>
+          <p class="font-body text-body-md leading-relaxed">
+            The Mahasamsthanam stands as a beacon of spiritual solace, drawing devotees from across the globe who seek the divine blessings of the Lord. The temple architecture, though steeped in ancient tradition, has been thoughtfully preserved and modernised to accommodate the growing number of pilgrims while maintaining its inherent sanctity and peaceful atmosphere.
+          </p>
+          <blockquote class="bg-surface-container-low p-6 rounded-xl border border-incense-smoke my-8">
+            <p class="font-body text-body-md italic text-on-background m-0">
+              "To visit Pithapuram is to walk on the very ground where the Lord performed his divine leelas. It is a place of profound spiritual awakening and absolute purity."
             </p>
-            <p class="font-body text-body-md leading-relaxed">
-              The Mahasamsthanam stands as a beacon of spiritual solace, drawing devotees from across the globe who seek the divine blessings of the Lord. The temple architecture, though steeped in ancient tradition, has been thoughtfully preserved and modernised to accommodate the growing number of pilgrims while maintaining its inherent sanctity and peaceful atmosphere.
-            </p>
-            <blockquote class="bg-surface-container-low p-6 rounded-xl border border-incense-smoke my-8">
-              <p class="font-body text-body-md italic text-on-background m-0">
-                "To visit Pithapuram is to walk on the very ground where the Lord performed his divine leelas. It is a place of profound spiritual awakening and absolute purity."
-              </p>
-            </blockquote>
-            <p class="font-body text-body-md leading-relaxed">
-              The temple complex houses the Swayambhu Padukas (divine footprints) of Lord Sripada Srivallabha, which are the focal point of daily worship. The administration, under the AP Endowments Department, ensures transparent operations, regular Nithya Annadanam (free feeding), and impeccable maintenance of the sacred premises.
-            </p>
-            <button class="mt-8 font-body text-label-md border-b-2 border-primary text-primary pb-1 hover:text-saffron-deep hover:border-saffron-deep transition-colors uppercase tracking-wide">Read Full History</button>
-          </div>
-        </article>
-
-        <aside id="darshan" class="lg:col-span-4 space-y-8 mt-12 lg:mt-0">
-          <div class="bg-sacred-white border border-incense-smoke rounded-2xl p-8 shadow-sm">
-            <h3 class="font-display text-headline-lg text-on-background mb-8 flex items-center gap-3">
-              <span class="material-symbols-outlined text-saffron-deep text-3xl" aria-hidden="true">schedule</span>
-              Daily Schedule
-            </h3>
-            <ul class="space-y-0" aria-label="Daily darshan schedule">
-              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Suprabhatam &amp; Darshan</span>
-                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">04:30 AM</span>
-              </li>
-              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Morning Abhishekam</span>
-                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">06:00 AM</span>
-              </li>
-              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Maha Naivedyam</span>
-                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">12:00 PM</span>
-              </li>
-              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Temple Closes</span>
-                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">01:00 PM</span>
-              </li>
-              <li class="flex justify-between items-center py-4 border-b border-incense-smoke group">
-                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Evening Darshan</span>
-                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">04:00 PM</span>
-              </li>
-              <li class="flex justify-between items-center py-4 group">
-                <span class="font-body text-body-md text-on-surface-variant group-hover:text-primary transition-colors">Ekantha Seva</span>
-                <span class="font-body text-label-md text-on-background bg-surface-container px-3 py-1 rounded-md">09:00 PM</span>
-              </li>
-            </ul>
-          </div>
-
-          <div class="relative rounded-2xl overflow-hidden shadow-md group">
-            <img
-              src="https://picsum.photos/seed/temple-diyas/600/256"
-              alt="Traditional brass oil lamps burning brightly in a darkened temple sanctum, warm golden light creating a deeply spiritual atmosphere"
-              width="600" height="256"
-              loading="lazy" decoding="async"
-              class="w-full h-64 object-cover group-hover:scale-110 transition-transform duration-700 ease-in-out"
-            >
-            <div class="absolute inset-0 bg-gradient-to-t from-on-background via-on-background/50 to-transparent flex flex-col justify-end p-8">
-              <div class="flex items-center gap-2 mb-3">
-                <span class="relative flex h-3 w-3" aria-hidden="true">
-                  <span class="animate-ping absolute inline-flex h-full w-full rounded-full bg-error opacity-75"></span>
-                  <span class="relative inline-flex rounded-full h-3 w-3 bg-error"></span>
-                </span>
-                <span class="font-body text-label-md text-error-container uppercase tracking-wider">Live Now</span>
-              </div>
-              <h3 class="font-display text-headline-lg text-sacred-white mb-4">Virtual Darshan</h3>
-              <p class="font-body text-body-md text-surface-container-highest mb-6 line-clamp-2">Experience the evening Harathi rituals live from the main sanctum.</p>
-              <button class="font-body text-label-md bg-sacred-white/20 backdrop-blur-md text-sacred-white border border-sacred-white/50 px-6 py-3 rounded-full hover:bg-sacred-white hover:text-on-background transition-all duration-300 flex items-center justify-center gap-2 w-full">
-                <span class="material-symbols-outlined" style="font-variation-settings: 'FILL' 1;" aria-hidden="true">play_circle</span>
-                Join Broadcast
-              </button>
-            </div>
-          </div>
-        </aside>
-      </div>
+          </blockquote>
+          <p class="font-body text-body-md leading-relaxed">
+            The temple complex houses the Swayambhu Padukas (divine footprints) of Lord Sripada Srivallabha, which are the focal point of daily worship. The administration, under the AP Endowments Department, ensures transparent operations, regular Nithya Annadanam (free feeding), and impeccable maintenance of the sacred premises.
+          </p>
+          <a href="./history.html" class="inline-block mt-8 font-body text-label-md border-b-2 border-primary text-primary pb-1 hover:text-saffron-deep hover:border-saffron-deep transition-colors uppercase tracking-wide">Read Full History</a>
+        </div>
+      </article>
     </section>
 
   </main>
