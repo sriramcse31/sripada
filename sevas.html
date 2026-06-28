@@ -215,7 +215,7 @@
       box-shadow: 0 2px 8px rgba(159,62,7,0.18);
     }
 
-    /* Seva card — flex column so footer sticks to bottom */
+    /* Seva card */
     .seva-card {
       background: #FFFCFA;
       border: 1px solid #EDF2F7;
@@ -234,14 +234,12 @@
     .seva-card-header {
       padding: 24px 24px 0 24px;
     }
-    /* Body grows to fill remaining space, pushing footer to bottom */
     .seva-card-body {
       padding: 0 24px 20px 24px;
       display: flex;
       flex-direction: column;
       flex: 1;
     }
-    /* Footer row: Book Seva left, price pill right */
     .seva-card-footer {
       display: flex;
       align-items: center;
@@ -249,11 +247,6 @@
       gap: 12px;
       margin-top: auto;
       padding-top: 20px;
-    }
-
-    #panel-festival .seva-card-header {
-      min-height: 0;
-      height: auto;
     }
 
     .cost-badge {
@@ -336,7 +329,6 @@
       transform: translateY(-1px);
     }
 
-    /* Seva card image */
     .seva-card-img {
       width: 100%;
       height: 200px;
@@ -344,39 +336,23 @@
       display: block;
     }
 
-    /* Placeholder shown when image is missing */
     .seva-card-img-placeholder {
       width: 100%;
       height: 200px;
-      background: linear-gradient(135deg, var(--color-surface-offset) 0%, var(--color-surface-dynamic) 100%);
+      background: linear-gradient(135deg, #f3f0ec 0%, #e6e4df 100%);
       display: flex;
       flex-direction: column;
       align-items: center;
       justify-content: center;
-      gap: var(--space-2);
-      color: var(--color-text-faint);
+      gap: 8px;
+      color: #bab9b4;
     }
-
-    .seva-card-img-placeholder span.material-symbols-outlined {
-      font-size: 40px;
-    }
-
+    .seva-card-img-placeholder span.material-symbols-outlined { font-size: 40px; }
     .seva-card-img-placeholder p {
-      font-size: var(--text-xs);
-      font-family: var(--font-body);
+      font-size: 12px;
+      font-family: "Hanken Grotesk", system-ui, sans-serif;
       letter-spacing: 0.05em;
       text-transform: uppercase;
-      color: var(--color-text-faint);
-      max-width: none;
-    }
-
-    /* Footer row: book btn left, cost badge right */
-    .seva-card-footer {
-      margin-top: var(--space-5);
-      display: flex;
-      align-items: center;
-      justify-content: space-between;
-      gap: var(--space-3);
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -768,65 +744,34 @@
 
           <!-- saswatha-01 · Saswata Akhanda Deeparadhana -->
           <article class="seva-card h-full" id="saswatha-01" aria-label="Saswata Akhanda Deeparadhana seva">
-            <img
-              src="./images/seva-SASWATA-AKHANDA-DEEPARADHANA.jpg"
-              alt="Saswata Akhanda Deeparadhana at Sripada Srivallabha Mahasamsthanam"
-              width="600" height="200"
-              loading="lazy" decoding="async"
-              class="seva-card-img"
-              onerror="this.replaceWith(sevaImgPlaceholder())"
-            >
+            <img src="./images/seva-SASWATA-AKHANDA-DEEPARADHANA.jpg" alt="Saswata Akhanda Deeparadhana" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header min-h-[11rem]">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-saswatha">Saswata Pooja</span>
-                <span class="timing-badge flex-shrink-0">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                  Yearly · 15 years
-                </span>
+                <span class="timing-badge flex-shrink-0"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>Yearly · 15 years</span>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Saswata Akhanda Deeparadhana</h2>
               <p class="font-body text-caption text-on-surface-variant mb-3">For Deeparadhana — performed for 15 years</p>
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4 flex-1">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-                Deeparadhana will be Performed to Guru Dattatreya Sripada Srivallabha on the Desired day of the bhakta each year for 15 years and Prasadam will be sent by post.
-              </p>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">Deeparadhana will be Performed to Guru Dattatreya Sripada Srivallabha on the Desired day of the bhakta each year for 15 years and Prasadam will be sent by post.</p>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=saswatha-01" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  800
-                </span>
+                <a href="./checkout.html?id=saswatha-01" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>800</span>
               </div>
             </div>
           </article>
 
           <!-- saswatha-02 · Saswata Maha Pooja -->
           <article class="seva-card h-full" id="saswatha-02" aria-label="Saswata Maha Pooja seva">
-            <img
-              src="./images/seva-saswata-maha-pooja.jpg"
-              alt="Saswata Maha Pooja at Sripada Srivallabha Mahasamsthanam"
-              width="600" height="200"
-              loading="lazy" decoding="async"
-              class="seva-card-img"
-              onerror="this.replaceWith(sevaImgPlaceholder())"
-            >
+            <img src="./images/seva-saswata-maha-pooja.jpg" alt="Saswata Maha Pooja" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header min-h-[11rem]">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-saswatha">Saswata Pooja</span>
                 <div class="flex items-center gap-1 flex-shrink-0 flex-wrap justify-end">
-                  <span class="timing-badge">
-                    <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                    9:00 a.m.
-                  </span>
-                  <span class="timing-badge">
-                    <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                    15 years
-                  </span>
+                  <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>9:00 a.m.</span>
+                  <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>15 years</span>
                 </div>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Saswata Maha Pooja</h2>
@@ -834,52 +779,25 @@
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4 flex-1">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Saswatha Maha Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha by 9:00 A.M. on the Desired day of the bhakta each year for 15 years and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-02">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-saswatha-02" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  Lord Dattatreya is the embodiment of 'Trimurthis'. The first incarnation of Dattatreya is Sripada Srivallabha. Abhishekams with Panchamrutham are performed. By performing this Seva, Devotees are blessed with the Lord's Anugraha and their desires and wishes will be fulfilled.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Saswatha Maha Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha by 9:00 A.M. on the Desired day of the bhakta each year for 15 years and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-02">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-saswatha-02" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">Lord Dattatreya is the embodiment of 'Trimurthis'. The first incarnation of Dattatreya is Sripada Srivallabha. By performing this Seva, Devotees are blessed with the Lord's Anugraha and their desires and wishes will be fulfilled.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=saswatha-02" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  2,000
-                </span>
+                <a href="./checkout.html?id=saswatha-02" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>2,000</span>
               </div>
             </div>
           </article>
 
           <!-- saswatha-03 · Saswata Rudrabhishekam Pooja -->
           <article class="seva-card h-full" id="saswatha-03" aria-label="Saswata Rudrabhishekam Pooja seva">
-            <img
-              src="./images/seva-SASWATA-RUDRABHISHEKA-POOJA.jpg"
-              alt="Saswata Rudrabhishekam Pooja at Sripada Srivallabha Mahasamsthanam"
-              width="600" height="200"
-              loading="lazy" decoding="async"
-              class="seva-card-img"
-              onerror="this.replaceWith(sevaImgPlaceholder())"
-            >
+            <img src="./images/seva-SASWATA-RUDRABHISHEKA-POOJA.jpg" alt="Saswata Rudrabhishekam Pooja" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header min-h-[11rem]">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-saswatha">Saswata Pooja</span>
                 <div class="flex items-center gap-1 flex-shrink-0 flex-wrap justify-end">
-                  <span class="timing-badge">
-                    <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                    9:00 a.m.
-                  </span>
-                  <span class="timing-badge">
-                    <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                    With name &amp; gotram
-                  </span>
+                  <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>9:00 a.m.</span>
+                  <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>With name &amp; gotram</span>
                 </div>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Saswata Rudrabhishekam Pooja</h2>
@@ -887,99 +805,48 @@
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4 flex-1">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Saswatha Rudrabhisheka Sahita Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha by 9:00 a.m. on the Desired day of Bhakta with their name and gotram and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-03">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-saswatha-03" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  The Lotus feet of the lord are worshipped with eleven items 11 times along with Rudranamaka chamakams. Of the 'Thrimurthis', Rudra is fond of Abhishekam and Lord Sripada Srivallabha is the incarnation of Dattatreya. All Devotees are requested to take part and get his blessings in plenty.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Saswatha Rudrabhisheka Sahita Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha by 9:00 a.m. on the Desired day of Bhakta with their name and gotram and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-03">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-saswatha-03" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">The Lotus feet of the lord are worshipped with eleven items 11 times along with Rudranamaka chamakams. Of the 'Thrimurthis', Rudra is fond of Abhishekam and Lord Sripada Srivallabha is the incarnation of Dattatreya. All Devotees are requested to take part and get his blessings in plenty.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=saswatha-03" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  5,000
-                </span>
+                <a href="./checkout.html?id=saswatha-03" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>5,000</span>
               </div>
             </div>
           </article>
 
           <!-- saswatha-04 · Saswata Datta Mahamantra Homam -->
           <article class="seva-card h-full" id="saswatha-04" aria-label="Saswata Datta Mahamantra Homam seva">
-            <img
-              src="./images/seva-SASWATA-DATTA-MAHAMANTRA-HOMAM.jpg"
-              alt="Saswata Datta Mahamantra Homam at Sripada Srivallabha Mahasamsthanam"
-              width="600" height="200"
-              loading="lazy" decoding="async"
-              class="seva-card-img"
-              onerror="this.replaceWith(sevaImgPlaceholder())"
-            >
+            <img src="./images/seva-SASWATA-DATTA-MAHAMANTRA-HOMAM.jpg" alt="Saswata Datta Mahamantra Homam" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header min-h-[11rem]">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-saswatha">Saswata Pooja</span>
-                <span class="timing-badge flex-shrink-0">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                  Yearly · 15 years
-                </span>
+                <span class="timing-badge flex-shrink-0"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>Yearly · 15 years</span>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Saswata Datta Mahamantra Homam</h2>
               <p class="font-body text-caption text-on-surface-variant mb-3">For Datta Maha Mantra Homam to Sripada Srivallabha</p>
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4 flex-1">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Saswatha Datta Mahamantra Homam will be Performed to Guru Dattatreya Sripada Srivallabha on the Desired day of the bhakta each year for 15 years and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-04">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-saswatha-04" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  If 108 times 'Datta Mahamantra Homam' is performed and the celestial deities are invoked and satisfied by offering 'Havissu', Devotees are protected from problems of 'Gocharam' and their wishes are fulfilled.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Saswatha Datta Mahamantra Homam will be Performed to Guru Dattatreya Sripada Srivallabha on the Desired day of the bhakta each year for 15 years and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-04">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-saswatha-04" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">If 108 times 'Datta Mahamantra Homam' is performed and the celestial deities are invoked and satisfied by offering 'Havissu', Devotees are protected from problems of 'Gocharam' and their wishes are fulfilled.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=saswatha-04" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  5,000
-                </span>
+                <a href="./checkout.html?id=saswatha-04" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>5,000</span>
               </div>
             </div>
           </article>
 
           <!-- saswatha-05 · Saswata Pallaki Seva -->
           <article class="seva-card h-full" id="saswatha-05" aria-label="Saswata Pallaki Seva">
-            <img
-              src="./images/seva-pallaki-seva.jpg"
-              alt="Saswata Pallaki Seva at Sripada Srivallabha Mahasamsthanam"
-              width="600" height="200"
-              loading="lazy" decoding="async"
-              class="seva-card-img"
-              onerror="this.replaceWith(sevaImgPlaceholder())"
-            >
+            <img src="./images/seva-pallaki-seva.jpg" alt="Saswata Pallaki Seva" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header min-h-[11rem]">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-saswatha">Saswata Pooja</span>
                 <div class="flex items-center gap-1 flex-shrink-0 flex-wrap justify-end">
-                  <span class="timing-badge">
-                    <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                    7:00 p.m.
-                  </span>
-                  <span class="timing-badge">
-                    <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                    15 years
-                  </span>
+                  <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>7:00 p.m.</span>
+                  <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>15 years</span>
                 </div>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Saswata Pallaki Seva</h2>
@@ -987,52 +854,25 @@
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4 flex-1">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Laghu Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha with different Haaratis and Pallaki Seva will be conducted by 7:00 p.m. on the desired day of the Bhakta each year for 15 years and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-05">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-saswatha-05" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  The Devotees carry the Pallaki of Lord Sripada Srivallabha on their shoulders and walk around the Mandir 3 times by singing Sankeerthanas, Bhajanas etc. so that the pleased Lord bestows them with Name, Fame, Health and Prosperity.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Laghu Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha with different Haaratis and Pallaki Seva will be conducted by 7:00 p.m. on the desired day of the Bhakta each year for 15 years and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-05">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-saswatha-05" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">The Devotees carry the Pallaki of Lord Sripada Srivallabha on their shoulders and walk around the Mandir 3 times by singing Sankeerthanas, Bhajanas etc. so that the pleased Lord bestows them with Name, Fame, Health and Prosperity.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=saswatha-05" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  2,000
-                </span>
+                <a href="./checkout.html?id=saswatha-05" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>2,000</span>
               </div>
             </div>
           </article>
 
           <!-- saswatha-06 · Saswata Rajita Pallaki Seva -->
           <article class="seva-card h-full" id="saswatha-06" aria-label="Saswata Rajita Pallaki Seva">
-            <img
-              src="./images/seva-pallaki-seva.jpg"
-              alt="Saswata Rajita Pallaki Seva at Sripada Srivallabha Mahasamsthanam"
-              width="600" height="200"
-              loading="lazy" decoding="async"
-              class="seva-card-img"
-              onerror="this.replaceWith(sevaImgPlaceholder())"
-            >
+            <img src="./images/seva-pallaki-seva.jpg" alt="Saswata Rajita Pallaki Seva" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header min-h-[11rem]">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-saswatha">Saswata Pooja</span>
                 <div class="flex items-center gap-1 flex-shrink-0 flex-wrap justify-end">
-                  <span class="timing-badge">
-                    <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                    7:00 p.m.
-                  </span>
-                  <span class="timing-badge">
-                    <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                    15 years
-                  </span>
+                  <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>7:00 p.m.</span>
+                  <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>15 years</span>
                 </div>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Saswata Rajita Pallaki Seva</h2>
@@ -1040,26 +880,12 @@
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4 flex-1">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Laghu Pooja will be Performed to the Pious Padukas of Guru Dattatreya Sripada Srivallabha with different Haaratis and Pallaki Seva with silver Pallaki will be conducted by 7:00 p.m. for 15 years and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-06">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-saswatha-06" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  The Devotees carry the Rajitha (Silver) Pallaki of Lord Sripada Srivallabha on their shoulders and walk around the Mandir 3 times by singing Sankeerthanas, Bhajanas etc. so that the pleased Lord bestows them with Name, Fame, Health and Prosperity.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Laghu Pooja will be Performed to the Pious Padukas of Guru Dattatreya Sripada Srivallabha with different Haaratis and Pallaki Seva with silver Pallaki will be conducted by 7:00 p.m. for 15 years and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-saswatha-06">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-saswatha-06" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">The Devotees carry the Rajitha (Silver) Pallaki of Lord Sripada Srivallabha on their shoulders and walk around the Mandir 3 times by singing Sankeerthanas, Bhajanas etc. so that the pleased Lord bestows them with Name, Fame, Health and Prosperity.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=saswatha-06 " class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  5,000
-                </span>
+                <a href="./checkout.html?id=saswatha-06" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>5,000</span>
               </div>
             </div>
           </article>
@@ -1073,266 +899,134 @@
 
           <!-- V1. Mandala Abhisheka Pooja -->
           <article class="seva-card" aria-label="Mandala Abhisheka Pooja seva">
-            <img
-              src="./images/seva-MANDALA-ABHISHEKA-POOJA.jpg"
-              alt="Mandala Abhisheka Pooja"
-              width="400" height="180"
-              loading="lazy" decoding="async"
-              class="w-full object-cover"
-              style="height:180px; border-radius:16px 16px 0 0;"
-            >
+            <img src="./images/seva-MANDALA-ABHISHEKA-POOJA.jpg" alt="Mandala Abhisheka Pooja" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header" style="padding-top:20px;">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-vishesh">Visesha Pooja</span>
-                <span class="timing-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                  9:00 a.m. · 41 days
-                </span>
+                <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>9:00 a.m. · 41 days</span>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Mandala Abhisheka Pooja</h2>
               <p class="font-body text-caption text-on-surface-variant mb-3">Panchamruta Abhisheka Sahita Ashtottara Pooja for 41 continuous days</p>
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Panchamruta Abhisheka Sahita Ashtottara Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha for a Period of 41 continuous days and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-v1">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-v1" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  This Pooja is being performed to the divine Padukas of Lord Sripada Srivallabha for 41 days with the names, gothrams and with the sankalpam of the devotees. By doing this Mandalabhishekam Pooja the desires and wishes of the devotees will be fulfilled.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Panchamruta Abhisheka Sahita Ashtottara Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha for a Period of 41 continuous days and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-v1">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-v1" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">This Pooja is being performed to the divine Padukas of Lord Sripada Srivallabha for 41 days with the names, gothrams and with the sankalpam of the devotees. By doing this Mandalabhishekam Pooja the desires and wishes of the devotees will be fulfilled.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=visesha-01" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  1,616
-                </span>
+                <a href="./checkout.html?id=visesha-01" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>1,616</span>
               </div>
             </div>
           </article>
 
           <!-- V2. Sani Prodasha Pooja -->
           <article class="seva-card" aria-label="Sani Prodasha Pooja seva">
-            <img
-              src="./images/seva-SANI-PRODASHA-POOJA.jpg"
-              alt="Sani Prodasha Pooja"
-              width="400" height="180"
-              loading="lazy" decoding="async"
-              class="w-full object-cover"
-              style="height:180px; border-radius:16px 16px 0 0;"
-            >
+            <img src="./images/seva-SANI-PRODASHA-POOJA.jpg" alt="Sani Prodasha Pooja" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header" style="padding-top:20px;">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-vishesh">Visesha Pooja</span>
-                <span class="timing-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                  5:00 p.m. · Sani-Trayodasi
-                </span>
+                <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>5:00 p.m. · Sani-Trayodasi</span>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Sani Prodasha Pooja</h2>
               <p class="font-body text-caption text-on-surface-variant mb-3">Panchamruta Abhisheka Sahita Ashtottara Pooja on Sani-Trayodasi at Pradosha Samaya</p>
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Panchamruta Abhisheka Sahita Ashtottara Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha on Sani-Trayodasi (Trayodasi day associated with Saturday) at Pradosha Samaya i.e. 5:00 p.m. with their Name and Gothram and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-v2">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-v2" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  Saneeswara is one among the nine grahas (Navagrahas). The Devotees who do Abhishekam to Saneeswara in the evening, at Pradosha time and on the day of Thrayodasi, they will be away from Sanipradosham and blessed by the Lord.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Panchamruta Abhisheka Sahita Ashtottara Pooja will be Performed to the Holy Padukas of Guru Dattatreya Sripada Srivallabha on Sani-Trayodasi at Pradosha Samaya i.e. 5:00 p.m. with their Name and Gothram and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-v2">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-v2" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">Saneeswara is one among the nine grahas (Navagrahas). The Devotees who do Abhishekam to Saneeswara in the evening, at Pradosha time and on the day of Thrayodasi, they will be away from Sanipradosham and blessed by the Lord.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=visesha-02" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  201
-                </span>
+                <a href="./checkout.html?id=visesha-02" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>201</span>
               </div>
             </div>
           </article>
 
           <!-- V3. Chitta Nakshitra Pooja -->
           <article class="seva-card" aria-label="Chitta Nakshitra Pooja seva">
-            <img
-              src="./images/seva-CHITTA-NAKSHITRA-POOJA.jpg"
-              alt="Chitta Nakshitra Pooja"
-              width="400" height="180"
-              loading="lazy" decoding="async"
-              class="w-full object-cover"
-              style="height:180px; border-radius:16px 16px 0 0;"
-            >
+            <img src="./images/seva-CHITTA-NAKSHITRA-POOJA.jpg" alt="Chitta Nakshitra Pooja" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header" style="padding-top:20px;">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-vishesh">Visesha Pooja</span>
-                <span class="timing-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                  9:00 a.m. · 12 months
-                </span>
+                <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>9:00 a.m. · 12 months</span>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Chitta Nakshitra Pooja</h2>
               <p class="font-body text-caption text-on-surface-variant mb-3">Panchamruta Abhisheka Sahita Ashtottara Pooja on Chitta Star Day for 12 months</p>
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Panchamruta Abhisheka Sahita Ashtottara Pooja on Chitta Star Days will be Performed to Guru Dattatreya Sripada Srivallabha for 12 continuous months and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-v3">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-v3" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  The Birth Star of Lord Sripada Srivallabha is 'Chitta'. The Pooja performed on the Padukas of the Lord on the day of Chitta Nakshatram is known as Chitta Nakshatra Pooja. Those who Perform this Pooja will be blessed by the Lord and their willful wishes will be fulfilled.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Panchamruta Abhisheka Sahita Ashtottara Pooja on Chitta Star Days will be Performed to Guru Dattatreya Sripada Srivallabha for 12 continuous months and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-v3">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-v3" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">The Birth Star of Lord Sripada Srivallabha is 'Chitta'. The Pooja performed on the Padukas of the Lord on the day of Chitta Nakshatram is known as Chitta Nakshatra Pooja. Those who Perform this Pooja will be blessed by the Lord and their willful wishes will be fulfilled.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=visesha-03" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  600
-                </span>
+                <a href="./checkout.html?id=visesha-03" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>600</span>
               </div>
             </div>
           </article>
 
-          <!-- V4. Navagraha Japam Thath Dattaamsa Homam -->
+          <!-- V4. Navagraha Japam -->
           <article class="seva-card" aria-label="Navagraha Japam Thath Dattaamsa Homam seva">
-            <img
-              src="./images/seva-Navagraha-Japam-Thath-Dattaamsa-Homam.jpg"
-              alt="Navagraha Japam Thath Dattaamsa Homam"
-              width="400" height="180"
-              loading="lazy" decoding="async"
-              class="w-full object-cover"
-              style="height:180px; border-radius:16px 16px 0 0;"
-            >
+            <img src="./images/seva-Navagraha-Japam-Thath-Dattaamsa-Homam.jpg" alt="Navagraha Japam Thath Dattaamsa Homam" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header" style="padding-top:20px;">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-vishesh">Visesha Pooja</span>
-                <span class="timing-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                  9:00 a.m. · Every Amavasya
-                </span>
+                <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>9:00 a.m. · Every Amavasya</span>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Navagraha Japam Thath Dattaamsa Homam</h2>
               <p class="font-body text-caption text-on-surface-variant mb-3">Navagraha Japam Thath Dattaamsa Homam performed every Amavasya</p>
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-                Navagraha Japam Thath Dattaamsa Homam will be performed every Amavasya and Prasadam will be sent by post.
-              </p>
-              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-v4">
-                Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-              </button>
-              <div id="detail-v4" class="seva-detail">
-                <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                  Satisfying the Navagrahas by doing Homam to them, longevity, Health and Prosperity are bestowed upon the devotees, by removing all their Doshams.
-                </p>
-              </div>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">Navagraha Japam Thath Dattaamsa Homam will be performed every Amavasya and Prasadam will be sent by post.</p>
+              <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-v4">Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span></button>
+              <div id="detail-v4" class="seva-detail"><p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">Satisfying the Navagrahas by doing Homam to them, longevity, Health and Prosperity are bestowed upon the devotees, by removing all their Doshams.</p></div>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=visesha-04" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  500
-                </span>
+                <a href="./checkout.html?id=visesha-04" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>500</span>
               </div>
             </div>
           </article>
 
           <!-- V5. Lakshmi Ganapati Homam -->
           <article class="seva-card" aria-label="Lakshmi Ganapati Homam seva">
-            <img
-              src="./images/seva-LAKSHMI-GANAPATI-HOMAM.jpg"
-              alt="Lakshmi Ganapati Homam"
-              width="400" height="180"
-              loading="lazy" decoding="async"
-              class="w-full object-cover"
-              style="height:180px; border-radius:16px 16px 0 0;"
-            >
+            <img src="./images/seva-LAKSHMI-GANAPATI-HOMAM.jpg" alt="Lakshmi Ganapati Homam" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header" style="padding-top:20px;">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-vishesh">Visesha Pooja</span>
-                <span class="timing-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                  9:00 a.m.
-                </span>
+                <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>9:00 a.m.</span>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Lakshmi Ganapati Homam</h2>
               <p class="font-body text-caption text-on-surface-variant mb-3">Lakshmi Ganapati Homam will be performed and Prasadam will be sent by post</p>
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-                Lakshmi Ganapati Homam will be performed and Prasadam will be sent by post. This sacred fire ritual invokes the blessings of Goddess Lakshmi and Lord Ganapati for prosperity, removal of obstacles, and fulfilment of devotees' wishes.
-              </p>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">Lakshmi Ganapati Homam will be performed and Prasadam will be sent by post. This sacred fire ritual invokes the blessings of Goddess Lakshmi and Lord Ganapati for prosperity, removal of obstacles, and fulfilment of devotees' wishes.</p>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=visesha-05" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  300
-                </span>
+                <a href="./checkout.html?id=visesha-05" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>300</span>
               </div>
             </div>
           </article>
 
           <!-- V6. Chandi Homam -->
           <article class="seva-card" aria-label="Chandi Homam seva">
-            <img
-              src="./images/seva-Datta-Mahamantra-Homam.jpg"
-              alt="Chandi Homam"
-              width="400" height="180"
-              loading="lazy" decoding="async"
-              class="w-full object-cover"
-              style="height:180px; border-radius:16px 16px 0 0;"
-            >
+            <img src="./images/seva-Datta-Mahamantra-Homam.jpg" alt="Chandi Homam" width="600" height="200" loading="lazy" decoding="async" class="seva-card-img" onerror="this.replaceWith(sevaImgPlaceholder())">
             <div class="seva-card-header" style="padding-top:20px;">
               <div class="flex items-start justify-between gap-3 mb-3">
                 <span class="seva-type-chip chip-vishesh">Visesha Pooja</span>
-                <span class="timing-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>
-                  10:00 a.m.
-                </span>
+                <span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">schedule</span>10:00 a.m.</span>
               </div>
               <h2 class="font-display text-headline-md text-on-background mb-1">Chandi Homam</h2>
               <p class="font-body text-caption text-on-surface-variant mb-3">Chandi Homam will be performed and Prasadam will be sent by post</p>
             </div>
             <div class="seva-divider"></div>
             <div class="seva-card-body mt-4">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-                Chandi Homam will be performed and Prasadam will be sent by post. This powerful Vedic fire ritual dedicated to Goddess Chandi (Devi) bestows devotees with courage, protection from evil forces, and the divine grace of the Mother Goddess.
-              </p>
+              <p class="font-body text-body-md text-on-surface-variant leading-relaxed">Chandi Homam will be performed and Prasadam will be sent by post. This powerful Vedic fire ritual dedicated to Goddess Chandi bestows devotees with courage, protection from evil forces, and the divine grace of the Mother Goddess.</p>
               <div class="seva-card-footer">
-                <a href="./checkout.html?id=visesha-06" class="book-btn">
-                  <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>
-                  Book Seva
-                </a>
-                <span class="cost-badge">
-                  <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                  558
-                </span>
+                <a href="./checkout.html?id=visesha-06" class="book-btn"><span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">bookmark_add</span>Book Seva</a>
+                <span class="cost-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>558</span>
               </div>
             </div>
           </article>
@@ -1342,428 +1036,132 @@
 
       <!-- FESTIVALS -->
       <div id="panel-festival" class="category-panel" role="tabpanel" aria-labelledby="tab-festival">
-        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter items-stretch"></div>
-         <!-- F1. Datta Jayanti -->
-        <article class="seva-card flex flex-col" aria-label="Datta Jayanti festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex flex-wrap items-center justify-between gap-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Margasira Purnima
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Datta Jayanti</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Birthday of Lord Dattatreya — the most auspicious day of the year</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Celebrated on the full moon day of Margasira (Nov–Dec), Datta Jayanti marks the divine incarnation of Lord Dattatreya. Grand Abhishekams, Homams, and Pallaki Seva are performed with great devotion. Devotees from across Andhra Pradesh converge at the Mandir.
-            </p>
-          </div>
-        </article>
+        <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter items-stretch">
 
-        <!-- F2. Sripada Srivallabha Aradhana -->
-        <article class="seva-card flex flex-col" aria-label="Sripada Srivallabha Aradhana festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Bhadrapada Bahula Panchami
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sripada Srivallabha Aradhana</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Sacred Aradhana of the first incarnation of Dattatreya</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              The Aradhana of Lord Sripada Srivallabha falls on the 5th day of the dark fortnight of Bhadrapada (Aug–Sep). Special poojas and Abhishekams are performed to the holy Padukas and Prasadam is distributed to all devotees.
-            </p>
-          </div>
-        </article>
+          <!-- F1–F20: all festival articles inside the grid -->
+          <article class="seva-card flex flex-col" aria-label="Datta Jayanti festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex flex-wrap items-center justify-between gap-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Margasira Purnima</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Datta Jayanti</h2><p class="font-body text-caption text-on-surface-variant mb-3">Birthday of Lord Dattatreya — the most auspicious day of the year</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Celebrated on the full moon day of Margasira (Nov–Dec), Datta Jayanti marks the divine incarnation of Lord Dattatreya. Grand Abhishekams, Homams, and Pallaki Seva are performed with great devotion. Devotees from across Andhra Pradesh converge at the Mandir.</p></div>
+          </article>
 
-        <!-- F3. Chitta Nakshatram -->
-        <article class="seva-card flex flex-col" aria-label="Chitta Nakshatram monthly festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                Monthly — Chitta Star
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Chitta Nakshatram</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Monthly birth star day of Lord Sripada Srivallabha</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Chitta (Chitra) Nakshatram is the birth star of Lord Sripada Srivallabha. Every month on this auspicious day, special Abhishekams, Alankaram, and Rajita Pallaki Seva are performed. Devotees observe fasts and offer special prayers.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Sripada Srivallabha Aradhana festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Bhadrapada Bahula Panchami</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Sripada Srivallabha Aradhana</h2><p class="font-body text-caption text-on-surface-variant mb-3">Sacred Aradhana of the first incarnation of Dattatreya</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">The Aradhana of Lord Sripada Srivallabha falls on the 5th day of the dark fortnight of Bhadrapada (Aug–Sep). Special poojas and Abhishekams are performed to the holy Padukas and Prasadam is distributed to all devotees.</p></div>
+          </article>
 
-        <!-- F4. Guru Purnima -->
-        <article class="seva-card flex flex-col" aria-label="Guru Purnima festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Ashadha Purnima
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Guru Purnima</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Festival of the Divine Guru — Dattatreya worshipped as Adi Guru</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              On the full moon of Ashadha (Jul), devotees pay homage to the divine lineage of Gurus. Lord Dattatreya, revered as the Adi Guru, is worshipped with Rudrabhishekam, Maha Homam, and Deeparadhana through the night.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Chitta Nakshatram monthly festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>Monthly — Chitta Star</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Chitta Nakshatram</h2><p class="font-body text-caption text-on-surface-variant mb-3">Monthly birth star day of Lord Sripada Srivallabha</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Chitta (Chitra) Nakshatram is the birth star of Lord Sripada Srivallabha. Every month on this auspicious day, special Abhishekams, Alankaram, and Rajita Pallaki Seva are performed. Devotees observe fasts and offer special prayers.</p></div>
+          </article>
 
-        <!-- F5. Maha Shivaratri -->
-        <article class="seva-card flex flex-col" aria-label="Maha Shivaratri festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Magha Bahula Chaturdashi
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Maha Shivaratri</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Night of Lord Shiva — Rudrabhishekam &amp; Homam through the night</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              As Dattatreya is the embodiment of the Trimurthis — Brahma, Vishnu, and Shiva — Maha Shivaratri is observed with great reverence. Ekadasa Rudrabhishekam and Maha Mruthyumjaya Homam are performed through the night.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Guru Purnima festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Ashadha Purnima</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Guru Purnima</h2><p class="font-body text-caption text-on-surface-variant mb-3">Festival of the Divine Guru — Dattatreya worshipped as Adi Guru</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">On the full moon of Ashadha (Jul), devotees pay homage to the divine lineage of Gurus. Lord Dattatreya, revered as the Adi Guru, is worshipped with Rudrabhishekam, Maha Homam, and Deeparadhana through the night.</p></div>
+          </article>
 
-        <!-- F6. Sri Rama Navami -->
-        <article class="seva-card flex flex-col" aria-label="Sri Rama Navami festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Chaitra Shukla Navami
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sri Rama Navami</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Birth anniversary of Lord Sri Rama — Kalyanam &amp; Archana</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Sri Rama Navami is celebrated with Sri Sita Rama Kalyanam, Archana, and Suprabhatam at the Mandir. Special Prasadam is prepared and distributed to all visiting devotees as part of the day's celebrations.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Maha Shivaratri festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Magha Bahula Chaturdashi</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Maha Shivaratri</h2><p class="font-body text-caption text-on-surface-variant mb-3">Night of Lord Shiva — Rudrabhishekam &amp; Homam through the night</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">As Dattatreya is the embodiment of the Trimurthis, Maha Shivaratri is observed with great reverence. Ekadasa Rudrabhishekam and Maha Mruthyumjaya Homam are performed through the night.</p></div>
+          </article>
 
-        <!-- F7. Ugadi -->
-        <article class="seva-card flex flex-col" aria-label="Ugadi Telugu New Year festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Chaitra Shukla Prathama
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Ugadi</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Telugu New Year — Panchanga Sravanam &amp; special Abhishekam</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Ugadi marks the start of the Telugu New Year. Panchanga Sravanam (astrological almanac reading) is conducted followed by special Abhishekam and Alankaram to the Padukas. Devotees receive Ugadi Pachadi as Prasadam.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Sri Rama Navami festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Chaitra Shukla Navami</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Sri Rama Navami</h2><p class="font-body text-caption text-on-surface-variant mb-3">Birth anniversary of Lord Sri Rama — Kalyanam &amp; Archana</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Sri Rama Navami is celebrated with Sri Sita Rama Kalyanam, Archana, and Suprabhatam at the Mandir. Special Prasadam is prepared and distributed to all visiting devotees as part of the day's celebrations.</p></div>
+          </article>
 
-        <!-- F8. Varalakshmi Vratam -->
-        <article class="seva-card flex flex-col" aria-label="Varalakshmi Vratam festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Sravana Shukla Friday
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Varalakshmi Vratam</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Sacred vow to Goddess Varalakshmi for blessings &amp; prosperity</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Varalakshmi Vratam is observed by devotees seeking wealth, health, and well-being. Special Lakshmi Puja and Homam are performed at the Mandir with Kumkuma Archana and Prasadam distribution to all.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Ugadi festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Chaitra Shukla Prathama</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Ugadi</h2><p class="font-body text-caption text-on-surface-variant mb-3">Telugu New Year — Panchanga Sravanam &amp; special Abhishekam</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Ugadi marks the start of the Telugu New Year. Panchanga Sravanam (astrological almanac reading) is conducted followed by special Abhishekam and Alankaram to the Padukas. Devotees receive Ugadi Pachadi as Prasadam.</p></div>
+          </article>
 
-        <!-- F9. Krishna Janmashtami -->
-        <article class="seva-card flex flex-col" aria-label="Krishna Janmashtami festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Sravana Bahula Ashtami
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Krishna Janmashtami</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Birth anniversary of Lord Sri Krishna — midnight Abhishekam</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Krishna Janmashtami is celebrated at midnight with devotional singing, Bhajanas, and special Abhishekam. Dattatreya's connection to the Vishnu aspect of the Trimurthis makes this a significant observance at the Mandir.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Varalakshmi Vratam festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Sravana Shukla Friday</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Varalakshmi Vratam</h2><p class="font-body text-caption text-on-surface-variant mb-3">Sacred vow to Goddess Varalakshmi for blessings &amp; prosperity</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Varalakshmi Vratam is observed by devotees seeking wealth, health, and well-being. Special Lakshmi Puja and Homam are performed at the Mandir with Kumkuma Archana and Prasadam distribution to all.</p></div>
+          </article>
 
-        <!-- F10. Vinayaka Chavithi -->
-        <article class="seva-card flex flex-col" aria-label="Vinayaka Chavithi festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Bhadrapada Shukla Chaturthi
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Vinayaka Chavithi</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Festival of Lord Ganesha — remover of all obstacles</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Vinayaka Chavithi is celebrated with special Ganapati Abhishekam, Modaka Neivedyam, and Lakshmi Ganapati Homam. Devotees seek the blessings of Lord Ganesha to remove obstacles from their lives before undertaking new endeavours.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Krishna Janmashtami festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Sravana Bahula Ashtami</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Krishna Janmashtami</h2><p class="font-body text-caption text-on-surface-variant mb-3">Birth anniversary of Lord Sri Krishna — midnight Abhishekam</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Krishna Janmashtami is celebrated at midnight with devotional singing, Bhajanas, and special Abhishekam. Dattatreya's connection to the Vishnu aspect of the Trimurthis makes this a significant observance at the Mandir.</p></div>
+          </article>
 
-        <!-- F11. Navaratri -->
-        <article class="seva-card flex flex-col" aria-label="Navaratri festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Ashwija Shukla 1–9
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Navaratri</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Nine nights of the Divine Mother — Devi Puja &amp; Chandi Homam</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Navaratri is observed over nine sacred nights with daily Devi Puja, Chandi Homam, and Kumkuma Archana. On Vijayadasami (the 10th day), special Ayudha Puja and Saraswati Puja are performed with great devotion.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Vinayaka Chavithi festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Bhadrapada Shukla Chaturthi</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Vinayaka Chavithi</h2><p class="font-body text-caption text-on-surface-variant mb-3">Festival of Lord Ganesha — remover of all obstacles</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Vinayaka Chavithi is celebrated with special Ganapati Abhishekam, Modaka Neivedyam, and Lakshmi Ganapati Homam. Devotees seek the blessings of Lord Ganesha to remove obstacles from their lives before undertaking new endeavours.</p></div>
+          </article>
 
-        <!-- F12. Vijayadasami -->
-        <article class="seva-card flex flex-col" aria-label="Vijayadasami festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Ashwija Shukla Dasami
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Vijayadasami</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Day of Victory — Ayudha Puja &amp; Saraswati Archana</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Vijayadasami marks the victory of righteousness over evil. Special sevas, Saraswati Puja, and Ayudha Puja are performed. New students traditionally begin their learning on this auspicious day with a prayer to the Lord.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Navaratri festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Ashwija Shukla 1–9</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Navaratri</h2><p class="font-body text-caption text-on-surface-variant mb-3">Nine nights of the Divine Mother — Devi Puja &amp; Chandi Homam</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Navaratri is observed over nine sacred nights with daily Devi Puja, Chandi Homam, and Kumkuma Archana. On Vijayadasami (the 10th day), special Ayudha Puja and Saraswati Puja are performed with great devotion.</p></div>
+          </article>
 
-        <!-- F13. Karthika Purnima -->
-        <article class="seva-card flex flex-col" aria-label="Karthika Purnima festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Karthika Purnima
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Karthika Purnima</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Tripuri Purnima — Akhanda Deeparadhana through the night</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Karthika Purnima is one of the most sacred days in the year. Akhanda Deeparadhana — continuous lamp offering — is performed through the night. Devotees float diyas on water and offer prayers to the Lord.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Vijayadasami festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Ashwija Shukla Dasami</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Vijayadasami</h2><p class="font-body text-caption text-on-surface-variant mb-3">Day of Victory — Ayudha Puja &amp; Saraswati Archana</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Vijayadasami marks the victory of righteousness over evil. Special sevas, Saraswati Puja, and Ayudha Puja are performed. New students traditionally begin their learning on this auspicious day with a prayer to the Lord.</p></div>
+          </article>
 
-        <!-- F14. Pradosha Vratam -->
-        <article class="seva-card flex flex-col" aria-label="Pradosha Vratam fortnightly observance">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                Fortnightly — Trayodasi
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Pradosha Vratam</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Bi-monthly observance — Rudrabhishekam at twilight</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Pradosha Vratam is observed on the 13th tithi (Trayodasi) of each lunar fortnight. Special Rudrabhishekam is performed at Pradosha time (twilight). Devotees who participate are blessed with health, longevity, and the removal of doshas.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Karthika Purnima festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Karthika Purnima</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Karthika Purnima</h2><p class="font-body text-caption text-on-surface-variant mb-3">Tripuri Purnima — Akhanda Deeparadhana through the night</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Karthika Purnima is one of the most sacred days in the year. Akhanda Deeparadhana — continuous lamp offering — is performed through the night. Devotees float diyas on water and offer prayers to the Lord.</p></div>
+          </article>
 
-        <!-- F15. Sani Trayodasi -->
-        <article class="seva-card flex flex-col" aria-label="Sani Trayodasi observance">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>
-                Trayodasi on Saturday
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sani Trayodasi</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Special Abhishekam when Trayodasi falls on a Saturday</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              When Trayodasi tithi coincides with a Saturday, it is an especially powerful occasion. Panchamruta Abhisheka Sahita Ashtottara Pooja is performed at Pradosha Samaya (5:00 p.m.) with the devotee's name and Gothram.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Pradosha Vratam fortnightly observance">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>Fortnightly — Trayodasi</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Pradosha Vratam</h2><p class="font-body text-caption text-on-surface-variant mb-3">Bi-monthly observance — Rudrabhishekam at twilight</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Pradosha Vratam is observed on the 13th tithi (Trayodasi) of each lunar fortnight. Special Rudrabhishekam is performed at Pradosha time (twilight). Devotees who participate are blessed with health, longevity, and the removal of doshas.</p></div>
+          </article>
 
-        <!-- F16. Deepavali -->
-        <article class="seva-card flex flex-col" aria-label="Deepavali festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Ashwija Bahula Amavasya
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Deepavali</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Festival of Lights — Akhanda Deepam &amp; special Alankaram</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Deepavali is celebrated at the Mandir with Akhanda Deepam, special Alankaram, and Lakshmi Puja. Rows of lamps illuminate the Mandir premises and devotees offer prayers for prosperity and the removal of darkness.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Sani Trayodasi observance">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">event_repeat</span>Trayodasi on Saturday</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Sani Trayodasi</h2><p class="font-body text-caption text-on-surface-variant mb-3">Special Abhishekam when Trayodasi falls on a Saturday</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">When Trayodasi tithi coincides with a Saturday, it is an especially powerful occasion. Panchamruta Abhisheka Sahita Ashtottara Pooja is performed at Pradosha Samaya (5:00 p.m.) with the devotee's name and Gothram.</p></div>
+          </article>
 
-        <!-- F17. Vaikunta Ekadasi -->
-        <article class="seva-card flex flex-col" aria-label="Vaikunta Ekadasi festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Margasira Shukla Ekadasi
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Vaikunta Ekadasi</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Most sacred Ekadasi — Vaikunta Dwara opens at dawn</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Vaikunta Ekadasi is the most sacred of all Ekadasi days. Devotees fast and observe a night vigil, believing the gates of Vaikunta open at dawn. Special Abhishekam and Suprabhatam are performed before sunrise.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Deepavali festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Ashwija Bahula Amavasya</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Deepavali</h2><p class="font-body text-caption text-on-surface-variant mb-3">Festival of Lights — Akhanda Deepam &amp; special Alankaram</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Deepavali is celebrated at the Mandir with Akhanda Deepam, special Alankaram, and Lakshmi Puja. Rows of lamps illuminate the Mandir premises and devotees offer prayers for prosperity and the removal of darkness.</p></div>
+          </article>
 
-        <!-- F18. Makara Sankranti -->
-        <article class="seva-card flex flex-col" aria-label="Makara Sankranti festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                January 14
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Makara Sankranti</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Sun's northward journey — Uttarayana Punyakalam celebrations</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Makara Sankranti marks the Sun's entry into Capricorn and the start of Uttarayana. Special Abhishekam and Til Neivedyam are performed. Devotees take a ritual bath before dawn and offer prayers for the new solar cycle.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Vaikunta Ekadasi festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Margasira Shukla Ekadasi</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Vaikunta Ekadasi</h2><p class="font-body text-caption text-on-surface-variant mb-3">Most sacred Ekadasi — Vaikunta Dwara opens at dawn</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Vaikunta Ekadasi is the most sacred of all Ekadasi days. Devotees fast and observe a night vigil, believing the gates of Vaikunta open at dawn. Special Abhishekam and Suprabhatam are performed before sunrise.</p></div>
+          </article>
 
-        <!-- F19. Maha Navami -->
-        <article class="seva-card flex flex-col" aria-label="Maha Navami festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Ashwija Shukla Navami
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Maha Navami</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">The ninth day of Navaratri — Durga Puja &amp; Chandi Parayanam</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Maha Navami is the ninth day of Navaratri, dedicated to Goddess Durga in her most powerful form. Chandi Parayanam, Kumkuma Archana, and Devi Homam are conducted. Ayudha Puja is performed on the preceding evening.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Makara Sankranti festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>January 14</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Makara Sankranti</h2><p class="font-body text-caption text-on-surface-variant mb-3">Sun's northward journey — Uttarayana Punyakalam celebrations</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Makara Sankranti marks the Sun's entry into Capricorn and the start of Uttarayana. Special Abhishekam and Til Neivedyam are performed. Devotees take a ritual bath before dawn and offer prayers for the new solar cycle.</p></div>
+          </article>
 
-        <!-- F20. Hanuman Jayanti -->
-        <article class="seva-card flex flex-col" aria-label="Hanuman Jayanti festival">
-          <div class="seva-card-header min-h-[11rem]">
-            <div class="flex items-start justify-between gap-3 mb-3">
-              <span class="seva-type-chip chip-festival">Festival</span>
-              <span class="timing-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>
-                Chaitra Shukla Purnima
-              </span>
-            </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Hanuman Jayanti</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Birth anniversary of Lord Hanuman — Sundara Kanda Parayanam</p>
-          </div>
-          <div class="seva-divider"></div>
-          <div class="seva-card-body mt-4 flex flex-col flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              Hanuman Jayanti is observed with Sundara Kanda Parayanam, special Abhishekam, and Hanuman Chalisa recitation. Devotees fast and participate in night-long Bhajanas. Vada Mala and Pancha Kashaya Abhishekam are the signature offerings on this day.
-            </p>
-          </div>
-        </article>
+          <article class="seva-card flex flex-col" aria-label="Maha Navami festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Ashwija Shukla Navami</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Maha Navami</h2><p class="font-body text-caption text-on-surface-variant mb-3">The ninth day of Navaratri — Durga Puja &amp; Chandi Parayanam</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Maha Navami is the ninth day of Navaratri, dedicated to Goddess Durga in her most powerful form. Chandi Parayanam, Kumkuma Archana, and Devi Homam are conducted. Ayudha Puja is performed on the preceding evening.</p></div>
+          </article>
+
+          <article class="seva-card flex flex-col" aria-label="Hanuman Jayanti festival">
+            <div class="seva-card-header min-h-[11rem]"><div class="flex items-start justify-between gap-3 mb-3"><span class="seva-type-chip chip-festival">Festival</span><span class="timing-badge"><span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">calendar_month</span>Chaitra Shukla Purnima</span></div><h2 class="font-display text-headline-md text-on-background mb-1">Hanuman Jayanti</h2><p class="font-body text-caption text-on-surface-variant mb-3">Birth anniversary of Lord Hanuman — Sundara Kanda Parayanam</p></div>
+            <div class="seva-divider"></div>
+            <div class="seva-card-body mt-4 flex flex-col flex-1"><p class="font-body text-body-md text-on-surface-variant leading-relaxed">Hanuman Jayanti is observed with Sundara Kanda Parayanam, special Abhishekam, and Hanuman Chalisa recitation. Devotees fast and participate in night-long Bhajanas. Vada Mala and Pancha Kashaya Abhishekam are the signature offerings on this day.</p></div>
+          </article>
+
+        </div>
       </div>
-      </div>
+
     </section>
   </main>
 
@@ -1775,74 +1173,67 @@
     }
   </script>
 
+  <!-- ═══════════════════════════════════════════
+       TAB SWITCHING — fixes panels not showing
+  ════════════════════════════════════════════ -->
   <script>
     (function () {
-      const INTERVAL   = 5000;
-      const slides     = Array.from(document.querySelectorAll('.notice-slide'));
-      const dotsWrap   = document.getElementById('notice-dots');
-      const progressEl = document.getElementById('notice-progress');
-      const prevBtn    = document.getElementById('notice-prev');
-      const nextBtn    = document.getElementById('notice-next');
-      const ticker     = document.getElementById('notice-ticker');
-      let current = 0;
-      let timer   = null;
-      slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'notice-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('role', 'tab');
-        dot.setAttribute('aria-label', 'Notice ' + (i + 1));
-        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-        dot.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(dot);
-      });
-      function getDots() { return Array.from(dotsWrap.querySelectorAll('.notice-dot')); }
-      function goTo(next) {
-        if (next === current) return;
-        clearTimeout(timer);
-        const prev = current;
-        current = ((next % slides.length) + slides.length) % slides.length;
-        slides[prev].classList.add('exit');
-        slides[prev].addEventListener('animationend', () => {
-          slides[prev].classList.remove('active', 'exit');
-        }, { once: true });
-        slides[current].classList.add('active');
-        getDots().forEach((d, i) => {
-          d.classList.toggle('active', i === current);
-          d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+      var tabs   = document.querySelectorAll('#seva-tabs .seva-tab');
+      var panels = document.querySelectorAll('.category-panel');
+
+      tabs.forEach(function (tab) {
+        tab.addEventListener('click', function () {
+          var target = tab.getAttribute('data-target');
+
+          // Update tab states
+          tabs.forEach(function (t) {
+            t.classList.remove('active');
+            t.setAttribute('aria-selected', 'false');
+          });
+          tab.classList.add('active');
+          tab.setAttribute('aria-selected', 'true');
+
+          // Update panel visibility
+          panels.forEach(function (p) {
+            p.classList.remove('active');
+          });
+          var targetPanel = document.getElementById('panel-' + target);
+          if (targetPanel) targetPanel.classList.add('active');
         });
-        startProgress();
-        scheduleNext();
-      }
-      function startProgress() {
-        progressEl.style.transition = 'none';
-        progressEl.style.width = '0%';
-        void progressEl.offsetWidth;
-        progressEl.style.transition = 'width ' + INTERVAL + 'ms linear';
-        progressEl.style.width = '100%';
-      }
-      function scheduleNext() {
-        clearTimeout(timer);
-        timer = setTimeout(() => goTo(current + 1), INTERVAL);
-      }
-      ticker.addEventListener('mouseenter', () => {
-        clearTimeout(timer);
-        const w = getComputedStyle(progressEl).width;
-        progressEl.style.transition = 'none';
-        progressEl.style.width = w;
       });
-      ticker.addEventListener('mouseleave', () => {
-        startProgress();
-        scheduleNext();
-      });
-      prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
-      nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
-      ticker.addEventListener('keydown', e => {
-        if (e.key === 'ArrowRight') goTo(current + 1);
-        if (e.key === 'ArrowLeft')  goTo(current - 1);
-      });
-      startProgress();
-      scheduleNext();
     })();
+  </script>
+
+  <!-- ═══════════════════════════════════════════
+       DETAIL TOGGLE — Read more / Read less
+  ════════════════════════════════════════════ -->
+  <script>
+    (function () {
+      document.addEventListener('click', function (e) {
+        var btn = e.target.closest('.detail-toggle');
+        if (!btn) return;
+        var targetId = btn.getAttribute('data-target');
+        var detail   = document.getElementById(targetId);
+        if (!detail) return;
+        var isOpen = detail.classList.toggle('open');
+        btn.setAttribute('aria-expanded', String(isOpen));
+        var icon = btn.querySelector('.material-symbols-outlined');
+        if (icon) icon.textContent = isOpen ? 'expand_less' : 'expand_more';
+        btn.childNodes[0].textContent = isOpen ? 'Read less ' : 'Read more ';
+      });
+    })();
+  </script>
+
+  <!-- Image placeholder helper -->
+  <script>
+    function sevaImgPlaceholder() {
+      var d = document.createElement('div');
+      d.className = 'seva-card-img-placeholder';
+      d.setAttribute('role', 'img');
+      d.setAttribute('aria-label', 'Image coming soon');
+      d.innerHTML = '<span class="material-symbols-outlined" aria-hidden="true">image</span><p>Image coming soon</p>';
+      return d;
+    }
   </script>
 </body>
 </html>
