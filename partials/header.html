@@ -1,0 +1,156 @@
+  <style>
+    .skip-link {
+      position: absolute;
+      top: -100%;
+      left: 1rem;
+      z-index: 9999;
+      background: #8C330A;
+      color: #fff;
+      padding: 0.5rem 1rem;
+      border-radius: 0 0 0.375rem 0.375rem;
+      font-size: 14px;
+      font-weight: 600;
+      transition: top 0.2s;
+    }
+    .skip-link:focus { top: 0; }
+
+    #mobile-nav {
+      transform: translateX(100%);
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    #mobile-nav.open { transform: translateX(0); }
+    #nav-overlay {
+      opacity: 0;
+      pointer-events: none;
+      transition: opacity 0.3s;
+    }
+    #nav-overlay.open { opacity: 1; pointer-events: auto; }
+
+    :root { --header-h: 5.5rem; }
+    #main-header { height: var(--header-h); }
+    #header-spacer { height: var(--header-h); }
+
+    .brand-logo {
+      width: 52px;
+      height: 52px;
+      border-radius: 50%;
+      object-fit: cover;
+      object-position: top center;
+      border: 2px solid #8C330A;
+      flex-shrink: 0;
+      transition: transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .brand-logo:hover,
+    .brand-link:hover .brand-logo {
+      transform: scale(1.06);
+      box-shadow: 0 0 0 4px rgba(140, 51, 10, 0.18);
+    }
+
+    .brand-name-en {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: 1.25rem;
+      font-weight: 700;
+      line-height: 1.2;
+      color: #8C330A;
+      letter-spacing: -0.01em;
+    }
+    .brand-divider {
+      width: 2.5rem;
+      height: 1px;
+      background: linear-gradient(to right, #8C330A55, transparent);
+      margin: 2px 0;
+    }
+    .brand-name-te {
+      font-family: 'Noto Sans Telugu', sans-serif;
+      font-size: 0.875rem;
+      font-weight: 600;
+      line-height: 1.3;
+      color: #57423a;
+      letter-spacing: 0.01em;
+    }
+    html.dark .brand-name-en  { color: #ffb596; }
+    html.dark .brand-name-te  { color: #d0c8c5; }
+    html.dark .brand-divider  { background: linear-gradient(to right, #ffb59655, transparent); }
+    .font-telugu { font-family: 'Noto Sans Telugu', sans-serif; }
+  </style>
+
+  <a href="#main-content" class="skip-link">Skip to main content</a>
+
+  <header
+    class="fixed top-0 w-full z-50 flex justify-between items-center px-marginLg bg-sacred-white dark:bg-surface-dim border-b border-incense-smoke dark:border-outline-variant shadow-sm dark:shadow-none transition-all duration-300"
+    id="main-header"
+  >
+    <a href="./index.html" class="brand-link flex items-center gap-3 no-underline" aria-label="Sripada Srivallabha Mahasamsthanam — home">
+      <img
+        src="./images/left-sripada.png"
+        alt="Lord Sripada Srivallabha"
+        width="52" height="52"
+        loading="eager" decoding="async"
+        class="brand-logo"
+      >
+      <div class="flex flex-col justify-center gap-[2px]">
+        <span class="brand-name-en">Sripada Srivallabha Mahasamsthanam</span>
+        <div class="brand-divider" aria-hidden="true"></div>
+        <span class="brand-name-te">శ్రీపాద శ్రీవల్లభ మహాసంస్థానం</span>
+      </div>
+    </a>
+
+    <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#darshan">Darshan</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./sevas.html">Sevas</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#accommodation">Accommodation</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#donations">Donations</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./history.html">History</a>
+      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#visit">Pilgrim Guide</a>
+    </nav>
+
+    <div class="flex items-center gap-3">
+      <button
+        id="theme-toggle"
+        aria-label="Switch to dark mode"
+        class="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant"
+      >
+        <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
+        <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      </button>
+      <button
+        id="nav-open"
+        aria-label="Open navigation menu"
+        aria-expanded="false"
+        aria-controls="mobile-nav"
+        class="lg:hidden flex items-center justify-center w-10 h-10 text-saffron-deep"
+      >
+        <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
+      </button>
+    </div>
+  </header>
+
+  <div id="header-spacer" aria-hidden="true"></div>
+
+  <!-- MOBILE NAV DRAWER -->
+  <div id="nav-overlay" class="fixed inset-0 bg-on-background/60 z-40 lg:hidden" aria-hidden="true"></div>
+  <nav
+    id="mobile-nav"
+    role="dialog"
+    aria-modal="true"
+    aria-label="Mobile navigation"
+    class="fixed top-0 right-0 h-full w-72 max-w-[85vw] z-50 bg-sacred-white dark:bg-surface-dim shadow-2xl lg:hidden flex flex-col pt-6 pb-10 px-6 gap-2"
+  >
+    <div class="flex justify-between items-center mb-6">
+      <span class="font-display text-headline-md text-saffron-deep">Menu</span>
+      <button
+        id="nav-close"
+        aria-label="Close navigation menu"
+        class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant"
+      >
+        <span class="material-symbols-outlined" aria-hidden="true">close</span>
+      </button>
+    </div>
+    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#darshan" data-nav-link>Darshan</a>
+    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./sevas.html" data-nav-link>Sevas</a>
+    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#accommodation" data-nav-link>Accommodation</a>
+    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#donations" data-nav-link>Donations</a>
+    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./history.html" data-nav-link>History</a>
+    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#visit" data-nav-link>Pilgrim Guide</a>
+  </nav>
