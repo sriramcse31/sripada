@@ -80,7 +80,7 @@
       color: inherit;
     }
 
-    /* ── Donations dropdown ── */
+    /* ── Dropdown (shared by Donations & Pilgrim Guide) ── */
     .nav-dropdown { position: relative; }
 
     .nav-dropdown-trigger {
@@ -131,7 +131,7 @@
       transform: translateX(-50%) translateY(0);
     }
 
-    /* Small bridge so mouse can travel from trigger → menu without gap */
+    /* Small bridge so mouse can travel from trigger to menu without gap */
     .nav-dropdown-menu::before {
       content: '';
       position: absolute;
@@ -219,6 +219,44 @@
       font-size: 0.9rem;
       border-bottom: 1px solid;
     }
+
+    /* ── Mobile pilgrim guide accordion ── */
+    .mobile-pilgrim-toggle {
+      display: flex;
+      align-items: center;
+      justify-content: space-between;
+      width: 100%;
+      background: none;
+      border: none;
+      padding: 0.75rem 0;
+      border-bottom: 1px solid;
+      cursor: pointer;
+      font-family: inherit;
+      font-size: 1rem;
+      font-weight: 400;
+    }
+    .mobile-pilgrim-toggle .m-chevron {
+      display: inline-block;
+      font-size: 18px;
+      transition: transform 0.2s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mobile-pilgrim-toggle[aria-expanded="true"] .m-chevron {
+      transform: rotate(180deg);
+    }
+    .mobile-pilgrim-sub {
+      overflow: hidden;
+      max-height: 0;
+      transition: max-height 0.25s cubic-bezier(0.16,1,0.3,1);
+    }
+    .mobile-pilgrim-sub.open { max-height: 8rem; }
+    .mobile-pilgrim-sub a {
+      display: flex;
+      align-items: center;
+      gap: 0.5rem;
+      padding: 0.6rem 0 0.6rem 1rem;
+      font-size: 0.9rem;
+      border-bottom: 1px solid;
+    }
   </style>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -247,7 +285,7 @@
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./books.html">Books</a>
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html#accommodation">Accommodation</a>
 
-      <!-- Donations with dropdown -->
+      <!-- Donations dropdown -->
       <div class="nav-dropdown" role="navigation" aria-label="Donations navigation">
         <a
           href="./Donations.html"
@@ -257,7 +295,6 @@
           Donations
           <span class="material-symbols-outlined chevron" aria-hidden="true">expand_more</span>
         </a>
-
         <div class="nav-dropdown-menu" role="menu" aria-label="Donation categories">
           <a href="./Annadanam.html" role="menuitem">
             <span class="material-symbols-outlined menu-icon" aria-hidden="true">restaurant</span>
@@ -280,8 +317,33 @@
       </div>
 
       <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./history.html">History</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./index.html#visit">Pilgrim Guide</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md" href="./HowToReach.html">How to Reach</a>
+
+      <!-- Pilgrim Guide dropdown -->
+      <div class="nav-dropdown" role="navigation" aria-label="Pilgrim Guide navigation">
+        <a
+          href="./index.html#visit"
+          class="nav-dropdown-trigger font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low hover:opacity-100 transition-colors px-4 py-2 rounded-md"
+          aria-haspopup="true"
+        >
+          Pilgrim Guide
+          <span class="material-symbols-outlined chevron" aria-hidden="true">expand_more</span>
+        </a>
+        <div class="nav-dropdown-menu" role="menu" aria-label="Pilgrim Guide pages">
+          <a href="./index.html#visit" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">temple_hindu</span>
+            Visit Info
+          </a>
+          <a href="./index.html#accommodation" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">hotel</span>
+            Accommodation
+          </a>
+          <div class="dropdown-divider" aria-hidden="true"></div>
+          <a href="./HowToReach.html" class="dropdown-all-link" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">near_me</span>
+            How to Reach Pithapuram
+          </a>
+        </div>
+      </div>
     </nav>
 
     <div class="flex items-center gap-3">
@@ -342,11 +404,7 @@
         <a href="./Donations.html" class="flex-1 text-left no-underline text-on-surface hover:text-primary" onclick="event.stopPropagation()" data-nav-link>Donations</a>
         <span class="material-symbols-outlined m-chevron" aria-hidden="true">expand_more</span>
       </button>
-      <div
-        id="mobile-donations-sub"
-        class="mobile-donations-sub"
-        aria-labelledby="mobile-donations-btn"
-      >
+      <div id="mobile-donations-sub" class="mobile-donations-sub" aria-labelledby="mobile-donations-btn">
         <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./Annadanam.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">restaurant</span>
           Annadanam
@@ -363,8 +421,26 @@
     </div>
 
     <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./history.html" data-nav-link>History</a>
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#visit" data-nav-link>Pilgrim Guide</a>
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./HowToReach.html" data-nav-link>How to Reach</a>
+
+    <!-- Mobile pilgrim guide accordion -->
+    <div>
+      <button
+        class="mobile-pilgrim-toggle font-body text-body-lg text-on-surface hover:text-primary border-incense-smoke transition-colors"
+        aria-expanded="false"
+        aria-controls="mobile-pilgrim-sub"
+        id="mobile-pilgrim-btn"
+      >
+        <a href="./index.html#visit" class="flex-1 text-left no-underline text-on-surface hover:text-primary" onclick="event.stopPropagation()" data-nav-link>Pilgrim Guide</a>
+        <span class="material-symbols-outlined m-chevron" aria-hidden="true">expand_more</span>
+      </button>
+      <div id="mobile-pilgrim-sub" class="mobile-pilgrim-sub" aria-labelledby="mobile-pilgrim-btn">
+        <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./HowToReach.html" data-nav-link>
+          <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">near_me</span>
+          How to Reach Pithapuram
+        </a>
+      </div>
+    </div>
+
   </nav>
 
   <script>
@@ -374,7 +450,19 @@
       const sub = document.getElementById('mobile-donations-sub');
       if (!btn || !sub) return;
       btn.addEventListener('click', function (e) {
-        // Allow the inner <a> click to navigate without toggling
+        if (e.target.closest('a')) return;
+        const expanded = btn.getAttribute('aria-expanded') === 'true';
+        btn.setAttribute('aria-expanded', String(!expanded));
+        sub.classList.toggle('open', !expanded);
+      });
+    })();
+
+    // Mobile pilgrim guide accordion
+    (function () {
+      const btn = document.getElementById('mobile-pilgrim-btn');
+      const sub = document.getElementById('mobile-pilgrim-sub');
+      if (!btn || !sub) return;
+      btn.addEventListener('click', function (e) {
         if (e.target.closest('a')) return;
         const expanded = btn.getAttribute('aria-expanded') === 'true';
         btn.setAttribute('aria-expanded', String(!expanded));
