@@ -1,0 +1,563 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Siddha Mangala Stotram and Twelve Assurances of Sreepada Srivallabha — sacred slokas from Sripada Srivallabha Charithaamrutam.">
+  <title>Slokas &amp; Stotram — Sripada Srivallabha Mahasamsthanam</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error-container": "#93000a",
+            "on-background": "#0d1c2e",
+            "surface-container-lowest": "#ffffff",
+            "surface-dim": "#ccdbf4",
+            "on-secondary-container": "#734700",
+            "surface": "#f8f9ff",
+            "sacred-white": "#FFFCFA",
+            "secondary-fixed-dim": "#ffb95f",
+            "incense-smoke": "#EDF2F7",
+            "primary-fixed-dim": "#ffb596",
+            "inverse-primary": "#ffb596",
+            "surface-container-highest": "#d4e4fc",
+            "secondary-fixed": "#ffddb8",
+            "error": "#ba1a1a",
+            "surface-container": "#e5eeff",
+            "outline-variant": "#dec0b5",
+            "surface-tint": "#a14009",
+            "on-error": "#ffffff",
+            "on-surface": "#0d1c2e",
+            "on-tertiary": "#ffffff",
+            "outline": "#8a7268",
+            "saffron-deep": "#8C330A",
+            "on-tertiary-fixed-variant": "#3d4759",
+            "on-tertiary-fixed": "#121c2c",
+            "inverse-surface": "#223144",
+            "tertiary": "#535d70",
+            "on-primary-fixed": "#360f00",
+            "on-primary-fixed-variant": "#7d2d00",
+            "secondary": "#855300",
+            "on-primary-container": "#fffeff",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-fixed": "#d9e3f9",
+            "surface-bright": "#f8f9ff",
+            "tertiary-container": "#6c7689",
+            "on-primary": "#ffffff",
+            "surface-variant": "#d4e4fc",
+            "surface-container-high": "#dce9ff",
+            "on-secondary-fixed-variant": "#653e00",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#57423a",
+            "primary": "#9f3e07",
+            "secondary-container": "#feb557",
+            "surface-container-low": "#eff4ff",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#ffdbcd",
+            "on-secondary-fixed": "#2a1700",
+            "primary-container": "#c05621",
+            "tertiary-fixed-dim": "#bdc7dc",
+            "golden-glow": "#F6AD55",
+            "background": "#f8f9ff"
+          },
+          fontFamily: {
+            "display": ['"Source Serif 4"', "Georgia", "serif"],
+            "body":    ["Hanken Grotesk", "system-ui", "sans-serif"],
+            "telugu":  ['"Noto Sans Telugu"', "sans-serif"]
+          },
+          fontSize: {
+            "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+            "display-lg-mobile": ["36px", { lineHeight: "44px", fontWeight: "700" }],
+            "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+            "caption": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+          },
+          spacing: {
+            "gutter": "24px",
+            "base": "8px",
+            "marginSm": "16px",
+            "marginLg": "40px"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; -webkit-font-smoothing: antialiased; }
+    body { background: #f8f9ff; color: #0d1c2e; font-family: 'Hanken Grotesk', system-ui, sans-serif; }
+
+    /* ── Hero ── */
+    .slokas-hero {
+      background: linear-gradient(150deg, #3d1100 0%, #6b2006 40%, #8C330A 70%, #b85520 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .slokas-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background-image: radial-gradient(ellipse at 20% 50%, rgba(246,173,85,0.12) 0%, transparent 60%),
+                        radial-gradient(ellipse at 80% 20%, rgba(255,255,255,0.06) 0%, transparent 50%);
+    }
+    /* Om symbol watermark */
+    .hero-om {
+      position: absolute;
+      right: 6%;
+      top: 50%;
+      transform: translateY(-50%);
+      font-size: clamp(100px, 18vw, 220px);
+      line-height: 1;
+      color: rgba(255,255,255,0.05);
+      font-family: 'Noto Sans Telugu', serif;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* ── Decorative divider ── */
+    .lotus-divider {
+      display: flex;
+      align-items: center;
+      gap: 12px;
+      margin: 2rem auto;
+      max-width: 360px;
+    }
+    .lotus-divider::before,
+    .lotus-divider::after {
+      content: '';
+      flex: 1;
+      height: 1px;
+      background: linear-gradient(to right, transparent, rgba(140,51,10,0.3), transparent);
+    }
+    .lotus-dot {
+      width: 8px; height: 8px;
+      background: #8C330A;
+      border-radius: 50%;
+      opacity: 0.5;
+    }
+    .lotus-diamond {
+      width: 10px; height: 10px;
+      background: #F6AD55;
+      transform: rotate(45deg);
+      opacity: 0.7;
+    }
+
+    /* ── Section header ── */
+    .section-eyebrow {
+      display: inline-block;
+      font-size: 11px;
+      font-weight: 700;
+      letter-spacing: 0.18em;
+      text-transform: uppercase;
+      color: #8C330A;
+      background: rgba(140,51,10,0.08);
+      padding: 4px 14px;
+      border-radius: 9999px;
+      margin-bottom: 0.75rem;
+    }
+
+    /* ── Stotram verse card ── */
+    .verse-card {
+      background: #FFFCFA;
+      border: 1px solid rgba(140,51,10,0.1);
+      border-radius: 16px;
+      padding: 1.75rem 2rem;
+      box-shadow: 0 2px 12px rgba(60,20,0,0.06);
+      transition: box-shadow 0.22s cubic-bezier(0.16,1,0.3,1), transform 0.22s cubic-bezier(0.16,1,0.3,1);
+      position: relative;
+      overflow: hidden;
+    }
+    .verse-card::before {
+      content: '';
+      position: absolute;
+      top: 0; left: 0;
+      width: 4px;
+      height: 100%;
+      background: linear-gradient(to bottom, #8C330A, #F6AD55);
+      border-radius: 4px 0 0 4px;
+    }
+    .verse-card:hover {
+      box-shadow: 0 8px 28px rgba(60,20,0,0.12);
+      transform: translateY(-2px);
+    }
+    .verse-number {
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.15em;
+      text-transform: uppercase;
+      color: rgba(140,51,10,0.5);
+      margin-bottom: 0.75rem;
+    }
+    .verse-line {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 600;
+      line-height: 1.75;
+      color: #3d1100;
+    }
+    .verse-refrain {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(14px, 1.8vw, 16px);
+      font-weight: 400;
+      font-style: italic;
+      line-height: 1.75;
+      color: #57423a;
+      margin-top: 0.5rem;
+      padding-top: 0.5rem;
+      border-top: 1px dashed rgba(140,51,10,0.15);
+    }
+
+    /* ── Refrain box (standalone) ── */
+    .refrain-box {
+      background: linear-gradient(135deg, rgba(140,51,10,0.07) 0%, rgba(246,173,85,0.08) 100%);
+      border: 1px solid rgba(140,51,10,0.15);
+      border-radius: 14px;
+      padding: 1.5rem 2rem;
+      text-align: center;
+    }
+    .refrain-box p {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(15px, 2vw, 17px);
+      font-weight: 600;
+      line-height: 1.9;
+      color: #8C330A;
+    }
+
+    /* ── Benefit note ── */
+    .benefit-note {
+      background: rgba(246,173,85,0.1);
+      border: 1px solid rgba(246,173,85,0.35);
+      border-radius: 12px;
+      padding: 1.25rem 1.5rem;
+      display: flex;
+      gap: 0.75rem;
+      align-items: flex-start;
+    }
+    .benefit-note .note-icon {
+      color: #8C330A;
+      flex-shrink: 0;
+      margin-top: 2px;
+    }
+    .benefit-note p {
+      font-size: 14px;
+      line-height: 1.65;
+      color: #57423a;
+      font-style: italic;
+    }
+
+    /* ── Assurance cards ── */
+    .assurance-card {
+      background: #FFFCFA;
+      border: 1px solid rgba(140,51,10,0.1);
+      border-radius: 14px;
+      padding: 1.5rem;
+      display: flex;
+      gap: 1rem;
+      align-items: flex-start;
+      box-shadow: 0 1px 6px rgba(60,20,0,0.05);
+      transition: box-shadow 0.2s, transform 0.2s;
+    }
+    .assurance-card:hover {
+      box-shadow: 0 6px 20px rgba(60,20,0,0.1);
+      transform: translateY(-2px);
+    }
+    .assurance-num {
+      min-width: 2.4rem;
+      height: 2.4rem;
+      background: linear-gradient(135deg, #8C330A, #b85520);
+      color: #fff;
+      border-radius: 50%;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      font-size: 13px;
+      font-weight: 700;
+      flex-shrink: 0;
+      box-shadow: 0 2px 8px rgba(140,51,10,0.3);
+    }
+    .assurance-text {
+      font-family: 'Source Serif 4', Georgia, serif;
+      font-size: clamp(14px, 1.8vw, 16px);
+      line-height: 1.7;
+      color: #3d1100;
+      padding-top: 0.2rem;
+    }
+
+    /* ── Back-to-top ── */
+    #back-top {
+      position: fixed;
+      bottom: 1.75rem;
+      right: 1.75rem;
+      width: 44px; height: 44px;
+      background: #8C330A;
+      color: #fff;
+      border-radius: 50%;
+      border: none;
+      display: flex; align-items: center; justify-content: center;
+      cursor: pointer;
+      opacity: 0;
+      transform: translateY(10px);
+      transition: opacity 0.2s, transform 0.2s;
+      z-index: 100;
+      box-shadow: 0 4px 16px rgba(140,51,10,0.35);
+    }
+    #back-top.visible { opacity: 1; transform: translateY(0); }
+    #back-top:hover { background: #6b2006; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .verse-card, .assurance-card { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+  <div id="site-header"></div>
+  <script src="./partials/loader.js"></script>
+
+  <main id="main-content">
+
+    <!-- ────── HERO ────── -->
+    <section class="slokas-hero py-16 md:py-24 px-marginSm md:px-marginLg text-center relative">
+      <div class="hero-om" aria-hidden="true">௯்</div>
+      <div class="relative z-10">
+        <span class="inline-block font-body text-sacred-white/60 tracking-[0.2em] uppercase mb-3" style="font-size:11px; font-weight:600;">Sripada Srivallabha Mahasamsthanam</span>
+        <h1 class="font-display text-sacred-white text-display-lg-mobile md:text-display-lg mb-4">Slokas &amp; Stotram</h1>
+        <p class="font-body text-sacred-white/75 max-w-2xl mx-auto mb-8" style="font-size:16px;">
+          Sacred verses from <em>Sripada Srivallabha Charithaamrutam</em> — recite with devotion for blessings, removal of obstacles, and fulfilment of desires.
+        </p>
+        <!-- Table of contents -->
+        <div class="flex flex-wrap justify-center gap-3">
+          <a href="#stotram" class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-body font-semibold text-sacred-white border border-sacred-white/30 hover:bg-sacred-white/10 transition-colors" style="font-size:14px;">
+            <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">menu_book</span>
+            Siddha Mangala Stotram
+          </a>
+          <a href="#assurances" class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-body font-semibold text-sacred-white border border-sacred-white/30 hover:bg-sacred-white/10 transition-colors" style="font-size:14px;">
+            <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">format_list_numbered</span>
+            Twelve Assurances
+          </a>
+        </div>
+      </div>
+    </section>
+
+    <div class="max-w-[900px] mx-auto px-marginSm md:px-marginLg py-12 pb-24">
+
+      <!-- ────── SIDDHA MANGALA STOTRAM ────── -->
+      <section id="stotram" aria-labelledby="stotram-heading">
+
+        <div class="text-center mb-10">
+          <span class="section-eyebrow">Sacred Stotram</span>
+          <h2 id="stotram-heading" class="font-display text-headline-lg text-saffron-deep mb-3">Siddha Mangala Stotram</h2>
+          <p class="font-body text-on-surface-variant max-w-lg mx-auto" style="font-size:15px;">
+            From <em>Sripada Srivallabha Charithaamrutam</em> — the holy biography most beloved by Sripada Srivallabha himself.
+          </p>
+        </div>
+
+        <!-- Refrain (standalone at top) -->
+        <div class="refrain-box mb-8">
+          <p>Jaya Vijayeebhava Digvijayeebhava</p>
+          <p>Sri Madakhanda Sri Vijayeebhava!!</p>
+        </div>
+
+        <!-- Verses -->
+        <div class="flex flex-col gap-5">
+
+          <!-- Verse 1 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 1</p>
+            <p class="verse-line">Srimadanata Sri Vibhooshita Appala Lakshmi Narasimharaajaa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+          <!-- Verse 2 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 2</p>
+            <p class="verse-line">Sri Vidyaadhari Radhaa Surekha Sri raakheedhara Sreepadaa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+          <!-- Verse 3 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 3</p>
+            <p class="verse-line">Maataa Sumati Vaatschalyaamruta pariposhita Jaya Sripadaa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+          <!-- Verse 4 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 4</p>
+            <p class="verse-line">Satya Rusheeswara Duhitaanandana Baapanaaryanuta Sree Charanaa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+          <!-- Verse 5 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 5</p>
+            <p class="verse-line">Savitrakaataka Chayana Punyaphala Bharadwaja Rushigotra Sambhavaa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+          <!-- Verse 6 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 6</p>
+            <p class="verse-line">DoChowpaatee Dev Lakshmi Ghanasamkhyaa Bodhita Sree Charanaa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+          <!-- Verse 7 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 7</p>
+            <p class="verse-line">Punyaroopinee Raajamaambasuta Garbhapunyaphala Samjaataa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+          <!-- Verse 8 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 8</p>
+            <p class="verse-line">Sumateenandana Naraharinandana Dattadevaprabhu Sreepadaa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+          <!-- Verse 9 -->
+          <div class="verse-card">
+            <p class="verse-number">Verse 9</p>
+            <p class="verse-line">Peethikaapura Nityavihaara Madhumati Datta, Mangalaroopaa!</p>
+            <p class="verse-refrain">Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
+          </div>
+
+        </div>
+        <!-- end verses -->
+
+        <!-- Benefit note -->
+        <div class="benefit-note mt-8">
+          <span class="material-symbols-outlined note-icon" style="font-size:22px;" aria-hidden="true">auto_awesome</span>
+          <p>
+            By reciting everyday with devotion this Siddamangala Sthotra from Charitaamrutam, which is very fondly dear to Sripada Srivallabha, all obstacles will be destroyed, all desires will be fulfilled and auspicious events will take place.
+          </p>
+        </div>
+
+      </section>
+
+      <!-- Decorative divider -->
+      <div class="lotus-divider" aria-hidden="true">
+        <span class="lotus-dot"></span>
+        <span class="lotus-diamond"></span>
+        <span class="lotus-dot"></span>
+        <span class="lotus-diamond"></span>
+        <span class="lotus-dot"></span>
+      </div>
+
+      <!-- ────── TWELVE ASSURANCES ────── -->
+      <section id="assurances" aria-labelledby="assurances-heading" class="mt-4">
+
+        <div class="text-center mb-10">
+          <span class="section-eyebrow">Divine Words</span>
+          <h2 id="assurances-heading" class="font-display text-headline-lg text-saffron-deep mb-3">Twelve Assurances</h2>
+          <p class="font-body text-on-surface-variant max-w-lg mx-auto" style="font-size:15px;">
+            Declared directly to devotees by Sreepada Srivallabha — eternal promises of protection and grace.
+          </p>
+        </div>
+
+        <div class="flex flex-col gap-4">
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">1</div>
+            <p class="assurance-text">I will remain in a subtle form in every place where my biography is devotedly read.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">2</div>
+            <p class="assurance-text">Just like an eye-lid, I will protect the person who is dedicated to me through mind, word and deed.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">3</div>
+            <p class="assurance-text">Daily in the afternoon I seek alms in Sri Pithikapuram. My arrival is a divine secret.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">4</div>
+            <p class="assurance-text">I reduce all the karmas into heaps of ashes of those who constantly meditate upon me. Even if the karmas are accumulated from many births I will burn them down.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">5</div>
+            <p class="assurance-text">If you give food to those who wail ‘Oh! Ramachandraa! Food!’ I will be pleased.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">6</div>
+            <p class="assurance-text">I am Sreepada Sreevallabha! Sreemahalakshmi shines with all Her glorious attributes in the houses of My devotees.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">7</div>
+            <p class="assurance-text">If you have a pure heart My grace will always be on you.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">8</div>
+            <p class="assurance-text">I am agreeable even when you adore any Form of Deity, or take the support of any Sadguru.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">9</div>
+            <p class="assurance-text">All your Prayers reach me. My grace is transmitted to you through the form of Deity you Worship or through your Sadguru.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">10</div>
+            <p class="assurance-text">Sreepada Sreevallabha is not merely confined to this Name and form. You can know My Corporeal Cosmic form encompassing all forms of Deities and all forces as integral parts, only by strict observance of spiritual discipline.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">11</div>
+            <p class="assurance-text">Mine is a comprehensive yogic incarnation. Great yogis and Great Siddhas constantly meditate upon me.</p>
+          </div>
+
+          <div class="assurance-card">
+            <div class="assurance-num" aria-hidden="true">12</div>
+            <p class="assurance-text">If you take Me as a support, I preach you the path of dharma and also the path of karma. I always protect you from a downfall.</p>
+          </div>
+
+        </div>
+
+      </section>
+
+    </div>
+    <!-- end content wrapper -->
+
+  </main>
+
+  <!-- Back to top -->
+  <button id="back-top" aria-label="Back to top">
+    <span class="material-symbols-outlined" style="font-size:22px;" aria-hidden="true">arrow_upward</span>
+  </button>
+
+  <div id="site-footer"></div>
+
+  <script>
+    (function(){
+      var btn = document.getElementById('back-top');
+      window.addEventListener('scroll', function(){
+        btn.classList.toggle('visible', window.scrollY > 400);
+      }, { passive: true });
+      btn.addEventListener('click', function(){
+        window.scrollTo({ top: 0, behavior: 'smooth' });
+      });
+    })();
+  </script>
+
+</body>
+</html>
