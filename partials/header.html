@@ -189,7 +189,42 @@
       font-size: 0.9rem;
       border-bottom: 1px solid;
     }
+
+    /* Audio mute button */
+    #audio-toggle {
+      position: relative;
+      display: flex;
+      align-items: center;
+      justify-content: center;
+      width: 2.25rem;
+      height: 2.25rem;
+      border-radius: 50%;
+      background: none;
+      border: none;
+      cursor: pointer;
+      color: #8C330A;
+      transition: background 0.18s, transform 0.18s;
+    }
+    #audio-toggle:hover { background: rgba(140,51,10,0.08); transform: scale(1.08); }
+    html.dark #audio-toggle { color: #ffb596; }
+    html.dark #audio-toggle:hover { background: rgba(255,181,150,0.1); }
+
+    /* Subtle pulse ring when playing */
+    @keyframes audio-pulse {
+      0%   { box-shadow: 0 0 0 0   rgba(140,51,10,0.35); }
+      70%  { box-shadow: 0 0 0 7px rgba(140,51,10,0);    }
+      100% { box-shadow: 0 0 0 0   rgba(140,51,10,0);    }
+    }
+    #audio-toggle.playing {
+      animation: audio-pulse 2s ease-out infinite;
+    }
+    html.dark #audio-toggle.playing {
+      animation: none;
+    }
   </style>
+
+  <!-- Bhajan audio element (hidden, autoplay, loop) -->
+  <audio id="bhajan-audio" src="./files/Shripad Rajam Sharanam Prapadhye.mp3" loop preload="auto"></audio>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
@@ -253,10 +288,27 @@
     </nav>
 
     <div class="flex items-center gap-3">
-      <button id="theme-toggle" aria-label="Switch to dark mode" class="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
-        <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
+      <!-- Mute / Unmute bhajan button (replaces dark mode toggle) -->
+      <button
+        id="audio-toggle"
+        aria-label="Mute bhajan"
+        title="Mute bhajan"
+        class="playing"
+      >
+        <!-- Volume (unmuted) icon -->
+        <svg id="icon-volume" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
+          <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
+        </svg>
+        <!-- Muted icon (hidden by default) -->
+        <svg id="icon-muted" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+          <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
+          <line x1="23" y1="9" x2="17" y2="15"/>
+          <line x1="17" y1="9" x2="23" y2="15"/>
+        </svg>
       </button>
+
       <button id="nav-open" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav" class="lg:hidden flex items-center justify-center w-10 h-10 text-saffron-deep">
         <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
       </button>
@@ -321,6 +373,7 @@
 
   <script>
     (function () {
+      /* ── Accordion ── */
       function initAccordion(btnId, subId) {
         var btn = document.getElementById(btnId);
         var sub = document.getElementById(subId);
@@ -334,5 +387,58 @@
       }
       initAccordion('mob-donations-btn', 'mob-donations-sub');
       initAccordion('mob-pilgrim-btn',   'mob-pilgrim-sub');
+
+      /* ── Bhajan audio autoplay + mute toggle ── */
+      var audio      = document.getElementById('bhajan-audio');
+      var btn        = document.getElementById('audio-toggle');
+      var iconVol    = document.getElementById('icon-volume');
+      var iconMuted  = document.getElementById('icon-muted');
+      var muted      = false;
+
+      function setMuted(val) {
+        muted = val;
+        audio.muted = val;
+        if (val) {
+          iconVol.style.display   = 'none';
+          iconMuted.style.display = '';
+          btn.classList.remove('playing');
+          btn.setAttribute('aria-label', 'Unmute bhajan');
+          btn.setAttribute('title',      'Unmute bhajan');
+        } else {
+          iconVol.style.display   = '';
+          iconMuted.style.display = 'none';
+          btn.classList.add('playing');
+          btn.setAttribute('aria-label', 'Mute bhajan');
+          btn.setAttribute('title',      'Mute bhajan');
+        }
+      }
+
+      /* Attempt autoplay; browsers may block until first interaction */
+      function tryPlay() {
+        var p = audio.play();
+        if (p !== undefined) {
+          p.catch(function () {
+            /* Autoplay blocked — wait for first user interaction then play */
+            document.addEventListener('click', function startOnClick() {
+              if (!muted) audio.play();
+              document.removeEventListener('click', startOnClick);
+            }, { once: true });
+          });
+        }
+      }
+
+      document.addEventListener('DOMContentLoaded', function () {
+        tryPlay();
+      });
+
+      btn.addEventListener('click', function () {
+        if (muted) {
+          /* Unmuting — ensure audio is actually playing */
+          setMuted(false);
+          if (audio.paused) audio.play();
+        } else {
+          setMuted(true);
+        }
+      });
     })();
   </script>
