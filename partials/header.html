@@ -180,7 +180,7 @@
       max-height: 0;
       transition: max-height 0.25s cubic-bezier(0.16,1,0.3,1);
     }
-    .mobile-acc-sub.open { max-height: 20rem; }
+    .mobile-acc-sub.open { max-height: 25rem; }
     .mobile-acc-sub a {
       display: flex;
       align-items: center;
@@ -209,7 +209,6 @@
     html.dark #audio-toggle { color: #ffb596; }
     html.dark #audio-toggle:hover { background: rgba(255,181,150,0.1); }
 
-    /* Subtle pulse ring when playing */
     @keyframes audio-pulse {
       0%   { box-shadow: 0 0 0 0   rgba(140,51,10,0.35); }
       70%  { box-shadow: 0 0 0 7px rgba(140,51,10,0);    }
@@ -223,7 +222,6 @@
     }
   </style>
 
-  <!-- Bhajan audio element (hidden, autoplay, loop) -->
   <audio id="bhajan-audio" src="./files/Shripad Rajam Sharanam Prapadhye.mp3" loop preload="auto"></audio>
 
   <a href="#main-content" class="skip-link">Skip to main content</a>
@@ -283,25 +281,25 @@
           <a href="./HowToReach.html" role="menuitem">
             <span class="material-symbols-outlined menu-icon" aria-hidden="true">near_me</span>How to Reach Pithapuram
           </a>
+          <a href="./gallery.html" role="menuitem">
+            <span class="material-symbols-outlined menu-icon" aria-hidden="true">photo_library</span>Gallery
+          </a>
         </div>
       </div>
     </nav>
 
     <div class="flex items-center gap-3">
-      <!-- Mute / Unmute bhajan button (replaces dark mode toggle) -->
       <button
         id="audio-toggle"
         aria-label="Mute bhajan"
         title="Mute bhajan"
         class="playing"
       >
-        <!-- Volume (unmuted) icon -->
         <svg id="icon-volume" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
           <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
           <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
         </svg>
-        <!-- Muted icon (hidden by default) -->
         <svg id="icon-muted" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
           <line x1="23" y1="9" x2="17" y2="15"/>
@@ -366,6 +364,9 @@
         <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./HowToReach.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">near_me</span>How to Reach Pithapuram
         </a>
+        <a class="font-body text-on-surface-variant hover:text-primary border-incense-smoke transition-colors" href="./gallery.html" data-nav-link>
+          <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">photo_library</span>Gallery
+        </a>
       </div>
     </div>
 
@@ -373,7 +374,6 @@
 
   <script>
     (function () {
-      /* ── Accordion ── */
       function initAccordion(btnId, subId) {
         var btn = document.getElementById(btnId);
         var sub = document.getElementById(subId);
@@ -388,7 +388,6 @@
       initAccordion('mob-donations-btn', 'mob-donations-sub');
       initAccordion('mob-pilgrim-btn',   'mob-pilgrim-sub');
 
-      /* ── Bhajan audio autoplay + mute toggle ── */
       var audio      = document.getElementById('bhajan-audio');
       var btn        = document.getElementById('audio-toggle');
       var iconVol    = document.getElementById('icon-volume');
@@ -413,12 +412,10 @@
         }
       }
 
-      /* Attempt autoplay; browsers may block until first interaction */
       function tryPlay() {
         var p = audio.play();
         if (p !== undefined) {
           p.catch(function () {
-            /* Autoplay blocked — wait for first user interaction then play */
             document.addEventListener('click', function startOnClick() {
               if (!muted) audio.play();
               document.removeEventListener('click', startOnClick);
@@ -427,18 +424,11 @@
         }
       }
 
-      document.addEventListener('DOMContentLoaded', function () {
-        tryPlay();
-      });
+      document.addEventListener('DOMContentLoaded', function () { tryPlay(); });
 
       btn.addEventListener('click', function () {
-        if (muted) {
-          /* Unmuting — ensure audio is actually playing */
-          setMuted(false);
-          if (audio.paused) audio.play();
-        } else {
-          setMuted(true);
-        }
+        if (muted) { setMuted(false); if (audio.paused) audio.play(); }
+        else { setMuted(true); }
       });
     })();
   </script>

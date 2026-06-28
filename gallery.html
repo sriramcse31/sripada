@@ -1,0 +1,605 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Photo Gallery — Sripada Srivallabha Mahasamsthanam, Pithapuram. Darshan, sevas, Annadanam, Goshala and temple events.">
+  <title>Gallery — Sripada Srivallabha Mahasamsthanam</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error-container": "#93000a",
+            "on-background": "#0d1c2e",
+            "surface-container-lowest": "#ffffff",
+            "surface-dim": "#ccdbf4",
+            "on-secondary-container": "#734700",
+            "surface": "#f8f9ff",
+            "sacred-white": "#FFFCFA",
+            "secondary-fixed-dim": "#ffb95f",
+            "incense-smoke": "#EDF2F7",
+            "primary-fixed-dim": "#ffb596",
+            "inverse-primary": "#ffb596",
+            "surface-container-highest": "#d4e4fc",
+            "secondary-fixed": "#ffddb8",
+            "error": "#ba1a1a",
+            "surface-container": "#e5eeff",
+            "outline-variant": "#dec0b5",
+            "surface-tint": "#a14009",
+            "on-error": "#ffffff",
+            "on-surface": "#0d1c2e",
+            "on-tertiary": "#ffffff",
+            "outline": "#8a7268",
+            "saffron-deep": "#8C330A",
+            "on-tertiary-fixed-variant": "#3d4759",
+            "on-tertiary-fixed": "#121c2c",
+            "inverse-surface": "#223144",
+            "tertiary": "#535d70",
+            "on-primary-fixed": "#360f00",
+            "on-primary-fixed-variant": "#7d2d00",
+            "secondary": "#855300",
+            "on-primary-container": "#fffeff",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-fixed": "#d9e3f9",
+            "surface-bright": "#f8f9ff",
+            "tertiary-container": "#6c7689",
+            "on-primary": "#ffffff",
+            "surface-variant": "#d4e4fc",
+            "surface-container-high": "#dce9ff",
+            "on-secondary-fixed-variant": "#653e00",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#57423a",
+            "primary": "#9f3e07",
+            "secondary-container": "#feb557",
+            "surface-container-low": "#eff4ff",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#ffdbcd",
+            "on-secondary-fixed": "#2a1700",
+            "primary-container": "#c05621",
+            "tertiary-fixed-dim": "#bdc7dc",
+            "golden-glow": "#F6AD55",
+            "background": "#f8f9ff"
+          },
+          fontFamily: {
+            "display": ['"Source Serif 4"', "Georgia", "serif"],
+            "body":    ["Hanken Grotesk", "system-ui", "sans-serif"],
+            "telugu":  ['"Noto Sans Telugu"', "sans-serif"]
+          },
+          fontSize: {
+            "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+            "display-lg-mobile": ["36px", { lineHeight: "44px", fontWeight: "700" }],
+            "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+            "caption": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+          },
+          spacing: {
+            "gutter": "24px",
+            "base": "8px",
+            "marginSm": "16px",
+            "marginLg": "40px"
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* ── Base ── */
+    *, *::before, *::after { box-sizing: border-box; margin: 0; padding: 0; }
+    html { scroll-behavior: smooth; scroll-padding-top: 6rem; -webkit-font-smoothing: antialiased; }
+    body { background: #f8f9ff; color: #0d1c2e; font-family: 'Hanken Grotesk', system-ui, sans-serif; }
+    img { display: block; max-width: 100%; height: auto; }
+
+    /* ── Hero banner ── */
+    .gallery-hero {
+      background: linear-gradient(135deg, #5c1a04 0%, #8C330A 45%, #b85520 100%);
+      position: relative;
+      overflow: hidden;
+    }
+    .gallery-hero::before {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    }
+
+    /* ── Filter pills ── */
+    .filter-pill {
+      display: inline-flex;
+      align-items: center;
+      gap: 0.4rem;
+      padding: 0.45rem 1rem;
+      border-radius: 9999px;
+      font-size: 13px;
+      font-weight: 600;
+      cursor: pointer;
+      border: 1.5px solid #dec0b5;
+      background: #FFFCFA;
+      color: #57423a;
+      transition: all 0.18s cubic-bezier(0.16, 1, 0.3, 1);
+      white-space: nowrap;
+    }
+    .filter-pill:hover {
+      border-color: #8C330A;
+      color: #8C330A;
+      background: #fff5f0;
+    }
+    .filter-pill.active {
+      background: #8C330A;
+      border-color: #8C330A;
+      color: #fff;
+    }
+
+    /* ── Masonry grid ── */
+    .masonry {
+      columns: 3 280px;
+      column-gap: 16px;
+    }
+    @media (max-width: 640px) { .masonry { columns: 2 160px; column-gap: 10px; } }
+    @media (max-width: 380px) { .masonry { columns: 1; } }
+
+    .masonry-item {
+      break-inside: avoid;
+      margin-bottom: 16px;
+      border-radius: 14px;
+      overflow: hidden;
+      cursor: pointer;
+      position: relative;
+      background: #EDF2F7;
+      box-shadow: 0 2px 8px rgba(60,20,0,0.08);
+      transition: transform 0.22s cubic-bezier(0.16, 1, 0.3, 1),
+                  box-shadow 0.22s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .masonry-item:hover {
+      transform: translateY(-3px);
+      box-shadow: 0 10px 28px rgba(60,20,0,0.15);
+    }
+    .masonry-item img {
+      width: 100%;
+      height: auto;
+      display: block;
+      transition: transform 0.4s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .masonry-item:hover img { transform: scale(1.04); }
+
+    /* Caption overlay */
+    .masonry-item .caption-overlay {
+      position: absolute;
+      bottom: 0; left: 0; right: 0;
+      background: linear-gradient(to top, rgba(30,8,0,0.72) 0%, transparent 100%);
+      padding: 1.5rem 0.85rem 0.85rem;
+      opacity: 0;
+      transition: opacity 0.22s;
+    }
+    .masonry-item:hover .caption-overlay { opacity: 1; }
+    .caption-overlay p {
+      color: #fff;
+      font-size: 12px;
+      font-weight: 600;
+      line-height: 1.35;
+      letter-spacing: 0.01em;
+    }
+
+    /* Category chip on photo */
+    .photo-chip {
+      position: absolute;
+      top: 10px; left: 10px;
+      background: rgba(140,51,10,0.85);
+      color: #fff;
+      font-size: 10px;
+      font-weight: 700;
+      letter-spacing: 0.07em;
+      text-transform: uppercase;
+      padding: 3px 9px;
+      border-radius: 9999px;
+      backdrop-filter: blur(4px);
+    }
+
+    /* ── Lightbox ── */
+    #lightbox {
+      display: none;
+      position: fixed;
+      inset: 0;
+      z-index: 1000;
+      background: rgba(10,4,0,0.92);
+      align-items: center;
+      justify-content: center;
+      padding: 1rem;
+    }
+    #lightbox.open { display: flex; }
+    #lb-img {
+      max-width: min(90vw, 900px);
+      max-height: 85vh;
+      object-fit: contain;
+      border-radius: 12px;
+      box-shadow: 0 24px 64px rgba(0,0,0,0.6);
+      transition: opacity 0.2s;
+    }
+    #lb-close {
+      position: absolute;
+      top: 1rem; right: 1rem;
+      width: 44px; height: 44px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.12);
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      transition: background 0.18s;
+    }
+    #lb-close:hover { background: rgba(255,255,255,0.22); }
+    #lb-prev, #lb-next {
+      position: absolute;
+      top: 50%; transform: translateY(-50%);
+      width: 48px; height: 48px;
+      display: flex; align-items: center; justify-content: center;
+      background: rgba(255,255,255,0.1);
+      border-radius: 50%;
+      color: #fff;
+      cursor: pointer;
+      border: none;
+      transition: background 0.18s;
+    }
+    #lb-prev:hover, #lb-next:hover { background: rgba(255,255,255,0.22); }
+    #lb-prev { left: 1rem; }
+    #lb-next { right: 1rem; }
+    #lb-caption {
+      position: absolute;
+      bottom: 1.5rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.8);
+      font-size: 13px;
+      font-weight: 500;
+      text-align: center;
+      max-width: 600px;
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+    }
+    #lb-counter {
+      position: absolute;
+      top: 1rem; left: 50%; transform: translateX(-50%);
+      color: rgba(255,255,255,0.55);
+      font-size: 12px;
+      font-weight: 600;
+      letter-spacing: 0.08em;
+    }
+
+    /* hide items when filtered out */
+    .masonry-item[data-hidden] { display: none; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .masonry-item, .masonry-item img, .filter-pill { transition: none; }
+    }
+  </style>
+</head>
+
+<body>
+
+  <!-- HEADER PARTIAL -->
+  <div id="site-header"></div>
+  <script src="./partials/loader.js"></script>
+
+  <main id="main-content">
+
+    <!-- ── Hero Banner ── -->
+    <section class="gallery-hero py-14 md:py-20 px-marginSm md:px-marginLg text-center relative">
+      <span class="inline-block font-body text-sacred-white/60 tracking-[0.2em] uppercase mb-3" style="font-size:11px; font-weight:600;">Sripada Srivallabha Mahasamsthanam</span>
+      <h1 class="font-display text-sacred-white text-display-lg-mobile md:text-display-lg mb-4">Photo Gallery</h1>
+      <p class="font-body text-sacred-white/75 max-w-xl mx-auto" style="font-size:16px;">Moments of devotion — sevas, Annadanam, Goshala, and the sacred spaces of Pithapuram.</p>
+    </section>
+
+    <!-- ── Filter Bar ── -->
+    <div class="sticky top-[5.5rem] z-30 bg-background/95 border-b border-incense-smoke shadow-sm" style="backdrop-filter:blur(10px); -webkit-backdrop-filter:blur(10px);">
+      <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg">
+        <div id="filter-bar" class="flex gap-2 py-3 overflow-x-auto" style="scrollbar-width:none;" role="group" aria-label="Filter gallery by category">
+          <button class="filter-pill active" data-filter="all">
+            <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">apps</span>
+            All
+          </button>
+          <button class="filter-pill" data-filter="sevas">
+            <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">local_fire_department</span>
+            Sevas
+          </button>
+          <button class="filter-pill" data-filter="annadanam">
+            <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">restaurant</span>
+            Annadanam
+          </button>
+          <button class="filter-pill" data-filter="goshala">
+            <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">pets</span>
+            Goshala
+          </button>
+          <button class="filter-pill" data-filter="temple">
+            <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">temple_hindu</span>
+            Temple
+          </button>
+        </div>
+      </div>
+    </div>
+
+    <!-- ── Gallery Grid ── -->
+    <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-10 pb-24">
+
+      <!-- Count indicator -->
+      <p id="gallery-count" class="font-body text-on-surface-variant mb-6" style="font-size:13px;"></p>
+
+      <div id="gallery-grid" class="masonry">
+
+        <!-- ── Sevas ── -->
+        <div class="masonry-item" data-category="sevas" data-caption="Abhishekam Seva">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-abhishekam.jpg" alt="Abhishekam Seva at Sripada Srivallabha Mahasamsthanam" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Abhishekam Seva</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Rudrabhishekam">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-rudrabhishekam.jpg" alt="Rudrabhishekam Seva" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Rudrabhishekam</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Pallaki Seva">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-pallaki-seva.jpg" alt="Pallaki Seva procession" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Pallaki Seva</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Datta Mahamantra Homam">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-Datta-Mahamantra-Homam.jpg" alt="Datta Mahamantra Homam" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Datta Mahamantra Homam</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Chitta Nakshatra Pooja">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-CHITTA-NAKSHITRA-POOJA.jpg" alt="Chitta Nakshatra Pooja" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Chitta Nakshatra Pooja</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Lakshmi Ganapati Homam">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-LAKSHMI-GANAPATI-HOMAM.jpg" alt="Lakshmi Ganapati Homam" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Lakshmi Ganapati Homam</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Mandala Abhisheka Pooja">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-MANDALA-ABHISHEKA-POOJA.jpg" alt="Mandala Abhisheka Pooja" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Mandala Abhisheka Pooja</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Navagraha Japam & Dattaamsa Homam">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-Navagraha-Japam-Thath-Dattaamsa-Homam.jpg" alt="Navagraha Japam and Dattaamsa Homam" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Navagraha Japam &amp; Dattaamsa Homam</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Sani Pradosha Pooja">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-SANI-PRODASHA-POOJA.jpg" alt="Sani Pradosha Pooja" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Sani Pradosha Pooja</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Saswata Akhanda Deeparadhana">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-SASWATA-AKHANDA-DEEPARADHANA.jpg" alt="Saswata Akhanda Deeparadhana" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Saswata Akhanda Deeparadhana</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Saswata Datta Mahamantra Homam">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-SASWATA-DATTA-MAHAMANTRA-HOMAM.jpg" alt="Saswata Datta Mahamantra Homam" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Saswata Datta Mahamantra Homam</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Saswata Rudrabhisheka Pooja">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-SASWATA-RUDRABHISHEKA-POOJA.jpg" alt="Saswata Rudrabhisheka Pooja" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Saswata Rudrabhisheka Pooja</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="sevas" data-caption="Saswata Maha Pooja">
+          <span class="photo-chip">Sevas</span>
+          <img src="./images/seva-saswata-maha-pooja.jpg" alt="Saswata Maha Pooja" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Saswata Maha Pooja</p></div>
+        </div>
+
+        <!-- ── Annadanam ── -->
+        <div class="masonry-item" data-category="annadanam" data-caption="Nithya Annadanam — Free Meal Service">
+          <span class="photo-chip">Annadanam</span>
+          <img src="./images/Annadanam.png" alt="Nithya Annadanam — free meal service at the temple" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Nithya Annadanam — Free Meal Service</p></div>
+        </div>
+
+        <!-- ── Goshala ── -->
+        <div class="masonry-item" data-category="goshala" data-caption="Go Seva — Sacred Cow Care">
+          <span class="photo-chip">Goshala</span>
+          <img src="./images/goseva.png" alt="Go Seva — sacred cow care at the temple Goshala" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Go Seva — Sacred Cow Care</p></div>
+        </div>
+
+        <!-- ── Temple ── -->
+        <div class="masonry-item" data-category="temple" data-caption="Temple Building & Development">
+          <span class="photo-chip">Temple</span>
+          <img src="./images/building.png" alt="Temple building and development at Sripada Srivallabha Mahasamsthanam" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Temple Building &amp; Development</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="temple" data-caption="Lord Sripada Srivallabha — Sacred Image">
+          <span class="photo-chip">Temple</span>
+          <img src="./images/left-sripada.png" alt="Lord Sripada Srivallabha — sacred deity image" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Lord Sripada Srivallabha</p></div>
+        </div>
+
+        <div class="masonry-item" data-category="temple" data-caption="Lord Sripada Srivallabha — HD Darshan">
+          <span class="photo-chip">Temple</span>
+          <img src="./images/Sripada-HD.jpg" alt="Lord Sripada Srivallabha — HD darshan image" loading="lazy" decoding="async">
+          <div class="caption-overlay"><p>Lord Sripada Srivallabha — HD Darshan</p></div>
+        </div>
+
+      </div>
+      <!-- end masonry -->
+
+      <!-- Empty state when filter yields nothing -->
+      <div id="empty-state" class="hidden flex-col items-center text-center py-24">
+        <span class="material-symbols-outlined text-on-surface-variant mb-4" style="font-size:48px; opacity:0.4;">photo_library</span>
+        <h3 class="font-display text-headline-md text-on-background mb-2">No photos in this category yet</h3>
+        <p class="font-body text-on-surface-variant" style="font-size:14px; max-width:32ch;">More photos will be added soon. Try another filter.</p>
+        <button class="filter-pill active mt-6" onclick="setFilter('all')">View All Photos</button>
+      </div>
+
+    </div>
+  </main>
+
+  <!-- ── Lightbox ── -->
+  <div id="lightbox" role="dialog" aria-modal="true" aria-label="Photo lightbox">
+    <button id="lb-close" aria-label="Close lightbox">
+      <span class="material-symbols-outlined" style="font-size:22px;" aria-hidden="true">close</span>
+    </button>
+    <span id="lb-counter" aria-live="polite"></span>
+    <button id="lb-prev" aria-label="Previous photo">
+      <span class="material-symbols-outlined" style="font-size:26px;" aria-hidden="true">chevron_left</span>
+    </button>
+    <img id="lb-img" src="" alt="" loading="eager">
+    <button id="lb-next" aria-label="Next photo">
+      <span class="material-symbols-outlined" style="font-size:26px;" aria-hidden="true">chevron_right</span>
+    </button>
+    <p id="lb-caption"></p>
+  </div>
+
+  <!-- FOOTER PARTIAL -->
+  <div id="site-footer"></div>
+  <script>
+    if (window.loadPartial) {
+      loadPartial('footer', 'site-footer', initFooter);
+    }
+  </script>
+
+  <script>
+  (function () {
+    'use strict';
+
+    /* ── Filter ── */
+    var currentFilter = 'all';
+    var allItems = Array.from(document.querySelectorAll('.masonry-item'));
+    var countEl  = document.getElementById('gallery-count');
+    var emptyEl  = document.getElementById('empty-state');
+    var grid     = document.getElementById('gallery-grid');
+
+    function setFilter(cat) {
+      currentFilter = cat;
+      document.querySelectorAll('.filter-pill').forEach(function (pill) {
+        pill.classList.toggle('active', pill.dataset.filter === cat);
+      });
+      var visible = 0;
+      allItems.forEach(function (item) {
+        var match = cat === 'all' || item.dataset.category === cat;
+        if (match) {
+          item.removeAttribute('data-hidden');
+          visible++;
+        } else {
+          item.setAttribute('data-hidden', '');
+        }
+      });
+      countEl.textContent = visible + ' photo' + (visible !== 1 ? 's' : '');
+      if (visible === 0) {
+        grid.style.display = 'none';
+        emptyEl.classList.remove('hidden');
+        emptyEl.classList.add('flex');
+      } else {
+        grid.style.display = '';
+        emptyEl.classList.add('hidden');
+        emptyEl.classList.remove('flex');
+      }
+    }
+    window.setFilter = setFilter;
+
+    document.getElementById('filter-bar').addEventListener('click', function (e) {
+      var pill = e.target.closest('.filter-pill');
+      if (!pill) return;
+      setFilter(pill.dataset.filter);
+    });
+
+    setFilter('all'); // initialise count
+
+    /* ── Lightbox ── */
+    var lb       = document.getElementById('lightbox');
+    var lbImg    = document.getElementById('lb-img');
+    var lbCap    = document.getElementById('lb-caption');
+    var lbCtr    = document.getElementById('lb-counter');
+    var lbIdx    = 0;
+    var lbItems  = [];  // visible items at open time
+
+    function openLightbox(item) {
+      lbItems = allItems.filter(function (i) {
+        return !i.hasAttribute('data-hidden');
+      });
+      lbIdx = lbItems.indexOf(item);
+      showLb();
+      lb.classList.add('open');
+      document.body.style.overflow = 'hidden';
+      document.getElementById('lb-close').focus();
+    }
+
+    function closeLightbox() {
+      lb.classList.remove('open');
+      document.body.style.overflow = '';
+      lbImg.src = '';
+    }
+
+    function showLb() {
+      var item = lbItems[lbIdx];
+      var img  = item.querySelector('img');
+      lbImg.style.opacity = '0';
+      lbImg.src = img.src;
+      lbImg.alt = img.alt;
+      lbImg.onload = function () { lbImg.style.opacity = '1'; };
+      lbCap.textContent = item.dataset.caption || '';
+      lbCtr.textContent = (lbIdx + 1) + ' / ' + lbItems.length;
+    }
+
+    allItems.forEach(function (item) {
+      item.addEventListener('click', function () { openLightbox(item); });
+      item.setAttribute('tabindex', '0');
+      item.setAttribute('role', 'button');
+      item.addEventListener('keydown', function (e) {
+        if (e.key === 'Enter' || e.key === ' ') { e.preventDefault(); openLightbox(item); }
+      });
+    });
+
+    document.getElementById('lb-close').addEventListener('click', closeLightbox);
+    document.getElementById('lb-prev').addEventListener('click', function () {
+      lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length;
+      showLb();
+    });
+    document.getElementById('lb-next').addEventListener('click', function () {
+      lbIdx = (lbIdx + 1) % lbItems.length;
+      showLb();
+    });
+
+    lb.addEventListener('click', function (e) {
+      if (e.target === lb) closeLightbox();
+    });
+
+    document.addEventListener('keydown', function (e) {
+      if (!lb.classList.contains('open')) return;
+      if (e.key === 'Escape')     closeLightbox();
+      if (e.key === 'ArrowRight') { lbIdx = (lbIdx + 1) % lbItems.length; showLb(); }
+      if (e.key === 'ArrowLeft')  { lbIdx = (lbIdx - 1 + lbItems.length) % lbItems.length; showLb(); }
+    });
+
+  })();
+  </script>
+
+</body>
+</html>
