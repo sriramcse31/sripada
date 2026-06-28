@@ -202,10 +202,10 @@
       transform: translateY(-2px);
     }
     .book-card-header {
-      padding: 24px 24px 0 24px;
+      padding: 20px 20px 0 20px;
     }
     .book-card-body {
-      padding: 0 24px 20px 24px;
+      padding: 0 20px 18px 20px;
       display: flex;
       flex-direction: column;
       flex: 1;
@@ -214,9 +214,19 @@
       display: flex;
       align-items: center;
       justify-content: space-between;
-      gap: 12px;
+      gap: 10px;
       margin-top: auto;
-      padding-top: 20px;
+      padding-top: 16px;
+    }
+
+    /* Book cover image */
+    .book-cover {
+      width: 100%;
+      height: 210px;
+      object-fit: cover;
+      object-position: center top;
+      display: block;
+      background: #f5e6da;
     }
 
     .cost-badge {
@@ -239,9 +249,9 @@
       gap: 4px;
       background: #eff4ff;
       color: #57423a;
-      font-size: 12px;
+      font-size: 11px;
       font-weight: 600;
-      padding: 3px 9px;
+      padding: 3px 8px;
       border-radius: 9999px;
       white-space: nowrap;
     }
@@ -249,11 +259,11 @@
     .lang-chip {
       display: inline-flex;
       align-items: center;
-      font-size: 11px;
+      font-size: 10px;
       font-weight: 700;
       letter-spacing: 0.07em;
       text-transform: uppercase;
-      padding: 3px 10px;
+      padding: 3px 8px;
       border-radius: 4px;
     }
 
@@ -266,12 +276,12 @@
     .buynow-btn {
       display: inline-flex;
       align-items: center;
-      gap: 6px;
+      gap: 5px;
       background: #9f3e07;
       color: #fff;
-      font-size: 13px;
+      font-size: 12px;
       font-weight: 700;
-      padding: 8px 18px;
+      padding: 7px 15px;
       border-radius: 9999px;
       letter-spacing: 0.04em;
       text-decoration: none;
@@ -289,36 +299,7 @@
     .book-card-divider {
       height: 1px;
       background: #EDF2F7;
-      margin: 0 24px;
-    }
-
-    .book-img-placeholder {
-      width: 100%;
-      height: 180px;
-      background: linear-gradient(135deg, #fdf5ef 0%, #f5e6da 100%);
-      display: flex;
-      flex-direction: column;
-      align-items: center;
-      justify-content: center;
-      gap: 8px;
-      color: #c09a80;
-    }
-    .book-img-placeholder span.material-symbols-outlined { font-size: 44px; }
-    .book-img-placeholder p {
-      font-size: 12px;
-      font-family: "Hanken Grotesk", system-ui, sans-serif;
-      letter-spacing: 0.05em;
-      text-transform: uppercase;
-    }
-
-    /* Detail expand */
-    .book-detail {
-      max-height: 0;
-      overflow: hidden;
-      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .book-detail.open {
-      max-height: 400px;
+      margin: 0 20px;
     }
 
     /* Notice banner */
@@ -330,7 +311,7 @@
     }
 
     @media (prefers-reduced-motion: reduce) {
-      .book-card, .book-detail, .buynow-btn { transition: none; }
+      .book-card, .buynow-btn { transition: none; }
     }
   </style>
 </head>
@@ -346,7 +327,7 @@
 
     <!-- Page Hero Banner -->
     <section class="bg-sacred-white border-b border-incense-smoke py-10 md:py-14" aria-label="Books page hero">
-      <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg">
+      <div class="max-w-[1440px] mx-auto px-marginSm md:px-marginLg">
         <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
           <div>
             <nav aria-label="Breadcrumb" class="mb-4">
@@ -385,308 +366,300 @@
             <ul class="font-body text-caption text-on-surface-variant space-y-1 list-disc list-inside">
               <li>This institution has no representatives or branches anywhere. Sripada Srivallabha Mahasamsthanam &amp; Sripada Srivallabha Seva Sangh have no representatives anywhere.</li>
               <li>Do not deal with any agent or outside person regarding donation fees on behalf of our institution. Nobody has to pay any remuneration or rusum to any person.</li>
-              <li>All publications shall be purchased from this institution's premises or through <a href="https://www.sripadasrivallabhamahasamsthanam.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">www.sripadasrivallabhamahasamsthanam.com</a> or <a href="https://www.sripadasrivallabha.org" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">www.sripadasrivallabha.org</a> only. Do not purchase religious books from outside sources.</li>
-              <li>For any enquiries, please contact the institution's office directly. Phone: <a href="tel:+918869250300" class="text-primary hover:underline font-semibold">08869-250300</a>, Mobile: <a href="tel:+918096023300" class="text-primary hover:underline font-semibold">8096023300</a>.</li>
+              <li>All publications shall be purchased from this institution’s premises or through <a href="https://www.sripadasrivallabhamahasamsthanam.com" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">www.sripadasrivallabhamahasamsthanam.com</a> or <a href="https://www.sripadasrivallabha.org" target="_blank" rel="noopener noreferrer" class="text-primary hover:underline">www.sripadasrivallabha.org</a> only.</li>
+              <li>For any enquiries, please contact the institution’s office directly. Phone: <a href="tel:+918869250300" class="text-primary hover:underline font-semibold">08869-250300</a>, Mobile: <a href="tel:+918096023300" class="text-primary hover:underline font-semibold">8096023300</a>.</li>
             </ul>
           </div>
         </div>
       </div>
     </section>
 
-    <!-- Books Grid -->
-    <section class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-10 md:py-14">
-      <div class="grid grid-cols-1 md:grid-cols-2 xl:grid-cols-3 gap-gutter items-stretch">
+    <!-- Books Grid — 4 per row on large screens -->
+    <section class="max-w-[1440px] mx-auto px-marginSm md:px-marginLg py-10 md:py-14">
+      <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4 gap-gutter items-stretch">
 
-        <!-- Book 1 — SRIPADA SRIVALLABHA CHARITRAMRUTHAM TELUGU -->
-        <article class="book-card h-full" id="book-1" aria-label="Sripada Srivallabha Charitramrutham Book Telugu">
-          <div class="book-img-placeholder" role="img" aria-label="Sripada Srivallabha Charitramrutham — Telugu">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-            <p>Telugu Edition</p>
-          </div>
+        <!-- Book 1 — SSC TELUGU -->
+        <article class="book-card" id="book-1" aria-label="Sripada Srivallabha Charitramrutham Book Telugu">
+          <img
+            src="./images/ssc-telugu.jpg"
+            alt="Sripada Srivallabha Charitramrutham — Telugu edition cover"
+            width="400" height="210"
+            loading="lazy" decoding="async"
+            class="book-cover"
+          >
           <div class="book-card-header">
-            <div class="flex items-start justify-between gap-3 mb-3 mt-5">
+            <div class="flex items-start justify-between gap-2 mb-3 mt-4">
               <span class="lang-chip chip-telugu">Telugu</span>
               <span class="postage-badge flex-shrink-0">
-                <span class="material-symbols-outlined" style="font-size:12px;" aria-hidden="true">local_shipping</span>
-                Postage Rs.60/-
+                <span class="material-symbols-outlined" style="font-size:11px;" aria-hidden="true">local_shipping</span>
+                +Rs.60 post
               </span>
             </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
+            <h2 class="font-display text-[17px] leading-snug font-semibold text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
             <p class="font-body text-caption text-on-surface-variant mb-3">Saptha Parayana Grandham — Telugu</p>
           </div>
           <div class="book-card-divider"></div>
-          <div class="book-card-body mt-4 flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-              Sri Sripada Srivallabha Charitamrutam was originally written by Sri Sankara Bhatta in Sanskrit. Translated into Telugu by Sri Malladi Govinda Dikshitulu of Bhimavaram and handed over to Sripada Srivallabha Mahasamstanam, Pithapuram.
+          <div class="book-card-body mt-3 flex-1">
+            <p class="font-body text-[13px] leading-relaxed text-on-surface-variant line-clamp-3">
+              Originally written by Sri Sankara Bhatta in Sanskrit; translated into Telugu by Sri Malladi Govinda Dikshitulu of Bhimavaram. Daily Parayana brings the grace of Lord Sripada Srivallabha.
             </p>
-            <button class="mt-3 font-body text-label-md text-primary hover:text-saffron-deep transition-colors flex items-center gap-1 detail-toggle" aria-expanded="false" data-target="detail-book-1">
-              Read more <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">expand_more</span>
-            </button>
-            <div id="detail-book-1" class="book-detail">
-              <p class="font-body text-body-md text-on-surface-variant leading-relaxed mt-3">
-                By doing Parayana of this book every day one can overcome difficult circumstances and obtain the grace of Lord Sripada Srivallabha.
-              </p>
-            </div>
             <div class="book-card-footer">
               <a href="./checkout.html?product=book&id=1" class="buynow-btn">
-                <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">shopping_cart</span>
+                <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">shopping_cart</span>
                 Buy Now
               </a>
-              <span class="cost-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                210
-              </span>
+              <span class="cost-badge">Rs.210</span>
             </div>
           </div>
         </article>
 
-        <!-- Book 2 — SRIPADA SRIVALLABHA CHARITRAMRUTHAM ENGLISH -->
-        <article class="book-card h-full" id="book-2" aria-label="Sripada Srivallabha Charitramrutham Book English">
-          <div class="book-img-placeholder" role="img" aria-label="Sripada Srivallabha Charitramrutham — English">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-            <p>English Edition</p>
-          </div>
+        <!-- Book 2 — SSC ENGLISH -->
+        <article class="book-card" id="book-2" aria-label="Sripada Srivallabha Charitramrutham Book English">
+          <img
+            src="./images/ssc-english.jpg"
+            alt="Sripada Srivallabha Charitramrutham — English edition cover"
+            width="400" height="210"
+            loading="lazy" decoding="async"
+            class="book-cover"
+          >
           <div class="book-card-header">
-            <div class="flex items-start justify-between gap-3 mb-3 mt-5">
+            <div class="flex items-start justify-between gap-2 mb-3 mt-4">
               <span class="lang-chip chip-english">English</span>
               <span class="postage-badge flex-shrink-0">
-                <span class="material-symbols-outlined" style="font-size:12px;" aria-hidden="true">local_shipping</span>
-                Postage Rs.60/-
+                <span class="material-symbols-outlined" style="font-size:11px;" aria-hidden="true">local_shipping</span>
+                +Rs.60 post
               </span>
             </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
+            <h2 class="font-display text-[17px] leading-snug font-semibold text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
             <p class="font-body text-caption text-on-surface-variant mb-3">Saptha Parayana Grandham — English</p>
           </div>
           <div class="book-card-divider"></div>
-          <div class="book-card-body mt-4 flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-              A Saptha Parayana Grandham describing the history of Sripada Srivallabha in detail with His Visista Upadesams and Mahimas. By doing Parayana every day one can overcome difficult circumstances and obtain the grace of Lord Sripada Srivallabha.
+          <div class="book-card-body mt-3 flex-1">
+            <p class="font-body text-[13px] leading-relaxed text-on-surface-variant line-clamp-3">
+              A Saptha Parayana Grandham describing the history of Sripada Srivallabha in detail with His Visista Upadesams and Mahimas. Daily Parayana brings divine grace.
             </p>
             <div class="book-card-footer">
               <a href="./checkout.html?product=book&id=2" class="buynow-btn">
-                <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">shopping_cart</span>
+                <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">shopping_cart</span>
                 Buy Now
               </a>
-              <span class="cost-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                190
-              </span>
+              <span class="cost-badge">Rs.190</span>
             </div>
           </div>
         </article>
 
-        <!-- Book 3 — SRIPADA SRIVALLABHA CHARITRAMRUTHAM HINDI -->
-        <article class="book-card h-full" id="book-3" aria-label="Sripada Srivallabha Charitramrutham Book Hindi">
-          <div class="book-img-placeholder" role="img" aria-label="Sripada Srivallabha Charitramrutham — Hindi">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-            <p>Hindi Edition</p>
-          </div>
+        <!-- Book 3 — SSC HINDI -->
+        <article class="book-card" id="book-3" aria-label="Sripada Srivallabha Charitramrutham Book Hindi">
+          <img
+            src="./images/ssc-hindi.jpg"
+            alt="Sripada Srivallabha Charitramrutham — Hindi edition cover"
+            width="400" height="210"
+            loading="lazy" decoding="async"
+            class="book-cover"
+          >
           <div class="book-card-header">
-            <div class="flex items-start justify-between gap-3 mb-3 mt-5">
+            <div class="flex items-start justify-between gap-2 mb-3 mt-4">
               <span class="lang-chip chip-hindi">Hindi</span>
               <span class="postage-badge flex-shrink-0">
-                <span class="material-symbols-outlined" style="font-size:12px;" aria-hidden="true">local_shipping</span>
-                Postage Rs.60/-
+                <span class="material-symbols-outlined" style="font-size:11px;" aria-hidden="true">local_shipping</span>
+                +Rs.60 post
               </span>
             </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
+            <h2 class="font-display text-[17px] leading-snug font-semibold text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
             <p class="font-body text-caption text-on-surface-variant mb-3">Saptha Parayana Grandham — Hindi</p>
           </div>
           <div class="book-card-divider"></div>
-          <div class="book-card-body mt-4 flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+          <div class="book-card-body mt-3 flex-1">
+            <p class="font-body text-[13px] leading-relaxed text-on-surface-variant line-clamp-3">
               Hindi edition of the Saptha Parayana Grandham describing the divine history of Lord Sripada Srivallabha.
             </p>
             <div class="book-card-footer">
               <a href="./checkout.html?product=book&id=3" class="buynow-btn">
-                <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">shopping_cart</span>
+                <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">shopping_cart</span>
                 Buy Now
               </a>
-              <span class="cost-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                190
-              </span>
+              <span class="cost-badge">Rs.190</span>
             </div>
           </div>
         </article>
 
-        <!-- Book 4 — SRIPADA SRIVALLABHA CHARITRAMRUTHAM MARATHI -->
-        <article class="book-card h-full" id="book-4" aria-label="Sripada Srivallabha Charitramrutham Book Marathi">
-          <div class="book-img-placeholder" role="img" aria-label="Sripada Srivallabha Charitramrutham — Marathi">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-            <p>Marathi Edition</p>
-          </div>
+        <!-- Book 4 — SSC MARATHI -->
+        <article class="book-card" id="book-4" aria-label="Sripada Srivallabha Charitramrutham Book Marathi">
+          <img
+            src="./images/ssc-marathi.jpg"
+            alt="Sripada Srivallabha Charitramrutham — Marathi edition cover"
+            width="400" height="210"
+            loading="lazy" decoding="async"
+            class="book-cover"
+          >
           <div class="book-card-header">
-            <div class="flex items-start justify-between gap-3 mb-3 mt-5">
+            <div class="flex items-start justify-between gap-2 mb-3 mt-4">
               <span class="lang-chip chip-marathi">Marathi</span>
               <span class="postage-badge flex-shrink-0">
-                <span class="material-symbols-outlined" style="font-size:12px;" aria-hidden="true">local_shipping</span>
-                Postage Rs.60/-
+                <span class="material-symbols-outlined" style="font-size:11px;" aria-hidden="true">local_shipping</span>
+                +Rs.60 post
               </span>
             </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
+            <h2 class="font-display text-[17px] leading-snug font-semibold text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
             <p class="font-body text-caption text-on-surface-variant mb-3">Saptha Parayana Grandham — Marathi</p>
           </div>
           <div class="book-card-divider"></div>
-          <div class="book-card-body mt-4 flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
-              A Saptha Parayana Grandham describing the history of Sripada Srivallabha in detail with His Visista Upadesams and Mahimas up to His 16th year in Sri Kshetra Pithapuram.
+          <div class="book-card-body mt-3 flex-1">
+            <p class="font-body text-[13px] leading-relaxed text-on-surface-variant line-clamp-3">
+              A Saptha Parayana Grandham covering His Visista Upadesams and Mahimas up to His 16th year in Sri Kshetra Pithapuram.
             </p>
             <div class="book-card-footer">
               <a href="./checkout.html?product=book&id=4" class="buynow-btn">
-                <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">shopping_cart</span>
+                <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">shopping_cart</span>
                 Buy Now
               </a>
-              <span class="cost-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                190
-              </span>
+              <span class="cost-badge">Rs.190</span>
             </div>
           </div>
         </article>
 
-        <!-- Book 5 — SRIPADA SRIVALLABHA CHARITRAMRUTHAM ENGLISH BIG SIZE -->
-        <article class="book-card h-full" id="book-5" aria-label="Sripada Srivallabha Charitramrutham Book English Big Size">
-          <div class="book-img-placeholder" role="img" aria-label="Sripada Srivallabha Charitramrutham — English Big Size">
-            <span class="material-symbols-outlined" aria-hidden="true">auto_stories</span>
-            <p>English — Big Size</p>
-          </div>
+        <!-- Book 5 — SSC ENGLISH BIG SIZE -->
+        <article class="book-card" id="book-5" aria-label="Sripada Srivallabha Charitramrutham Book English Big Size">
+          <img
+            src="./images/ssc-english-big.jpg"
+            alt="Sripada Srivallabha Charitramrutham — English Big Size edition cover"
+            width="400" height="210"
+            loading="lazy" decoding="async"
+            class="book-cover"
+          >
           <div class="book-card-header">
-            <div class="flex items-start justify-between gap-3 mb-3 mt-5">
-              <div class="flex items-center gap-2 flex-wrap">
+            <div class="flex items-start justify-between gap-2 mb-3 mt-4">
+              <div class="flex items-center gap-1.5 flex-wrap">
                 <span class="lang-chip chip-english">English</span>
                 <span class="lang-chip" style="background:#e8f5e9;color:#2e7d32;">Big Size</span>
               </div>
               <span class="postage-badge flex-shrink-0">
-                <span class="material-symbols-outlined" style="font-size:12px;" aria-hidden="true">local_shipping</span>
-                Postage Rs.100/-
+                <span class="material-symbols-outlined" style="font-size:11px;" aria-hidden="true">local_shipping</span>
+                +Rs.100 post
               </span>
             </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
+            <h2 class="font-display text-[17px] leading-snug font-semibold text-on-background mb-1">Sripada Srivallabha Charitramrutham</h2>
             <p class="font-body text-caption text-on-surface-variant mb-3">Large-size English Edition</p>
           </div>
           <div class="book-card-divider"></div>
-          <div class="book-card-body mt-4 flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+          <div class="book-card-body mt-3 flex-1">
+            <p class="font-body text-[13px] leading-relaxed text-on-surface-variant line-clamp-3">
               Large-size English edition of the divine Charithamrutham — ideal for Parayana and in-depth study of the divine history of Lord Sripada Srivallabha.
             </p>
             <div class="book-card-footer">
               <a href="./checkout.html?product=book&id=5" class="buynow-btn">
-                <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">shopping_cart</span>
+                <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">shopping_cart</span>
                 Buy Now
               </a>
-              <span class="cost-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                300
-              </span>
+              <span class="cost-badge">Rs.300</span>
             </div>
           </div>
         </article>
 
         <!-- Book 6 — SRI GURUCHARITRA TELUGU -->
-        <article class="book-card h-full" id="book-6" aria-label="Sri Gurucharitra Telugu">
-          <div class="book-img-placeholder" role="img" aria-label="Sri Gurucharitra — Telugu">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-            <p>Telugu Edition</p>
-          </div>
+        <article class="book-card" id="book-6" aria-label="Sri Gurucharitra Telugu">
+          <img
+            src="./images/book-gurucharitra-telugu.jpg"
+            alt="Sri Gurucharitra — Telugu edition cover"
+            width="400" height="210"
+            loading="lazy" decoding="async"
+            class="book-cover"
+          >
           <div class="book-card-header">
-            <div class="flex items-start justify-between gap-3 mb-3 mt-5">
+            <div class="flex items-start justify-between gap-2 mb-3 mt-4">
               <span class="lang-chip chip-telugu">Telugu</span>
               <span class="postage-badge flex-shrink-0">
-                <span class="material-symbols-outlined" style="font-size:12px;" aria-hidden="true">local_shipping</span>
-                Postage Rs.60/-
+                <span class="material-symbols-outlined" style="font-size:11px;" aria-hidden="true">local_shipping</span>
+                +Rs.60 post
               </span>
             </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sri Gurucharitra</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Telugu — Sacred biography of Narasimha Saraswati</p>
+            <h2 class="font-display text-[17px] leading-snug font-semibold text-on-background mb-1">Sri Gurucharitra</h2>
+            <p class="font-body text-caption text-on-surface-variant mb-3">Sacred biography of Narasimha Saraswati — Telugu</p>
           </div>
           <div class="book-card-divider"></div>
-          <div class="book-card-body mt-4 flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-              Originally written in Marathi and translated into Telugu by Sri Pannala Venkatadri Bhatta Sarma. Published by Sripada Srivallabha Mahasamsthanam for the benefit of devotees.
+          <div class="book-card-body mt-3 flex-1">
+            <p class="font-body text-[13px] leading-relaxed text-on-surface-variant line-clamp-3">
+              Originally written in Marathi; translated into Telugu by Sri Pannala Venkatadri Bhatta Sarma. Published by Sripada Srivallabha Mahasamsthanam for the benefit of devotees.
             </p>
             <div class="book-card-footer">
               <a href="./checkout.html?product=book&id=6" class="buynow-btn">
-                <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">shopping_cart</span>
+                <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">shopping_cart</span>
                 Buy Now
               </a>
-              <span class="cost-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                300
-              </span>
+              <span class="cost-badge">Rs.300</span>
             </div>
           </div>
         </article>
 
         <!-- Book 7 — SRI GURUCHARITRA ENGLISH -->
-        <article class="book-card h-full" id="book-7" aria-label="Sri Gurucharitra English">
-          <div class="book-img-placeholder" role="img" aria-label="Sri Gurucharitra — English">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-            <p>English Edition</p>
-          </div>
+        <article class="book-card" id="book-7" aria-label="Sri Gurucharitra English">
+          <img
+            src="./images/book-gurucharitra-english.jpg"
+            alt="Sri Gurucharitra — English edition cover"
+            width="400" height="210"
+            loading="lazy" decoding="async"
+            class="book-cover"
+          >
           <div class="book-card-header">
-            <div class="flex items-start justify-between gap-3 mb-3 mt-5">
+            <div class="flex items-start justify-between gap-2 mb-3 mt-4">
               <span class="lang-chip chip-english">English</span>
               <span class="postage-badge flex-shrink-0">
-                <span class="material-symbols-outlined" style="font-size:12px;" aria-hidden="true">local_shipping</span>
-                Postage Rs.60/-
+                <span class="material-symbols-outlined" style="font-size:11px;" aria-hidden="true">local_shipping</span>
+                +Rs.60 post
               </span>
             </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sri Gurucharitra</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">English — Complete translation</p>
+            <h2 class="font-display text-[17px] leading-snug font-semibold text-on-background mb-1">Sri Gurucharitra</h2>
+            <p class="font-body text-caption text-on-surface-variant mb-3">Complete English translation</p>
           </div>
           <div class="book-card-divider"></div>
-          <div class="book-card-body mt-4 flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed">
+          <div class="book-card-body mt-3 flex-1">
+            <p class="font-body text-[13px] leading-relaxed text-on-surface-variant line-clamp-3">
               Complete English translation of Sri Gurucharitra by Sri Perepa Sreerama Murthy, published by Sripada Srivallabha Mahasamsthanam.
             </p>
             <div class="book-card-footer">
               <a href="./checkout.html?product=book&id=7" class="buynow-btn">
-                <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">shopping_cart</span>
+                <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">shopping_cart</span>
                 Buy Now
               </a>
-              <span class="cost-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                120
-              </span>
+              <span class="cost-badge">Rs.120</span>
             </div>
           </div>
         </article>
 
         <!-- Book 8 — SRI DATTAPURANAM TELUGU -->
-        <article class="book-card h-full" id="book-8" aria-label="Sri Dattapuranam Telugu">
-          <div class="book-img-placeholder" role="img" aria-label="Sri Dattapuranam — Telugu">
-            <span class="material-symbols-outlined" aria-hidden="true">menu_book</span>
-            <p>Telugu Edition</p>
-          </div>
+        <article class="book-card" id="book-8" aria-label="Sri Dattapuranam Telugu">
+          <img
+            src="./images/book-dattapuranam-telugu.jpg"
+            alt="Sri Dattapuranam — Telugu edition cover"
+            width="400" height="210"
+            loading="lazy" decoding="async"
+            class="book-cover"
+          >
           <div class="book-card-header">
-            <div class="flex items-start justify-between gap-3 mb-3 mt-5">
-              <div class="flex items-center gap-2 flex-wrap">
+            <div class="flex items-start justify-between gap-2 mb-3 mt-4">
+              <div class="flex items-center gap-1.5 flex-wrap">
                 <span class="lang-chip chip-telugu">Telugu</span>
-                <span class="lang-chip chip-sanskrit">Sanskrit Translation</span>
+                <span class="lang-chip chip-sanskrit">Sanskrit Tr.</span>
               </div>
               <span class="postage-badge flex-shrink-0">
-                <span class="material-symbols-outlined" style="font-size:12px;" aria-hidden="true">local_shipping</span>
-                Postage Rs.60/-
+                <span class="material-symbols-outlined" style="font-size:11px;" aria-hidden="true">local_shipping</span>
+                +Rs.60 post
               </span>
             </div>
-            <h2 class="font-display text-headline-md text-on-background mb-1">Sri Dattapuranam</h2>
-            <p class="font-body text-caption text-on-surface-variant mb-3">Telugu — Sanskrit Datta Puranam translated</p>
+            <h2 class="font-display text-[17px] leading-snug font-semibold text-on-background mb-1">Sri Dattapuranam</h2>
+            <p class="font-body text-caption text-on-surface-variant mb-3">Sanskrit Datta Puranam — Telugu translation</p>
           </div>
           <div class="book-card-divider"></div>
-          <div class="book-card-body mt-4 flex-1">
-            <p class="font-body text-body-md text-on-surface-variant leading-relaxed line-clamp-3">
-              The original Sanskrit Sri Datta Puranam translated into Telugu by Sri Venkatadri Bhatta Sarma. This 430-page book is written in an easy style and inspires devotion and spiritual upliftment.
+          <div class="book-card-body mt-3 flex-1">
+            <p class="font-body text-[13px] leading-relaxed text-on-surface-variant line-clamp-3">
+              The original Sanskrit Sri Datta Puranam translated by Sri Venkatadri Bhatta Sarma. This 430-page book is written in an easy style, inspiring devotion and spiritual upliftment.
             </p>
             <div class="book-card-footer">
               <a href="./checkout.html?product=book&id=8" class="buynow-btn">
-                <span class="material-symbols-outlined" style="font-size:15px;" aria-hidden="true">shopping_cart</span>
+                <span class="material-symbols-outlined" style="font-size:14px;" aria-hidden="true">shopping_cart</span>
                 Buy Now
               </a>
-              <span class="cost-badge">
-                <span class="material-symbols-outlined" style="font-size:13px;" aria-hidden="true">currency_rupee</span>
-                100
-              </span>
+              <span class="cost-badge">Rs.100</span>
             </div>
           </div>
         </article>
@@ -711,24 +684,6 @@
     if (window.loadPartial) {
       loadPartial('footer', 'site-footer', initFooter);
     }
-  </script>
-
-  <!-- Detail toggle — Read more / Read less -->
-  <script>
-    (function () {
-      document.addEventListener('click', function (e) {
-        var btn = e.target.closest('.detail-toggle');
-        if (!btn) return;
-        var targetId = btn.getAttribute('data-target');
-        var detail   = document.getElementById(targetId);
-        if (!detail) return;
-        var isOpen = detail.classList.toggle('open');
-        btn.setAttribute('aria-expanded', String(isOpen));
-        var icon = btn.querySelector('.material-symbols-outlined');
-        if (icon) icon.textContent = isOpen ? 'expand_less' : 'expand_more';
-        btn.childNodes[0].textContent = isOpen ? 'Read less ' : 'Read more ';
-      });
-    })();
   </script>
 </body>
 </html>
