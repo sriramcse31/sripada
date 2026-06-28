@@ -391,86 +391,9 @@
 
 <body class="bg-background text-on-background antialiased font-body text-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
 
-  <a href="#main-content" class="skip-link">Skip to main content</a>
-
-  <!-- HEADER -->
-  <header
-    class="fixed top-0 w-full z-50 flex justify-between items-center px-marginLg bg-sacred-white dark:bg-surface-dim border-b border-incense-smoke dark:border-outline-variant shadow-sm dark:shadow-none transition-all duration-300"
-    id="main-header"
-  >
-    <a href="./index.html" class="brand-link flex items-center gap-3 no-underline" aria-label="Sripada Srivallabha Mahasamsthanam — home">
-      <img
-        src="./images/left-sripada.png"
-        alt="Lord Sripada Srivallabha"
-        width="52" height="52"
-        loading="eager" decoding="async"
-        class="brand-logo"
-      >
-      <div class="flex flex-col justify-center gap-[2px]">
-        <span class="brand-name-en">Sripada Srivallabha Mahasamsthanam</span>
-        <div class="brand-divider" aria-hidden="true"></div>
-        <span class="brand-name-te">శ్రీపాద శ్రీవల్లభ మహాసంస్థానం</span>
-      </div>
-    </a>
-
-    <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#darshan">Darshan</a>
-      <a class="font-body text-body-md text-primary font-semibold bg-surface-container-low px-4 py-2 rounded-md" href="./sevas.html" aria-current="page">Sevas</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#accommodation">Accommodation</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#donations">Donations</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./history.html">History</a>
-      <a class="font-body text-body-md text-on-surface-variant dark:text-on-surface opacity-80 hover:text-primary dark:hover:text-primary-fixed hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html#visit">Pilgrim Guide</a>
-    </nav>
-
-    <div class="flex items-center gap-3">
-      <button
-        id="theme-toggle"
-        aria-label="Switch to dark mode"
-        class="hidden md:flex items-center justify-center w-9 h-9 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant"
-      >
-        <svg id="icon-sun" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><circle cx="12" cy="12" r="5"/><path d="M12 1v2M12 21v2M4.22 4.22l1.42 1.42M18.36 18.36l1.42 1.42M1 12h2M21 12h2M4.22 19.78l1.42-1.42M18.36 5.64l1.42-1.42"/></svg>
-        <svg id="icon-moon" width="20" height="20" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" class="hidden"><path d="M21 12.79A9 9 0 1 1 11.21 3 7 7 0 0 0 21 12.79z"/></svg>
-      </button>
-      <button
-        id="nav-open"
-        aria-label="Open navigation menu"
-        aria-expanded="false"
-        aria-controls="mobile-nav"
-        class="lg:hidden flex items-center justify-center w-10 h-10 text-saffron-deep"
-      >
-        <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
-      </button>
-    </div>
-  </header>
-
-  <div id="header-spacer"></div>
-
-  <!-- MOBILE NAV DRAWER -->
-  <div id="nav-overlay" class="fixed inset-0 bg-on-background/60 z-40 lg:hidden" aria-hidden="true"></div>
-  <nav
-    id="mobile-nav"
-    role="dialog"
-    aria-modal="true"
-    aria-label="Mobile navigation"
-    class="fixed top-0 right-0 h-full w-72 max-w-[85vw] z-50 bg-sacred-white dark:bg-surface-dim shadow-2xl lg:hidden flex flex-col pt-6 pb-10 px-6 gap-2"
-  >
-    <div class="flex justify-between items-center mb-6">
-      <span class="font-display text-headline-md text-saffron-deep">Menu</span>
-      <button
-        id="nav-close"
-        aria-label="Close navigation menu"
-        class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors text-on-surface-variant"
-      >
-        <span class="material-symbols-outlined" aria-hidden="true">close</span>
-      </button>
-    </div>
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#darshan" data-nav-link>Darshan</a>
-    <a class="font-body text-body-lg text-primary font-semibold py-3 border-b border-incense-smoke transition-colors" href="./sevas.html" data-nav-link aria-current="page">Sevas</a>
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#accommodation" data-nav-link>Accommodation</a>
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#donations" data-nav-link>Donations</a>
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./history.html" data-nav-link>History</a>
-    <a class="font-body text-body-lg text-on-surface hover:text-primary py-3 border-b border-incense-smoke transition-colors" href="./index.html#visit" data-nav-link>Pilgrim Guide</a>
-  </nav>
+    <!-- HEADER PARTIAL -->
+  <div id="site-header"></div>
+  <script src="./partials/loader.js"></script>
 
   <!-- MAIN -->
   <main id="main-content">
@@ -1844,100 +1767,82 @@
     </section>
   </main>
 
-  <!-- FOOTER -->
-  <footer class="bg-on-background text-inverse-on-surface py-10 md:py-14 mt-8">
-    <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg">
-      <div class="flex flex-col md:flex-row justify-between gap-8">
-        <div class="max-w-xs">
-          <div class="flex items-center gap-3 mb-4">
-            <img src="./images/left-sripada.png" alt="" width="40" height="40" loading="lazy" decoding="async" class="rounded-full border border-primary-fixed-dim opacity-80">
-            <span class="font-display text-lg font-semibold text-primary-fixed-dim">Sripada Srivallabha Mahasamsthanam</span>
-          </div>
-          <p class="font-body text-caption text-inverse-on-surface opacity-60 leading-relaxed">
-            Pithapuram, East Godavari District, Andhra Pradesh, India.
-          </p>
-        </div>
-        <div class="grid grid-cols-2 gap-8">
-          <div>
-            <h3 class="font-body text-label-md text-primary-fixed-dim mb-4 tracking-widest uppercase">Quick Links</h3>
-            <ul class="flex flex-col gap-2" role="list">
-              <li><a href="./index.html" class="font-body text-caption text-inverse-on-surface opacity-70 hover:opacity-100 hover:text-primary-fixed transition-opacity">Home</a></li>
-              <li><a href="./sevas.html" class="font-body text-caption text-inverse-on-surface opacity-70 hover:opacity-100 hover:text-primary-fixed transition-opacity">Sevas</a></li>
-              <li><a href="./history.html" class="font-body text-caption text-inverse-on-surface opacity-70 hover:opacity-100 hover:text-primary-fixed transition-opacity">History</a></li>
-            </ul>
-          </div>
-          <div>
-            <h3 class="font-body text-label-md text-primary-fixed-dim mb-4 tracking-widest uppercase">Contact</h3>
-            <ul class="flex flex-col gap-2" role="list">
-              <li><a href="tel:+918842233388" class="font-body text-caption text-inverse-on-surface opacity-70 hover:opacity-100 hover:text-primary-fixed transition-opacity">+91 88422 33388</a></li>
-              <li><a href="https://www.sripadasrivallabhamahasamsthanam.com" target="_blank" rel="noopener noreferrer" class="font-body text-caption text-inverse-on-surface opacity-70 hover:opacity-100 hover:text-primary-fixed transition-opacity">Official Website</a></li>
-            </ul>
-          </div>
-        </div>
-      </div>
-      <div class="border-t border-inverse-on-surface/10 mt-8 pt-6 flex flex-col md:flex-row justify-between items-center gap-3">
-        <p class="font-body text-caption text-inverse-on-surface opacity-50">&copy; 2024 Sripada Srivallabha Mahasamsthanam. All rights reserved.</p>
-        <p class="font-body text-caption text-inverse-on-surface opacity-40">Om Namo Bhagavate Vasudevaya</p>
-      </div>
-    </div>
-  </footer>
+  <!-- FOOTER PARTIAL -->
+  <div id="site-footer"></div>
+  <script>
+    if (window.loadPartial) {
+      loadPartial('footer', 'site-footer', initFooter);
+    }
+  </script>
 
   <script>
-    // Theme toggle
-    const themeToggle = document.getElementById('theme-toggle');
-    const iconSun = document.getElementById('icon-sun');
-    const iconMoon = document.getElementById('icon-moon');
-    const html = document.documentElement;
-    let dark = window.matchMedia('(prefers-color-scheme: dark)').matches;
-    function applyTheme(d) {
-      dark = d;
-      html.classList.toggle('dark', d);
-      html.setAttribute('data-theme', d ? 'dark' : 'light');
-      iconSun.classList.toggle('hidden', d);
-      iconMoon.classList.toggle('hidden', !d);
-      themeToggle && themeToggle.setAttribute('aria-label', d ? 'Switch to light mode' : 'Switch to dark mode');
-    }
-    applyTheme(dark);
-    themeToggle && themeToggle.addEventListener('click', () => applyTheme(!dark));
-
-    // Mobile nav
-    const navOpen    = document.getElementById('nav-open');
-    const navClose   = document.getElementById('nav-close');
-    const mobileNav  = document.getElementById('mobile-nav');
-    const navOverlay = document.getElementById('nav-overlay');
-    function openNav()  { mobileNav.classList.add('open'); navOverlay.classList.add('open'); navOpen.setAttribute('aria-expanded','true'); document.body.style.overflow='hidden'; }
-    function closeNav() { mobileNav.classList.remove('open'); navOverlay.classList.remove('open'); navOpen.setAttribute('aria-expanded','false'); document.body.style.overflow=''; }
-    navOpen    && navOpen.addEventListener('click', openNav);
-    navClose   && navClose.addEventListener('click', closeNav);
-    navOverlay && navOverlay.addEventListener('click', closeNav);
-    document.querySelectorAll('[data-nav-link]').forEach(l => l.addEventListener('click', closeNav));
-
-    // Tab switching
-    const tabs   = document.querySelectorAll('.seva-tab');
-    const panels = document.querySelectorAll('.category-panel');
-    tabs.forEach(tab => {
-      tab.addEventListener('click', () => {
-        tabs.forEach(t => { t.classList.remove('active'); t.setAttribute('aria-selected','false'); });
-        panels.forEach(p => p.classList.remove('active'));
-        tab.classList.add('active');
-        tab.setAttribute('aria-selected','true');
-        const target = document.getElementById('panel-' + tab.dataset.target);
-        if (target) target.classList.add('active');
+    (function () {
+      const INTERVAL   = 5000;
+      const slides     = Array.from(document.querySelectorAll('.notice-slide'));
+      const dotsWrap   = document.getElementById('notice-dots');
+      const progressEl = document.getElementById('notice-progress');
+      const prevBtn    = document.getElementById('notice-prev');
+      const nextBtn    = document.getElementById('notice-next');
+      const ticker     = document.getElementById('notice-ticker');
+      let current = 0;
+      let timer   = null;
+      slides.forEach((_, i) => {
+        const dot = document.createElement('button');
+        dot.className = 'notice-dot' + (i === 0 ? ' active' : '');
+        dot.setAttribute('role', 'tab');
+        dot.setAttribute('aria-label', 'Notice ' + (i + 1));
+        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
+        dot.addEventListener('click', () => goTo(i));
+        dotsWrap.appendChild(dot);
       });
-    });
-
-    // Detail expand/collapse
-    document.querySelectorAll('.detail-toggle').forEach(btn => {
-      btn.addEventListener('click', () => {
-        const detail = document.getElementById(btn.dataset.target);
-        if (!detail) return;
-        const open = detail.classList.toggle('open');
-        btn.setAttribute('aria-expanded', open);
-        const icon = btn.querySelector('.material-symbols-outlined');
-        if (icon) icon.textContent = open ? 'expand_less' : 'expand_more';
-        btn.childNodes[0].textContent = open ? 'Read less ' : 'Read more ';
+      function getDots() { return Array.from(dotsWrap.querySelectorAll('.notice-dot')); }
+      function goTo(next) {
+        if (next === current) return;
+        clearTimeout(timer);
+        const prev = current;
+        current = ((next % slides.length) + slides.length) % slides.length;
+        slides[prev].classList.add('exit');
+        slides[prev].addEventListener('animationend', () => {
+          slides[prev].classList.remove('active', 'exit');
+        }, { once: true });
+        slides[current].classList.add('active');
+        getDots().forEach((d, i) => {
+          d.classList.toggle('active', i === current);
+          d.setAttribute('aria-selected', i === current ? 'true' : 'false');
+        });
+        startProgress();
+        scheduleNext();
+      }
+      function startProgress() {
+        progressEl.style.transition = 'none';
+        progressEl.style.width = '0%';
+        void progressEl.offsetWidth;
+        progressEl.style.transition = 'width ' + INTERVAL + 'ms linear';
+        progressEl.style.width = '100%';
+      }
+      function scheduleNext() {
+        clearTimeout(timer);
+        timer = setTimeout(() => goTo(current + 1), INTERVAL);
+      }
+      ticker.addEventListener('mouseenter', () => {
+        clearTimeout(timer);
+        const w = getComputedStyle(progressEl).width;
+        progressEl.style.transition = 'none';
+        progressEl.style.width = w;
       });
-    });
+      ticker.addEventListener('mouseleave', () => {
+        startProgress();
+        scheduleNext();
+      });
+      prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
+      nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
+      ticker.addEventListener('keydown', e => {
+        if (e.key === 'ArrowRight') goTo(current + 1);
+        if (e.key === 'ArrowLeft')  goTo(current - 1);
+      });
+      startProgress();
+      scheduleNext();
+    })();
   </script>
 </body>
 </html>
