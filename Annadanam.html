@@ -1,0 +1,199 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="Sponsor Annadanam at Sripada Srivallabha Mahasamsthanam — sacred food served to outstation pilgrims and devotees every day. View all donation schemes.">
+  <title>Annadanam — Sripada Srivallabha Mahasamsthanam</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-background": "#0d1c2e", "sacred-white": "#FFFCFA",
+            "incense-smoke": "#EDF2F7", "saffron-deep": "#8C330A",
+            "on-surface": "#0d1c2e", "on-surface-variant": "#57423a",
+            "primary": "#9f3e07", "primary-fixed": "#ffdbcd",
+            "on-primary": "#ffffff", "on-primary-fixed-variant": "#7d2d00",
+            "primary-container": "#c05621", "surface-container-low": "#eff4ff",
+            "outline": "#8a7268", "outline-variant": "#dec0b5",
+            "background": "#f8f9ff", "secondary-container": "#feb557",
+            "on-secondary-container": "#734700"
+          },
+          spacing: { "gutter": "24px", "marginSm": "16px", "marginLg": "40px" },
+          fontFamily: {
+            "display": ['"Source Serif 4"', "Georgia", "serif"],
+            "body":    ["Hanken Grotesk", "system-ui", "sans-serif"]
+          },
+          fontSize: {
+            "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+            "display-lg-mobile": ["36px", { lineHeight: "44px", fontWeight: "700" }],
+            "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+            "caption": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "body-lg": ["18px", { lineHeight: "28px" }],
+            "body-md": ["16px", { lineHeight: "24px" }]
+          }
+        }
+      }
+    };
+  </script>
+  <style>
+    @keyframes bannerPulse { 0%,100%{opacity:1} 50%{opacity:.85} }
+    .banner-80g { animation: bannerPulse 3s ease-in-out infinite; }
+    .scheme-table th, .scheme-table td { padding:14px 16px; text-align:left; border-bottom:1px solid #EDF2F7; vertical-align:top; }
+    .scheme-table th { background:#fff8f5; font-family:"Hanken Grotesk",sans-serif; font-size:12px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; color:#8C330A; }
+    .scheme-table tr:last-child td { border-bottom:none; }
+    .scheme-table tr:hover td { background:#fffcfa; }
+    .table-scroll { overflow-x:auto; -webkit-overflow-scrolling:touch; }
+    .table-scroll::-webkit-scrollbar { height:4px; }
+    .table-scroll::-webkit-scrollbar-track { background:#EDF2F7; }
+    .table-scroll::-webkit-scrollbar-thumb { background:#dec0b5; border-radius:2px; }
+    @media (prefers-reduced-motion:reduce) { .banner-80g { animation:none; } }
+  </style>
+</head>
+
+<body class="bg-background text-on-background antialiased font-body text-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container">
+
+  <div id="site-header"></div>
+  <script src="./partials/loader.js"></script>
+
+  <!-- 80G Banner -->
+  <div class="banner-80g w-full bg-gradient-to-r from-saffron-deep via-primary-container to-saffron-deep text-on-primary text-center py-3 px-marginSm" role="banner">
+    <p class="font-body font-semibold flex items-center justify-center gap-2 flex-wrap" style="font-size:14px">
+      <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1" aria-hidden="true">verified</span>
+      All donations eligible for <strong>80G Income Tax Exemption</strong> — IT Act, 1961
+      <span class="material-symbols-outlined" style="font-size:18px;font-variation-settings:'FILL' 1" aria-hidden="true">verified</span>
+    </p>
+  </div>
+
+  <main id="main-content">
+
+    <!-- Hero image -->
+    <div class="w-full overflow-hidden" style="height:clamp(240px,35vw,420px)">
+      <img src="./images/Annadanam.png"
+        alt="Sacred food being served to pilgrims and devotees at Sripada Srivallabha Mahasamsthanam"
+        width="1280" height="420" loading="eager" decoding="async"
+        class="w-full h-full object-cover">
+    </div>
+
+    <div class="max-w-[960px] mx-auto px-marginSm md:px-marginLg py-12">
+
+      <!-- Breadcrumb -->
+      <nav aria-label="Breadcrumb" class="mb-8">
+        <ol class="flex items-center gap-2 font-body text-label-md text-on-surface-variant flex-wrap">
+          <li><a href="./index.html" class="hover:text-primary transition-colors">Home</a></li>
+          <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:16px">chevron_right</span></li>
+          <li><a href="./Donations.html" class="hover:text-primary transition-colors">Donations</a></li>
+          <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:16px">chevron_right</span></li>
+          <li aria-current="page" class="text-primary font-semibold">Annadanam</li>
+        </ol>
+      </nav>
+
+      <!-- Page heading -->
+      <div class="flex items-start gap-4 mb-6">
+        <div class="w-12 h-12 rounded-full bg-primary-fixed flex items-center justify-center flex-shrink-0 mt-1">
+          <span class="material-symbols-outlined text-primary text-2xl" style="font-variation-settings:'FILL' 1" aria-hidden="true">restaurant</span>
+        </div>
+        <div>
+          <span class="font-body text-label-md text-primary uppercase tracking-widest block mb-1">Nitya Seva</span>
+          <h1 class="font-display text-display-lg-mobile md:text-display-lg text-on-background">Annadanam</h1>
+          <p class="font-body text-body-lg text-on-surface-variant mt-1">Food Donation</p>
+        </div>
+      </div>
+
+      <!-- Introduction -->
+      <p class="font-body text-body-lg text-on-surface-variant mb-6 max-w-prose">
+        Annadanam is the sacred act of offering cooked food to all who arrive at the temple. Daily meals are served free of charge to outstation devotees, pilgrims, and the needy who travel long distances to seek the blessings of Lord Sripada Srivallabha. Your donation ensures that no one who comes in devotion leaves hungry.
+      </p>
+      <p class="font-body text-body-md text-on-surface-variant mb-10 max-w-prose">
+        The scriptures declare <em>"Annadanam Param Danam"</em> — food donation is the greatest of all gifts. By participating in this seva you accumulate punya not only for yourself but for your entire family lineage.
+      </p>
+
+      <!-- Duration note -->
+      <div class="flex items-start gap-3 bg-primary-fixed rounded-xl p-5 mb-10">
+        <span class="material-symbols-outlined text-saffron-deep mt-0.5 flex-shrink-0" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">info</span>
+        <p class="font-body text-body-md text-on-primary-fixed-variant m-0">
+          <strong>Note:</strong> The duration for Poshak schemes is currently being verified (10 years vs 15 years). Please confirm the correct term with the temple office before completing your donation.
+        </p>
+      </div>
+
+      <!-- Scheme table -->
+      <div class="bg-sacred-white border border-incense-smoke rounded-2xl shadow-sm overflow-hidden mb-12">
+        <div class="px-8 py-6 border-b border-incense-smoke">
+          <h2 class="font-display text-headline-md text-on-background">Donation Schemes</h2>
+        </div>
+        <div class="table-scroll">
+          <table class="scheme-table w-full" aria-label="Annadanam donation schemes">
+            <thead>
+              <tr>
+                <th scope="col">Scheme Tier</th>
+                <th scope="col">Donation (Rs.)</th>
+                <th scope="col">Benefits</th>
+              </tr>
+            </thead>
+            <tbody class="font-body text-body-md text-on-background">
+              <tr>
+                <td class="font-semibold">Poshak</td>
+                <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px">₹ 3,000</span></td>
+                <td class="text-on-surface-variant">Performed on requested date, once per year, for 10/15 years</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Raja Poshak</td>
+                <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px">₹ 25,000</span></td>
+                <td class="text-on-surface-variant">Performed on requested date, once per year, for 10/15 years</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Maha Raja Poshak</td>
+                <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px">₹ 50,000</span></td>
+                <td class="text-on-surface-variant">Performed on requested date, once per year, for 10/15 years</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Parayanam Special</td>
+                <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px">₹ 550</span></td>
+                <td class="text-on-surface-variant">Feeds 11 members for one full day</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Custom One-Day</td>
+                <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px">₹ 50 / person</span></td>
+                <td class="text-on-surface-variant">Custom headcount for one day — <strong>prior notice required</strong> by email or phone</td>
+              </tr>
+              <tr>
+                <td class="font-semibold">Nitya Annadanam</td>
+                <td><span class="inline-flex items-center bg-surface-container-low px-3 py-1 rounded-full font-semibold text-primary" style="font-size:14px">Any amount</span></td>
+                <td class="text-on-surface-variant">General contribution to the daily food fund — any seva is blessed</td>
+              </tr>
+            </tbody>
+          </table>
+        </div>
+      </div>
+
+      <!-- CTAs -->
+      <div class="flex flex-col sm:flex-row gap-4">
+        <button class="flex items-center justify-center gap-2 bg-primary text-on-primary font-body font-semibold text-label-md px-8 py-4 rounded-xl hover:bg-saffron-deep transition-colors min-h-[52px]">
+          <span class="material-symbols-outlined" style="font-size:20px;font-variation-settings:'FILL' 1" aria-hidden="true">volunteer_activism</span>
+          Donate for Annadanam
+        </button>
+        <a href="./Donations.html" class="flex items-center justify-center gap-2 border border-incense-smoke text-on-surface-variant font-body font-semibold text-label-md px-8 py-4 rounded-xl hover:border-outline hover:text-primary transition-colors min-h-[52px] no-underline">
+          <span class="material-symbols-outlined" style="font-size:18px" aria-hidden="true">grid_view</span>
+          All Donations
+        </a>
+      </div>
+
+    </div>
+  </main>
+
+  <div id="site-footer"></div>
+  <script>
+    if (window.loadPartial) loadPartial('footer', 'site-footer', initFooter);
+  </script>
+</body>
+</html>
