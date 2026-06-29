@@ -1,16 +1,17 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://pithapuram.org'),
   title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
   description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
   openGraph: {
     title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
     description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
-    url: 'https://your-domain.com', // replace with your actual domain
+    url: 'https://pithapuram.org',
     siteName: 'Sripada Srivallabha',
     images: [
       {
-        url: 'images/og-cover.jpg',   // path relative to /public
+        url: 'https://pithapuram.org/og-cover.jpg',
         width: 1200,
         height: 630,
         alt: 'Sri Kshetra Pithapuram',
@@ -26,3 +27,15 @@ export const metadata: Metadata = {
     images: ['images/og-cover.jpg'],
   },
 };
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="te">
+      <body>{children}</body>
+    </html>
+  );
+}
