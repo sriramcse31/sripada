@@ -112,19 +112,13 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* Notice Ticker */
+    /* ── Notice Ticker ── */
+
+    /* Desktop: fixed single-line height, slides absolutely stacked */
     #notice-ticker {
       position: relative;
-      /* Mobile: let height grow with content */
-      min-height: 48px;
-      height: auto;
+      height: 48px;
       overflow: hidden;
-    }
-    @media (min-width: 640px) {
-      /* sm+: single-line fixed height */
-      #notice-ticker {
-        height: 48px;
-      }
     }
     .notice-slide {
       position: absolute;
@@ -134,18 +128,6 @@
       gap: 12px;
       opacity: 0;
       pointer-events: none;
-    }
-    /* On mobile, slides stack vertically and need auto height */
-    @media (max-width: 639px) {
-      .notice-slide {
-        position: relative;
-        inset: auto;
-        align-items: flex-start;
-        padding-block: 8px;
-      }
-      .notice-slide:not(.active) {
-        display: none;
-      }
     }
     .notice-slide.active {
       opacity: 1;
@@ -157,6 +139,30 @@
       pointer-events: none;
       animation: noticeOut 0.3s cubic-bezier(0.4, 0, 1, 1) both;
     }
+
+    /* Mobile: vertical list — all slides visible, stacked */
+    @media (max-width: 639px) {
+      #notice-ticker {
+        height: auto;
+        overflow: visible;
+        display: flex;
+        flex-direction: column;
+        gap: 0;
+      }
+      .notice-slide {
+        position: relative;
+        inset: auto;
+        opacity: 1;
+        pointer-events: auto;
+        align-items: flex-start;
+        padding-block: 8px;
+        animation: none !important;
+      }
+      .notice-slide + .notice-slide {
+        border-top: 1px solid #EDF2F7;
+      }
+    }
+
     @keyframes noticeIn {
       from { opacity: 0; transform: translateY(8px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -171,6 +177,10 @@
       width: 0%;
       transition: width linear;
       border-radius: 2px;
+    }
+    /* Hide progress bar on mobile (not meaningful for vertical list) */
+    @media (max-width: 639px) {
+      #notice-progress { display: none; }
     }
     .notice-dot {
       width: 6px;
@@ -253,15 +263,14 @@
           <div id="notice-progress"></div>
         </div>
 
-        <!-- FIX 2 & 3: notice label + controls visible on all screen sizes -->
-        <div class="flex items-center gap-3" style="min-height:64px;">
+        <div class="flex items-start sm:items-center gap-3 py-2 sm:py-0" style="min-height:64px;">
 
-          <!-- Notices badge — always visible, smaller on mobile -->
-          <div class="flex items-center flex-shrink-0">
+          <!-- Notices badge — hidden on mobile, visible sm+ -->
+          <div class="hidden sm:flex items-center flex-shrink-0">
             <span class="font-body text-sacred-white bg-saffron-deep px-2.5 py-1 rounded-full uppercase tracking-widest whitespace-nowrap" style="font-size:10px; font-weight:600; letter-spacing:0.08em;">Notices</span>
           </div>
 
-          <div class="w-px bg-incense-smoke self-stretch my-3 flex-shrink-0" aria-hidden="true"></div>
+          <div class="hidden sm:block w-px bg-incense-smoke self-stretch my-3 flex-shrink-0" aria-hidden="true"></div>
 
           <!-- Ticker -->
           <div id="notice-ticker" class="flex-1" role="region" aria-live="polite" aria-atomic="true" aria-label="Rotating temple notices">
@@ -289,8 +298,8 @@
             </div>
           </div>
 
-          <!-- Prev / Dots / Next — always visible, compact -->
-          <div class="flex items-center gap-1.5 flex-shrink-0">
+          <!-- Prev / Dots / Next — hidden on mobile, visible sm+ -->
+          <div class="hidden sm:flex items-center gap-1.5 flex-shrink-0">
             <button id="notice-prev" aria-label="Previous notice" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
               <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_left</span>
             </button>
@@ -305,7 +314,6 @@
     </section>
 
     <!-- Main content + Sidebar layout -->
-    <!-- FIX 5: pt-8 on mobile, pt-12 on md+ for breathing room -->
     <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg pt-8 md:pt-12 pb-16 md:pb-24">
       <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-14 items-start">
 
@@ -314,9 +322,7 @@
 
           <!-- ── Guruji Card ── -->
           <div class="guruji-card bg-sacred-white border border-incense-smoke rounded-2xl overflow-hidden shadow-sm">
-            <!-- FIX 4: cap height on mobile -->
-            <div class="relative overflow-hidden" style="height: 220px;" class="sm:h-[260px]">
-              <div class="absolute inset-0" style="height:220px;"><!-- height set inline for mobile --></div>
+            <div class="relative overflow-hidden" style="height: 220px;">
               <div class="absolute inset-0 bg-gradient-to-t from-[#3b1005cc] via-transparent to-transparent z-10" aria-hidden="true"></div>
               <img
                 src="./images/Guruji.png"
@@ -365,7 +371,6 @@
               </a>
             </div>
 
-            <!-- Service cards — 1-col on mobile, same on desktop sidebar -->
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
 
               <a id="donations" href="./Donations.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
@@ -423,7 +428,6 @@
           <article>
             <span class="font-body text-label-md text-saffron-deep tracking-widest uppercase mb-4 block">Temple Legacy</span>
             <h2 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-8">The Sacred History of Pithapuram</h2>
-            <!-- FIX 4: h-[220px] mobile, h-[400px] md+ -->
             <div class="relative rounded-2xl overflow-hidden mb-10 shadow-md">
               <img
                 src="./images/left-sripada.png"
@@ -469,6 +473,9 @@
 
   <script>
     (function () {
+      // On mobile (<640px) notices are shown as a vertical list — no JS carousel needed
+      if (window.innerWidth < 640) return;
+
       const INTERVAL   = 5000;
       const slides     = Array.from(document.querySelectorAll('.notice-slide'));
       const dotsWrap   = document.getElementById('notice-dots');
