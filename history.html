@@ -203,16 +203,16 @@
       content: '';
       position: absolute;
       inset: 0;
-      background: rgba(13, 28, 46, 0.55);   /* same dark navy as hero bg, 55% opacity */
+      background: rgba(13, 28, 46, 0.55);
       pointer-events: none;
       z-index: 3;
     }
 
     .hero-figure-col img {
       display: block;
-      width: 100%;
-      height: auto;
-      max-height: 520px;
+      /* Fill the full height of the hero column, width scales naturally */
+      width: auto;
+      height: 100%;
       object-fit: contain;
       object-position: bottom center;
       position: relative;
@@ -240,17 +240,18 @@
       z-index: 2;
     }
 
-    /* On mobile: stack, figure shown smaller above text */
+    /* On mobile: stack, figure above text */
     @media (max-width: 767px) {
       .hero-section { flex-direction: column-reverse; min-height: auto; }
       .hero-figure-col {
         width: 100%;
-        height: 220px;
+        height: 200px;
         align-items: flex-end;
         justify-content: center;
       }
       .hero-figure-col img {
-        max-height: 220px;
+        width: auto;
+        height: 100%;
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
         mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
       }
@@ -292,7 +293,7 @@
         </p>
       </div>
 
-      <!-- Right: full-figure no-bg image, pinned to the bottom-right, behind dark overlay -->
+      <!-- Right: full-figure no-bg image, fills the available hero height -->
       <div class="hero-figure-col">
         <img
           src="./images/sripada-nobg.png"
