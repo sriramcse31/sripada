@@ -193,9 +193,19 @@
       flex: 0 0 auto;
       width: clamp(240px, 32vw, 480px);
       display: flex;
-      align-items: flex-end;   /* pin figure to bottom */
+      align-items: flex-end;
       justify-content: flex-end;
       overflow: hidden;
+    }
+
+    /* Dark overlay on top of the figure to match the original dim-filter look */
+    .hero-figure-col::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background: rgba(13, 28, 46, 0.55);   /* same dark navy as hero bg, 55% opacity */
+      pointer-events: none;
+      z-index: 3;
     }
 
     .hero-figure-col img {
@@ -205,10 +215,12 @@
       max-height: 520px;
       object-fit: contain;
       object-position: bottom center;
+      position: relative;
+      z-index: 2;
       /* Soft left-edge fade so figure blends into the dark bg */
       -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%);
       mask-image: linear-gradient(to right, transparent 0%, black 18%);
-      /* Gentle bottom glow */
+      /* Gentle saffron drop-shadow */
       filter: drop-shadow(0 -8px 32px rgba(140,51,10,0.25));
     }
 
@@ -241,10 +253,6 @@
         max-height: 220px;
         -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
         mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
-      }
-      .hero-text-col {
-        padding: 2rem 1rem 3rem;
-        max-width: 100%;
       }
       .hero-om { display: none; }
     }
@@ -284,7 +292,7 @@
         </p>
       </div>
 
-      <!-- Right: full-figure no-bg image, pinned to the bottom-right -->
+      <!-- Right: full-figure no-bg image, pinned to the bottom-right, behind dark overlay -->
       <div class="hero-figure-col">
         <img
           src="./images/sripada-nobg.png"
