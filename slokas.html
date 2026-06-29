@@ -99,7 +99,7 @@
     html { scroll-behavior: smooth; scroll-padding-top: 6rem; -webkit-font-smoothing: antialiased; }
     body { background: #f8f9ff; color: #0d1c2e; font-family: 'Hanken Grotesk', system-ui, sans-serif; }
 
-    /* ── Hero (copied from history.html) ── */
+    /* ── Hero ── */
     @keyframes fadeUp {
       from { opacity: 0; transform: translateY(24px); }
       to   { opacity: 1; transform: translateY(0); }
@@ -165,164 +165,84 @@
 
     /* ── Decorative divider ── */
     .lotus-divider {
-      display: flex;
-      align-items: center;
-      gap: 12px;
-      margin: 2rem auto;
-      max-width: 360px;
+      display: flex; align-items: center; gap: 12px;
+      margin: 2rem auto; max-width: 360px;
     }
-    .lotus-divider::before,
-    .lotus-divider::after {
-      content: '';
-      flex: 1;
-      height: 1px;
+    .lotus-divider::before, .lotus-divider::after {
+      content: ''; flex: 1; height: 1px;
       background: linear-gradient(to right, transparent, rgba(140,51,10,0.3), transparent);
     }
-    .lotus-dot {
-      width: 8px; height: 8px;
-      background: #8C330A;
-      border-radius: 50%;
-      opacity: 0.5;
-    }
-    .lotus-diamond {
-      width: 10px; height: 10px;
-      background: #F6AD55;
-      transform: rotate(45deg);
-      opacity: 0.7;
-    }
+    .lotus-dot { width: 8px; height: 8px; background: #8C330A; border-radius: 50%; opacity: 0.5; }
+    .lotus-diamond { width: 10px; height: 10px; background: #F6AD55; transform: rotate(45deg); opacity: 0.7; }
 
-    /* ── Section header ── */
+    /* ── Section eyebrow ── */
     .section-eyebrow {
-      display: inline-block;
-      font-size: 11px;
-      font-weight: 700;
-      letter-spacing: 0.18em;
-      text-transform: uppercase;
-      color: #8C330A;
-      background: rgba(140,51,10,0.08);
-      padding: 4px 14px;
-      border-radius: 9999px;
-      margin-bottom: 0.75rem;
+      display: inline-block; font-size: 11px; font-weight: 700;
+      letter-spacing: 0.18em; text-transform: uppercase;
+      color: #8C330A; background: rgba(140,51,10,0.08);
+      padding: 4px 14px; border-radius: 9999px; margin-bottom: 0.75rem;
     }
 
     /* ── Stotram container ── */
-    /*
-      All 9 verse stanzas live inside ONE shared container.
-      Every line — unique verse line AND the refrain — uses identical
-      font, size (clamp 16–18px), weight (500), color (#3d1100),
-      and line-height (2). No sub-styles, no hierarchy, no dividers.
-    */
     .stotram-container {
-      background: #FFFCFA;
-      border: 1px solid rgba(140,51,10,0.12);
-      border-radius: 18px;
-      padding: 2.5rem 2.25rem;
+      background: #FFFCFA; border: 1px solid rgba(140,51,10,0.12);
+      border-radius: 18px; padding: 2.5rem 2.25rem;
       box-shadow: 0 2px 16px rgba(60,20,0,0.07);
     }
-
-    /* Each stanza = two lines */
-    .stanza {
-      padding: 1.25rem 0;
-      border-bottom: 1px solid rgba(140,51,10,0.08);
-    }
+    .stanza { padding: 1.25rem 0; border-bottom: 1px solid rgba(140,51,10,0.08); }
     .stanza:first-child { padding-top: 0; }
     .stanza:last-child  { padding-bottom: 0; border-bottom: none; }
-
-    /* Every line: same in every way */
     .stanza p {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(15px, 2vw, 18px);
-      font-weight: 500;
-      line-height: 2;
-      color: #3d1100;
-      font-style: normal;
-      text-align: center;
+      font-size: clamp(15px, 2vw, 18px); font-weight: 500;
+      line-height: 2; color: #3d1100; text-align: center;
     }
 
     /* ── Benefit note ── */
     .benefit-note {
-      background: rgba(246,173,85,0.1);
-      border: 1px solid rgba(246,173,85,0.35);
-      border-radius: 12px;
-      padding: 1.25rem 1.5rem;
-      display: flex;
-      gap: 0.75rem;
-      align-items: flex-start;
+      background: rgba(246,173,85,0.1); border: 1px solid rgba(246,173,85,0.35);
+      border-radius: 12px; padding: 1.25rem 1.5rem;
+      display: flex; gap: 0.75rem; align-items: flex-start;
     }
-    .benefit-note .note-icon {
-      color: #8C330A;
-      flex-shrink: 0;
-      margin-top: 2px;
-    }
-    .benefit-note p {
-      font-size: 14px;
-      line-height: 1.65;
-      color: #57423a;
-      font-style: italic;
-    }
+    .benefit-note .note-icon { color: #8C330A; flex-shrink: 0; margin-top: 2px; }
+    .benefit-note p { font-size: 14px; line-height: 1.65; color: #57423a; font-style: italic; }
 
     /* ── Assurance cards ── */
     .assurance-card {
-      background: #FFFCFA;
-      border: 1px solid rgba(140,51,10,0.1);
-      border-radius: 14px;
-      padding: 1.5rem;
-      display: flex;
-      gap: 1rem;
-      align-items: flex-start;
+      background: #FFFCFA; border: 1px solid rgba(140,51,10,0.1);
+      border-radius: 14px; padding: 1.5rem;
+      display: flex; gap: 1rem; align-items: flex-start;
       box-shadow: 0 1px 6px rgba(60,20,0,0.05);
       transition: box-shadow 0.2s, transform 0.2s;
     }
-    .assurance-card:hover {
-      box-shadow: 0 6px 20px rgba(60,20,0,0.1);
-      transform: translateY(-2px);
-    }
+    .assurance-card:hover { box-shadow: 0 6px 20px rgba(60,20,0,0.1); transform: translateY(-2px); }
     .assurance-num {
-      min-width: 2.4rem;
-      height: 2.4rem;
+      min-width: 2.4rem; height: 2.4rem;
       background: linear-gradient(135deg, #8C330A, #b85520);
-      color: #fff;
-      border-radius: 50%;
-      display: flex;
-      align-items: center;
-      justify-content: center;
-      font-size: 13px;
-      font-weight: 700;
-      flex-shrink: 0;
+      color: #fff; border-radius: 50%;
+      display: flex; align-items: center; justify-content: center;
+      font-size: 13px; font-weight: 700; flex-shrink: 0;
       box-shadow: 0 2px 8px rgba(140,51,10,0.3);
     }
     .assurance-text {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: clamp(14px, 1.8vw, 16px);
-      line-height: 1.7;
-      color: #3d1100;
-      padding-top: 0.2rem;
+      font-size: clamp(14px, 1.8vw, 16px); line-height: 1.7;
+      color: #3d1100; padding-top: 0.2rem;
     }
 
     /* ── Back-to-top ── */
     #back-top {
-      position: fixed;
-      bottom: 1.75rem;
-      right: 1.75rem;
-      width: 44px; height: 44px;
-      background: #8C330A;
-      color: #fff;
-      border-radius: 50%;
-      border: none;
+      position: fixed; bottom: 1.75rem; right: 1.75rem;
+      width: 44px; height: 44px; background: #8C330A; color: #fff;
+      border-radius: 50%; border: none;
       display: flex; align-items: center; justify-content: center;
-      cursor: pointer;
-      opacity: 0;
-      transform: translateY(10px);
+      cursor: pointer; opacity: 0; transform: translateY(10px);
       transition: opacity 0.2s, transform 0.2s;
-      z-index: 100;
-      box-shadow: 0 4px 16px rgba(140,51,10,0.35);
+      z-index: 100; box-shadow: 0 4px 16px rgba(140,51,10,0.35);
     }
     #back-top.visible { opacity: 1; transform: translateY(0); }
     #back-top:hover { background: #6b2006; }
-
-    @media (prefers-reduced-motion: reduce) {
-      .assurance-card { transition: none; }
-    }
+    @media (prefers-reduced-motion: reduce) { .assurance-card { transition: none; } }
   </style>
 </head>
 
@@ -332,25 +252,34 @@
 
   <main id="main-content">
 
-    <!-- ── HERO ── -->
-    <section class="slokas-hero py-16 md:py-24 px-marginSm md:px-marginLg text-center relative">
-      <div class="hero-om" aria-hidden="true">௯்</div>
-      <div class="relative z-10">
-        <span class="inline-block font-body text-sacred-white/60 tracking-[0.2em] uppercase mb-3" style="font-size:11px; font-weight:600;">Sripada Srivallabha Mahasamsthanam</span>
-        <h1 class="font-display text-sacred-white text-display-lg-mobile md:text-display-lg mb-4">Slokas &amp; Stotram</h1>
-        <p class="font-body text-sacred-white/75 max-w-2xl mx-auto mb-8" style="font-size:16px;">
+    <!-- ── Page Hero ── -->
+    <section class="hero-section" aria-label="Slokas page hero" style="min-height:340px;display:flex;align-items:stretch;">
+      <div class="hero-text-col fade-up">
+        <nav aria-label="Breadcrumb" class="mb-5">
+          <ol class="flex items-center gap-2 font-body text-caption opacity-70" style="color:#d4e4fc;">
+            <li><a href="./index.html" class="hover:underline" style="color:#d4e4fc;">Home</a></li>
+            <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:14px;">chevron_right</span></li>
+            <li aria-current="page">Slokas &amp; Stotram</li>
+          </ol>
+        </nav>
+        <span class="font-body text-label-md tracking-widest uppercase mb-3 block fade-up-2" style="color:#ffb95f;">Sripada Srivallabha Mahasamsthanam</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg mb-5 fade-up-2" style="color:#FFFCFA;max-width:580px;">Slokas &amp; Stotram</h1>
+        <p class="font-body text-body-lg fade-up-3" style="color:#d4e4fc;max-width:500px;opacity:0.9;">
           Sacred verses from <em>Sripada Srivallabha Charithaamrutam</em> — recite with devotion for blessings, removal of obstacles, and fulfilment of desires.
         </p>
-        <div class="flex flex-wrap justify-center gap-3">
-          <a href="#stotram" class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-body font-semibold text-sacred-white border border-sacred-white/30 hover:bg-sacred-white/10 transition-colors" style="font-size:14px;">
+        <div class="mt-5 fade-up-3 flex flex-wrap gap-3">
+          <a href="#stotram" class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-body font-semibold border transition-colors" style="font-size:14px;color:#FFFCFA;border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.07);">
             <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">menu_book</span>
             Siddha Mangala Stotram
           </a>
-          <a href="#assurances" class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-body font-semibold text-sacred-white border border-sacred-white/30 hover:bg-sacred-white/10 transition-colors" style="font-size:14px;">
+          <a href="#assurances" class="inline-flex items-center gap-2 px-5 py-2 rounded-full font-body font-semibold border transition-colors" style="font-size:14px;color:#FFFCFA;border-color:rgba(255,255,255,0.25);background:rgba(255,255,255,0.07);">
             <span class="material-symbols-outlined" style="font-size:16px;" aria-hidden="true">format_list_numbered</span>
             Twelve Assurances
           </a>
         </div>
+      </div>
+      <div class="hero-figure-col">
+        <img src="./images/sripada-nobg.png" alt="Lord Sripada Srivallabha — divine form" width="480" height="520" loading="eager" decoding="async" class="figure-rise">
       </div>
     </section>
 
@@ -367,58 +296,45 @@
           </p>
         </div>
 
-        <!-- Single stotram container — all lines identical style -->
         <div class="stotram-container">
-
           <div class="stanza">
             <p>Srimadanata Sri Vibhooshita Appala Lakshmi Narasimharaajaa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
           <div class="stanza">
             <p>Sri Vidyaadhari Radhaa Surekha Sri raakheedhara Sripadaa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
           <div class="stanza">
             <p>Maataa Sumati Vaatschalyaamruta pariposhita Jaya Sripadaa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
           <div class="stanza">
             <p>Satya Rusheeswara Duhitaanandana Baapanaaryanuta Sri Charanaa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
           <div class="stanza">
             <p>Savitrakaataka Chayana Punyaphala Bharadwaja Rushigotra Sambhavaa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
           <div class="stanza">
             <p>DoChowpaatee Dev Lakshmi Ghanasamkhyaa Bodhita Sri Charanaa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
           <div class="stanza">
             <p>Punyaroopinee Raajamaambasuta Garbhapunyaphala Samjaataa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
           <div class="stanza">
             <p>Sumateenandana Naraharinandana Dattadevaprabhu Sripadaa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
           <div class="stanza">
             <p>Peethikaapura Nityavihaara Madhumati Datta, Mangalaroopaa!</p>
             <p>Jaya Vijayeebhava Digvijayeebhava Sri Madakhanda Sri Vijayeebhava!!</p>
           </div>
-
         </div>
-        <!-- end stotram-container -->
 
-        <!-- Benefit note -->
         <div class="benefit-note mt-8">
           <span class="material-symbols-outlined note-icon" style="font-size:22px;" aria-hidden="true">auto_awesome</span>
           <p>
@@ -428,7 +344,6 @@
 
       </section>
 
-      <!-- Decorative divider -->
       <div class="lotus-divider" aria-hidden="true">
         <span class="lotus-dot"></span>
         <span class="lotus-diamond"></span>
@@ -449,77 +364,26 @@
         </div>
 
         <div class="flex flex-col gap-4">
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">1</div>
-            <p class="assurance-text">I will remain in a subtle form in every place where my biography is devotedly read.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">2</div>
-            <p class="assurance-text">Just like an eye-lid, I will protect the person who is dedicated to me through mind, word and deed.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">3</div>
-            <p class="assurance-text">Daily in the afternoon I seek alms in Sri Pithikapuram. My arrival is a divine secret.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">4</div>
-            <p class="assurance-text">I reduce all the karmas into heaps of ashes of those who constantly meditate upon me. Even if the karmas are accumulated from many births I will burn them down.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">5</div>
-            <p class="assurance-text">If you give food to those who wail 'Oh! Ramachandraa! Food!' I will be pleased.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">6</div>
-            <p class="assurance-text">I am Sripada Srivallabha! Sreemahalakshmi shines with all Her glorious attributes in the houses of My devotees.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">7</div>
-            <p class="assurance-text">If you have a pure heart My grace will always be on you.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">8</div>
-            <p class="assurance-text">I am agreeable even when you adore any Form of Deity, or take the support of any Sadguru.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">9</div>
-            <p class="assurance-text">All your Prayers reach me. My grace is transmitted to you through the form of Deity you Worship or through your Sadguru.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">10</div>
-            <p class="assurance-text">Sripada Srivallabha is not merely confined to this Name and form. You can know My Corporeal Cosmic form encompassing all forms of Deities and all forces as integral parts, only by strict observance of spiritual discipline.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">11</div>
-            <p class="assurance-text">Mine is a comprehensive yogic incarnation. Great yogis and Great Siddhas constantly meditate upon me.</p>
-          </div>
-
-          <div class="assurance-card">
-            <div class="assurance-num" aria-hidden="true">12</div>
-            <p class="assurance-text">If you take Me as a support, I preach you the path of dharma and also the path of karma. I always protect you from a downfall.</p>
-          </div>
-
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">1</div><p class="assurance-text">I will remain in a subtle form in every place where my biography is devotedly read.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">2</div><p class="assurance-text">Just like an eye-lid, I will protect the person who is dedicated to me through mind, word and deed.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">3</div><p class="assurance-text">Daily in the afternoon I seek alms in Sri Pithikapuram. My arrival is a divine secret.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">4</div><p class="assurance-text">I reduce all the karmas into heaps of ashes of those who constantly meditate upon me. Even if the karmas are accumulated from many births I will burn them down.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">5</div><p class="assurance-text">If you give food to those who wail 'Oh! Ramachandraa! Food!' I will be pleased.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">6</div><p class="assurance-text">I am Sripada Srivallabha! Sreemahalakshmi shines with all Her glorious attributes in the houses of My devotees.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">7</div><p class="assurance-text">If you have a pure heart My grace will always be on you.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">8</div><p class="assurance-text">I am agreeable even when you adore any Form of Deity, or take the support of any Sadguru.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">9</div><p class="assurance-text">All your Prayers reach me. My grace is transmitted to you through the form of Deity you Worship or through your Sadguru.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">10</div><p class="assurance-text">Sripada Srivallabha is not merely confined to this Name and form. You can know My Corporeal Cosmic form encompassing all forms of Deities and all forces as integral parts, only by strict observance of spiritual discipline.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">11</div><p class="assurance-text">Mine is a comprehensive yogic incarnation. Great yogis and Great Siddhas constantly meditate upon me.</p></div>
+          <div class="assurance-card"><div class="assurance-num" aria-hidden="true">12</div><p class="assurance-text">If you take Me as a support, I preach you the path of dharma and also the path of karma. I always protect you from a downfall.</p></div>
         </div>
 
       </section>
 
     </div>
-    <!-- end content wrapper -->
 
   </main>
 
-  <!-- Back to top -->
   <button id="back-top" aria-label="Back to top">
     <span class="material-symbols-outlined" style="font-size:22px;" aria-hidden="true">arrow_upward</span>
   </button>
