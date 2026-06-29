@@ -69,6 +69,13 @@
       color: #57423a;
       letter-spacing: 0.01em;
     }
+
+    /* Hide Telugu subtitle and its divider on mobile */
+    @media (max-width: 639px) {
+      .brand-name-te  { display: none; }
+      .brand-divider  { display: none; }
+    }
+
     html.dark .brand-name-en  { color: #ffb596; }
     html.dark .brand-name-te  { color: #d0c8c5; }
     html.dark .brand-divider  { background: linear-gradient(to right, #ffb59655, transparent); }
@@ -408,7 +415,7 @@
 
   <script>
     (function () {
-      /* ── Mobile accordion ─────────────────────────────────── */
+      /* ── Mobile accordion ───────────────────────────────────────────────── */
       function initAccordion(btnId, subId) {
         var btn = document.getElementById(btnId);
         var sub = document.getElementById(subId);
@@ -423,7 +430,7 @@
       initAccordion('mob-donations-btn', 'mob-donations-sub');
       initAccordion('mob-pilgrim-btn',   'mob-pilgrim-sub');
 
-      /* ── Audio player ─────────────────────────────────────── */
+      /* ── Audio player ─────────────────────────────────────────────────── */
       var audio     = document.getElementById('bhajan-audio');
       var btn       = document.getElementById('audio-toggle');
       var iconVol   = document.getElementById('icon-volume');
