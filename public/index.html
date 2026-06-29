@@ -115,8 +115,16 @@
     /* Notice Ticker */
     #notice-ticker {
       position: relative;
-      height: 48px;
+      /* Mobile: let height grow with content */
+      min-height: 48px;
+      height: auto;
       overflow: hidden;
+    }
+    @media (min-width: 640px) {
+      /* sm+: single-line fixed height */
+      #notice-ticker {
+        height: 48px;
+      }
     }
     .notice-slide {
       position: absolute;
@@ -126,6 +134,18 @@
       gap: 12px;
       opacity: 0;
       pointer-events: none;
+    }
+    /* On mobile, slides stack vertically and need auto height */
+    @media (max-width: 639px) {
+      .notice-slide {
+        position: relative;
+        inset: auto;
+        align-items: flex-start;
+        padding-block: 8px;
+      }
+      .notice-slide:not(.active) {
+        display: none;
+      }
     }
     .notice-slide.active {
       opacity: 1;
