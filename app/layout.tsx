@@ -6,11 +6,11 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
     description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
-    url: 'https://your-domain.com', // replace with your actual domain
+    url: 'https://pithapuram.org',
     siteName: 'Sripada Srivallabha',
     images: [
       {
-        url: '/og-image.jpg',   // path relative to /public
+        url: '/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Sri Kshetra Pithapuram',
@@ -26,3 +26,15 @@ export const metadata: Metadata = {
     images: ['/og-image.jpg'],
   },
 };
+
+export default function RootLayout({
+  children,
+}: {
+  children: React.ReactNode;
+}) {
+  return (
+    <html lang="te">
+      <body>{children}</body>
+    </html>
+  );
+}
