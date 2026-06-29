@@ -31,8 +31,8 @@
     #header-spacer { height: var(--header-h); }
 
     .brand-logo {
-      width: 52px;
-      height: 52px;
+      width: 44px;
+      height: 44px;
       border-radius: 50%;
       object-fit: cover;
       object-position: top center;
@@ -49,9 +49,9 @@
 
     .brand-name-en {
       font-family: 'Source Serif 4', Georgia, serif;
-      font-size: 1.25rem;
+      font-size: clamp(0.8rem, 2.5vw, 1.25rem);
       font-weight: 700;
-      line-height: 1.2;
+      line-height: 1.15;
       color: #8C330A;
       letter-spacing: -0.01em;
     }
@@ -74,11 +74,9 @@
     @media (max-width: 639px) {
       .brand-name-te  { display: none; }
       .brand-divider  { display: none; }
+      .brand-logo     { width: 38px; height: 38px; }
     }
 
-    html.dark .brand-name-en  { color: #ffb596; }
-    html.dark .brand-name-te  { color: #d0c8c5; }
-    html.dark .brand-divider  { background: linear-gradient(to right, #ffb59655, transparent); }
     .font-telugu { font-family: 'Noto Sans Telugu', sans-serif; }
 
     /* ── NAV LINK COLORS ── match brand title #8C330A ── */
@@ -89,23 +87,12 @@
     #main-header nav a:visited { color: #8C330A; }
     #main-header nav a:hover   { color: #6b2508; }
 
-    html.dark #main-header nav a,
-    html.dark #main-header nav button { color: #ffb596; }
-    html.dark #main-header nav a:visited { color: #ffb596; }
-    html.dark #main-header nav a:hover   { color: #ffd4bb; }
-
     /* Mobile drawer links */
     #mobile-nav a,
     #mobile-nav button,
     .mobile-acc-toggle { color: #8C330A; }
     #mobile-nav a:visited { color: #8C330A; }
     #mobile-nav a:hover   { color: #6b2508; }
-
-    html.dark #mobile-nav a,
-    html.dark #mobile-nav button,
-    html.dark .mobile-acc-toggle { color: #ffb596; }
-    html.dark #mobile-nav a:visited { color: #ffb596; }
-    html.dark #mobile-nav a:hover   { color: #ffd4bb; }
 
     /* Dropdown (shared) */
     .nav-dropdown { position: relative; }
@@ -142,11 +129,6 @@
                   transform 0.18s cubic-bezier(0.16,1,0.3,1);
       z-index: 200;
     }
-    html.dark .nav-dropdown-menu {
-      background: #2a1f1a;
-      border-color: rgba(255,181,150,0.15);
-      box-shadow: 0 8px 28px rgba(0,0,0,0.4);
-    }
     .nav-dropdown:hover .nav-dropdown-menu,
     .nav-dropdown:focus-within .nav-dropdown-menu {
       opacity: 1;
@@ -171,18 +153,14 @@
       transition: background 0.15s, color 0.15s;
       white-space: nowrap;
     }
-    html.dark .nav-dropdown-menu a { color: #e8d5c8; }
     .nav-dropdown-menu a:hover { background: rgba(140,51,10,0.07); color: #8C330A; }
-    html.dark .nav-dropdown-menu a:hover { background: rgba(255,181,150,0.09); color: #ffb596; }
     .nav-dropdown-menu .menu-icon { font-size: 18px; opacity: 0.75; }
     .dropdown-divider {
       height: 1px;
       background: rgba(140,51,10,0.1);
       margin: 0.25rem 0.75rem;
     }
-    html.dark .dropdown-divider { background: rgba(255,181,150,0.1); }
     .dropdown-all-link { font-weight: 600 !important; color: #8C330A !important; }
-    html.dark .dropdown-all-link { color: #ffb596 !important; }
 
     /* Mobile accordion base */
     .mobile-acc-toggle {
@@ -236,8 +214,6 @@
       transition: background 0.18s, transform 0.18s;
     }
     #audio-toggle:hover { background: rgba(140,51,10,0.08); transform: scale(1.08); }
-    html.dark #audio-toggle { color: #ffb596; }
-    html.dark #audio-toggle:hover { background: rgba(255,181,150,0.1); }
 
     @keyframes audio-pulse {
       0%   { box-shadow: 0 0 0 0   rgba(140,51,10,0.35); }
@@ -246,9 +222,6 @@
     }
     #audio-toggle.playing {
       animation: audio-pulse 2s ease-out infinite;
-    }
-    html.dark #audio-toggle.playing {
-      animation: none;
     }
   </style>
 
@@ -260,12 +233,12 @@
   <a href="#main-content" class="skip-link">Skip to main content</a>
 
   <header
-    class="fixed top-0 w-full z-50 flex justify-between items-center px-marginLg bg-sacred-white dark:bg-surface-dim border-b border-incense-smoke dark:border-outline-variant shadow-sm dark:shadow-none transition-all duration-300"
+    class="fixed top-0 w-full z-50 flex justify-between items-center px-3 sm:px-5 lg:px-8 bg-sacred-white border-b border-incense-smoke shadow-sm transition-all duration-300"
     id="main-header"
   >
-    <a href="./index.html" class="brand-link flex items-center gap-3 no-underline" aria-label="Sripada Srivallabha Mahasamsthanam — home">
-      <img src="./images/left-sripada.png" alt="Lord Sripada Srivallabha" width="52" height="52" loading="eager" decoding="async" class="brand-logo">
-      <div class="flex flex-col justify-center gap-[2px]">
+    <a href="./index.html" class="brand-link flex items-center gap-2 no-underline min-w-0" aria-label="Sripada Srivallabha Mahasamsthanam — home">
+      <img src="./images/left-sripada.png" alt="Lord Sripada Srivallabha" width="44" height="44" loading="eager" decoding="async" class="brand-logo">
+      <div class="flex flex-col justify-center gap-[2px] min-w-0">
         <span class="brand-name-en">Sripada Srivallabha Mahasamsthanam</span>
         <div class="brand-divider" aria-hidden="true"></div>
         <span class="brand-name-te">శ్రీపాద శ్రీవల్లభ మహాసంస్థానం</span>
@@ -273,13 +246,13 @@
     </a>
 
     <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
-      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" href="./index.html">Home</a>
-      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" href="./sevas.html">Sevas</a>
-      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" href="./books.html">Books</a>
+      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 font-medium text-sm no-underline" href="./index.html">Home</a>
+      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 font-medium text-sm no-underline" href="./sevas.html">Sevas</a>
+      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 font-medium text-sm no-underline" href="./books.html">Books</a>
 
       <!-- Donations dropdown -->
       <div class="nav-dropdown" role="navigation" aria-label="Donations navigation">
-        <a href="./Donations.html" class="nav-dropdown-trigger px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" aria-haspopup="true">
+        <a href="./Donations.html" class="nav-dropdown-trigger px-4 py-2 rounded-md transition-colors hover:bg-black/5 font-medium text-sm no-underline" aria-haspopup="true">
           Donations
           <span class="material-symbols-outlined chevron" aria-hidden="true">expand_more</span>
         </a>
@@ -300,11 +273,11 @@
         </div>
       </div>
 
-      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" href="./history.html">History</a>
+      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 font-medium text-sm no-underline" href="./history.html">History</a>
 
       <!-- Pilgrim Guide dropdown -->
       <div class="nav-dropdown" role="navigation" aria-label="Pilgrim Guide navigation">
-        <a href="./index.html#visit" class="nav-dropdown-trigger px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" aria-haspopup="true">
+        <a href="./index.html#visit" class="nav-dropdown-trigger px-4 py-2 rounded-md transition-colors hover:bg-black/5 font-medium text-sm no-underline" aria-haspopup="true">
           Pilgrim Guide
           <span class="material-symbols-outlined chevron" aria-hidden="true">expand_more</span>
         </a>
@@ -325,8 +298,7 @@
       </div>
     </nav>
 
-    <div class="flex items-center gap-3">
-      <!-- Audio button: no 'playing' class by default — JS adds it only after play() resolves -->
+    <div class="flex items-center gap-2 shrink-0">
       <button
         id="audio-toggle"
         aria-label="Play bhajan"
@@ -355,7 +327,7 @@
   <!-- MOBILE NAV DRAWER -->
   <div id="nav-overlay" class="fixed inset-0 bg-on-background/60 z-40 lg:hidden" aria-hidden="true"></div>
   <nav id="mobile-nav" role="dialog" aria-modal="true" aria-label="Mobile navigation"
-    class="fixed top-0 right-0 h-full w-72 max-w-[85vw] z-50 bg-sacred-white dark:bg-surface-dim shadow-2xl lg:hidden flex flex-col pt-6 pb-10 px-6 gap-2">
+    class="fixed top-0 right-0 h-full w-72 max-w-[85vw] z-50 bg-sacred-white shadow-2xl lg:hidden flex flex-col pt-6 pb-10 px-6 gap-2">
 
     <div class="flex justify-between items-center mb-6">
       <span style="font-size:1.25rem;font-weight:700;color:#8C330A;">Menu</span>
@@ -436,18 +408,14 @@
       var iconVol   = document.getElementById('icon-volume');
       var iconMuted = document.getElementById('icon-muted');
 
-      // Session-persisted state keys
       var KEY_TIME  = 'bhajan_time';
       var KEY_MUTED = 'bhajan_muted';
 
-      // Read saved state (sessionStorage survives same-tab navigation)
       var savedMuted = sessionStorage.getItem(KEY_MUTED) === '1';
       var savedTime  = parseFloat(sessionStorage.getItem(KEY_TIME) || '0');
 
-      // Apply muted state to the audio element immediately
       audio.muted = savedMuted;
 
-      // Seek to saved position once enough data is buffered
       if (savedTime > 0) {
         audio.addEventListener('canplay', function seek() {
           audio.removeEventListener('canplay', seek);
@@ -455,24 +423,18 @@
         });
       }
 
-      // Save time + mute state just before the page unloads
       window.addEventListener('pagehide', function () {
         try {
           sessionStorage.setItem(KEY_TIME,  String(audio.currentTime));
           sessionStorage.setItem(KEY_MUTED, audio.muted ? '1' : '0');
-        } catch (e) { /* sessionStorage may be blocked in some contexts */ }
+        } catch (e) {}
       });
 
-      /* Update button UI to accurately reflect state */
       function setUI(isPlaying, isMuted) {
-        // Icon: show volume when playing+unmuted, muted icon otherwise
         var showVol = isPlaying && !isMuted;
         iconVol.style.display   = showVol ? '' : 'none';
         iconMuted.style.display = showVol ? 'none' : '';
-
-        // Pulse ring only when genuinely playing and unmuted
         btn.classList.toggle('playing', isPlaying && !isMuted);
-
         if (isMuted) {
           btn.setAttribute('aria-label', 'Unmute bhajan');
           btn.setAttribute('title',      'Unmute bhajan');
@@ -485,21 +447,15 @@
         }
       }
 
-      // Keep UI in sync with audio events
       audio.addEventListener('play',  function () { setUI(true,  audio.muted); });
       audio.addEventListener('pause', function () { setUI(false, audio.muted); });
 
-      // Initial render before play() resolves
       setUI(false, savedMuted);
 
-      /* Attempt autoplay. Browser may block it until user interaction. */
       function tryPlay() {
         var promise = audio.play();
         if (promise !== undefined) {
-          promise.then(function () {
-            // Browser granted autoplay — UI updates via the 'play' event listener
-          }).catch(function () {
-            // Blocked: wait for any user gesture, then start
+          promise.then(function () {}).catch(function () {
             document.addEventListener('click', function startOnInteraction() {
               document.removeEventListener('click', startOnInteraction);
               if (!audio.muted || !savedMuted) {
@@ -512,7 +468,6 @@
 
       tryPlay();
 
-      /* Toggle mute on button click */
       btn.addEventListener('click', function () {
         var nowMuted = !audio.muted;
         audio.muted = nowMuted;
