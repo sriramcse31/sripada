@@ -320,18 +320,18 @@
     </nav>
 
     <div class="flex items-center gap-3">
+      <!-- Audio button: no 'playing' class by default — JS adds it only after play() resolves -->
       <button
         id="audio-toggle"
-        aria-label="Mute bhajan"
-        title="Mute bhajan"
-        class="playing"
+        aria-label="Play bhajan"
+        title="Play bhajan"
       >
-        <svg id="icon-volume" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
+        <svg id="icon-volume" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
           <path d="M15.54 8.46a5 5 0 0 1 0 7.07"/>
           <path d="M19.07 4.93a10 10 0 0 1 0 14.14"/>
         </svg>
-        <svg id="icon-muted" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="display:none">
+        <svg id="icon-muted" width="22" height="22" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true">
           <polygon points="11 5 6 9 2 9 2 15 6 15 11 19 11 5"/>
           <line x1="23" y1="9" x2="17" y2="15"/>
           <line x1="17" y1="9" x2="23" y2="15"/>
@@ -409,6 +409,7 @@
 
   <script>
     (function () {
+      /* ── Mobile accordion ─────────────────────────────────── */
       function initAccordion(btnId, subId) {
         var btn = document.getElementById(btnId);
         var sub = document.getElementById(subId);
@@ -423,47 +424,97 @@
       initAccordion('mob-donations-btn', 'mob-donations-sub');
       initAccordion('mob-pilgrim-btn',   'mob-pilgrim-sub');
 
-      var audio      = document.getElementById('bhajan-audio');
-      var btn        = document.getElementById('audio-toggle');
-      var iconVol    = document.getElementById('icon-volume');
-      var iconMuted  = document.getElementById('icon-muted');
-      var muted      = false;
+      /* ── Audio player ─────────────────────────────────────── */
+      var audio     = document.getElementById('bhajan-audio');
+      var btn       = document.getElementById('audio-toggle');
+      var iconVol   = document.getElementById('icon-volume');
+      var iconMuted = document.getElementById('icon-muted');
 
-      function setMuted(val) {
-        muted = val;
-        audio.muted = val;
-        if (val) {
-          iconVol.style.display   = 'none';
-          iconMuted.style.display = '';
-          btn.classList.remove('playing');
+      // Session-persisted state keys
+      var KEY_TIME  = 'bhajan_time';
+      var KEY_MUTED = 'bhajan_muted';
+
+      // Read saved state (sessionStorage survives same-tab navigation)
+      var savedMuted = sessionStorage.getItem(KEY_MUTED) === '1';
+      var savedTime  = parseFloat(sessionStorage.getItem(KEY_TIME) || '0');
+
+      // Apply muted state to the audio element immediately
+      audio.muted = savedMuted;
+
+      // Seek to saved position once enough data is buffered
+      if (savedTime > 0) {
+        audio.addEventListener('canplay', function seek() {
+          audio.removeEventListener('canplay', seek);
+          audio.currentTime = savedTime;
+        });
+      }
+
+      // Save time + mute state just before the page unloads
+      window.addEventListener('pagehide', function () {
+        try {
+          sessionStorage.setItem(KEY_TIME,  String(audio.currentTime));
+          sessionStorage.setItem(KEY_MUTED, audio.muted ? '1' : '0');
+        } catch (e) { /* sessionStorage may be blocked in some contexts */ }
+      });
+
+      /* Update button UI to accurately reflect state */
+      function setUI(isPlaying, isMuted) {
+        // Icon: show volume when playing+unmuted, muted icon otherwise
+        var showVol = isPlaying && !isMuted;
+        iconVol.style.display   = showVol ? '' : 'none';
+        iconMuted.style.display = showVol ? 'none' : '';
+
+        // Pulse ring only when genuinely playing and unmuted
+        btn.classList.toggle('playing', isPlaying && !isMuted);
+
+        if (isMuted) {
           btn.setAttribute('aria-label', 'Unmute bhajan');
           btn.setAttribute('title',      'Unmute bhajan');
-        } else {
-          iconVol.style.display   = '';
-          iconMuted.style.display = 'none';
-          btn.classList.add('playing');
+        } else if (isPlaying) {
           btn.setAttribute('aria-label', 'Mute bhajan');
           btn.setAttribute('title',      'Mute bhajan');
+        } else {
+          btn.setAttribute('aria-label', 'Play bhajan');
+          btn.setAttribute('title',      'Play bhajan');
         }
       }
 
+      // Keep UI in sync with audio events
+      audio.addEventListener('play',  function () { setUI(true,  audio.muted); });
+      audio.addEventListener('pause', function () { setUI(false, audio.muted); });
+
+      // Initial render before play() resolves
+      setUI(false, savedMuted);
+
+      /* Attempt autoplay. Browser may block it until user interaction. */
       function tryPlay() {
-        var p = audio.play();
-        if (p !== undefined) {
-          p.catch(function () {
-            document.addEventListener('click', function startOnClick() {
-              if (!muted) audio.play();
-              document.removeEventListener('click', startOnClick);
-            }, { once: true });
+        var promise = audio.play();
+        if (promise !== undefined) {
+          promise.then(function () {
+            // Browser granted autoplay — UI updates via the 'play' event listener
+          }).catch(function () {
+            // Blocked: wait for any user gesture, then start
+            document.addEventListener('click', function startOnInteraction() {
+              document.removeEventListener('click', startOnInteraction);
+              if (!audio.muted || !savedMuted) {
+                audio.play().catch(function () {});
+              }
+            });
           });
         }
       }
 
-      document.addEventListener('DOMContentLoaded', function () { tryPlay(); });
+      tryPlay();
 
+      /* Toggle mute on button click */
       btn.addEventListener('click', function () {
-        if (muted) { setMuted(false); if (audio.paused) audio.play(); }
-        else { setMuted(true); }
+        var nowMuted = !audio.muted;
+        audio.muted = nowMuted;
+        if (!nowMuted && audio.paused) {
+          audio.play().catch(function () {});
+        }
+        setUI(!audio.paused, nowMuted);
+        try { sessionStorage.setItem(KEY_MUTED, nowMuted ? '1' : '0'); } catch (e) {}
       });
     })();
   </script>
