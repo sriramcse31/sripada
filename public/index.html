@@ -214,6 +214,11 @@
       border-radius: 2px;
     }
 
+    /* Pause indicator: progress bar fades while hovered/touched */
+    #notice-progress.paused {
+      transition: none;
+    }
+
     @media (prefers-reduced-motion: reduce) {
       .notice-slide.active { animation: none; opacity: 1; }
       .notice-slide.exit   { animation: none; opacity: 0; }
@@ -453,14 +458,16 @@
       const slides     = Array.from(document.querySelectorAll('.notice-slide'));
       const progressEl = document.getElementById('notice-progress');
       const ticker     = document.getElementById('notice-ticker');
+      const section    = ticker.closest('section');
       let current = 0, timer = null, paused = false;
+      // Track independent pause reasons so they don't clobber each other
+      let pausedByHover = false, pausedByTouch = false, pausedByExpand = false;
 
-      /* Sync ticker height to match the active slide's rendered height */
       function syncHeight() {
         ticker.style.height = slides[current].offsetHeight + 'px';
       }
 
-      /* Wire Read more / Show less buttons — only shown when text overflows 2 lines */
+      /* ── Read more / Show less ── */
       slides.forEach(function (slide) {
         var body = slide.querySelector('.notice-body');
         var btn  = slide.querySelector('.notice-read-more');
@@ -470,23 +477,19 @@
           var overflows = body.scrollHeight > body.clientHeight + 2;
           btn.style.display = (overflows || btn.classList.contains('open')) ? 'inline-flex' : 'none';
         }
-
-        /* Re-check on resize (e.g. viewport width change) */
-        var ro = new ResizeObserver(checkOverflow);
-        ro.observe(body);
+        new ResizeObserver(checkOverflow).observe(body);
 
         btn.addEventListener('click', function () {
           var expanded = btn.classList.toggle('open');
           body.classList.toggle('expanded', expanded);
           btn.setAttribute('aria-expanded', String(expanded));
-          /* Update label text (first text node) */
           btn.firstChild.nodeValue = expanded ? 'Show less ' : 'Read more ';
-          if (expanded) { pauseCarousel(); } else { resumeCarousel(); }
+          pausedByExpand = expanded;
+          updatePause();
           requestAnimationFrame(syncHeight);
         });
       });
 
-      /* Collapse any open Read more on a slide before leaving it */
       function collapseSlide(slide) {
         var body = slide.querySelector('.notice-body');
         var btn  = slide.querySelector('.notice-read-more');
@@ -495,9 +498,44 @@
           if (body) body.classList.remove('expanded');
           btn.setAttribute('aria-expanded', 'false');
           btn.firstChild.nodeValue = 'Read more ';
+          pausedByExpand = false;
         }
       }
 
+      /* ── Pause / resume logic ── */
+      function updatePause() {
+        var shouldPause = pausedByHover || pausedByTouch || pausedByExpand;
+        if (shouldPause && !paused) {
+          paused = true;
+          clearTimeout(timer);
+          // Freeze the progress bar in place
+          var computed = getComputedStyle(progressEl).width;
+          var parentW  = progressEl.parentElement.offsetWidth;
+          progressEl.style.transition = 'none';
+          progressEl.style.width = computed;
+          progressEl.classList.add('paused');
+        } else if (!shouldPause && paused) {
+          paused = false;
+          progressEl.classList.remove('paused');
+          // Resume from current progress position
+          var currentPct = parentW ? (parseFloat(computed) / parentW * 100) : 0;
+          var remaining  = INTERVAL * (1 - currentPct / 100);
+          progressEl.style.transition = 'width ' + remaining + 'ms linear';
+          progressEl.style.width = '100%';
+          timer = setTimeout(function () { goTo(current + 1); }, remaining);
+        }
+      }
+
+      /* Desktop: mouseenter/mouseleave on the whole notices section */
+      section.addEventListener('mouseenter', function () { pausedByHover = true;  updatePause(); });
+      section.addEventListener('mouseleave', function () { pausedByHover = false; updatePause(); });
+
+      /* Mobile: touchstart / touchend on the ticker area */
+      ticker.addEventListener('touchstart', function () { pausedByTouch = true;  updatePause(); }, { passive: true });
+      ticker.addEventListener('touchend',   function () { pausedByTouch = false; updatePause(); }, { passive: true });
+      ticker.addEventListener('touchcancel',function () { pausedByTouch = false; updatePause(); }, { passive: true });
+
+      /* ── Carousel ── */
       function goTo(next) {
         collapseSlide(slides[current]);
         var prev = current;
@@ -512,6 +550,7 @@
       }
 
       function startProgress() {
+        progressEl.classList.remove('paused');
         progressEl.style.transition = 'none';
         progressEl.style.width = '0%';
         void progressEl.offsetWidth;
@@ -521,13 +560,8 @@
         if (!paused) timer = setTimeout(function () { goTo(current + 1); }, INTERVAL);
       }
 
-      function pauseCarousel() { paused = true; clearTimeout(timer); progressEl.style.transition = 'none'; }
-      function resumeCarousel() { paused = false; startProgress(); }
-
-      /* Initial height sync after fonts/layout settle */
       requestAnimationFrame(function () { requestAnimationFrame(syncHeight); });
       window.addEventListener('resize', syncHeight);
-
       startProgress();
     })();
   </script>
