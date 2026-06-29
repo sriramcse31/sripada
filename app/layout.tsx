@@ -10,7 +10,7 @@ export const metadata: Metadata = {
     siteName: 'Sripada Srivallabha',
     images: [
       {
-        url: '/og-image.jpg',   // path relative to /public
+        url: 'images/og-cover.jpg',   // path relative to /public
         width: 1200,
         height: 630,
         alt: 'Sri Kshetra Pithapuram',
@@ -23,6 +23,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
     description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
-    images: ['/og-image.jpg'],
+    images: ['images/og-cover.jpg'],
   },
 };
