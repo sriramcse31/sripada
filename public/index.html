@@ -112,9 +112,7 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* =====================================================
-       NOTICE SECTION — Desktop: rotating carousel
-       ===================================================== */
+    /* ── Notice carousel (all breakpoints) ── */
     #notice-ticker {
       position: relative;
       height: 48px;
@@ -132,7 +130,7 @@
     .notice-slide.active {
       opacity: 1;
       pointer-events: auto;
-      animation: noticeIn 0.4s cubic-bezier(0.16, 1, 0.3, 1) both;
+      animation: noticeIn 0.45s cubic-bezier(0.16, 1, 0.3, 1) both;
     }
     .notice-slide.exit {
       opacity: 0;
@@ -154,81 +152,15 @@
       transition: width linear;
       border-radius: 2px;
     }
-    .notice-dot {
-      width: 6px; height: 6px;
-      border-radius: 50%;
-      background: #dec0b5;
-      transition: background 0.3s, transform 0.3s;
-      cursor: pointer;
-      border: none; padding: 0;
-    }
-    .notice-dot.active {
-      background: #8C330A;
-      transform: scale(1.4);
-    }
     @media (prefers-reduced-motion: reduce) {
       .notice-slide.active { animation: none; opacity: 1; }
       .notice-slide.exit   { animation: none; opacity: 0; }
       #notice-progress     { transition: none; }
     }
 
-    /* =====================================================
-       NOTICE SECTION — Mobile: accordion
-       ===================================================== */
-    .notice-accordion-item {
-      border-bottom: 1px solid #EDF2F7;
-    }
-    .notice-accordion-item:first-child {
-      border-top: 1px solid #EDF2F7;
-    }
-    .notice-accordion-btn {
-      width: 100%;
-      display: flex;
-      align-items: center;
-      gap: 10px;
-      padding: 11px 0;
-      background: none;
-      border: none;
-      cursor: pointer;
-      text-align: left;
-      -webkit-tap-highlight-color: transparent;
-    }
-    .notice-accordion-chevron {
-      margin-left: auto;
-      flex-shrink: 0;
-      color: #57423a;
-      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .notice-accordion-item.open .notice-accordion-chevron {
-      transform: rotate(180deg);
-    }
-    .notice-accordion-body {
-      display: grid;
-      grid-template-rows: 0fr;
-      transition: grid-template-rows 0.28s cubic-bezier(0.16, 1, 0.3, 1);
-    }
-    .notice-accordion-item.open .notice-accordion-body {
-      grid-template-rows: 1fr;
-    }
-    .notice-accordion-inner {
-      overflow: hidden;
-    }
-    .notice-accordion-text {
-      padding: 0 0 12px 37px; /* indent to align with title text */
-      font-size: 12px;
-      line-height: 1.6;
-      color: #57423a;
-    }
-
-    /* =====================================================
-       REST OF PAGE
-       ===================================================== */
+    /* ── Rest of page ── */
     @media (min-width: 1024px) {
-      .services-sidebar {
-        position: sticky;
-        top: calc(5.5rem + 1.5rem);
-        align-self: start;
-      }
+      .services-sidebar { position: sticky; top: calc(5.5rem + 1.5rem); align-self: start; }
     }
     .service-card:hover .service-arrow { transform: translateX(4px); }
     .service-arrow { transition: transform 0.2s cubic-bezier(0.16, 1, 0.3, 1); }
@@ -258,91 +190,51 @@
            class="w-full h-auto block object-contain object-top">
     </section>
 
-    <!-- =====================================================
-         NOTICES — Desktop carousel / Mobile accordion
-         ===================================================== -->
+    <!-- Notices -->
     <section aria-label="Temple notices and updates" class="bg-sacred-white border-b border-incense-smoke shadow-sm">
       <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg">
 
-        <!-- Progress bar (desktop only) -->
-        <div class="hidden sm:block w-full bg-incense-smoke" style="height:2px;" aria-hidden="true">
+        <div class="w-full bg-incense-smoke" style="height:2px;" aria-hidden="true">
           <div id="notice-progress"></div>
         </div>
 
-        <!-- ── DESKTOP CAROUSEL (sm+) ── -->
-        <div class="hidden sm:flex items-center gap-3" style="min-height:64px;">
-          <!-- Badge -->
-          <div class="flex items-center flex-shrink-0">
+        <div class="flex items-center gap-3" style="min-height:56px;">
+
+          <!-- Badge: hidden on mobile -->
+          <div class="hidden sm:flex items-center flex-shrink-0">
             <span class="font-body text-sacred-white bg-saffron-deep px-2.5 py-1 rounded-full uppercase tracking-widest whitespace-nowrap"
                   style="font-size:10px; font-weight:600; letter-spacing:0.08em;">Notices</span>
           </div>
-          <div class="w-px bg-incense-smoke self-stretch my-3 flex-shrink-0" aria-hidden="true"></div>
-          <!-- Slides -->
-          <div id="notice-ticker" class="flex-1" role="region" aria-live="polite" aria-atomic="true" aria-label="Rotating temple notices">
+          <div class="hidden sm:block w-px bg-incense-smoke self-stretch my-3 flex-shrink-0" aria-hidden="true"></div>
+
+          <!-- Ticker -->
+          <div id="notice-ticker" class="flex-1"
+               role="region" aria-live="polite" aria-atomic="true" aria-label="Rotating temple notices">
+
             <div class="notice-slide active" data-index="0">
               <div class="flex-shrink-0 w-7 h-7 rounded-full bg-error-container flex items-center justify-center">
-                <span class="material-symbols-outlined text-error" style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
+                <span class="material-symbols-outlined text-error"
+                      style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
               </div>
               <div class="min-w-0">
                 <span class="font-body font-semibold text-on-background" style="font-size:13px;">Lunar Eclipse Notice</span>
-                <span class="font-body text-on-surface-variant" style="font-size:13px;"> — Temple doors will remain closed on Oct 28th due to Chandra Grahanam. Darshan resumes post-Shuddhi at 5:00 AM.</span>
+                <span class="font-body text-on-surface-variant" style="font-size:13px;"> — Temple closed Oct 28 (Chandra Grahanam). Darshan resumes post-Shuddhi at 5:00 AM.</span>
               </div>
             </div>
+
             <div class="notice-slide" data-index="1">
               <div class="flex-shrink-0 w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center">
-                <span class="material-symbols-outlined text-primary" style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
+                <span class="material-symbols-outlined text-primary"
+                      style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
               </div>
               <div class="min-w-0">
                 <span class="font-body font-semibold text-on-background" style="font-size:13px;">Payment Gateway</span>
-                <span class="font-body text-on-surface-variant" style="font-size:13px;"> — Intermittent issues with UPI payments. Please use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
+                <span class="font-body text-on-surface-variant" style="font-size:13px;"> — UPI issues ongoing. Use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
               </div>
             </div>
-          </div>
-          <!-- Controls -->
-          <div class="flex items-center gap-1.5 flex-shrink-0">
-            <button id="notice-prev" aria-label="Previous notice" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
-              <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_left</span>
-            </button>
-            <div id="notice-dots" class="flex items-center gap-1.5" role="tablist" aria-label="Notice indicators"></div>
-            <button id="notice-next" aria-label="Next notice" class="w-7 h-7 flex items-center justify-center rounded-full hover:bg-surface-container transition-colors text-on-surface-variant">
-              <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">chevron_right</span>
-            </button>
-          </div>
-        </div>
 
-        <!-- ── MOBILE ACCORDION (< sm) ── -->
-        <div class="sm:hidden py-1" id="notice-accordion" aria-label="Temple notices">
-
-          <div class="notice-accordion-item">
-            <button class="notice-accordion-btn" aria-expanded="false">
-              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-error-container flex items-center justify-center">
-                <span class="material-symbols-outlined text-error" style="font-size:14px; font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
-              </span>
-              <span class="font-body font-semibold text-on-background" style="font-size:13px;">Lunar Eclipse Notice</span>
-              <span class="material-symbols-outlined notice-accordion-chevron" style="font-size:18px;" aria-hidden="true">expand_more</span>
-            </button>
-            <div class="notice-accordion-body" role="region">
-              <div class="notice-accordion-inner">
-                <p class="notice-accordion-text">Temple doors will remain closed on Oct 28th due to Chandra Grahanam (Lunar Eclipse). Darshan resumes post-Shuddhi purification at 5:00 AM on Oct 29th.</p>
-              </div>
-            </div>
           </div>
-
-          <div class="notice-accordion-item">
-            <button class="notice-accordion-btn" aria-expanded="false">
-              <span class="flex-shrink-0 w-6 h-6 rounded-full bg-surface-container-highest flex items-center justify-center">
-                <span class="material-symbols-outlined text-primary" style="font-size:14px; font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
-              </span>
-              <span class="font-body font-semibold text-on-background" style="font-size:13px;">Payment Gateway</span>
-              <span class="material-symbols-outlined notice-accordion-chevron" style="font-size:18px;" aria-hidden="true">expand_more</span>
-            </button>
-            <div class="notice-accordion-body" role="region">
-              <div class="notice-accordion-inner">
-                <p class="notice-accordion-text">Intermittent issues with UPI payments are being resolved. Please use Net Banking or scan the official temple QR Code available at the donation counter.</p>
-              </div>
-            </div>
-          </div>
-
+          <!-- no dots, no arrows -->
         </div>
       </div>
     </section>
@@ -352,7 +244,8 @@
       <div class="flex flex-col lg:flex-row gap-8 lg:gap-10 xl:gap-14 items-start">
 
         <!-- Sidebar -->
-        <aside aria-label="Peetadhipathi and Essential Services" class="content-sidebar services-sidebar w-full lg:w-80 xl:w-96 flex-shrink-0 flex flex-col gap-6">
+        <aside aria-label="Peetadhipathi and Essential Services"
+               class="content-sidebar services-sidebar w-full lg:w-80 xl:w-96 flex-shrink-0 flex flex-col gap-6">
 
           <div class="guruji-card bg-sacred-white border border-incense-smoke rounded-2xl overflow-hidden shadow-sm">
             <div class="relative overflow-hidden" style="height:220px;">
@@ -370,14 +263,16 @@
                  class="group flex items-center justify-between w-full">
                 <div class="flex items-center gap-3">
                   <div class="w-9 h-9 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
-                    <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:18px; font-variation-settings:'FILL' 1;">menu_book</span>
+                    <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container"
+                          style="font-size:18px; font-variation-settings:'FILL' 1;">menu_book</span>
                   </div>
                   <div>
                     <p class="font-body font-semibold text-on-background" style="font-size:13px;">Aavirbhavam</p>
                     <p class="font-body text-on-surface-variant" style="font-size:12px;">Read Guruji’s biography (English)</p>
                   </div>
                 </div>
-                <span class="material-symbols-outlined text-primary group-hover:text-saffron-deep service-arrow" style="font-size:20px;">arrow_right_alt</span>
+                <span class="material-symbols-outlined text-primary group-hover:text-saffron-deep service-arrow"
+                      style="font-size:20px;">arrow_right_alt</span>
               </a>
             </div>
           </div>
@@ -395,7 +290,8 @@
             </div>
             <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-1 gap-4">
 
-              <a id="donations" href="./Donations.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+              <a id="donations" href="./Donations.html"
+                 class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
                 <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
                 <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
                   <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;">volunteer_activism</span>
@@ -409,7 +305,8 @@
                 </div>
               </a>
 
-              <a href="./sevas.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+              <a href="./sevas.html"
+                 class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
                 <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
                 <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
                   <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;">local_fire_department</span>
@@ -423,7 +320,8 @@
                 </div>
               </a>
 
-              <a id="visit" href="./HowToReach.html" class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
+              <a id="visit" href="./HowToReach.html"
+                 class="service-card group bg-sacred-white border border-incense-smoke rounded-2xl p-5 shadow-sm hover:shadow-md hover:-translate-y-0.5 transition-all duration-200 flex gap-4 items-start relative overflow-hidden">
                 <div class="absolute -right-3 -top-3 w-20 h-20 bg-surface-container rounded-full opacity-40 group-hover:scale-150 transition-transform duration-500" aria-hidden="true"></div>
                 <div class="relative z-10 w-11 h-11 flex-shrink-0 rounded-full bg-surface-container-high flex items-center justify-center group-hover:bg-secondary-container transition-colors duration-200">
                   <span class="material-symbols-outlined text-primary group-hover:text-on-secondary-container" style="font-size:22px;">map</span>
@@ -483,66 +381,32 @@
   </script>
 
   <script>
-    /* ── Desktop carousel ── */
     (function () {
-      if (window.innerWidth < 640) return;
-      const INTERVAL   = 5000;
+      const INTERVAL   = 3000;
       const slides     = Array.from(document.querySelectorAll('.notice-slide'));
-      const dotsWrap   = document.getElementById('notice-dots');
       const progressEl = document.getElementById('notice-progress');
-      const prevBtn    = document.getElementById('notice-prev');
-      const nextBtn    = document.getElementById('notice-next');
       const ticker     = document.getElementById('notice-ticker');
       let current = 0, timer = null;
-      slides.forEach((_, i) => {
-        const dot = document.createElement('button');
-        dot.className = 'notice-dot' + (i === 0 ? ' active' : '');
-        dot.setAttribute('role', 'tab');
-        dot.setAttribute('aria-label', 'Notice ' + (i + 1));
-        dot.setAttribute('aria-selected', i === 0 ? 'true' : 'false');
-        dot.addEventListener('click', () => goTo(i));
-        dotsWrap.appendChild(dot);
-      });
-      function getDots() { return Array.from(dotsWrap.querySelectorAll('.notice-dot')); }
+
       function goTo(next) {
-        if (next === current) return;
-        clearTimeout(timer);
         const prev = current;
         current = ((next % slides.length) + slides.length) % slides.length;
         slides[prev].classList.add('exit');
-        slides[prev].addEventListener('animationend', () => slides[prev].classList.remove('active','exit'), { once: true });
+        slides[prev].addEventListener('animationend', () => slides[prev].classList.remove('active', 'exit'), { once: true });
         slides[current].classList.add('active');
-        getDots().forEach((d, i) => { d.classList.toggle('active', i === current); d.setAttribute('aria-selected', i === current ? 'true' : 'false'); });
-        startProgress(); scheduleNext();
+        startProgress();
       }
       function startProgress() {
-        progressEl.style.transition = 'none'; progressEl.style.width = '0%';
+        progressEl.style.transition = 'none';
+        progressEl.style.width = '0%';
         void progressEl.offsetWidth;
-        progressEl.style.transition = 'width ' + INTERVAL + 'ms linear'; progressEl.style.width = '100%';
+        progressEl.style.transition = 'width ' + INTERVAL + 'ms linear';
+        progressEl.style.width = '100%';
+        clearTimeout(timer);
+        timer = setTimeout(() => goTo(current + 1), INTERVAL);
       }
-      function scheduleNext() { clearTimeout(timer); timer = setTimeout(() => goTo(current + 1), INTERVAL); }
-      ticker.addEventListener('mouseenter', () => { clearTimeout(timer); const w = getComputedStyle(progressEl).width; progressEl.style.transition = 'none'; progressEl.style.width = w; });
-      ticker.addEventListener('mouseleave', () => { startProgress(); scheduleNext(); });
-      prevBtn && prevBtn.addEventListener('click', () => goTo(current - 1));
-      nextBtn && nextBtn.addEventListener('click', () => goTo(current + 1));
-      ticker.addEventListener('keydown', e => { if (e.key==='ArrowRight') goTo(current+1); if (e.key==='ArrowLeft') goTo(current-1); });
-      startProgress(); scheduleNext();
-    })();
 
-    /* ── Mobile accordion ── */
-    (function () {
-      if (window.innerWidth >= 640) return;
-      const items = Array.from(document.querySelectorAll('#notice-accordion .notice-accordion-item'));
-      items.forEach(item => {
-        const btn  = item.querySelector('.notice-accordion-btn');
-        btn.addEventListener('click', () => {
-          const isOpen = item.classList.contains('open');
-          // close all
-          items.forEach(i => { i.classList.remove('open'); i.querySelector('.notice-accordion-btn').setAttribute('aria-expanded', 'false'); });
-          // open clicked (unless it was already open)
-          if (!isOpen) { item.classList.add('open'); btn.setAttribute('aria-expanded', 'true'); }
-        });
-      });
+      startProgress();
     })();
   </script>
 
