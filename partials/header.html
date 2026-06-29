@@ -74,8 +74,31 @@
     html.dark .brand-divider  { background: linear-gradient(to right, #ffb59655, transparent); }
     .font-telugu { font-family: 'Noto Sans Telugu', sans-serif; }
 
-    #main-header nav a:visited,
-    #mobile-nav a:visited { color: inherit; }
+    /* ── NAV LINK COLORS ── match brand title #8C330A ── */
+    #main-header nav a,
+    #main-header nav button {
+      color: #8C330A;
+    }
+    #main-header nav a:visited { color: #8C330A; }
+    #main-header nav a:hover   { color: #6b2508; }
+
+    html.dark #main-header nav a,
+    html.dark #main-header nav button { color: #ffb596; }
+    html.dark #main-header nav a:visited { color: #ffb596; }
+    html.dark #main-header nav a:hover   { color: #ffd4bb; }
+
+    /* Mobile drawer links */
+    #mobile-nav a,
+    #mobile-nav button,
+    .mobile-acc-toggle { color: #8C330A; }
+    #mobile-nav a:visited { color: #8C330A; }
+    #mobile-nav a:hover   { color: #6b2508; }
+
+    html.dark #mobile-nav a,
+    html.dark #mobile-nav button,
+    html.dark .mobile-acc-toggle { color: #ffb596; }
+    html.dark #mobile-nav a:visited { color: #ffb596; }
+    html.dark #mobile-nav a:hover   { color: #ffd4bb; }
 
     /* Dropdown (shared) */
     .nav-dropdown { position: relative; }
@@ -163,7 +186,7 @@
       background: none;
       border: none;
       padding: 0.75rem 0;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid rgba(140,51,10,0.15);
       cursor: pointer;
       font-family: inherit;
       font-size: 1rem;
@@ -187,7 +210,7 @@
       gap: 0.5rem;
       padding: 0.6rem 0 0.6rem 1rem;
       font-size: 0.9rem;
-      border-bottom: 1px solid;
+      border-bottom: 1px solid rgba(140,51,10,0.1);
     }
 
     /* Audio mute button */
@@ -243,15 +266,13 @@
     </a>
 
     <nav class="hidden lg:flex gap-2" aria-label="Main navigation">
-      <!-- Desktop nav links — color matches brand title #8C330A (text-saffron-deep) -->
-      <a class="font-body text-body-md text-saffron-deep dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./index.html">Home</a>
-
-      <a class="font-body text-body-md text-saffron-deep dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./sevas.html">Sevas</a>
-      <a class="font-body text-body-md text-saffron-deep dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./books.html">Books</a>
+      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" href="./index.html">Home</a>
+      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" href="./sevas.html">Sevas</a>
+      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" href="./books.html">Books</a>
 
       <!-- Donations dropdown -->
       <div class="nav-dropdown" role="navigation" aria-label="Donations navigation">
-        <a href="./Donations.html" class="nav-dropdown-trigger font-body text-body-md text-saffron-deep dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" aria-haspopup="true">
+        <a href="./Donations.html" class="nav-dropdown-trigger px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" aria-haspopup="true">
           Donations
           <span class="material-symbols-outlined chevron" aria-hidden="true">expand_more</span>
         </a>
@@ -272,11 +293,11 @@
         </div>
       </div>
 
-      <a class="font-body text-body-md text-saffron-deep dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" href="./history.html">History</a>
+      <a class="px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" href="./history.html">History</a>
 
       <!-- Pilgrim Guide dropdown -->
       <div class="nav-dropdown" role="navigation" aria-label="Pilgrim Guide navigation">
-        <a href="./index.html#visit" class="nav-dropdown-trigger font-body text-body-md text-saffron-deep dark:text-primary-fixed-dim hover:bg-surface-container-low transition-colors px-4 py-2 rounded-md" aria-haspopup="true">
+        <a href="./index.html#visit" class="nav-dropdown-trigger px-4 py-2 rounded-md transition-colors hover:bg-black/5 dark:hover:bg-white/5 font-medium text-sm no-underline" aria-haspopup="true">
           Pilgrim Guide
           <span class="material-symbols-outlined chevron" aria-hidden="true">expand_more</span>
         </a>
@@ -317,7 +338,7 @@
         </svg>
       </button>
 
-      <button id="nav-open" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav" class="lg:hidden flex items-center justify-center w-10 h-10 text-saffron-deep">
+      <button id="nav-open" aria-label="Open navigation menu" aria-expanded="false" aria-controls="mobile-nav" class="lg:hidden flex items-center justify-center w-10 h-10" style="color:#8C330A">
         <span class="material-symbols-outlined text-3xl" aria-hidden="true">menu</span>
       </button>
     </div>
@@ -331,55 +352,54 @@
     class="fixed top-0 right-0 h-full w-72 max-w-[85vw] z-50 bg-sacred-white dark:bg-surface-dim shadow-2xl lg:hidden flex flex-col pt-6 pb-10 px-6 gap-2">
 
     <div class="flex justify-between items-center mb-6">
-      <span class="font-display text-headline-md text-saffron-deep">Menu</span>
-      <button id="nav-close" aria-label="Close navigation menu" class="flex items-center justify-center w-10 h-10 rounded-full hover:bg-surface-container transition-colors text-saffron-deep">
+      <span style="font-size:1.25rem;font-weight:700;color:#8C330A;">Menu</span>
+      <button id="nav-close" aria-label="Close navigation menu" class="flex items-center justify-center w-10 h-10 rounded-full transition-colors">
         <span class="material-symbols-outlined" aria-hidden="true">close</span>
       </button>
     </div>
 
-    <!-- Mobile links — saffron-deep to match title -->
-    <a class="font-body text-body-lg text-saffron-deep hover:text-primary-container py-3 border-b border-incense-smoke transition-colors" href="./index.html" data-nav-link>Home</a>
-    <a class="font-body text-body-lg text-saffron-deep hover:text-primary-container py-3 border-b border-incense-smoke transition-colors" href="./sevas.html" data-nav-link>Sevas</a>
-    <a class="font-body text-body-lg text-saffron-deep hover:text-primary-container py-3 border-b border-incense-smoke transition-colors" href="./books.html" data-nav-link>Books</a>
+    <a class="py-3 border-b font-medium no-underline transition-colors" style="border-color:rgba(140,51,10,0.15)" href="./index.html" data-nav-link>Home</a>
+    <a class="py-3 border-b font-medium no-underline transition-colors" style="border-color:rgba(140,51,10,0.15)" href="./sevas.html" data-nav-link>Sevas</a>
+    <a class="py-3 border-b font-medium no-underline transition-colors" style="border-color:rgba(140,51,10,0.15)" href="./books.html" data-nav-link>Books</a>
 
     <!-- Mobile donations accordion -->
     <div>
-      <button class="mobile-acc-toggle font-body text-body-lg text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" aria-expanded="false" aria-controls="mob-donations-sub" id="mob-donations-btn">
-        <a href="./Donations.html" class="flex-1 text-left no-underline text-saffron-deep hover:text-primary-container" onclick="event.stopPropagation()" data-nav-link>Donations</a>
+      <button class="mobile-acc-toggle font-medium" aria-expanded="false" aria-controls="mob-donations-sub" id="mob-donations-btn">
+        <a href="./Donations.html" class="flex-1 text-left no-underline" onclick="event.stopPropagation()" data-nav-link>Donations</a>
         <span class="material-symbols-outlined m-chevron" aria-hidden="true">expand_more</span>
       </button>
       <div id="mob-donations-sub" class="mobile-acc-sub" aria-labelledby="mob-donations-btn">
-        <a class="font-body text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" href="./Annadanam.html" data-nav-link>
+        <a class="no-underline transition-colors" href="./Annadanam.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">restaurant</span>Annadanam
         </a>
-        <a class="font-body text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" href="./GoSeva.html" data-nav-link>
+        <a class="no-underline transition-colors" href="./GoSeva.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">pets</span>Go Seva
         </a>
-        <a class="font-body text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" href="./BuildingDevelopment.html" data-nav-link>
+        <a class="no-underline transition-colors" href="./BuildingDevelopment.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">domain</span>Building Development
         </a>
       </div>
     </div>
 
-    <a class="font-body text-body-lg text-saffron-deep hover:text-primary-container py-3 border-b border-incense-smoke transition-colors" href="./history.html" data-nav-link>History</a>
+    <a class="py-3 border-b font-medium no-underline transition-colors" style="border-color:rgba(140,51,10,0.15)" href="./history.html" data-nav-link>History</a>
 
     <!-- Mobile pilgrim guide accordion -->
     <div>
-      <button class="mobile-acc-toggle font-body text-body-lg text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" aria-expanded="false" aria-controls="mob-pilgrim-sub" id="mob-pilgrim-btn">
-        <a href="./index.html#visit" class="flex-1 text-left no-underline text-saffron-deep hover:text-primary-container" onclick="event.stopPropagation()" data-nav-link>Pilgrim Guide</a>
+      <button class="mobile-acc-toggle font-medium" aria-expanded="false" aria-controls="mob-pilgrim-sub" id="mob-pilgrim-btn">
+        <a href="./index.html#visit" class="flex-1 text-left no-underline" onclick="event.stopPropagation()" data-nav-link>Pilgrim Guide</a>
         <span class="material-symbols-outlined m-chevron" aria-hidden="true">expand_more</span>
       </button>
       <div id="mob-pilgrim-sub" class="mobile-acc-sub" aria-labelledby="mob-pilgrim-btn">
-        <a class="font-body text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" href="./schedule.html" data-nav-link>
+        <a class="no-underline transition-colors" href="./schedule.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">calendar_month</span>Daily Schedule
         </a>
-        <a class="font-body text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" href="./HowToReach.html" data-nav-link>
+        <a class="no-underline transition-colors" href="./HowToReach.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">near_me</span>How to Reach Pithapuram
         </a>
-        <a class="font-body text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" href="./gallery.html" data-nav-link>
+        <a class="no-underline transition-colors" href="./gallery.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">photo_library</span>Gallery
         </a>
-        <a class="font-body text-saffron-deep hover:text-primary-container border-incense-smoke transition-colors" href="./slokas.html" data-nav-link>
+        <a class="no-underline transition-colors" href="./slokas.html" data-nav-link>
           <span class="material-symbols-outlined text-base opacity-60" aria-hidden="true">menu_book</span>Slokas &amp; Stotram
         </a>
       </div>
