@@ -1,0 +1,5 @@
+# Static assets served by Next.js live here.
+# Move images/, files/, Gallery/, partials/ and all .html files into this folder
+# when you are ready to migrate to Next.js pages.
+# Until then, keep them in the repo root — Next.js rewrites in next.config.ts
+# will forward clean URLs to the .html files in /public.
