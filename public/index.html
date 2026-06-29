@@ -130,20 +130,22 @@
       -webkit-backdrop-filter: blur(12px);
     }
 
-    /* ── Notice carousel (all breakpoints) ── */
+    /* ── Notice carousel ── */
     #notice-ticker {
       position: relative;
-      height: 48px;
-      overflow: hidden;
+      min-height: 48px;
+      transition: height 0.3s cubic-bezier(0.16, 1, 0.3, 1);
     }
     .notice-slide {
       position: absolute;
-      inset: 0;
+      inset-inline: 0;
+      top: 0;
       display: flex;
-      align-items: center;
+      align-items: flex-start;
       gap: 12px;
       opacity: 0;
       pointer-events: none;
+      padding-block: 12px;
     }
     .notice-slide.active {
       opacity: 1;
@@ -163,6 +165,47 @@
       from { opacity: 1; transform: translateY(0); }
       to   { opacity: 0; transform: translateY(-8px); }
     }
+
+    /* 2-line clamp */
+    .notice-body {
+      display: -webkit-box;
+      -webkit-line-clamp: 2;
+      -webkit-box-orient: vertical;
+      overflow: hidden;
+      max-height: calc(2 * 1.6em);
+      transition: max-height 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .notice-body.expanded {
+      -webkit-line-clamp: unset;
+      overflow: visible;
+      max-height: 40em;
+    }
+
+    /* Read more button — shown only by JS when text overflows */
+    .notice-read-more {
+      display: none;
+      align-items: center;
+      gap: 3px;
+      margin-top: 4px;
+      background: none;
+      border: none;
+      padding: 0;
+      cursor: pointer;
+      font-family: "Hanken Grotesk", system-ui, sans-serif;
+      font-size: 12px;
+      font-weight: 600;
+      color: #9f3e07;
+      letter-spacing: 0.01em;
+      transition: color 0.18s;
+      line-height: 1.4;
+    }
+    .notice-read-more:hover { color: #8C330A; }
+    .notice-read-more .rm-icon {
+      font-size: 15px;
+      transition: transform 0.25s cubic-bezier(0.16, 1, 0.3, 1);
+    }
+    .notice-read-more.open .rm-icon { transform: rotate(180deg); }
+
     #notice-progress {
       height: 2px;
       background: #8C330A;
@@ -170,10 +213,13 @@
       transition: width linear;
       border-radius: 2px;
     }
+
     @media (prefers-reduced-motion: reduce) {
       .notice-slide.active { animation: none; opacity: 1; }
       .notice-slide.exit   { animation: none; opacity: 0; }
       #notice-progress     { transition: none; }
+      #notice-ticker       { transition: none; }
+      .notice-body         { transition: none; }
     }
 
     /* ── Rest of page ── */
@@ -216,10 +262,10 @@
           <div id="notice-progress"></div>
         </div>
 
-        <div class="flex items-center gap-3" style="min-height:56px;">
+        <div class="flex items-start gap-3" style="padding-block: 4px;">
 
-          <!-- Badge: hidden on mobile -->
-          <div class="hidden sm:flex items-center flex-shrink-0">
+          <!-- Badge -->
+          <div class="hidden sm:flex items-center flex-shrink-0 pt-3">
             <span class="font-body text-sacred-white bg-saffron-deep px-2.5 py-1 rounded-full uppercase tracking-widest whitespace-nowrap"
                   style="font-size:10px; font-weight:600; letter-spacing:0.08em;">Notices</span>
           </div>
@@ -230,24 +276,28 @@
                role="region" aria-live="polite" aria-atomic="true" aria-label="Rotating temple notices">
 
             <div class="notice-slide active" data-index="0">
-              <div class="flex-shrink-0 w-7 h-7 rounded-full bg-error-container flex items-center justify-center">
+              <div class="flex-shrink-0 w-7 h-7 rounded-full bg-error-container flex items-center justify-center mt-0.5">
                 <span class="material-symbols-outlined text-error"
                       style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">nightlight</span>
               </div>
-              <div class="min-w-0">
-                <span class="font-body font-semibold text-on-background" style="font-size:13px;">Lunar Eclipse Notice</span>
-                <span class="font-body text-on-surface-variant" style="font-size:13px;"> — Temple closed Oct 28 (Chandra Grahanam). Darshan resumes post-Shuddhi at 5:00 AM.</span>
+              <div class="min-w-0 flex-1">
+                <div>
+                  <span class="font-body font-semibold text-on-background" style="font-size:13px;">Lunar Eclipse Notice</span><span class="notice-body font-body text-on-surface-variant" style="font-size:13px;"> — Temple closed Oct 28 (Chandra Grahanam). Darshan resumes post-Shuddhi at 5:00 AM.</span>
+                </div>
+                <button class="notice-read-more" aria-expanded="false">Read more <span class="material-symbols-outlined rm-icon" aria-hidden="true">expand_more</span></button>
               </div>
             </div>
 
             <div class="notice-slide" data-index="1">
-              <div class="flex-shrink-0 w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center">
+              <div class="flex-shrink-0 w-7 h-7 rounded-full bg-surface-container-highest flex items-center justify-center mt-0.5">
                 <span class="material-symbols-outlined text-primary"
                       style="font-size:16px; font-variation-settings:'FILL' 1;" aria-hidden="true">qr_code_scanner</span>
               </div>
-              <div class="min-w-0">
-                <span class="font-body font-semibold text-on-background" style="font-size:13px;">Payment Gateway</span>
-                <span class="font-body text-on-surface-variant" style="font-size:13px;"> — UPI issues ongoing. Use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
+              <div class="min-w-0 flex-1">
+                <div>
+                  <span class="font-body font-semibold text-on-background" style="font-size:13px;">Payment Gateway</span><span class="notice-body font-body text-on-surface-variant" style="font-size:13px;"> — UPI issues ongoing. Use Net Banking or scan the official temple <a class="text-primary font-medium hover:underline" href="#">QR Code</a>.</span>
+                </div>
+                <button class="notice-read-more" aria-expanded="false">Read more <span class="material-symbols-outlined rm-icon" aria-hidden="true">expand_more</span></button>
               </div>
             </div>
 
@@ -403,16 +453,64 @@
       const slides     = Array.from(document.querySelectorAll('.notice-slide'));
       const progressEl = document.getElementById('notice-progress');
       const ticker     = document.getElementById('notice-ticker');
-      let current = 0, timer = null;
+      let current = 0, timer = null, paused = false;
+
+      /* Sync ticker height to match the active slide's rendered height */
+      function syncHeight() {
+        ticker.style.height = slides[current].offsetHeight + 'px';
+      }
+
+      /* Wire Read more / Show less buttons — only shown when text overflows 2 lines */
+      slides.forEach(function (slide) {
+        var body = slide.querySelector('.notice-body');
+        var btn  = slide.querySelector('.notice-read-more');
+        if (!body || !btn) return;
+
+        function checkOverflow() {
+          var overflows = body.scrollHeight > body.clientHeight + 2;
+          btn.style.display = (overflows || btn.classList.contains('open')) ? 'inline-flex' : 'none';
+        }
+
+        /* Re-check on resize (e.g. viewport width change) */
+        var ro = new ResizeObserver(checkOverflow);
+        ro.observe(body);
+
+        btn.addEventListener('click', function () {
+          var expanded = btn.classList.toggle('open');
+          body.classList.toggle('expanded', expanded);
+          btn.setAttribute('aria-expanded', String(expanded));
+          /* Update label text (first text node) */
+          btn.firstChild.nodeValue = expanded ? 'Show less ' : 'Read more ';
+          if (expanded) { pauseCarousel(); } else { resumeCarousel(); }
+          requestAnimationFrame(syncHeight);
+        });
+      });
+
+      /* Collapse any open Read more on a slide before leaving it */
+      function collapseSlide(slide) {
+        var body = slide.querySelector('.notice-body');
+        var btn  = slide.querySelector('.notice-read-more');
+        if (btn && btn.classList.contains('open')) {
+          btn.classList.remove('open');
+          if (body) body.classList.remove('expanded');
+          btn.setAttribute('aria-expanded', 'false');
+          btn.firstChild.nodeValue = 'Read more ';
+        }
+      }
 
       function goTo(next) {
-        const prev = current;
+        collapseSlide(slides[current]);
+        var prev = current;
         current = ((next % slides.length) + slides.length) % slides.length;
         slides[prev].classList.add('exit');
-        slides[prev].addEventListener('animationend', () => slides[prev].classList.remove('active', 'exit'), { once: true });
+        slides[prev].addEventListener('animationend', function () {
+          slides[prev].classList.remove('active', 'exit');
+        }, { once: true });
         slides[current].classList.add('active');
+        requestAnimationFrame(syncHeight);
         startProgress();
       }
+
       function startProgress() {
         progressEl.style.transition = 'none';
         progressEl.style.width = '0%';
@@ -420,8 +518,15 @@
         progressEl.style.transition = 'width ' + INTERVAL + 'ms linear';
         progressEl.style.width = '100%';
         clearTimeout(timer);
-        timer = setTimeout(() => goTo(current + 1), INTERVAL);
+        if (!paused) timer = setTimeout(function () { goTo(current + 1); }, INTERVAL);
       }
+
+      function pauseCarousel() { paused = true; clearTimeout(timer); progressEl.style.transition = 'none'; }
+      function resumeCarousel() { paused = false; startProgress(); }
+
+      /* Initial height sync after fonts/layout settle */
+      requestAnimationFrame(function () { requestAnimationFrame(syncHeight); });
+      window.addEventListener('resize', syncHeight);
 
       startProgress();
     })();
