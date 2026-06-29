@@ -181,7 +181,7 @@
       max-height: 40em;
     }
 
-    /* Read more button — shown only by JS when text overflows */
+    /* Read more button */
     .notice-read-more {
       display: none;
       align-items: center;
@@ -212,11 +212,6 @@
       width: 0%;
       transition: width linear;
       border-radius: 2px;
-    }
-
-    /* Pause indicator: progress bar fades while hovered/touched */
-    #notice-progress.paused {
-      transition: none;
     }
 
     @media (prefers-reduced-motion: reduce) {
@@ -454,13 +449,12 @@
 
   <script>
     (function () {
-      const INTERVAL   = 3000;
+      const INTERVAL = 3000;
       const slides     = Array.from(document.querySelectorAll('.notice-slide'));
       const progressEl = document.getElementById('notice-progress');
       const ticker     = document.getElementById('notice-ticker');
       const section    = ticker.closest('section');
       let current = 0, timer = null, paused = false;
-      // Track independent pause reasons so they don't clobber each other
       let pausedByHover = false, pausedByTouch = false, pausedByExpand = false;
 
       function syncHeight() {
@@ -472,13 +466,11 @@
         var body = slide.querySelector('.notice-body');
         var btn  = slide.querySelector('.notice-read-more');
         if (!body || !btn) return;
-
         function checkOverflow() {
           var overflows = body.scrollHeight > body.clientHeight + 2;
           btn.style.display = (overflows || btn.classList.contains('open')) ? 'inline-flex' : 'none';
         }
         new ResizeObserver(checkOverflow).observe(body);
-
         btn.addEventListener('click', function () {
           var expanded = btn.classList.toggle('open');
           body.classList.toggle('expanded', expanded);
@@ -502,38 +494,39 @@
         }
       }
 
-      /* ── Pause / resume logic ── */
+      /* ── Pause / resume ── */
       function updatePause() {
         var shouldPause = pausedByHover || pausedByTouch || pausedByExpand;
+        // Always snapshot these — needed by BOTH branches
+        var parentW  = progressEl.parentElement.offsetWidth;
+        var computed = parseFloat(getComputedStyle(progressEl).width);
+
         if (shouldPause && !paused) {
           paused = true;
           clearTimeout(timer);
-          // Freeze the progress bar in place
-          var computed = getComputedStyle(progressEl).width;
-          var parentW  = progressEl.parentElement.offsetWidth;
           progressEl.style.transition = 'none';
-          progressEl.style.width = computed;
-          progressEl.classList.add('paused');
+          progressEl.style.width = computed + 'px';
         } else if (!shouldPause && paused) {
           paused = false;
-          progressEl.classList.remove('paused');
-          // Resume from current progress position
-          var currentPct = parentW ? (parseFloat(computed) / parentW * 100) : 0;
-          var remaining  = INTERVAL * (1 - currentPct / 100);
+          var pct       = parentW > 0 ? (computed / parentW) : 0;
+          var remaining = Math.max(INTERVAL * (1 - pct), 100);
+          // Force a reflow so the browser registers the frozen width before animating
+          void progressEl.offsetWidth;
           progressEl.style.transition = 'width ' + remaining + 'ms linear';
           progressEl.style.width = '100%';
+          clearTimeout(timer);
           timer = setTimeout(function () { goTo(current + 1); }, remaining);
         }
       }
 
-      /* Desktop: mouseenter/mouseleave on the whole notices section */
+      /* Desktop */
       section.addEventListener('mouseenter', function () { pausedByHover = true;  updatePause(); });
       section.addEventListener('mouseleave', function () { pausedByHover = false; updatePause(); });
 
-      /* Mobile: touchstart / touchend on the ticker area */
-      ticker.addEventListener('touchstart', function () { pausedByTouch = true;  updatePause(); }, { passive: true });
-      ticker.addEventListener('touchend',   function () { pausedByTouch = false; updatePause(); }, { passive: true });
-      ticker.addEventListener('touchcancel',function () { pausedByTouch = false; updatePause(); }, { passive: true });
+      /* Mobile touch */
+      ticker.addEventListener('touchstart',  function () { pausedByTouch = true;  updatePause(); }, { passive: true });
+      ticker.addEventListener('touchend',    function () { pausedByTouch = false; updatePause(); }, { passive: true });
+      ticker.addEventListener('touchcancel', function () { pausedByTouch = false; updatePause(); }, { passive: true });
 
       /* ── Carousel ── */
       function goTo(next) {
@@ -550,7 +543,6 @@
       }
 
       function startProgress() {
-        progressEl.classList.remove('paused');
         progressEl.style.transition = 'none';
         progressEl.style.width = '0%';
         void progressEl.offsetWidth;
