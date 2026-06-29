@@ -1,0 +1,259 @@
+<!DOCTYPE html>
+<html lang="en" data-theme="">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <meta name="description" content="A new online checkout experience for sevas, donations and prasadam is coming soon — Sripada Srivallabha Mahasamsthanam, Pithapuram.">
+  <title>Checkout Coming Soon — Sripada Srivallabha Mahasamsthanam</title>
+
+  <link rel="preconnect" href="https://fonts.googleapis.com">
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+  <link href="https://fonts.googleapis.com/css2?family=Source+Serif+4:opsz,wght@8..60,400;600;700&family=Hanken+Grotesk:wght@400;500;600;700&family=Noto+Sans+Telugu:wght@400;600&display=swap" rel="stylesheet">
+  <link href="https://fonts.googleapis.com/css2?family=Material+Symbols+Outlined:wght,FILL@100..700,0..1&display=swap" rel="stylesheet">
+
+  <script src="https://cdn.tailwindcss.com?plugins=forms,container-queries"></script>
+  <script>
+    tailwind.config = {
+      darkMode: "class",
+      theme: {
+        extend: {
+          colors: {
+            "on-error-container": "#93000a",
+            "on-background": "#0d1c2e",
+            "surface-container-lowest": "#ffffff",
+            "surface-dim": "#ccdbf4",
+            "on-secondary-container": "#734700",
+            "surface": "#f8f9ff",
+            "sacred-white": "#FFFCFA",
+            "secondary-fixed-dim": "#ffb95f",
+            "incense-smoke": "#EDF2F7",
+            "primary-fixed-dim": "#ffb596",
+            "inverse-primary": "#ffb596",
+            "surface-container-highest": "#d4e4fc",
+            "secondary-fixed": "#ffddb8",
+            "error": "#ba1a1a",
+            "surface-container": "#e5eeff",
+            "outline-variant": "#dec0b5",
+            "surface-tint": "#a14009",
+            "on-error": "#ffffff",
+            "on-surface": "#0d1c2e",
+            "on-tertiary": "#ffffff",
+            "outline": "#8a7268",
+            "saffron-deep": "#8C330A",
+            "on-tertiary-fixed-variant": "#3d4759",
+            "on-tertiary-fixed": "#121c2c",
+            "inverse-surface": "#223144",
+            "tertiary": "#535d70",
+            "on-primary-fixed": "#360f00",
+            "on-primary-fixed-variant": "#7d2d00",
+            "secondary": "#855300",
+            "on-primary-container": "#fffeff",
+            "inverse-on-surface": "#eaf1ff",
+            "tertiary-fixed": "#d9e3f9",
+            "surface-bright": "#f8f9ff",
+            "tertiary-container": "#6c7689",
+            "on-primary": "#ffffff",
+            "surface-variant": "#d4e4fc",
+            "surface-container-high": "#dce9ff",
+            "on-secondary-fixed-variant": "#653e00",
+            "on-secondary": "#ffffff",
+            "on-surface-variant": "#57423a",
+            "primary": "#9f3e07",
+            "secondary-container": "#feb557",
+            "surface-container-low": "#eff4ff",
+            "error-container": "#ffdad6",
+            "primary-fixed": "#ffdbcd",
+            "on-secondary-fixed": "#2a1700",
+            "primary-container": "#c05621",
+            "tertiary-fixed-dim": "#bdc7dc",
+            "golden-glow": "#F6AD55",
+            "background": "#f8f9ff"
+          },
+          borderRadius: {
+            "temple-xs": "0.125rem",
+            "temple-sm": "0.25rem",
+            "temple-md": "0.5rem"
+          },
+          spacing: {
+            "gutter": "24px",
+            "base": "8px",
+            "marginSm": "16px",
+            "marginLg": "40px"
+          },
+          fontFamily: {
+            "display": ['"Source Serif 4"', "Georgia", "serif"],
+            "body":    ["Hanken Grotesk", "system-ui", "sans-serif"],
+            "telugu":  ['"Noto Sans Telugu"', "sans-serif"]
+          },
+          fontSize: {
+            "display-lg": ["48px", { lineHeight: "56px", letterSpacing: "-0.02em", fontWeight: "700" }],
+            "headline-md": ["24px", { lineHeight: "32px", fontWeight: "600" }],
+            "headline-lg": ["32px", { lineHeight: "40px", fontWeight: "600" }],
+            "display-lg-mobile": ["36px", { lineHeight: "44px", fontWeight: "700" }],
+            "label-md": ["14px", { lineHeight: "20px", letterSpacing: "0.05em", fontWeight: "600" }],
+            "caption": ["12px", { lineHeight: "16px", fontWeight: "500" }],
+            "body-lg": ["18px", { lineHeight: "28px", fontWeight: "400" }],
+            "body-md": ["16px", { lineHeight: "24px", fontWeight: "400" }]
+          }
+        }
+      }
+    };
+  </script>
+
+  <style>
+    /* Mandala pattern background */
+    .mandala-bg {
+      background-color: #FFFCFA;
+      background-image:
+        radial-gradient(circle at 50% 0%, rgba(140,51,10,0.06) 0%, transparent 60%),
+        radial-gradient(circle at 0% 100%, rgba(246,173,85,0.08) 0%, transparent 50%),
+        radial-gradient(circle at 100% 100%, rgba(140,51,10,0.05) 0%, transparent 50%);
+    }
+
+    /* Floating Om symbol behind the card */
+    .om-watermark {
+      font-family: 'Source Serif 4', serif;
+      font-size: clamp(10rem, 30vw, 22rem);
+      color: rgba(140,51,10,0.04);
+      line-height: 1;
+      user-select: none;
+      pointer-events: none;
+    }
+
+    /* Pill badge pulse */
+    @keyframes badge-pulse {
+      0%, 100% { opacity: 1; transform: scale(1); }
+      50%       { opacity: 0.75; transform: scale(0.97); }
+    }
+    .badge-pulse { animation: badge-pulse 2.8s ease-in-out infinite; }
+
+    /* Feature cards slide-up on load */
+    @keyframes slideUp {
+      from { opacity: 0; transform: translateY(20px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .slide-up { opacity: 0; animation: slideUp 0.55s cubic-bezier(0.16,1,0.3,1) forwards; }
+    .delay-1 { animation-delay: 0.1s; }
+    .delay-2 { animation-delay: 0.2s; }
+    .delay-3 { animation-delay: 0.32s; }
+    .delay-4 { animation-delay: 0.44s; }
+
+    @media (prefers-reduced-motion: reduce) {
+      .slide-up, .badge-pulse { animation: none; opacity: 1; }
+    }
+
+    /* Divider dashes */
+    .dashed-divider {
+      border: none;
+      border-top: 1.5px dashed rgba(140,51,10,0.2);
+    }
+  </style>
+</head>
+
+<body class="bg-background text-on-background antialiased font-body text-body-md overflow-x-hidden selection:bg-secondary-container selection:text-on-secondary-container mandala-bg min-h-screen flex flex-col">
+
+  <!-- HEADER PARTIAL -->
+  <div id="site-header"></div>
+  <script src="./partials/loader.js"></script>
+
+  <main id="main-content" class="flex-1 flex flex-col items-center justify-center px-marginSm py-16 md:py-24 relative overflow-hidden">
+
+    <!-- Om watermark -->
+    <div class="om-watermark absolute inset-0 flex items-center justify-center select-none" aria-hidden="true">ॐ</div>
+
+    <div class="relative z-10 w-full max-w-2xl mx-auto">
+
+      <!-- Coming soon badge -->
+      <div class="flex justify-center mb-8 slide-up delay-1">
+        <span class="badge-pulse inline-flex items-center gap-2 bg-primary-fixed text-saffron-deep font-body font-semibold px-4 py-1.5 rounded-full text-sm border border-outline-variant">
+          <span class="w-2 h-2 rounded-full bg-saffron-deep inline-block"></span>
+          Coming Soon
+        </span>
+      </div>
+
+      <!-- Headline -->
+      <div class="text-center mb-4 slide-up delay-2">
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-on-background leading-tight">
+          A New Checkout<br>
+          <span style="color:#8C330A;">Experience</span> Awaits
+        </h1>
+      </div>
+
+      <!-- Sub-headline -->
+      <p class="text-center font-body text-body-lg text-on-surface-variant max-w-lg mx-auto mb-10 slide-up delay-3">
+        We're building a seamless, secure way to book <strong class="text-on-background font-semibold">Sevas</strong>, make <strong class="text-on-background font-semibold">Donations</strong>, and order <strong class="text-on-background font-semibold">Prasadam &amp; Books</strong> — all in one place, with every paise going directly to the Mahasamsthanam.
+      </p>
+
+      <hr class="dashed-divider mb-10 slide-up delay-3">
+
+      <!-- Three feature cards -->
+      <div class="grid grid-cols-1 sm:grid-cols-3 gap-4 mb-10 slide-up delay-4">
+
+        <!-- Sevas -->
+        <div class="bg-sacred-white border border-incense-smoke rounded-2xl p-5 flex flex-col items-center text-center shadow-sm">
+          <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-3">
+            <span class="material-symbols-outlined text-primary" style="font-size:24px; font-variation-settings:'FILL' 1;" aria-hidden="true">local_fire_department</span>
+          </div>
+          <h2 class="font-display text-on-background mb-1" style="font-size:16px; line-height:1.3;">Seva Booking</h2>
+          <p class="font-body text-on-surface-variant" style="font-size:13px; line-height:1.5;">Book Abhishekam, Archana &amp; special poojas online — pick your date and receive confirmation instantly.</p>
+        </div>
+
+        <!-- Donations -->
+        <div class="bg-sacred-white border border-incense-smoke rounded-2xl p-5 flex flex-col items-center text-center shadow-sm">
+          <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-3">
+            <span class="material-symbols-outlined text-primary" style="font-size:24px; font-variation-settings:'FILL' 1;" aria-hidden="true">volunteer_activism</span>
+          </div>
+          <h2 class="font-display text-on-background mb-1" style="font-size:16px; line-height:1.3;">Donations</h2>
+          <p class="font-body text-on-surface-variant" style="font-size:13px; line-height:1.5;">Support Annadanam, Go Seva &amp; temple development — UPI, card &amp; net banking, with 80G receipts.</p>
+        </div>
+
+        <!-- Products -->
+        <div class="bg-sacred-white border border-incense-smoke rounded-2xl p-5 flex flex-col items-center text-center shadow-sm">
+          <div class="w-12 h-12 rounded-full bg-surface-container-high flex items-center justify-center mb-3">
+            <span class="material-symbols-outlined text-primary" style="font-size:24px; font-variation-settings:'FILL' 1;" aria-hidden="true">storefront</span>
+          </div>
+          <h2 class="font-display text-on-background mb-1" style="font-size:16px; line-height:1.3;">Prasadam &amp; Books</h2>
+          <p class="font-body text-on-surface-variant" style="font-size:13px; line-height:1.5;">Order sacred prasadam, spiritual books &amp; divine merchandise delivered to your doorstep across India.</p>
+        </div>
+
+      </div>
+
+      <!-- CTA — go back -->
+      <div class="flex flex-col sm:flex-row items-center justify-center gap-3 slide-up delay-4">
+        <a
+          href="./index.html"
+          class="inline-flex items-center gap-2 bg-saffron-deep text-white font-body font-semibold px-6 py-3 rounded-xl hover:bg-primary-container transition-colors"
+          style="font-size:15px;"
+        >
+          <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">home</span>
+          Return to Home
+        </a>
+        <a
+          href="./Donations.html"
+          class="inline-flex items-center gap-2 bg-sacred-white border border-outline-variant text-saffron-deep font-body font-semibold px-6 py-3 rounded-xl hover:border-saffron-deep transition-colors"
+          style="font-size:15px;"
+        >
+          <span class="material-symbols-outlined" style="font-size:18px;" aria-hidden="true">volunteer_activism</span>
+          Donate Now
+        </a>
+      </div>
+
+      <!-- Sanskrit sloka footer note -->
+      <p class="text-center font-body text-on-surface-variant mt-12 slide-up delay-4" style="font-size:13px;">
+        <span class="font-telugu" style="font-size:15px;">శ్రీపాద రాజం శరణం ప్రపద్యే</span><br>
+        <span class="italic opacity-75 mt-1 block">I seek refuge at the feet of Lord Sripada.</span>
+      </p>
+
+    </div>
+  </main>
+
+  <!-- FOOTER PARTIAL -->
+  <div id="site-footer"></div>
+  <script>
+    if (window.loadPartial) {
+      loadPartial('footer', 'site-footer', initFooter);
+    }
+  </script>
+
+</body>
+</html>
