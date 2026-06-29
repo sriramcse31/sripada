@@ -123,7 +123,7 @@
     }
     .timeline-item:last-child::after { display: none; }
 
-    .ornament { color: #8C330A; opacity: 0.25; user-select: none; }
+    .ornament { color: #8C330A; opacity: 0.18; user-select: none; }
 
     .section-divider {
       width: 3rem; height: 3px;
@@ -139,8 +139,114 @@
     .fade-up-2 { animation: fadeUp 0.7s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
     .fade-up-3 { animation: fadeUp 0.7s 0.3s  cubic-bezier(0.16,1,0.3,1) both; }
 
+    @keyframes figureRise {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .figure-rise { animation: figureRise 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+
     @media (prefers-reduced-motion: reduce) {
-      .fade-up, .fade-up-2, .fade-up-3 { animation: none; }
+      .fade-up, .fade-up-2, .fade-up-3, .figure-rise { animation: none; }
+    }
+
+    /* Hero layout */
+    .hero-section {
+      position: relative;
+      width: 100%;
+      background-color: #0d1c2e;
+      overflow: hidden;
+      min-height: 420px;
+      display: flex;
+      align-items: stretch;
+    }
+
+    /* Subtle radial glow behind the figure */
+    .hero-section::after {
+      content: '';
+      position: absolute;
+      inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 80% 100%, rgba(140,51,10,0.22) 0%, transparent 70%),
+        radial-gradient(ellipse 40% 60% at 75% 60%,  rgba(246,173,85,0.08) 0%, transparent 60%);
+      pointer-events: none;
+      z-index: 1;
+    }
+
+    .hero-text-col {
+      position: relative;
+      z-index: 3;
+      flex: 1 1 0;
+      display: flex;
+      flex-direction: column;
+      justify-content: center;
+      padding: 5rem 2.5rem 5rem 40px;
+      max-width: 680px;
+    }
+
+    @media (min-width: 1024px) {
+      .hero-text-col { padding-left: 40px; }
+    }
+
+    .hero-figure-col {
+      position: relative;
+      z-index: 2;
+      flex: 0 0 auto;
+      width: clamp(240px, 32vw, 480px);
+      display: flex;
+      align-items: flex-end;   /* pin figure to bottom */
+      justify-content: flex-end;
+      overflow: hidden;
+    }
+
+    .hero-figure-col img {
+      display: block;
+      width: 100%;
+      height: auto;
+      max-height: 520px;
+      object-fit: contain;
+      object-position: bottom center;
+      /* Soft left-edge fade so figure blends into the dark bg */
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 18%);
+      mask-image: linear-gradient(to right, transparent 0%, black 18%);
+      /* Gentle bottom glow */
+      filter: drop-shadow(0 -8px 32px rgba(140,51,10,0.25));
+    }
+
+    /* Om watermark */
+    .hero-om {
+      position: absolute;
+      right: clamp(240px, 32vw, 480px);
+      top: 50%;
+      transform: translateY(-50%);
+      font-family: 'Source Serif 4', serif;
+      font-size: clamp(6rem, 12vw, 10rem);
+      line-height: 1;
+      color: #8C330A;
+      opacity: 0.12;
+      user-select: none;
+      pointer-events: none;
+      z-index: 2;
+    }
+
+    /* On mobile: stack, figure shown smaller above text */
+    @media (max-width: 767px) {
+      .hero-section { flex-direction: column-reverse; min-height: auto; }
+      .hero-figure-col {
+        width: 100%;
+        height: 220px;
+        align-items: flex-end;
+        justify-content: center;
+      }
+      .hero-figure-col img {
+        max-height: 220px;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+      }
+      .hero-text-col {
+        padding: 2rem 1rem 3rem;
+        max-width: 100%;
+      }
+      .hero-om { display: none; }
     }
   </style>
 </head>
@@ -154,18 +260,14 @@
   <!-- MAIN CONTENT -->
   <main id="main-content">
 
-    <!-- Page Hero -->
-    <section class="relative w-full bg-on-background overflow-hidden" style="min-height: 340px;" aria-label="History page hero">
-      <img
-        src="./images/left-sripada.png"
-        alt="Lord Sripada Srivallabha — sacred deity at Pithapuram"
-        width="1920" height="340"
-        loading="eager" decoding="async"
-        class="absolute inset-0 w-full h-full object-cover object-top opacity-30"
-      >
-      <div class="absolute inset-0 bg-gradient-to-b from-on-background/60 via-on-background/40 to-on-background/80"></div>
-      <div class="absolute right-8 top-1/2 -translate-y-1/2 ornament font-display select-none pointer-events-none" style="font-size: clamp(6rem, 12vw, 10rem); line-height:1;" aria-hidden="true">&#x950;</div>
-      <div class="relative z-10 max-w-[1280px] mx-auto px-marginSm md:px-marginLg py-20 fade-up">
+    <!-- ── Page Hero ─────────────────────────────────────────────────────── -->
+    <section class="hero-section" aria-label="History page hero">
+
+      <!-- Om watermark, positioned just left of the figure -->
+      <div class="hero-om" aria-hidden="true">&#x950;</div>
+
+      <!-- Left: text content -->
+      <div class="hero-text-col fade-up">
         <nav aria-label="Breadcrumb" class="mb-6">
           <ol class="flex items-center gap-2 font-body text-caption text-surface-container-highest opacity-70">
             <li><a href="./index.html" class="hover:text-secondary-fixed-dim transition-colors underline">Home</a></li>
@@ -174,13 +276,25 @@
           </ol>
         </nav>
         <span class="font-body text-label-md text-secondary-fixed-dim tracking-widest uppercase mb-4 block fade-up-2">Temple Legacy</span>
-        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-sacred-white mb-6 fade-up-2" style="max-width: 700px;">
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg text-sacred-white mb-6 fade-up-2" style="max-width: 620px;">
           The Sacred History of Pithapuram
         </h1>
-        <p class="font-body text-body-lg text-surface-container-highest fade-up-3" style="max-width: 600px; opacity: 0.85;">
+        <p class="font-body text-body-lg text-surface-container-highest fade-up-3" style="max-width: 540px; opacity: 0.85;">
           Tracing the divine origins and living legacy of Sri Kshetra Pithapuram — the earthly abode where Lord Sripada Srivallabha took His first avatar in Kaliyuga.
         </p>
       </div>
+
+      <!-- Right: full-figure no-bg image, pinned to the bottom-right -->
+      <div class="hero-figure-col">
+        <img
+          src="./images/sripada-nobg.png"
+          alt="Lord Sripada Srivallabha — divine form"
+          width="480" height="520"
+          loading="eager" decoding="async"
+          class="figure-rise"
+        >
+      </div>
+
     </section>
 
     <!-- Introduction -->
@@ -271,19 +385,17 @@
             The Lord is said to have departed from Pithapuram to Kuruvapuram (in present-day Karnataka), where He resides to this day in His subtle form, continuously blessing devotees. The Swayambhu Padukas (divine footprints) enshrined at the Mahasamsthanam remain the physical focal point of His living presence for pilgrims and worshippers.
           </p>
         </div>
-        <div class="relative rounded-2xl overflow-hidden shadow-lg group">
+        <div class="relative rounded-2xl overflow-hidden shadow-lg bg-surface-container-low flex items-end justify-center" style="min-height: 380px;">
           <img
-            src="./images/left-sripada.png"
-            alt="Sacred image of Lord Sripada Srivallabha at the Mahasamsthanam, Pithapuram"
-            width="600" height="500"
+            src="./images/sripada-nobg.png"
+            alt="Sacred image of Lord Sripada Srivallabha — first complete avatar of Lord Dattatreya in Kaliyuga"
+            width="420" height="480"
             loading="lazy" decoding="async"
-            class="w-full h-[420px] object-cover object-top group-hover:scale-105 transition-transform duration-700"
+            class="relative z-10 w-auto h-[380px] object-contain object-bottom"
           >
-          <div class="absolute inset-0 bg-gradient-to-t from-on-background/60 to-transparent flex flex-col justify-end p-6">
-            <p class="font-body text-caption text-surface-container-highest">
-              Lord Sripada Srivallabha — the first complete avatar of Lord Dattatreya in Kaliyuga
-            </p>
-          </div>
+          <p class="absolute bottom-3 left-0 right-0 text-center font-body text-caption text-on-surface-variant z-20 px-4">
+            Lord Sripada Srivallabha — the first complete avatar of Lord Dattatreya in Kaliyuga
+          </p>
         </div>
       </div>
     </section>
