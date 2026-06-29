@@ -7,14 +7,14 @@ export const metadata: Metadata = {
   openGraph: {
     title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
     description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
-    url: 'https://pithapuram.org',
+    url: 'https://sripadasrivallabha.org',
     siteName: 'Sripada Srivallabha',
     images: [
       {
-        url: 'https://pithapuram.org/og-cover.jpg',
+        url: 'https://sripadasrivallabha.org/og-cover.jpg',
         width: 1200,
         height: 630,
-        alt: 'Sri Kshetra Pithapuram',
+        alt: 'Sripada Srivallabha Mahasamsthanam, Pithapuram — sacred abode of Lord Sripada Srivallabha',
       },
     ],
     locale: 'te_IN',
