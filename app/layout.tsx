@@ -1,20 +1,22 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
-  metadataBase: new URL('https://pithapuram.org'),
+  metadataBase: new URL(
+    process.env.NEXT_PUBLIC_SITE_URL ?? 'https://sripada.vercel.app'
+  ),
   title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
   description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
   openGraph: {
     title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
     description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
-    url: 'https://sripadasrivallabha.org',
+    url: '/',
     siteName: 'Sripada Srivallabha',
     images: [
       {
-        url: 'https://sripadasrivallabha.org/og-cover.jpg',
+        url: '/og-cover.jpg',      // relative — resolved against metadataBase
         width: 1200,
         height: 630,
-        alt: 'Sripada Srivallabha Mahasamsthanam, Pithapuram — sacred abode of Lord Sripada Srivallabha',
+        alt: 'Sripada Srivallabha Mahasamsthanam, Pithapuram',
       },
     ],
     locale: 'te_IN',
@@ -24,18 +26,6 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
     description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
-    images: ['images/og-cover.jpg'],
+    images: ['/og-cover.jpg'],     // relative — same fix
   },
 };
-
-export default function RootLayout({
-  children,
-}: {
-  children: React.ReactNode;
-}) {
-  return (
-    <html lang="te">
-      <body>{children}</body>
-    </html>
-  );
-}
