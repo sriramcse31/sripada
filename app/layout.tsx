@@ -1,6 +1,7 @@
 import type { Metadata } from 'next';
 
 export const metadata: Metadata = {
+  metadataBase: new URL('https://pithapuram.org'),
   title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
   description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
   openGraph: {
@@ -10,7 +11,7 @@ export const metadata: Metadata = {
     siteName: 'Sripada Srivallabha',
     images: [
       {
-        url: '/og-image.jpg',
+        url: 'https://pithapuram.org/og-image.jpg',
         width: 1200,
         height: 630,
         alt: 'Sri Kshetra Pithapuram',
@@ -23,7 +24,7 @@ export const metadata: Metadata = {
     card: 'summary_large_image',
     title: 'Sri Kshetra Pithapuram — Sripada Srivallabha',
     description: 'Official website of Sri Kshetra Pithapuram, the sacred abode of Lord Sripada Srivallabha.',
-    images: ['/og-image.jpg'],
+    images: ['https://pithapuram.org/og-image.jpg'],
   },
 };
 
