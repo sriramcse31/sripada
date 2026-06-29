@@ -101,17 +101,68 @@
     body { background: #f8f9ff; color: #0d1c2e; font-family: 'Hanken Grotesk', system-ui, sans-serif; }
     img { display: block; max-width: 100%; height: auto; }
 
-    /* ── Hero banner ── */
-    .gallery-hero {
-      background: linear-gradient(135deg, #5c1a04 0%, #8C330A 45%, #b85520 100%);
-      position: relative;
-      overflow: hidden;
+    /* ── Hero (copied from history.html) ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
     }
-    .gallery-hero::before {
-      content: '';
-      position: absolute;
-      inset: 0;
-      background: url("data:image/svg+xml,%3Csvg width='60' height='60' viewBox='0 0 60 60' xmlns='http://www.w3.org/2000/svg'%3E%3Cg fill='none' fill-rule='evenodd'%3E%3Cg fill='%23ffffff' fill-opacity='0.04'%3E%3Cpath d='M36 34v-4h-2v4h-4v2h4v4h2v-4h4v-2h-4zm0-30V0h-2v4h-4v2h4v4h2V6h4V4h-4zM6 34v-4H4v4H0v2h4v4h2v-4h4v-2H6zM6 4V0H4v4H0v2h4v4h2V6h4V4H6z'/%3E%3C/g%3E%3C/g%3E%3C/svg%3E");
+    .fade-up   { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-2 { animation: fadeUp 0.7s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-3 { animation: fadeUp 0.7s 0.3s  cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes figureRise {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .figure-rise { animation: figureRise 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .fade-up-2, .fade-up-3, .figure-rise { animation: none; }
+    }
+    .hero-section {
+      position: relative; width: 100%;
+      background-color: #0d1c2e; overflow: hidden;
+    }
+    .hero-section::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 100% 100%, rgba(140,51,10,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 90% 60%,  rgba(246,173,85,0.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-text-col {
+      position: relative; z-index: 3; max-width: 58%;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 1.75rem 2rem 1.75rem 40px;
+    }
+    .hero-figure-col {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: clamp(280px, 42vw, 620px); z-index: 2;
+      display: flex; align-items: flex-end; justify-content: flex-end; overflow: hidden;
+    }
+    .hero-figure-col::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(13,28,46,0.45); pointer-events: none; z-index: 3;
+    }
+    .hero-figure-col img {
+      display: block; width: auto; height: 100%;
+      object-fit: contain; object-position: bottom right;
+      position: relative; z-index: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      filter: drop-shadow(0 -8px 32px rgba(140,51,10,0.3));
+    }
+    @media (max-width: 767px) {
+      .hero-section { display: flex; flex-direction: column-reverse; }
+      .hero-figure-col {
+        position: relative; right: auto; top: auto; bottom: auto;
+        width: 100%; height: 200px;
+        align-items: flex-end; justify-content: center;
+      }
+      .hero-figure-col img {
+        width: auto; height: 100%;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+      }
+      .hero-text-col { max-width: 100%; padding: 1.5rem 1rem 2rem; }
     }
 
     /* ── Filter pills ── */
@@ -292,11 +343,23 @@
 
   <main id="main-content">
 
-    <!-- ── Hero Banner ── -->
-    <section class="gallery-hero py-14 md:py-20 px-marginSm md:px-marginLg text-center relative">
-      <span class="inline-block font-body text-sacred-white/60 tracking-[0.2em] uppercase mb-3" style="font-size:11px; font-weight:600;">Sripada Srivallabha Mahasamsthanam</span>
-      <h1 class="font-display text-sacred-white text-display-lg-mobile md:text-display-lg mb-4">Photo Gallery</h1>
-      <p class="font-body text-sacred-white/75 max-w-xl mx-auto" style="font-size:16px;">Moments of devotion — sevas, Annadanam, Goshala, and the sacred spaces of Pithapuram.</p>
+    <!-- ── Page Hero ── -->
+    <section class="hero-section" aria-label="Gallery page hero" style="min-height:340px;display:flex;align-items:stretch;">
+      <div class="hero-text-col fade-up">
+        <nav aria-label="Breadcrumb" class="mb-5">
+          <ol class="flex items-center gap-2 font-body text-caption opacity-70" style="color:#d4e4fc;">
+            <li><a href="./index.html" class="hover:underline" style="color:#d4e4fc;">Home</a></li>
+            <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:14px;">chevron_right</span></li>
+            <li aria-current="page">Gallery</li>
+          </ol>
+        </nav>
+        <span class="font-body text-label-md tracking-widest uppercase mb-3 block fade-up-2" style="color:#ffb95f;">Sripada Srivallabha Mahasamsthanam</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg mb-5 fade-up-2" style="color:#FFFCFA;max-width:580px;">Photo Gallery</h1>
+        <p class="font-body text-body-lg fade-up-3" style="color:#d4e4fc;max-width:500px;opacity:0.9;">Moments of devotion — sevas, Annadanam, Goshala, and the sacred spaces of Pithapuram.</p>
+      </div>
+      <div class="hero-figure-col">
+        <img src="./images/sripada-nobg.png" alt="Lord Sripada Srivallabha — divine form" width="480" height="520" loading="eager" decoding="async" class="figure-rise">
+      </div>
     </section>
 
     <!-- ── Filter Bar ── -->

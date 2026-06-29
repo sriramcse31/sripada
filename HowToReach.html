@@ -137,6 +137,201 @@
     }
 
     @media (prefers-reduced-motion: reduce) { * { transition: none !important; } }
+
+    /* ── Hero (copied from history.html) ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up   { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-2 { animation: fadeUp 0.7s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-3 { animation: fadeUp 0.7s 0.3s  cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes figureRise {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .figure-rise { animation: figureRise 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .fade-up-2, .fade-up-3, .figure-rise { animation: none; }
+    }
+    .hero-section {
+      position: relative; width: 100%;
+      background-color: #0d1c2e; overflow: hidden;
+    }
+    .hero-section::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 100% 100%, rgba(140,51,10,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 90% 60%,  rgba(246,173,85,0.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-text-col {
+      position: relative; z-index: 3; max-width: 58%;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 1.75rem 2rem 1.75rem 40px;
+    }
+    .hero-figure-col {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: clamp(280px, 42vw, 620px); z-index: 2;
+      display: flex; align-items: flex-end; justify-content: flex-end; overflow: hidden;
+    }
+    .hero-figure-col::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(13,28,46,0.45); pointer-events: none; z-index: 3;
+    }
+    .hero-figure-col img {
+      display: block; width: auto; height: 100%;
+      object-fit: contain; object-position: bottom right;
+      position: relative; z-index: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      filter: drop-shadow(0 -8px 32px rgba(140,51,10,0.3));
+    }
+    @media (max-width: 767px) {
+      .hero-section { display: flex; flex-direction: column-reverse; }
+      .hero-figure-col {
+        position: relative; right: auto; top: auto; bottom: auto;
+        width: 100%; height: 200px;
+        align-items: flex-end; justify-content: center;
+      }
+      .hero-figure-col img {
+        width: auto; height: 100%;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+      }
+      .hero-text-col { max-width: 100%; padding: 1.5rem 1rem 2rem; }
+    }
+
+
+    /* ── Hero (copied from history.html) ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up   { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-2 { animation: fadeUp 0.7s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-3 { animation: fadeUp 0.7s 0.3s  cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes figureRise {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .figure-rise { animation: figureRise 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .fade-up-2, .fade-up-3, .figure-rise { animation: none; }
+    }
+    .hero-section {
+      position: relative; width: 100%;
+      background-color: #0d1c2e; overflow: hidden;
+    }
+    .hero-section::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 100% 100%, rgba(140,51,10,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 90% 60%,  rgba(246,173,85,0.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-text-col {
+      position: relative; z-index: 3; max-width: 58%;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 1.75rem 2rem 1.75rem 40px;
+    }
+    .hero-figure-col {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: clamp(280px, 42vw, 620px); z-index: 2;
+      display: flex; align-items: flex-end; justify-content: flex-end; overflow: hidden;
+    }
+    .hero-figure-col::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(13,28,46,0.45); pointer-events: none; z-index: 3;
+    }
+    .hero-figure-col img {
+      display: block; width: auto; height: 100%;
+      object-fit: contain; object-position: bottom right;
+      position: relative; z-index: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      filter: drop-shadow(0 -8px 32px rgba(140,51,10,0.3));
+    }
+    @media (max-width: 767px) {
+      .hero-section { display: flex; flex-direction: column-reverse; }
+      .hero-figure-col {
+        position: relative; right: auto; top: auto; bottom: auto;
+        width: 100%; height: 200px;
+        align-items: flex-end; justify-content: center;
+      }
+      .hero-figure-col img {
+        width: auto; height: 100%;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+      }
+      .hero-text-col { max-width: 100%; padding: 1.5rem 1rem 2rem; }
+    }
+
+
+    /* ── Hero (copied from history.html) ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up   { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-2 { animation: fadeUp 0.7s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-3 { animation: fadeUp 0.7s 0.3s  cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes figureRise {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .figure-rise { animation: figureRise 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .fade-up-2, .fade-up-3, .figure-rise { animation: none; }
+    }
+    .hero-section {
+      position: relative; width: 100%;
+      background-color: #0d1c2e; overflow: hidden;
+    }
+    .hero-section::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 100% 100%, rgba(140,51,10,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 90% 60%,  rgba(246,173,85,0.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-text-col {
+      position: relative; z-index: 3; max-width: 58%;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 1.75rem 2rem 1.75rem 40px;
+    }
+    .hero-figure-col {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: clamp(280px, 42vw, 620px); z-index: 2;
+      display: flex; align-items: flex-end; justify-content: flex-end; overflow: hidden;
+    }
+    .hero-figure-col::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(13,28,46,0.45); pointer-events: none; z-index: 3;
+    }
+    .hero-figure-col img {
+      display: block; width: auto; height: 100%;
+      object-fit: contain; object-position: bottom right;
+      position: relative; z-index: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      filter: drop-shadow(0 -8px 32px rgba(140,51,10,0.3));
+    }
+    @media (max-width: 767px) {
+      .hero-section { display: flex; flex-direction: column-reverse; }
+      .hero-figure-col {
+        position: relative; right: auto; top: auto; bottom: auto;
+        width: 100%; height: 200px;
+        align-items: flex-end; justify-content: center;
+      }
+      .hero-figure-col img {
+        width: auto; height: 100%;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+      }
+      .hero-text-col { max-width: 100%; padding: 1.5rem 1rem 2rem; }
+    }
+
   </style>
 </head>
 
@@ -147,34 +342,26 @@
 
   <main id="main-content">
 
-    <!-- Hero banner -->
-    <div class="w-full bg-gradient-to-r from-saffron-deep via-primary to-primary-container text-on-primary" style="padding: clamp(2.5rem,6vw,5rem) 1.5rem;">
-      <div class="max-w-[960px] mx-auto">
-        <div class="flex items-start gap-4">
-          <div class="w-12 h-12 rounded-full bg-white/20 flex items-center justify-center flex-shrink-0 mt-1">
-            <span class="material-symbols-outlined text-2xl" style="font-variation-settings:'FILL' 1" aria-hidden="true">near_me</span>
-          </div>
-          <div>
-            <span class="font-body text-label-md uppercase tracking-widest block mb-2 opacity-80">Pilgrim Guide</span>
-            <h1 class="font-display text-display-lg-mobile md:text-display-lg">How to Reach Pithapuram</h1>
-            <p class="font-body text-body-lg mt-2 opacity-85 max-w-prose">
-              Complete travel guide for pilgrims visiting Sripada Srivallabha Mahasamsthanam — by train, bus, and local transport.
-            </p>
-          </div>
-        </div>
+    <!-- ── Page Hero ── -->
+    <section class="hero-section" aria-label="How to Reach page hero" style="min-height:340px;display:flex;align-items:stretch;">
+      <div class="hero-text-col fade-up">
+        <nav aria-label="Breadcrumb" class="mb-5">
+          <ol class="flex items-center gap-2 font-body text-caption opacity-70" style="color:#d4e4fc;">
+            <li><a href="./index.html" class="hover:underline" style="color:#d4e4fc;">Home</a></li>
+            <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:14px;">chevron_right</span></li>
+            <li aria-current="page">How to Reach</li>
+          </ol>
+        </nav>
+        <span class="font-body text-label-md tracking-widest uppercase mb-3 block fade-up-2" style="color:#ffb95f;">Pilgrim Guide</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg mb-5 fade-up-2" style="color:#FFFCFA;max-width:580px;">How to Reach Pithapuram</h1>
+        <p class="font-body text-body-lg fade-up-3" style="color:#d4e4fc;max-width:500px;opacity:0.9;">Complete travel guide for pilgrims visiting Sripada Srivallabha Mahasamsthanam — by train, bus, and local transport.</p>
       </div>
-    </div>
+      <div class="hero-figure-col">
+        <img src="./images/sripada-nobg.png" alt="Lord Sripada Srivallabha — divine form" width="480" height="520" loading="eager" decoding="async" class="figure-rise">
+      </div>
+    </section>
 
     <div class="max-w-[960px] mx-auto px-marginSm md:px-marginLg py-10">
-
-      <!-- Breadcrumb -->
-      <nav aria-label="Breadcrumb" class="mb-8">
-        <ol class="flex items-center gap-2 font-body text-label-md text-on-surface-variant flex-wrap">
-          <li><a href="./index.html" class="hover:text-primary transition-colors">Home</a></li>
-          <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:16px">chevron_right</span></li>
-          <li aria-current="page" class="text-primary font-semibold">How to Reach</li>
-        </ol>
-      </nav>
 
       <!-- Quick facts strip -->
       <div class="grid grid-cols-2 sm:grid-cols-4 gap-4 mb-10">

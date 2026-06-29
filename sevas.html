@@ -362,6 +362,71 @@
     /* Hide/show panel sections */
     .category-panel { display: none; }
     .category-panel.active { display: block; }
+
+    /* ── Hero (copied from history.html) ── */
+    @keyframes fadeUp {
+      from { opacity: 0; transform: translateY(24px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .fade-up   { animation: fadeUp 0.7s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-2 { animation: fadeUp 0.7s 0.15s cubic-bezier(0.16,1,0.3,1) both; }
+    .fade-up-3 { animation: fadeUp 0.7s 0.3s  cubic-bezier(0.16,1,0.3,1) both; }
+    @keyframes figureRise {
+      from { opacity: 0; transform: translateY(32px); }
+      to   { opacity: 1; transform: translateY(0); }
+    }
+    .figure-rise { animation: figureRise 0.9s 0.2s cubic-bezier(0.16,1,0.3,1) both; }
+    @media (prefers-reduced-motion: reduce) {
+      .fade-up, .fade-up-2, .fade-up-3, .figure-rise { animation: none; }
+    }
+    .hero-section {
+      position: relative; width: 100%;
+      background-color: #0d1c2e; overflow: hidden;
+    }
+    .hero-section::after {
+      content: ''; position: absolute; inset: 0;
+      background:
+        radial-gradient(ellipse 55% 80% at 100% 100%, rgba(140,51,10,0.28) 0%, transparent 65%),
+        radial-gradient(ellipse 40% 60% at 90% 60%,  rgba(246,173,85,0.08) 0%, transparent 60%);
+      pointer-events: none; z-index: 1;
+    }
+    .hero-text-col {
+      position: relative; z-index: 3; max-width: 58%;
+      display: flex; flex-direction: column; justify-content: center;
+      padding: 1.75rem 2rem 1.75rem 40px;
+    }
+    .hero-figure-col {
+      position: absolute; right: 0; top: 0; bottom: 0;
+      width: clamp(280px, 42vw, 620px); z-index: 2;
+      display: flex; align-items: flex-end; justify-content: flex-end; overflow: hidden;
+    }
+    .hero-figure-col::after {
+      content: ''; position: absolute; inset: 0;
+      background: rgba(13,28,46,0.45); pointer-events: none; z-index: 3;
+    }
+    .hero-figure-col img {
+      display: block; width: auto; height: 100%;
+      object-fit: contain; object-position: bottom right;
+      position: relative; z-index: 2;
+      -webkit-mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      mask-image: linear-gradient(to right, transparent 0%, black 15%);
+      filter: drop-shadow(0 -8px 32px rgba(140,51,10,0.3));
+    }
+    @media (max-width: 767px) {
+      .hero-section { display: flex; flex-direction: column-reverse; }
+      .hero-figure-col {
+        position: relative; right: auto; top: auto; bottom: auto;
+        width: 100%; height: 200px;
+        align-items: flex-end; justify-content: center;
+      }
+      .hero-figure-col img {
+        width: auto; height: 100%;
+        -webkit-mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+        mask-image: linear-gradient(to bottom, transparent 0%, black 25%);
+      }
+      .hero-text-col { max-width: 100%; padding: 1.5rem 1rem 2rem; }
+    }
+
   </style>
 </head>
 
@@ -374,32 +439,31 @@
   <!-- MAIN -->
   <main id="main-content">
 
-    <!-- Page Hero Banner -->
-    <section class="bg-sacred-white border-b border-incense-smoke py-10 md:py-14" aria-label="Sevas page hero">
-      <div class="max-w-[1280px] mx-auto px-marginSm md:px-marginLg">
-        <div class="flex flex-col md:flex-row md:items-end justify-between gap-6">
+    <!-- ── Page Hero ── -->
+    <section class="hero-section" aria-label="Sevas page hero" style="min-height:340px;display:flex;align-items:stretch;">
+      <div class="hero-text-col fade-up">
+        <nav aria-label="Breadcrumb" class="mb-5">
+          <ol class="flex items-center gap-2 font-body text-caption opacity-70" style="color:#d4e4fc;">
+            <li><a href="./index.html" class="hover:underline" style="color:#d4e4fc;">Home</a></li>
+            <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:14px;">chevron_right</span></li>
+            <li aria-current="page">Sevas</li>
+          </ol>
+        </nav>
+        <span class="font-body text-label-md tracking-widest uppercase mb-3 block fade-up-2" style="color:#ffb95f;">Divine Offerings</span>
+        <h1 class="font-display text-display-lg-mobile md:text-display-lg mb-5 fade-up-2" style="color:#FFFCFA;max-width:580px;">Poojas &amp; Sevas at Sri Kshetra</h1>
+        <p class="font-body text-body-lg fade-up-3" style="color:#d4e4fc;max-width:500px;opacity:0.9;">
+          Participate in sacred rituals performed with devotion at the holy feet of Lord Sripada Srivallabha. Select a seva, book in advance, and receive the Lord’s divine blessings.
+        </p>
+        <div class="mt-6 fade-up-3 flex items-center gap-3 rounded-xl px-5 py-3 w-fit" style="background:rgba(255,255,255,0.08);border:1px solid rgba(255,255,255,0.14);">
+          <span class="material-symbols-outlined text-2xl" style="color:#ffb95f;" aria-hidden="true">call</span>
           <div>
-            <nav aria-label="Breadcrumb" class="mb-4">
-              <ol class="flex items-center gap-2 text-caption text-on-surface-variant">
-                <li><a href="./index.html" class="hover:text-primary transition-colors">Home</a></li>
-                <li aria-hidden="true"><span class="material-symbols-outlined" style="font-size:14px;">chevron_right</span></li>
-                <li><span class="text-saffron-deep font-semibold" aria-current="page">Sevas</span></li>
-              </ol>
-            </nav>
-            <span class="font-body text-label-md text-primary tracking-widest uppercase mb-3 block">Divine Offerings</span>
-            <h1 class="font-display text-display-lg-mobile md:text-display-lg text-on-background mb-4">Poojas &amp; Sevas</h1>
-            <p class="font-body text-body-lg text-on-surface-variant max-w-2xl">
-              Participate in sacred rituals performed with devotion at the holy feet of Lord Sripada Srivallabha. Select a seva, book in advance, and receive the Lord's divine blessings.
-            </p>
-          </div>
-          <div class="flex-shrink-0 flex items-center gap-3 bg-surface-container-low border border-incense-smoke rounded-2xl px-6 py-4 md:text-right">
-            <span class="material-symbols-outlined text-saffron-deep text-3xl" aria-hidden="true">info</span>
-            <div>
-              <div class="font-body text-label-md text-on-background">Need help booking?</div>
-              <div class="font-body text-caption text-on-surface-variant">Call: <a href="tel:+918842233388" class="text-primary hover:underline font-semibold">+91 88422 33388</a></div>
-            </div>
+            <div class="font-body text-label-md" style="color:#FFFCFA;">Need help booking?</div>
+            <div class="font-body text-caption" style="color:#d4e4fc;opacity:0.85;">Call: <a href="tel:+918842233388" class="hover:underline font-semibold" style="color:#ffb95f;">+91 88422 33388</a></div>
           </div>
         </div>
+      </div>
+      <div class="hero-figure-col">
+        <img src="./images/sripada-nobg.png" alt="Lord Sripada Srivallabha — divine form" width="480" height="520" loading="eager" decoding="async" class="figure-rise">
       </div>
     </section>
 
